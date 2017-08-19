@@ -9,5 +9,17 @@
     "meteor-node-stubs": "~0.2.4",
     "moment": "^2.18.1",
     "simpl-schema": "^0.3.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.1"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {
+        "browsers": [
+          "last 2 versions"
+        ]
+      }
+    }
   }
 }
