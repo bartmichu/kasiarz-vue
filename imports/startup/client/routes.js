@@ -5,7 +5,7 @@ import "/imports/ui/pages/login_T.js";
 
 
 FlowRouter.route("/", {
-  name: "app.root",
+  name: "index",
   action() {
     BlazeLayout.render("body_T", {
       app_menu_section: "",
