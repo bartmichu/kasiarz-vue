@@ -5,6 +5,9 @@
   },
   "extends": "airbnb-base",
   "rules": {
-    "quotes": [1, "double"]
+    "quotes": [1, "double"],
+    "import/extensions": 0,
+    "import/no-absolute-path": 0,
+    "import/no-extraneous-dependencies": 0
   }
 }
