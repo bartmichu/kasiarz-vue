@@ -1,0 +1,42 @@
+<template name="login_T">
+
+  <div class="ui center aligned grid container">
+
+    <div class="row">
+      <div class="sixteen-wide-mobile eight-wide-tablet six-wide-computer column">
+
+        <div class="ui fluid raised card">
+          <div class="image"><img src="img/posnet.jpg"></div>
+          <div class="content">
+
+            <!--formularz logowania początek-->
+            <form class="ui form">
+
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="user icon"></i>
+                  <input id="user-field" type="text" placeholder="użytkownik">
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="lock icon"></i>
+                  <input id="password-field" type="password" placeholder="hasło">
+                </div>
+              </div>
+
+              <button id="login-button" type="submit" class="ui fluid primary {{loggingInClassH}} {{loginStatusClassH}} button">{{loginButtonTextH}}</button>
+              
+            </form>
+            <!--formularz logowania koniec-->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</template>
