@@ -1,0 +1,1 @@
+Projekt ten jest dla mnie poligonem doświadczalnym do nauki platformy Meteor oraz programowania z wykorzystaniem JavaScript w ogóle.
