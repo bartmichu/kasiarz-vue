@@ -1,0 +1,38 @@
+<template name="application_menu_T">
+
+  <!--menu aplikacji początek-->
+  <div class="ui top fixed inverted menu">
+    <div class="ui container">
+      <a id="pozycja-formularze" class="{{setDisabledIfDirtyH}} item"><i class="file text icon"></i>Formularze</a>
+      <a id="pozycja-archiwum" class="{{setDisabledIfDirtyH}} item"><i class="archive icon"></i>Archiwum</a>
+      <a id="pozycja-klienci" class="{{setDisabledIfDirtyH}} item"><i class="address book icon"></i>Klienci</a>
+
+      <!--prawe menu początek-->
+      <div class="right menu">
+
+        {{#if isDirtyGH}}
+          <div class="item" title="niezapisane zmiany"><i class="yellow edit icon"></i></div>
+        {{/if}}
+
+        <div id="dropdown-konfiguracja" class="ui simple dropdown {{setDisabledIfDirtyH}} item">
+          <i class="setting icon"></i>
+          <div class="menu">
+            <div id="pozycja-urzedy" class="{{setDisabledIfDirtyH}} item">Urzędy skarbowe</div>
+            <div id="pozycja-producenci" class="{{setDisabledIfDirtyH}} item">Producenci urządzeń</div>
+            <div id="pozycja-modele" class="{{setDisabledIfDirtyH}} item">Modele urządzeń</div>
+          </div>
+        </div>
+        <div id="dropdown-uzytkownik" class="ui simple dropdown {{setDisabledIfDirtyH}} item">
+          <i class="user icon"></i>
+          <div class="menu">
+            <div id="pozycja-wyloguj" class="{{setDisabledIfDirtyH}} item">Wyloguj się</div>
+          </div>
+        </div>
+      </div>
+      <!--prawe menu koniec-->
+
+    </div>
+  </div>
+  <!--menu aplikacji koniec-->
+
+</template>
