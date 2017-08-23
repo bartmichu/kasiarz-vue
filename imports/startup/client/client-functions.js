@@ -4,9 +4,9 @@ import { Session } from "meteor/session";
 const setDirty = state => Session.set("isDirty", state);
 
 
-const setSessionVariables = () => {
+const resetSessionVariables = () => {
   setDirty(false);
 };
 
 
-export { setDirty, setSessionVariables };
+export { setDirty, resetSessionVariables };
