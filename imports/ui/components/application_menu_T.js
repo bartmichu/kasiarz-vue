@@ -25,13 +25,13 @@ Template.application_menu_T.events({
     event.preventDefault();
   },
   "click #pozycja-urzedy": () => {
-    FlowRouter.go("urzedy");
+    FlowRouter.go("offices");
   },
   "click #pozycja-producenci": () => {
-    FlowRouter.go("producenci");
+    FlowRouter.go("manufacturers");
   },
   "click #pozycja-modele": () => {
-    FlowRouter.go("modele");
+    FlowRouter.go("models");
   },
   "click #pozycja-wyloguj": () => {
     FlowRouter.go("index");

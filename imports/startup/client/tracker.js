@@ -5,6 +5,6 @@ import { FlowRouter } from "meteor/kadira:flow-router";
 
 Tracker.autorun(() => {
   if (Meteor.userId() === null) {
-    FlowRouter.go("logowanie");
+    FlowRouter.go("login");
   }
 });

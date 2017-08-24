@@ -27,7 +27,7 @@ FlowRouter.route("/", {
 
 
 FlowRouter.route("/logowanie", {
-  name: "logowanie",
+  name: "login",
   triggersEnter: [redirectIfLoggedIn],
   action() {
     BlazeLayout.render("body_T", {
@@ -38,17 +38,17 @@ FlowRouter.route("/logowanie", {
 });
 
 
-const producenci = FlowRouter.group({
+const manufacturers = FlowRouter.group({
   prefix: "/producenci",
-  name: "producenci",
+  name: "manufacturers",
 });
 
-producenci.route("/", {
-  name: "producenci",
+manufacturers.route("/", {
+  name: "manufacturers",
   action() {
     BlazeLayout.render("body_T", {
       applicationMenu: "application_menu_T",
-      mainSection: "producenci_T",
+      mainSection: "manufacturers_T",
     });
   },
 });
