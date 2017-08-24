@@ -36,3 +36,19 @@ FlowRouter.route("/logowanie", {
     });
   },
 });
+
+
+const producenci = FlowRouter.group({
+  prefix: "/producenci",
+  name: "producenci",
+});
+
+producenci.route("/", {
+  name: "producenci",
+  action() {
+    BlazeLayout.render("body_T", {
+      applicationMenu: "application_menu_T",
+      mainSection: "producenci_T",
+    });
+  },
+});
