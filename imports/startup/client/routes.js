@@ -5,6 +5,7 @@ import "/imports/ui/components/application_menu_T.js";
 import "/imports/ui/layouts/body_T.js";
 import "/imports/ui/pages/login_T.js";
 import "/imports/ui/pages/placeholder_T.js";
+import "/imports/ui/pages/manufacturers_T.js";
 
 
 function redirectIfLoggedIn(context, redirect) {
