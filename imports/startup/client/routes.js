@@ -47,8 +47,8 @@ manufacturers.route("/", {
   name: "manufacturers",
   action() {
     BlazeLayout.render("body_T", {
-      applicationMenu: "application_menu_T",
-      mainSection: "manufacturers_T",
+      app_menu_section: "application_menu_T",
+      app_main_section: "manufacturers_T",
     });
   },
 });
