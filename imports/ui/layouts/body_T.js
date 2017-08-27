@@ -1,4 +1,4 @@
-import { resetSessionVariables } from "/imports/startup/client/client-functions.js";
+import { resetSessionVariables } from "/imports/util/client/client-functions.js";
 import "./body_T.html";
 
 
