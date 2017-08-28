@@ -3,7 +3,7 @@ import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 
 
 Meteor.publish("manufacturers.private", () => {
-  const dane = Manufacturers.find({ uzytkownikId: this.userId });
+  const dane = Manufacturers.find({ uzytkownikId: Meteor.userId() });
 
   if (dane) {
     return dane;
