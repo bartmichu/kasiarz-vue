@@ -31,7 +31,7 @@ Template.manufacturers_T.events({
   submit(event) {
     event.preventDefault();
   },
-  "click #element": () => {
-    FlowRouter.go("manufacturers.producent", { _id: this._id });
+  "click #element": function () {
+    FlowRouter.go("manufacturers.manufacturer", { _id: this._id });
   },
 });
