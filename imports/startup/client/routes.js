@@ -6,6 +6,7 @@ import "/imports/ui/layouts/body_T.js";
 import "/imports/ui/pages/login_T.js";
 import "/imports/ui/pages/placeholder_T.js";
 import "/imports/ui/pages/manufacturers_T.js";
+import "/imports/ui/pages/manufacturers_item_T.js";
 
 
 function redirectIfLoggedIn(context, redirect) {
@@ -50,6 +51,26 @@ manufacturers.route("/", {
     BlazeLayout.render("body_T", {
       app_menu_section: "application_menu_T",
       app_main_section: "manufacturers_T",
+    });
+  },
+});
+
+manufacturers.route("/id/:_id", {
+  name: "manufacturers.manufacturer",
+  action() {
+    BlazeLayout.render("body_T", {
+      app_menu_section: "application_menu_T",
+      app_main_section: "manufacturers_item_T",
+    });
+  },
+});
+
+manufacturers.route("/dodaj", {
+  name: "manufacturers.add",
+  action() {
+    BlazeLayout.render("body_T", {
+      app_menu_section: "application_menu_T",
+      app_main_section: "manufacturers_item_T",
     });
   },
 });
