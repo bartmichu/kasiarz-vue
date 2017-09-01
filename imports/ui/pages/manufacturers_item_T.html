@@ -1,0 +1,91 @@
+<template name="manufacturers_item_T">
+
+  <div class="ui grid container">
+    <div class="row">
+      <div class="sixteen wide column">
+
+        <div class="ui fluid raised card">
+          <div class="content">
+            <div class="header">Dane producenta</div>
+          </div>
+
+          <div class="content">
+            <form class="ui form">
+              <div class="field">                
+                <div class="{{setRequiredGH "nazwa"}} field">
+                  <label id="etykieta_pola-nazwa" for="nazwa"></label>
+                  <input id="nazwa" type="text" {{setDisabledAttributeGH}}>
+                </div>
+              </div>
+
+              <div class="three fields">
+                <div class="{{setRequiredGH "adres.ulica"}} field">
+                  <label id="etykieta_pola-adres.ulica" for="adres.ulica"></label>
+                  <input id="adres.ulica" type="text" {{setDisabledAttributeGH}}>
+                </div>
+
+                <div class="{{setRequiredGH "adres.kodPocztowy"}} field">
+                  <label id="etykieta_pola-adres.kodPocztowy" for="adres.kodPocztowy"></label>
+                  <input id="adres.kodPocztowy" type="text" {{setDisabledAttributeGH}}>
+                </div>
+
+                <div class="{{setRequiredGH "adres.miejscowosc"}} field">
+                  <label id="etykieta_pola-adres.miejscowosc" for="adres.miejscowosc"></label>
+                  <input id="adres.miejscowosc" type="text" {{setDisabledAttributeGH}}>
+                </div>
+              </div>
+
+              <div class="{{setRequiredGH "dodatkoweInformacje"}} field">
+                <label id="etykieta_pola-dodatkoweInformacje" for="dodatkoweInformacje"></label>
+                <textarea id="dodatkoweInformacje" rows="2" {{setDisabledAttributeGH}}></textarea>
+              </div>
+            </form>
+          </div>
+
+          {{#with getDataH}}
+            {{#if hasModelsH}}
+              <div class="content">
+                <form class="ui form">
+                  <div class="grouped fields">
+                    <label>Lista urządzeń</label>
+                    {{#each getModelsH}}
+                      <div class="field">
+                        <div class="ui radio checkbox">
+                          <input type="radio" disabled="disabled">
+                          <label>{{nazwa}}</label>
+                        </div>
+                      </div>
+                    {{/each}}
+                  </div>
+                </form>
+              </div>
+            {{/if}}
+          {{/with}}
+
+          {{#if isAddingModeGH}}
+          {{else}}
+            <div class="content">
+              <form class="ui form">
+                <div class="three fields">
+                  <div class="field" title="pole uzupełniane automatycznie">
+                    <label id="etykieta_pola-dataUtworzenia" for="dataUtworzenia"></label>
+                    <input id="dataUtworzenia" type="text" disabled>
+                  </div>
+
+                  <div class="field" title="pole uzupełniane automatycznie">
+                    <label id="etykieta_pola-dataModyfikacji" for="dataModyfikacji"></label>
+                    <input id="dataModyfikacji" type="text" disabled>
+                  </div>
+
+                  <div class="field"></div>
+                </div>
+              </form>
+            </div>
+          {{/if}}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</template>
