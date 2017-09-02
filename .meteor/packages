@@ -30,5 +30,5 @@ mdg:validated-method
 jquery
 aldeed:schema-deny
 aldeed:collection2-core
-semantic:ui
 juliancwirko:postcss
+materialize:materialize
