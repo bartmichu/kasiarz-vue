@@ -7,6 +7,7 @@ const setDirty = state => Session.set("isDirty", state);
 
 
 const setEditMode = (state) => {
+  Session.set("previousUrl", "");
   Session.set("isDirty", false);
   Session.set("isEditMode", state);
 };
@@ -21,6 +22,11 @@ const resetSessionVariables = () => {
 };
 
 
+const routeBack = () => {
+  FlowRouter.go(Session.get("previousUrl") || "index");
+};
+
+
 const setFormLabels = (schema) => {
   $("label").each(function setLabel() {
     // TODO: sprawdzić arrow function (this?)
@@ -32,4 +38,5 @@ const setFormLabels = (schema) => {
 };
 
 
-export { setDirty, resetSessionVariables, setEditMode, getAddingModeFromRoute, setFormLabels };
+export { setDirty, resetSessionVariables, setEditMode, getAddingModeFromRoute, setFormLabels, routeBack };
+
