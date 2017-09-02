@@ -18,6 +18,7 @@ Meteor.startup(() => {
           miejscowosc: "Longoria",
           kodPocztowy: 94947,
         },
+        dataUtworzenia: new Date(),
       },
       {
         uzytkownikId: userId,
@@ -27,6 +28,7 @@ Meteor.startup(() => {
           miejscowosc: "Brule",
           kodPocztowy: 28515,
         },
+        dataUtworzenia: new Date(),
       },
       {
         uzytkownikId: userId,
@@ -36,6 +38,7 @@ Meteor.startup(() => {
           miejscowosc: "Dellview",
           kodPocztowy: 40579,
         },
+        dataUtworzenia: new Date(),
       },
       {
         uzytkownikId: userId,
@@ -45,6 +48,7 @@ Meteor.startup(() => {
           miejscowosc: "Vienna",
           kodPocztowy: 17384,
         },
+        dataUtworzenia: new Date(),
       },
       {
         uzytkownikId: userId,
@@ -54,6 +58,7 @@ Meteor.startup(() => {
           miejscowosc: "Chestnut",
           kodPocztowy: 73989,
         },
+        dataUtworzenia: new Date(),
       },
       {
         uzytkownikId: userId,
@@ -63,9 +68,14 @@ Meteor.startup(() => {
           miejscowosc: "Detroit",
           kodPocztowy: 86526,
         },
+        dataUtworzenia: new Date(),
       },
     ];
 
-    dummyData.forEach(manufacturer => Manufacturers.insert(manufacturer));
+    dummyData.forEach((manufacturer) => {
+      manufacturer.dataModyfikacji = manufacturer.dataUtworzenia;
+      manufacturer.nazwaSortowalna = manufacturer.nazwa.toLocaleLowerCase();
+      Manufacturers.insert(manufacturer);
+    });
   }
 });
