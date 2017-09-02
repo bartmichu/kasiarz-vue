@@ -1,8 +1,8 @@
 import { Template } from "meteor/templating";
 import { Session } from "meteor/session";
 import { FlowRouter } from "meteor/kadira:flow-router";
-import { Manufacturers } from "/imports/api/manufacturers/manufacturers.js";
-import { Models } from "/imports/api/models/models.js";
+import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
+import Models from "/imports/api/models/models.js";
 
 
 Template.registerHelper("isDirtyGH", () => Session.get("isDirty"));
