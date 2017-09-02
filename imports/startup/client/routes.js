@@ -1,4 +1,5 @@
 import { Meteor } from "meteor/meteor";
+import { Session } from "meteor/session";
 import { FlowRouter } from "meteor/kadira:flow-router";
 import { BlazeLayout } from "meteor/kadira:blaze-layout";
 import "/imports/ui/components/application_menu/application_menu_T.js";
@@ -7,6 +8,16 @@ import "/imports/ui/pages/login_T.js";
 import "/imports/ui/pages/placeholder_T.js";
 import "/imports/ui/pages/manufacturers_T.js";
 import "/imports/ui/pages/manufacturers_item_T.js";
+
+
+function setPreviousUrl() {
+  const previousUrl = Session.get("previousUrl");
+  const currentUrl = FlowRouter.current().path.split("?")[0];
+  Session.set("previousUrl", previousUrl === currentUrl ? previousUrl : currentUrl);
+}
+
+
+FlowRouter.triggers.exit([setPreviousUrl]);
 
 
 function redirectIfLoggedIn(context, redirect) {
