@@ -12,7 +12,7 @@ const setEditMode = (state) => {
 };
 
 
-const getEditModeFromRoute = () => FlowRouter.current().route.name.split(".").reverse()[0] === "add";
+const getAddingModeFromRoute = () => FlowRouter.current().route.name.split(".").reverse()[0] === "add";
 
 
 const resetSessionVariables = () => {
@@ -32,4 +32,4 @@ const setFormLabels = (schema) => {
 };
 
 
-export { setDirty, resetSessionVariables, setEditMode, getEditModeFromRoute, setFormLabels };
+export { setDirty, resetSessionVariables, setEditMode, getAddingModeFromRoute, setFormLabels };

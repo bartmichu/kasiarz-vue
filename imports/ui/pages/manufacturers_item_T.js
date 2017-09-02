@@ -1,7 +1,7 @@
 import { Session } from "meteor/session";
 import { Template } from "meteor/templating";
 import { FlowRouter } from "meteor/kadira:flow-router";
-import { getEditModeFromRoute, setEditMode, setFormLabels } from "/imports/util/client/client-functions.js";
+import { getAddingModeFromRoute, setEditMode, setFormLabels } from "/imports/util/client/client-functions.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 // import Models from "/imports/api/models/models.js";
 import "./manufacturers_item_T.html";
@@ -13,7 +13,7 @@ Template.manufacturers_item_T.onCreated(() => {
   // TODO zawęzić subskrypcję do wybranego producenta
   Template.instance().subscribe("models.private");
 
-  setEditMode(getEditModeFromRoute());
+  setEditMode(getAddingModeFromRoute());
 });
 
 
