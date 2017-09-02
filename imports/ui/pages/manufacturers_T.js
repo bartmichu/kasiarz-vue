@@ -2,10 +2,10 @@ import { Session } from "meteor/session";
 import { Template } from "meteor/templating";
 import { FlowRouter } from "meteor/kadira:flow-router";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
-import "/imports/ui/components/list_placeholder_T.js";
-import "/imports/ui/components/loading_T.js";
-import "/imports/ui/components/list_menu_add_T.js";
-import "/imports/ui/components/list_menu_sort_T.js";
+import "/imports/ui/components/list_placeholder/list_placeholder_T.js";
+import "/imports/ui/components/loading/loading_T.js";
+import "/imports/ui/components/list_menu/list_menu_add_T.js";
+import "/imports/ui/components/list_menu/list_menu_sort_T.js";
 import "./manufacturers_T.html";
 
 
