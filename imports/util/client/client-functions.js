@@ -38,5 +38,11 @@ const setFormLabels = (schema) => {
 };
 
 
-export { setDirty, resetSessionVariables, setEditMode, getAddingModeFromRoute, setFormLabels, routeBack };
-
+export {
+  setDirty,
+  resetSessionVariables,
+  setEditMode,
+  getAddingModeFromRoute,
+  setFormLabels,
+  routeBack,
+};
