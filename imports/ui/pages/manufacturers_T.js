@@ -1,9 +1,11 @@
+import { Session } from "meteor/session";
 import { Template } from "meteor/templating";
 import { FlowRouter } from "meteor/kadira:flow-router";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import "/imports/ui/components/list_placeholder_T.js";
 import "/imports/ui/components/loading_T.js";
 import "/imports/ui/components/list_menu_add_T.js";
+import "/imports/ui/components/list_menu_sort_T.js";
 import "./manufacturers_T.html";
 
 
@@ -14,7 +16,19 @@ Template.manufacturers_T.onCreated(() => {
 
 Template.manufacturers_T.helpers({
   getSubscriptionDataH() {
-    return Manufacturers.find();
+    const selector = {};
+    switch (Session.get("sortOrder")) {
+      case "alfabetycznie":
+        selector.nazwaSortowalna = "1";
+        break;
+      case "chronologicznie":
+        selector.dataModyfikacji = "-1";
+        break;
+      default:
+        selector.nazwaSortowalna = "1";
+        break;
+    }
+    return Manufacturers.find({}, { sort: selector });
   },
   numberOfElementsH() {
     return Manufacturers.find().count();
