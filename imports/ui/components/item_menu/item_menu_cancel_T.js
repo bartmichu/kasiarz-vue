@@ -1,11 +1,11 @@
 import { Template } from "meteor/templating";
 import { FlowRouter } from "meteor/kadira:flow-router";
-import { getAddingModeFromRouter, setEditMode, routeBack } from "/imports/util/client/client-functions.js";
+import { getAddingModeFromRoute, setEditMode, routeBack } from "/imports/util/client/client-functions.js";
 import "./item_menu_cancel_T.html";
 
 
 Template.item_menu_cancel_T.onCreated(() => {
-  Template.instance().isAddingMode = getAddingModeFromRouter();
+  Template.instance().isAddingMode = getAddingModeFromRoute();
 });
 
 
