@@ -8,12 +8,23 @@ import "./application_menu_T.html";
 
 
 Template.application_menu_T.rendered = () => {
-  $("#dropdown-konfiguracja").dropdown();
-  $("#dropdown-uzytkownik").dropdown();
+  $("#dropdown-button-settings").dropdown({
+    constrainWidth: false,
+    hover: false,
+    belowOrigin: true,
+    alignment: "left",
+  });
+  $("#dropdown-button-user").dropdown({
+    constrainWidth: false,
+    hover: false,
+    belowOrigin: true,
+    alignment: "left",
+  });
 };
 
 
 Template.application_menu_T.helpers({
+  // TODO: zaimplementować w Materialize
   setDisabledIfDirtyH() {
     return Session.equals("isDirty", true) ? "disabled" : "";
   },
@@ -24,16 +35,13 @@ Template.application_menu_T.events({
   "click a": (event) => {
     event.preventDefault();
   },
-  "click #pozycja-urzedy": () => {
-    FlowRouter.go("offices");
-  },
-  "click #pozycja-producenci": () => {
+  "click #item-manufacturers": () => {
     FlowRouter.go("manufacturers");
   },
-  "click #pozycja-modele": () => {
+  "click #item-models": () => {
     FlowRouter.go("models");
   },
-  "click #pozycja-wyloguj": () => {
+  "click #item-logout": () => {
     FlowRouter.go("index");
     Meteor.logout();
     resetSessionVariables();
