@@ -12,22 +12,26 @@
 
           <div class="card-content">
             <div class="row">
-              <div class="input-field col s12">
-                <input id="field-user" type="text">
-                <label for="field-user">Użytkownik</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="field-password" type="password">
-                <label for="field-password">Hasło</label>
-              </div>
-            </div>
-          </div>
+              <form id="form-login" class="col s12">
 
-          <div class="card-action center-align">
-            <div class="row">
-              <div id="button-login" class="col s12 btn-large waves-effect {{failedLoginIndicatorH}} {{progressIndicatorH}}">{{loginButtonTextH}}</div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="field-user" type="text">
+                    <label for="field-user">Użytkownik</label>
+                  </div>
+
+                  <div class="input-field col s12">
+                    <input id="field-password" type="password">
+                    <label for="field-password">Hasło</label>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <button id="button-login" class="btn-large col s12 waves-effect {{failedLoginIndicatorH}}" type="submit" {{progressIndicatorH}}
+                    form="form-login">{{loginButtonTextH}}</button>
+                </div>
+
+              </form>
             </div>
           </div>
 
