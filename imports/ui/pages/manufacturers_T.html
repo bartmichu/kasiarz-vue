@@ -1,31 +1,27 @@
 <template name="manufacturers_T">
 
-  <div class="ui grid container">
+  <div class="container">
     <div class="row">
-      <div class="sixteen wide column">
+      <div class="col s12">
 
-        <div class="ui fluid raised card">
-          <div class="content">
-            <div class="header">Lista urządzeń
-              <div class="right floated">
-                {{> list_menu_sort_T}} {{> list_menu_add_T}}
-              </div>
-            </div>
+        <div class="card">
+          <div class="card-content grey darken-1">
+            <h5 class="white-text">Producenci urządzeń</h5>
           </div>
 
-          <div class="content">
-            {{#if Template.subscriptionsReady}}
-              {{#if isEmptyCollectionH}}
+
+          {{#if Template.subscriptionsReady}}
+            {{#if isEmptyCollectionH}}
+              <div class="card-action">
                 {{> list_placeholder_T}}
-              {{else}}
-                <!--lista producentów początek-->
-                <table class="ui very basic selectable padded fixed table">
+              </div>
+            {{else}}
+              <div class="card-action">
+                <table class="highlight responsive-table">
                   <thead>
-                    <tr>
-                      <th class="eight wide">{{getLabelH "nazwa"}}</th>
-                      <th class="three wide">{{getLabelH "adres.miejscowosc"}}</th>
-                      <th class="five wide">{{getLabelH "adres.ulica"}}</th>
-                    </tr>
+                    <th>{{getLabelH "nazwa"}}</th>
+                    <th>{{getLabelH "adres.miejscowosc"}}</th>
+                    <th>{{getLabelH "adres.ulica"}}</th>
                   </thead>
                   <tbody>
                     {{#each getSubscriptionDataH}}
@@ -36,19 +32,15 @@
                       </tr>
                     {{/each}}
                   </tbody>
-                  <tfoot>
-                    <tr>
-                      <th colspan="3" class="center aligned">Liczba pozycji: {{numberOfElementsH}}</th>
-                    </tr>
-                  </tfoot>
                 </table>
-                <!--lista producentów koniec-->
-              {{/if}}
-
-            {{else}}
-              {{> loading_T}}
+              </div>
             {{/if}}
-          </div>
+          {{else}}
+            <div class="card-action center aligned">
+              {{> loading_T}}
+            </div>
+          {{/if}}
+
         </div>
 
       </div>
