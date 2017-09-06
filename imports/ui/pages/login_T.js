@@ -15,7 +15,7 @@ Template.login_T.onCreated(() => {
  */
 Template.login_T.helpers({
   failedLoginIndicatorH() {
-    return Template.instance().failedLogin.get() ? "red" : "";
+    return Template.instance().failedLogin.get() ? "red" : "grey darken-3";
   },
   progressIndicatorH() {
     return Meteor.loggingIn() ? "disabled" : "";
