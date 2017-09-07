@@ -5,12 +5,21 @@ import "./list_menu_sort_T.html";
 
 
 Template.list_menu_sort_T.rendered = () => {
-  Session.setDefault("sortOrder", "alfabetycznie");
-  $("#dropdown-sortuj").dropdown();
-  $("#dropdown-sortuj").dropdown({
-    onChange(value) {
-      Session.set("sortOrder", value);
-    },
+  Session.setDefault("sortOrder", "natural");
+  $("#dropdown-button-sort").dropdown({
+    constrainWidth: false,
+    hover: false,
+    belowOrigin: true,
+    alignment: "left",
   });
-  $("#dropdown-sortuj").dropdown("set selected", Session.get("sortOrder"));
 };
+
+
+Template.list_menu_sort_T.events({
+  "click #item-sort-natural": () => {
+    Session.set("sortOrder", "natural");
+  },
+  "click #item-sort-chronological": () => {
+    Session.set("sortOrder", "chronological");
+  },
+});
