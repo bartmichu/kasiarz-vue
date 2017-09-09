@@ -1,5 +1,5 @@
 /**
- * TODO: usunąć w bardziej dojrzałej wersji aplikacji
+ * TODO: usunąć w wersji produkcyjnej
  */
 
 import { Meteor } from "meteor/meteor";
