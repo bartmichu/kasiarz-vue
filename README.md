@@ -5,4 +5,4 @@ Stos technologiczny:
 - Meteor
 - FlowRouter
 - simpl-schema
-- Semantic UI
+- Semantic UI / Materialize
