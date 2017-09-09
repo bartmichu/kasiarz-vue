@@ -2,7 +2,6 @@ import { Mongo } from "meteor/mongo";
 
 
 const Manufacturers = new Mongo.Collection("Manufacturers");
-
 Manufacturers.allow({
   insert() {
     return false;
@@ -14,7 +13,6 @@ Manufacturers.allow({
     return false;
   },
 });
-
 Manufacturers.deny({
   insert() {
     return true;
