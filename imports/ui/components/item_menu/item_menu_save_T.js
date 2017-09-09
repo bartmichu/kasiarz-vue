@@ -18,7 +18,7 @@ Template.item_menu_save_T.helpers({
     return Template.instance().isAddingMode ? "zapisz nowy" : "zapisz zmiany";
   },
   buttonStyleH() {
-    return Session.get("isDirty") ? "primary" : "secondary";
+    return Session.get("isDirty") ? "red" : "grey darken-3";
   },
 });
 
