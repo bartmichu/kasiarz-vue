@@ -8,6 +8,7 @@ Accounts.config({
   loginExpirationInDays: 14,
 });
 
+
 Meteor.users.deny({
   update() { return true; },
 });

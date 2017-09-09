@@ -7,6 +7,7 @@ Accounts.onLogin(() => {
   FlowRouter.go("index");
 });
 
+
 Meteor.users.deny({
   update() { return true; },
 });
