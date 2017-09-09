@@ -1,0 +1,4 @@
+textarea.materialize-textarea {
+  min-height: 0 !important;
+  height: 1rem;
+}

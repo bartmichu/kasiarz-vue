@@ -14,16 +14,11 @@ Template.login_T.onCreated(() => {
  * Funkcje pomocnicze templatki.
  */
 Template.login_T.helpers({
-  loginStatusClassH() {
-    let className = "";
-    if (Template.instance().failedLogin.get()) {
-      $("#login-button").transition("shake", { duration: 100 });
-      className = "negative";
-    }
-    return className;
+  failedLoginIndicatorH() {
+    return Template.instance().failedLogin.get() ? "red" : "grey darken-3";
   },
-  loggingInClassH() {
-    return Meteor.loggingIn() ? "loading" : "";
+  progressIndicatorH() {
+    return Meteor.loggingIn() ? "disabled" : "";
   },
   loginButtonTextH() {
     return Template.instance().failedLogin.get() ? "nieprawidłowe dane" : "kontynuuj";
@@ -41,12 +36,12 @@ Template.login_T.events({
   "keydown input, input input, paste input": function resetFailedLogin(event, template) {
     template.failedLogin.set(false);
   },
-  "blur #user-field": function trimUserField() {
-    $("#user-field").val($("#user-field").val().trim());
+  "blur #field-user": function trimUserField() {
+    $("#field-user").val($("#field-user").val().trim());
   },
-  "click #login-button": function login(event, template) {
-    let user = $("#user-field").val();
-    let password = $("#password-field").val();
+  "click #button-login": function login(event, template) {
+    let user = $("#field-user").val();
+    let password = $("#field-password").val();
 
     event.target.blur();
 

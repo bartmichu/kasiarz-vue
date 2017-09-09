@@ -1,95 +1,81 @@
 <template name="manufacturers_item_T">
 
-  <div class="ui grid container">
+  <div class="container">
     <div class="row">
-      <div class="sixteen wide column">
+      <div class="col s12">
 
-        <div class="ui fluid raised card">
-          <div class="content">
-            <div class="header">Dane producenta
-              <div class="right floated">
-                {{#if isEditModeGH}}
-                  {{> item_menu_cancel_T}} {{> item_menu_save_T}}
-                {{else}}
-                  {{> item_menu_delete_T}} {{> item_menu_edit_T}} {{> item_menu_close_T}}
-                {{/if}}
-              </div>
-            </div>
-          </div>
-
-          <div class="content">
-            <form class="ui form">
-              <div class="field">
-                <div class="{{setRequiredGH "nazwa"}} field">
-                  <label id="etykieta_pola-nazwa" for="nazwa"></label>
-                  <input id="nazwa" type="text" {{setDisabledAttributeGH}}>
-                </div>
-              </div>
-
-              <div class="three fields">
-                <div class="{{setRequiredGH "adres.ulica"}} field">
-                  <label id="etykieta_pola-adres.ulica" for="adres.ulica"></label>
-                  <input id="adres.ulica" type="text" {{setDisabledAttributeGH}}>
-                </div>
-
-                <div class="{{setRequiredGH "adres.kodPocztowy"}} field">
-                  <label id="etykieta_pola-adres.kodPocztowy" for="adres.kodPocztowy"></label>
-                  <input id="adres.kodPocztowy" type="text" {{setDisabledAttributeGH}}>
-                </div>
-
-                <div class="{{setRequiredGH "adres.miejscowosc"}} field">
-                  <label id="etykieta_pola-adres.miejscowosc" for="adres.miejscowosc"></label>
-                  <input id="adres.miejscowosc" type="text" {{setDisabledAttributeGH}}>
-                </div>
-              </div>
-
-              <div class="{{setRequiredGH "dodatkoweInformacje"}} field">
-                <label id="etykieta_pola-dodatkoweInformacje" for="dodatkoweInformacje"></label>
-                <textarea id="dodatkoweInformacje" rows="2" {{setDisabledAttributeGH}}></textarea>
-              </div>
-            </form>
-          </div>
-
-          {{#with getDataH}}
-            {{#if hasModelsH}}
-              <div class="content">
-                <form class="ui form">
-                  <div class="grouped fields">
-                    <label>Lista urządzeń</label>
-                    {{#each getModelsH}}
-                      <div class="field">
-                        <div class="ui radio checkbox">
-                          <input type="radio" disabled="disabled">
-                          <label>{{nazwa}}</label>
-                        </div>
-                      </div>
-                    {{/each}}
-                  </div>
-                </form>
-              </div>
+        <div class="card">
+          <div class="card-content grey">
+            <h5 class="white-text">Dane producenta</h5>
+            {{#if isEditModeGH}}
+              {{> item_menu_cancel_T}} {{> item_menu_save_T}}
+            {{else}}
+              {{> item_menu_delete_T}} {{> item_menu_edit_T}} {{> item_menu_close_T}}
             {{/if}}
-          {{/with}}
+          </div>
 
-          {{#if isAddingModeGH}}
-          {{else}}
-            <div class="content">
-              <form class="ui form">
-                <div class="three fields">
-                  <div class="field" title="pole uzupełniane automatycznie">
-                    <label id="etykieta_pola-dataUtworzenia" for="dataUtworzenia"></label>
-                    <input id="dataUtworzenia" type="text" disabled>
+          <div class="card-action">
+            <div class="row">
+              <form class="col s12">
+
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="nazwa" type="text" {{setDisabledAttributeGH}}>
+                    <label id="etykieta_pola-nazwa" for="nazwa"></label>
                   </div>
-
-                  <div class="field" title="pole uzupełniane automatycznie">
-                    <label id="etykieta_pola-dataModyfikacji" for="dataModyfikacji"></label>
-                    <input id="dataModyfikacji" type="text" disabled>
-                  </div>
-
-                  <div class="field"></div>
                 </div>
+
+                <div class="row">
+                  <div class="input-field col s12 m4">
+                    <input id="adres.ulica" type="text" {{setDisabledAttributeGH}}>
+                    <label id="etykieta_pola-adres.ulica" for="adres.ulica"></label>
+                  </div>
+                  <div class="input-field col s12 m4">
+                    <input id="adres.kodPocztowy" type="text" {{setDisabledAttributeGH}}>
+                    <label id="etykieta_pola-adres.kodPocztowy" for="adres.kodPocztowy"></label>
+                  </div>
+                  <div class="input-field col s12 m4">
+                    <input id="adres.miejscowosc" type="text" {{setDisabledAttributeGH}}>
+                    <label id="etykieta_pola-adres.miejscowosc" for="adres.miejscowosc"></label>
+                  </div>
+                  <div class="input-field col s12">
+                    <textarea id="dodatkoweInformacje" class="materialize-textarea" type="text" {{setDisabledAttributeGH}}></textarea>
+                    <label id="etykieta_pola-dodatkoweInformacje" for="dodatkoweInformacje"></label>
+                  </div>
+                </div>
+
+                {{#with getDataH}}
+                  {{#if hasModelsH}}
+                    <div class="row">
+                      <div class="col s12">
+                        <p>Lista urządzeń:</p>
+                        {{#each getModelsH}}
+                          <p>
+                            <input type="checkbox" disabled="disabled">
+                            <label>{{nazwa}}</label>
+                          </p>
+                        {{/each}}
+                      </div>
+                    </div>
+                  {{/if}}
+                {{/with}}
+
+                {{#unless isAddingModeGH}}
+                  <div class="row">
+                    <div class="input-field col s12 m6">
+                      <input id="dataUtworzenia" type="text" disabled title="pole uzupełniane automatycznie">
+                      <label id="etykieta_pola-dataUtworzenia" for="dataUtworzenia"></label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                      <input id="dataModyfikacji" type="text" disabled title="pole uzupełniane automatycznie">
+                      <label id="etykieta_pola-dataModyfikacji" for="dataModyfikacji"></label>
+                    </div>
+                  </div>
+                {{/unless}}
+
               </form>
             </div>
-          {{/if}}
+          </div>
         </div>
 
       </div>

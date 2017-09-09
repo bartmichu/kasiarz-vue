@@ -18,10 +18,10 @@ Template.manufacturers_T.helpers({
   getSubscriptionDataH() {
     const selector = {};
     switch (Session.get("sortOrder")) {
-      case "alfabetycznie":
+      case "natural":
         selector.nazwaSortowalna = "1";
         break;
-      case "chronologicznie":
+      case "chronological":
         selector.dataModyfikacji = "-1";
         break;
       default:
