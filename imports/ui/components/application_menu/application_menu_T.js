@@ -4,6 +4,7 @@ import { Template } from "meteor/templating";
 import { FlowRouter } from "meteor/kadira:flow-router";
 import { $ } from "meteor/jquery";
 import { resetSessionVariables } from "/imports/util/client/client-functions.js";
+import "/imports/ui/components/application_menu/modal_delete_T.js";
 import "./application_menu_T.html";
 
 
