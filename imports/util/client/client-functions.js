@@ -7,7 +7,6 @@ const setDirty = state => Session.set("isDirty", state);
 
 
 const setEditMode = (state) => {
-  Session.set("previousUrl", "");
   Session.set("isDirty", false);
   Session.set("isEditMode", state);
 };
@@ -17,6 +16,7 @@ const getAddingModeFromRoute = () => FlowRouter.current().route.name.split(".").
 
 
 const resetSessionVariables = () => {
+  Session.set("previousUrl", "");
   Session.set("isDirty", false);
   Session.set("isEditMode", false);
 };
