@@ -41,9 +41,11 @@ export const removeManufacturer = new ValidatedMethod({
       const manufacturer = Manufacturers.findOne({ _id: documentId });
       if (!manufacturer || (manufacturer.uzytkownikId !== actualUserId)) {
         throw new Meteor.Error("Błąd wywołania metody");
-      } else if (Models.find({ producentId: manufacturer._id }).count() > 0) {
-        throw new Meteor.Error("Błąd wywołania metody");
       }
+      // TODO: włączyć po dodaniu API dla modeli urządzeń
+      // else if (Models.find({ producentId: manufacturer._id }).count() > 0) {
+      //   throw new Meteor.Error("Błąd wywołania metody");
+      // }
     }
   },
   run(documentId) {
