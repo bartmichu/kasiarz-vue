@@ -5,6 +5,6 @@ import "./item_menu_delete_T.html";
 
 Template.item_menu_delete_T.events({
   "click #button-delete": () => {
-    $("#modal-delete").modal("show");
+    $("#modal-delete").modal("open");
   },
 });
