@@ -3,6 +3,7 @@ import { Session } from "meteor/session";
 import { FlowRouter } from "meteor/kadira:flow-router";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Models from "/imports/api/models/models.js";
+import moment from "moment";
 
 
 Template.registerHelper("isDirtyGH", () => Session.get("isDirty"));
@@ -36,3 +37,6 @@ Template.registerHelper("setRequiredGH", (field) => {
 
 
 Template.registerHelper("setDisabledAttributeGH", () => (Session.equals("isEditMode", true) ? "" : "disabled"));
+
+
+Template.registerHelper("formatDateGH", date => moment(date).format("DD-MM-YYYY, HH:mm"));
