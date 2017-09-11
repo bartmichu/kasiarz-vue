@@ -7,9 +7,8 @@
         <div class="card">
           <div class="card-content grey">
             <h5 class="white-text">Producenci urządzeń</h5>
-            {{> list_menu_add_T}} {{> list_menu_sort_T}}
+            {{> list_menu_add_T}}
           </div>
-
 
           {{#if Template.subscriptionsReady}}
             {{#if isEmptyCollectionH}}
@@ -20,9 +19,10 @@
               <div class="card-action">
                 <table class="highlight responsive-table">
                   <thead>
-                    <th>{{getLabelH "nazwa"}}</th>
-                    <th>{{getLabelH "adres.miejscowosc"}}</th>
-                    <th>{{getLabelH "adres.ulica"}}</th>
+                    <th id="header-nazwa">{{getLabelH "nazwa"}}</th>
+                    <th id="header-adres.miejscowosc">{{getLabelH "adres.miejscowosc"}}</th>
+                    <th id="header-adres.ulica">{{getLabelH "adres.ulica"}}</th>
+                    <th id="header-dataModyfikacji">{{getLabelH "dataModyfikacji"}}</th>
                   </thead>
                   <tbody>
                     {{#each getSubscriptionDataH}}
@@ -30,6 +30,7 @@
                         <td>{{nazwa}}</td>
                         <td>{{adres.miejscowosc}}</td>
                         <td>{{adres.ulica}}</td>
+                        <td>{{dataModyfikacji}}</td>
                       </tr>
                     {{/each}}
                   </tbody>
