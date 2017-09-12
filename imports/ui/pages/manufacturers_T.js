@@ -12,13 +12,14 @@ Template.manufacturers_T.onCreated(() => {
   Template.instance().subscribe("manufacturers.private");
   // TODO: ustawianie wartości domyślnej
   Template.instance().sorfField = new ReactiveVar("dataModyfikacji");
+  Template.instance().sortOrder = new ReactiveVar("1");
 });
 
 
 Template.manufacturers_T.helpers({
   getSubscriptionDataH() {
     const selector = {};
-    selector[Template.instance().sorfField.get()] = 1;
+    selector[Template.instance().sorfField.get()] = Template.instance().sortOrder.get();
     return Manufacturers.find({}, { sort: selector });
   },
   numberOfElementsH() {
@@ -41,6 +42,11 @@ Template.manufacturers_T.events({
     FlowRouter.go("manufacturers.manufacturer", { _id: this._id });
   },
   "click th": (event, template) => {
-    template.sorfField.set(event.target.id.split("-").reverse()[0]);
+    const newSortField = event.target.id.split("-").reverse()[0];
+    if (newSortField === template.sorfField.get()) {
+      template.sortOrder.set(template.sortOrder.get() * (-1));
+    } else {
+      template.sorfField.set(newSortField);
+    }
   },
 });
