@@ -62,7 +62,7 @@ const manufacturerSchema = new SimpleSchema({
   },
   dataModyfikacji: {
     type: Date,
-    label: "Data ostatniej modyfikacji",
+    label: "Data modyfikacji",
     optional: true,
   },
 });
