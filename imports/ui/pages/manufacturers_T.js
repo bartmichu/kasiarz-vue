@@ -11,14 +11,14 @@ import "./manufacturers_T.html";
 Template.manufacturers_T.onCreated(() => {
   Template.instance().subscribe("manufacturers.private");
   // TODO: ustawianie wartości domyślnej
-  Template.instance().sortOrder = new ReactiveVar("dataModyfikacji");
+  Template.instance().sorfField = new ReactiveVar("dataModyfikacji");
 });
 
 
 Template.manufacturers_T.helpers({
   getSubscriptionDataH() {
     const selector = {};
-    selector[Template.instance().sortOrder.get()] = 1;
+    selector[Template.instance().sorfField.get()] = 1;
     return Manufacturers.find({}, { sort: selector });
   },
   numberOfElementsH() {
@@ -41,6 +41,6 @@ Template.manufacturers_T.events({
     FlowRouter.go("manufacturers.manufacturer", { _id: this._id });
   },
   "click th": (event, template) => {
-    template.sortOrder.set(event.target.id.split("-").reverse()[0]);
+    template.sorfField.set(event.target.id.split("-").reverse()[0]);
   },
 });
