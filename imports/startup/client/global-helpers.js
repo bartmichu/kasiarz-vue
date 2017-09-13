@@ -39,4 +39,4 @@ Template.registerHelper("setRequiredGH", (field) => {
 Template.registerHelper("setDisabledAttributeGH", () => (Session.equals("isEditMode", true) ? "" : "disabled"));
 
 
-Template.registerHelper("formatDateGH", date => moment(date).format("DD-MM-YYYY, HH:mm"));
+Template.registerHelper("formatDateGH", date => (typeof date === "undefined" ? "brak" : moment(date).format("DD-MM-YYYY, HH:mm")));
