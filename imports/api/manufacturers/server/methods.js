@@ -22,7 +22,6 @@ export const insertManufacturer = new ValidatedMethod({
   },
   run(manufacturer) {
     manufacturer.uzytkownikId = Meteor.userId();
-    manufacturer.nazwaSortowalna = manufacturer.nazwa.toLowerCase();
     manufacturer.dataUtworzenia = new Date();
     manufacturer.dataModyfikacji = manufacturer.dataUtworzenia;
     return Manufacturers.insert(manufacturer);
@@ -77,7 +76,6 @@ export const updateManufacturer = new ValidatedMethod({
     return Manufacturers.update({ _id: documentId }, {
       $set: {
         nazwa: formData.nazwa,
-        nazwaSortowalna: formData.nazwa.toLowerCase(),
         "adres.ulica": formData.adres.ulica,
         "adres.miejscowosc": formData.adres.miejscowosc,
         "adres.kodPocztowy": formData.adres.kodPocztowy,

@@ -74,7 +74,6 @@ Meteor.startup(() => {
 
     dummyData.forEach((manufacturer) => {
       manufacturer.dataModyfikacji = manufacturer.dataUtworzenia;
-      manufacturer.nazwaSortowalna = manufacturer.nazwa.toLocaleLowerCase();
       Manufacturers.insert(manufacturer);
     });
   }
