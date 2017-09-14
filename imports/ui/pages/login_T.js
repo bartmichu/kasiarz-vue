@@ -5,6 +5,9 @@ import { $ } from "meteor/jquery";
 import "./login_T.html";
 
 
+/**
+ * Funkcja wywoływana po utworzeniu instancji templatki.
+ */
 Template.login_T.onCreated(() => {
   Template.instance().failedLogin = new ReactiveVar(false);
 });
@@ -50,7 +53,7 @@ Template.login_T.events({
         if (error) {
           template.failedLogin.set(true);
         } else {
-          // pomyślne logowanie - wykonanie Accounts.onLogin()
+          // pomyślne logowanie - wywołanie funkcji Accounts.onLogin()
         }
       });
     } else {
