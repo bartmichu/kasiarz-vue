@@ -16,7 +16,7 @@ Template.modal_delete_T.rendered = () => {
 
 Template.modal_delete_T.events({
   "click #button-delete-confirm": () => {
-    Meteor.call(FlowRouter.current().route.group.name.concat(".remove"), FlowRouter.getParam("_id"), function (error) {
+    Meteor.call(FlowRouter.current().route.group.name.concat(".remove"), FlowRouter.getParam("_id"), (error) => {
       if (error) {
         // TODO: przetestować po zaimplementowaniu modal-delete-error
         // $("#modal-delete-error").modal("open");
