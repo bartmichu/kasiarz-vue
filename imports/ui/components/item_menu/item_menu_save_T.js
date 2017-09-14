@@ -43,7 +43,7 @@ Template.item_menu_save_T.events({
       if (Template.instance().isAddingMode) {
         Meteor.call(context.concat(".insert"), formData, (error) => {
           if (error) {
-            $("#modal-error").modal("show");
+            $("#modal-save-error").modal("open");
           } else {
             setEditMode(false);
             routeBack();
@@ -52,7 +52,7 @@ Template.item_menu_save_T.events({
       } else {
         Meteor.call(context.concat(".update"), { documentId: FlowRouter.getParam("_id"), formData }, (error) => {
           if (error) {
-            $("#modal-error").modal("show");
+            $("#modal-save-error").modal("open");
           } else {
             setEditMode(false);
             // TODO: uzupelnijDaneFormularza (aktualizacja daty edycji)
@@ -60,7 +60,7 @@ Template.item_menu_save_T.events({
         });
       }
     } else {
-      $("#modal-error").modal("show");
+      $("#modal-save-error").modal("open");
     }
   },
 });
