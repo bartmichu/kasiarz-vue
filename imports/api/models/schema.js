@@ -1,4 +1,4 @@
-import { SimpleSchema } from "simpl-schema";
+import SimpleSchema from "simpl-schema";
 import Models from "/imports/api/models/models.js";
 
 
