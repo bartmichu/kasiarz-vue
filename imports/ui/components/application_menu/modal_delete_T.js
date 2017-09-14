@@ -19,7 +19,7 @@ Template.modal_delete_T.events({
     Meteor.call(FlowRouter.current().route.group.name.concat(".remove"), FlowRouter.getParam("_id"), (error) => {
       if (error) {
         // TODO: przetestować po zaimplementowaniu modal-delete-error
-        // $("#modal-delete-error").modal("open");
+        $("#modal-delete-error").modal("open");
       } else {
         routeBack();
         $("#modal-delete").modal("close");
