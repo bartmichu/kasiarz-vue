@@ -8,6 +8,7 @@ import "/imports/ui/pages/login_T.js";
 import "/imports/ui/pages/placeholder_T.js";
 import "/imports/ui/pages/manufacturers_T.js";
 import "/imports/ui/pages/manufacturers_item_T.js";
+import "/imports/ui/pages/models_T.js";
 
 
 function setPreviousUrl() {
@@ -82,6 +83,22 @@ manufacturers.route("/dodaj", {
     BlazeLayout.render("body_T", {
       app_menu_section: "application_menu_T",
       app_main_section: "manufacturers_item_T",
+    });
+  },
+});
+
+
+const models = FlowRouter.group({
+  prefix: "/modele",
+  name: "models",
+});
+
+models.route("/", {
+  name: "models",
+  action() {
+    BlazeLayout.render("body_T", {
+      app_menu_section: "application_menu_T",
+      app_main_section: "models_T",
     });
   },
 });
