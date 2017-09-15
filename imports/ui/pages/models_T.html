@@ -1,0 +1,50 @@
+<template name="models_T">
+
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+
+        <div class="card">
+          <div class="card-content grey">
+            <h5 class="white-text">Modele urządzeń</h5>
+            {{> list_menu_add_T}}
+          </div>
+
+          {{#if Template.subscriptionsReady}}
+            {{#if isEmptyCollectionH}}
+              <div class="card-action">
+                {{> list_placeholder_T}}
+              </div>
+            {{else}}
+              <div class="card-action">
+                <table class="highlight responsive-table">
+                  <thead>
+                    <th id="header-nazwa">{{getLabelH "nazwa"}}</th>
+                    <th id="header-producentId">{{getLabelH "producentId"}}</th>
+                  </thead>
+                  <tbody>
+                    {{#each getSubscriptionDataH}}
+                      <tr id="element">
+                        <td>{{nazwa}}</td>
+                        {{#with producentId}}
+                          <td>{{getManufacturerNameH}}</td>
+                        {{/with}}
+                      </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            {{/if}}
+          {{else}}
+            <div class="card-action center aligned">
+              {{> loading_T}}
+            </div>
+          {{/if}}
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</template>
