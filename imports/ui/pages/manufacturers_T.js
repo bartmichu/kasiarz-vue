@@ -28,8 +28,8 @@ Template.manufacturers_T.helpers({
   isEmptyCollectionH() {
     return Manufacturers.find().count() === 0;
   },
-  getLabelH(pole) {
-    return Manufacturers.simpleSchema().label(pole);
+  getLabelH(field) {
+    return Manufacturers.simpleSchema().label(field);
   },
 });
 
