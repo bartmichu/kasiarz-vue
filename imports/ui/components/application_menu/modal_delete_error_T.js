@@ -9,3 +9,11 @@ Template.modal_delete_error_T.rendered = () => {
     opacity: 0.8,
   });
 };
+
+
+Template.modal_delete_error_T.events({
+  "click #button-delete-error-confirm": () => {
+    $("#modal-delete-error").modal("close");
+    $("#modal-delete").modal("close");
+  },
+});
