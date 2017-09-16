@@ -33,8 +33,6 @@ export const insertModel = new ValidatedMethod({
     model.uzytkownikId = Meteor.userId();
     model.dataUtworzenia = new Date();
     model.dataModyfikacji = model.dataUtworzenia;
-    // TODO: przenieść do fixtures
-    model.urzadzenia = [{ id: new Mongo.ObjectID()._str, nazwa: "Kasa Fiskalna HJ ES" }, { id: new Mongo.ObjectID()._str, nazwa: "Drukarka Fiskalna Bingo" }];
     return Models.insert(model);
   },
 });
