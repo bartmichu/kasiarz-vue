@@ -2,6 +2,7 @@ import { Template } from "meteor/templating";
 import { FlowRouter } from "meteor/kadira:flow-router";
 import { ReactiveVar } from "meteor/reactive-var";
 import Models from "/imports/api/models/models.js";
+import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import "/imports/ui/components/list_placeholder/list_placeholder_T.js";
 import "/imports/ui/components/loading/loading_T.js";
 import "/imports/ui/components/list_menu/list_menu_add_T.js";
@@ -30,7 +31,7 @@ Template.models_T.helpers({
     return Models.find().count() === 0;
   },
   getManufacturerNameH: function () {
-    return Models.findOne({ _id: this.toString() }).nazwa;
+    return Manufacturers.findOne({ _id: this.toString() }).nazwa;
   },
   getLabelH(field) {
     return Models.simpleSchema().label(field);
