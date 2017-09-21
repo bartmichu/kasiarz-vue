@@ -9,6 +9,7 @@ import "/imports/ui/pages/placeholder_T.js";
 import "/imports/ui/pages/manufacturers_T.js";
 import "/imports/ui/pages/manufacturers_item_T.js";
 import "/imports/ui/pages/models_T.js";
+import "/imports/ui/pages/models_item_T.js";
 
 
 function setPreviousUrl() {
@@ -99,6 +100,26 @@ models.route("/", {
     BlazeLayout.render("body_T", {
       app_menu_section: "application_menu_T",
       app_main_section: "models_T",
+    });
+  },
+});
+
+models.route("/id/:_id", {
+  name: "models.model",
+  action() {
+    BlazeLayout.render("body_T", {
+      app_menu_section: "application_menu_T",
+      app_main_section: "models_item_T",
+    });
+  },
+});
+
+models.route("/dodaj", {
+  name: "urzadzenia.dodaj",
+  action() {
+    BlazeLayout.render("layoutT", {
+      app_menu_section: "application_menu_T",
+      app_main_section: "models_item_T",
     });
   },
 });
