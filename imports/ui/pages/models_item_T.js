@@ -1,6 +1,6 @@
+import { Meteor } from "meteor/meteor";
 import { Session } from "meteor/session";
 import { Template } from "meteor/templating";
-import { Tracker } from "meteor/tracker";
 import { $ } from "meteor/jquery";
 import { getAddingModeFromRoute, setEditMode, setFormLabels } from "/imports/util/client/client-functions.js";
 import Models from "/imports/api/models/models.js";
@@ -31,9 +31,11 @@ Template.models_item_T.helpers({
   manufacturersListH() {
     return Manufacturers.find({}, { sort: { nazwa: 1 } });
   },
-  fixDisabledSelectH() {
-    // FIXME: odwrotny stan disabled po przełączeniu isEditMode
-    $("select").material_select();
+  fixDisabledAttributeH() {
+    // HACK: odwrotny stan disabled bez defer
+    Meteor.defer(() => {
+      $("select").material_select();
+    });
   },
 });
 
