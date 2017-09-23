@@ -20,9 +20,8 @@ Template.models_item_T.onCreated(() => {
 
 
 Template.models_item_T.rendered = () => {
-  $("select").material_select();
-
   setFormLabels(Models.simpleSchema());
+  $("select").material_select();
   // TODO: uzupełnianie danych formularza
 };
 
