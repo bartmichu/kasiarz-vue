@@ -115,9 +115,9 @@ models.route("/id/:_id", {
 });
 
 models.route("/dodaj", {
-  name: "urzadzenia.dodaj",
+  name: "models.add",
   action() {
-    BlazeLayout.render("layoutT", {
+    BlazeLayout.render("body_T", {
       app_menu_section: "application_menu_T",
       app_main_section: "models_item_T",
     });
