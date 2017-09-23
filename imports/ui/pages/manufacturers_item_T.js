@@ -3,7 +3,7 @@ import { Template } from "meteor/templating";
 import { FlowRouter } from "meteor/kadira:flow-router";
 import { getAddingModeFromRoute, setEditMode, setFormLabels } from "/imports/util/client/client-functions.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
-// import Models from "/imports/api/models/models.js";
+import Models from "/imports/api/models/models.js";
 import "/imports/ui/components/item_menu/item_menu_cancel_T.js";
 import "/imports/ui/components/item_menu/item_menu_close_T.js";
 import "/imports/ui/components/item_menu/item_menu_delete_T.js";
@@ -32,12 +32,12 @@ Template.manufacturers_item_T.helpers({
   getDataH() {
     return Manufacturers.findOne({ _id: FlowRouter.getParam("_id") });
   },
-  // hasModelsH() {
-  //   return Models.find({ producentId: this._id }).count() > 0;
-  // },
-  // getModelsH() {
-  //   return Models.find({ producentId: this._id });
-  // },
+  hasModelsH() {
+    return Models.find({ producentId: this._id }).count() > 0;
+  },
+  modelsH() {
+    return Models.find({ producentId: this._id });
+  },
 });
 
 
