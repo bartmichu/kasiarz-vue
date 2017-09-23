@@ -7,70 +7,78 @@
         <div class="card">
           <div class="card-content grey">
             <h5 class="white-text">Dane producenta</h5>
-            {{#if isEditModeGH}}
-              {{> item_menu_cancel_T}} {{> item_menu_save_T}}
-            {{else}}
-              {{> item_menu_delete_T}} {{> item_menu_edit_T}} {{> item_menu_close_T}}
+            {{#if Template.subscriptionsReady}}
+              {{#if isEditModeGH}}
+                {{> item_menu_cancel_T}} {{> item_menu_save_T}}
+              {{else}}
+                {{> item_menu_delete_T}} {{> item_menu_edit_T}} {{> item_menu_close_T}}
+              {{/if}}
             {{/if}}
           </div>
 
-          <div class="card-action">
-            <div class="row">
-              <form class="col s12">
+          {{#if Template.subscriptionsReady}}
+            <div class="card-action">
+              <div class="row">
+                <form class="col s12">
 
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input id="nazwa" type="text" {{setDisabledAttributeGH}}>
-                    <label id="etykieta_pola-nazwa" for="nazwa"></label>
-                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="nazwa" type="text" {{setDisabledAttributeGH}}>
+                      <label id="etykieta_pola-nazwa" for="nazwa"></label>
+                    </div>
 
-                  <div class="input-field col s12 l4">
-                    <input id="adres.ulica" type="text" {{setDisabledAttributeGH}}>
-                    <label id="etykieta_pola-adres.ulica" for="adres.ulica"></label>
-                  </div>
-                  <div class="input-field col s12 l4">
-                    <input id="adres.kodPocztowy" type="text" {{setDisabledAttributeGH}}>
-                    <label id="etykieta_pola-adres.kodPocztowy" for="adres.kodPocztowy"></label>
-                  </div>
-                  <div class="input-field col s12 l4">
-                    <input id="adres.miejscowosc" type="text" {{setDisabledAttributeGH}}>
-                    <label id="etykieta_pola-adres.miejscowosc" for="adres.miejscowosc"></label>
-                  </div>
+                    <div class="input-field col s12 l4">
+                      <input id="adres.ulica" type="text" {{setDisabledAttributeGH}}>
+                      <label id="etykieta_pola-adres.ulica" for="adres.ulica"></label>
+                    </div>
+                    <div class="input-field col s12 l4">
+                      <input id="adres.kodPocztowy" type="text" {{setDisabledAttributeGH}}>
+                      <label id="etykieta_pola-adres.kodPocztowy" for="adres.kodPocztowy"></label>
+                    </div>
+                    <div class="input-field col s12 l4">
+                      <input id="adres.miejscowosc" type="text" {{setDisabledAttributeGH}}>
+                      <label id="etykieta_pola-adres.miejscowosc" for="adres.miejscowosc"></label>
+                    </div>
 
-                  <div class="input-field col s12">
-                    <textarea id="dodatkoweInformacje" class="materialize-textarea" type="text" {{setDisabledAttributeGH}}></textarea>
-                    <label id="etykieta_pola-dodatkoweInformacje" for="dodatkoweInformacje"></label>
-                  </div>
+                    <div class="input-field col s12">
+                      <textarea id="dodatkoweInformacje" class="materialize-textarea" type="text" {{setDisabledAttributeGH}}></textarea>
+                      <label id="etykieta_pola-dodatkoweInformacje" for="dodatkoweInformacje"></label>
+                    </div>
 
-                  {{#with getDataH}}
-                    {{#if hasModelsH}}
-                      <div class="col s12">
-                        <p>Lista urządzeń:</p>
-                        {{#each modelsH}}
-                          <p>
-                            <input type="checkbox" checked="checked" disabled="disabled">
-                            <label>{{nazwa}}</label>
-                          </p>
-                        {{/each}}
+                    {{#with getDataH}}
+                      {{#if hasModelsH}}
+                        <div class="col s12">
+                          <p>Lista urządzeń:</p>
+                          {{#each modelsH}}
+                            <p>
+                              <input type="checkbox" checked="checked" disabled="disabled">
+                              <label>{{nazwa}}</label>
+                            </p>
+                          {{/each}}
+                        </div>
+                      {{/if}}
+                    {{/with}}
+
+                    {{#unless isAddingModeGH}}
+                      <div class="input-field col s12 l6">
+                        <input id="dataUtworzenia" type="text" disabled title="pole uzupełniane automatycznie">
+                        <label id="etykieta_pola-dataUtworzenia" for="dataUtworzenia"></label>
                       </div>
-                    {{/if}}
-                  {{/with}}
+                      <div class="input-field col s12 l6">
+                        <input id="dataModyfikacji" type="text" disabled title="pole uzupełniane automatycznie">
+                        <label id="etykieta_pola-dataModyfikacji" for="dataModyfikacji"></label>
+                      </div>
+                    {{/unless}}
+                  </div>
 
-                  {{#unless isAddingModeGH}}
-                    <div class="input-field col s12 l6">
-                      <input id="dataUtworzenia" type="text" disabled title="pole uzupełniane automatycznie">
-                      <label id="etykieta_pola-dataUtworzenia" for="dataUtworzenia"></label>
-                    </div>
-                    <div class="input-field col s12 l6">
-                      <input id="dataModyfikacji" type="text" disabled title="pole uzupełniane automatycznie">
-                      <label id="etykieta_pola-dataModyfikacji" for="dataModyfikacji"></label>
-                    </div>
-                  {{/unless}}
-                </div>
-
-              </form>
+                </form>
+              </div>
             </div>
-          </div>
+          {{else}}
+            <div class="card-action center aligned">
+              {{> loading_T}}
+            </div>
+          {{/if}}
         </div>
 
       </div>
