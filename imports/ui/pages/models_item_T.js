@@ -28,7 +28,7 @@ Template.models_item_T.rendered = () => {
 
 
 Template.models_item_T.helpers({
-  manufacturersListH() {
+  manufacturersH() {
     return Manufacturers.find({}, { sort: { nazwa: 1 } });
   },
   fixDisabledAttributeH() {

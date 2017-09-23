@@ -26,7 +26,9 @@
 
                   <div class="input-field col s12 l6">
                     <select id="producentId" {{setDisabledAttributeGH}} {{fixDisabledAttributeH}}>
-                      <option value="test">test</option>
+                      {{#each manufacturersH}}
+                        <option>{{nazwa}}</option>
+                      {{/each}}
                     </select>
                     <label id="etykieta_pola-producentId" for="producentId"></label>
                   </div>
