@@ -31,7 +31,7 @@ const setFormLabels = (schema) => {
   $("label").each(function setLabel() {
     // TODO: sprawdzić arrow function (this?)
     const label = $(this);
-    if (label.attr("id").split("-")[0] === "etykieta_pola") {
+    if (label.attr("id") && (label.attr("id").split("-")[0] === "etykieta_pola")) {
       $(label).text(schema.label(label.attr("for")));
     }
   });
