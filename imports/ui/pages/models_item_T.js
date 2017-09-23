@@ -20,7 +20,8 @@ Template.models_item_T.onCreated(() => {
 
 
 Template.models_item_T.rendered = () => {
-  Template.instance().subscribe("manufacturers.private", () => {
+  const template = Template.instance();
+  template.subscribe("manufacturers.private", () => {
     Tracker.afterFlush(() => {
       setFormLabels(Models.simpleSchema());
       $("select").material_select();
