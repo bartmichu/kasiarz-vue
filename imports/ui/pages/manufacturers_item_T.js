@@ -20,15 +20,16 @@ Template.manufacturers_item_T.onCreated(() => {
 
 
 Template.manufacturers_item_T.rendered = () => {
-  Template.instance().subscribe("manufacturers.private");
-
-  // TODO zawęzić subskrypcję do wybranego producenta
-  Template.instance().subscribe("models.private", () => {
-    Tracker.afterFlush(() => setFormLabels(Manufacturers.simpleSchema()));
+  const template = Template.instance();
+  template.subscribe("manufacturers.private", () => {
+    // TODO zawęzić subskrypcję do wybranego producenta
+    template.subscribe("models.private", () => {
+      Tracker.afterFlush(() => {
+        setFormLabels(Manufacturers.simpleSchema());
+        // TODO: automatyczne wypełnianie formularza
+      });
+    });
   });
-
-
-  // TODO: automatyczne wypełnianie formularza
 };
 
 
