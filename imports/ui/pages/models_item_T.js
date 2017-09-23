@@ -1,6 +1,7 @@
 import { Meteor } from "meteor/meteor";
 import { Session } from "meteor/session";
 import { Template } from "meteor/templating";
+import { Tracker } from "meteor/tracker";
 import { $ } from "meteor/jquery";
 import { getAddingModeFromRoute, setEditMode, setFormLabels } from "/imports/util/client/client-functions.js";
 import Models from "/imports/api/models/models.js";
@@ -14,15 +15,18 @@ import "./models_item_T.html";
 
 
 Template.models_item_T.onCreated(() => {
-  Template.instance().subscribe("manufacturers.private");
   setEditMode(getAddingModeFromRoute());
 });
 
 
 Template.models_item_T.rendered = () => {
-  setFormLabels(Models.simpleSchema());
-  $("select").material_select();
-  // TODO: uzupełnianie danych formularza
+  Template.instance().subscribe("manufacturers.private", () => {
+    Tracker.afterFlush(() => {
+      setFormLabels(Models.simpleSchema());
+      $("select").material_select();
+      // TODO: uzupełnianie danych formularza
+    });
+  });
 };
 
 
