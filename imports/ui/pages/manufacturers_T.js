@@ -38,8 +38,8 @@ Template.manufacturers_T.events({
   submit(event) {
     event.preventDefault();
   },
-  "click #element": function () {
-    FlowRouter.go("manufacturers.manufacturer", { _id: this._id });
+  "click tr": (event) => {
+    FlowRouter.go("manufacturers.manufacturer", { _id: event.currentTarget.id });
   },
   "click th": (event, template) => {
     const newSortField = event.target.id.split("-").reverse()[0];
