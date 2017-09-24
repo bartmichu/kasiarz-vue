@@ -8,6 +8,7 @@
     "quotes": [1, "double"],
     "import/extensions": 0,
     "import/no-absolute-path": 0,
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
+    "no-underscore-dangle": 0
   }
 }
