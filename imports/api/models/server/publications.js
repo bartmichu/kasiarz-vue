@@ -20,5 +20,6 @@ Meteor.publish("models.private", (manufacturer) => {
     }
   }
 
+  // TODO: sprawdzić jak to się ma do arrow function
   return this.ready();
 });
