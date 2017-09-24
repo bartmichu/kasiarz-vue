@@ -30,7 +30,7 @@ Template.models_T.helpers({
   isEmptyCollectionH() {
     return Models.find().count() === 0;
   },
-  getManufacturerNameH: function () {
+  getManufacturerNameH() {
     return Manufacturers.findOne({ _id: this.toString() }).nazwa;
   },
   getLabelH(field) {
@@ -43,8 +43,8 @@ Template.models_T.events({
   submit(event) {
     event.preventDefault();
   },
-  "click #element": function () {
-    FlowRouter.go("models.model", { _id: this._id });
+  "click tr": (event) => {
+    FlowRouter.go("models.model", { _id: event.currentTarget.id });
   },
   "click th": (event, template) => {
     const newSortField = event.target.id.split("-").reverse()[0];
