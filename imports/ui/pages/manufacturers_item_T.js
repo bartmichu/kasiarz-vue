@@ -21,9 +21,9 @@ Template.manufacturers_item_T.onCreated(() => {
 
 Template.manufacturers_item_T.rendered = () => {
   const template = Template.instance();
+  const manufacturer = FlowRouter.getParam("_id");
   template.subscribe("manufacturers.private", () => {
-    // TODO zawęzić subskrypcję do wybranego producenta
-    template.subscribe("models.private", () => {
+    template.subscribe("models.private", manufacturer, () => {
       Tracker.afterFlush(() => {
         setFormLabels(Manufacturers.simpleSchema());
         // TODO: automatyczne wypełnianie formularza
@@ -38,10 +38,10 @@ Template.manufacturers_item_T.helpers({
     return Manufacturers.findOne({ _id: FlowRouter.getParam("_id") });
   },
   hasModelsH() {
-    return Models.find({ producentId: this._id }).count() > 0;
+    return Models.find().count() > 0;
   },
   modelsH() {
-    return Models.find({ producentId: this._id });
+    return Models.find();
   },
 });
 
