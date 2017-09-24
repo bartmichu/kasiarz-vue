@@ -28,9 +28,8 @@ const routeBack = () => {
 
 
 const setFormLabels = (schema) => {
-  $("label").each(function setLabel() {
-    // TODO: sprawdzić arrow function (this?)
-    const label = $(this);
+  $("label").each((index, element) => {
+    const label = $(element);
     if (label.attr("id") && (label.attr("id").split("-")[0] === "etykieta_pola")) {
       $(label).text(schema.label(label.attr("for")));
     }
