@@ -3,7 +3,6 @@ import { ValidatedMethod } from "meteor/mdg:validated-method";
 import { check } from "meteor/check";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Models from "/imports/api/models/models.js";
-import { manufacturerSchema } from "/imports/api/manufacturers/schema.js";
 
 
 export const insertManufacturer = new ValidatedMethod({
@@ -14,7 +13,7 @@ export const insertManufacturer = new ValidatedMethod({
       throw new Meteor.Error("Błąd wywołania metody");
     } else {
       manufacturer.uzytkownikId = actualUserId;
-      const validationContext = manufacturerSchema.newContext();
+      const validationContext = Manufacturers.simpleSchema().newContext();
       if (validationContext.validate(manufacturer) !== true) {
         throw new Meteor.Error("Błąd wywołania metody");
       }
@@ -59,7 +58,7 @@ export const updateManufacturer = new ValidatedMethod({
       throw new Meteor.Error("Błąd wywołania metody");
     } else {
       check(documentId, String);
-      const validationContext = manufacturerSchema.newContext();
+      const validationContext = Manufacturers.simpleSchema().newContext();
       if (validationContext.validate(formData) === true) {
         const manufacturer = Manufacturers.findOne({ _id: documentId });
         if (!manufacturer || (manufacturer.uzytkownikId !== actualUserId)) {

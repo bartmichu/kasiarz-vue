@@ -4,7 +4,6 @@ import { ValidatedMethod } from "meteor/mdg:validated-method";
 import { check } from "meteor/check";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Models from "/imports/api/models/models.js";
-import { modelsSchema } from "/imports/api/models/schema.js";
 
 
 export const insertModel = new ValidatedMethod({
@@ -23,7 +22,7 @@ export const insertModel = new ValidatedMethod({
 
       model.uzytkownikId = actualUserId;
 
-      const validationContext = modelsSchema.newContext();
+      const validationContext = Models.simpleSchema().newContext();
       if (validationContext.validate(model) !== true) {
         throw new Meteor.Error("Błąd wywołania metody");
       }
@@ -66,7 +65,7 @@ export const updateModel = new ValidatedMethod({
       throw new Meteor.Error("Błąd wywołania metody");
     } else {
       check(documentId, String);
-      const validationContext = modelsSchema.newContext();
+      const validationContext = Models.simpleSchema().newContext();
       if (validationContext.validate(formData) === true) {
         const model = Models.findOne({ _id: documentId });
         if (!model || (model.uzytkownikId !== actualUserId)) {
