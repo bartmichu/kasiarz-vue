@@ -2,7 +2,7 @@ import SimpleSchema from "simpl-schema";
 import Models from "/imports/api/models/models.js";
 
 
-export const modelSchema = new SimpleSchema({
+const modelSchema = new SimpleSchema({
   uzytkownikId: {
     type: String,
     label: "ID użytkownika",
@@ -43,6 +43,3 @@ export const modelSchema = new SimpleSchema({
 
 
 Models.attachSchema(modelSchema);
-
-
-export default { modelSchema };

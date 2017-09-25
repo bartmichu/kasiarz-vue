@@ -63,6 +63,3 @@ const manufacturerSchema = new SimpleSchema({
 
 Manufacturers.attachSchema(manufacturerSchema);
 
-
-// TODO zastanowić się, czy export jest potrzebny?
-export default { manufacturerSchema };
