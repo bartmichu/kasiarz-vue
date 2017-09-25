@@ -4,7 +4,7 @@ import { Template } from "meteor/templating";
 import { $ } from "meteor/jquery";
 import { FlowRouter } from "meteor/kadira:flow-router";
 import { getAddingModeFromRoute, setEditMode, routeBack } from "/imports/util/client/client-functions.js";
-import { manufacturerSchema } from "/imports/api/manufacturers/schema.js";
+import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import "./item_menu_save_T.html";
 
 
@@ -30,7 +30,7 @@ Template.item_menu_save_T.events({
     let formData = null;
     switch (context) {
       case "manufacturers": {
-        validationContext = manufacturerSchema.newContext("formularz");
+        validationContext = Manufacturers.simpleSchema().newContext("formularz");
         // TODO: odczytaj dane formularza i przypisz do formData
         break;
       }
