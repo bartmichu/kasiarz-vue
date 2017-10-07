@@ -21,15 +21,19 @@ Template.manufacturers_item_T.onCreated(() => {
 
 Template.manufacturers_item_T.rendered = () => {
   const template = Template.instance();
-  const manufacturer = FlowRouter.getParam("_id");
-  template.subscribe("manufacturers.private", () => {
-    template.subscribe("models.private", manufacturer, () => {
-      Tracker.afterFlush(() => {
-        setFormLabels(Manufacturers.simpleSchema());
-        // TODO: automatyczne wypełnianie formularza
+  if (Session.equals("isEditMode", true)) {
+    setFormLabels(Manufacturers.simpleSchema());
+  } else {
+    const manufacturer = FlowRouter.getParam("_id");
+    template.subscribe("manufacturers.private", () => {
+      template.subscribe("models.private", manufacturer, () => {
+        Tracker.afterFlush(() => {
+          setFormLabels(Manufacturers.simpleSchema());
+          // TODO: automatyczne wypełnianie formularza
+        });
       });
     });
-  });
+  }
 };
 
 
