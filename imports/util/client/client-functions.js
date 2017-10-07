@@ -1,6 +1,7 @@
 import { Session } from "meteor/session";
 import { FlowRouter } from "meteor/kadira:flow-router";
 import { $ } from "meteor/jquery";
+import moment from "moment";
 
 
 const setDirty = state => Session.set("isDirty", state);
@@ -37,8 +38,12 @@ const setFormLabels = (schema) => {
 };
 
 
+const formatDate = date => moment(date).format("DD-MM-YYYY, HH:mm");
+
+
 export {
   setDirty,
+  formatDate,
   resetSessionVariables,
   setEditMode,
   getAddingModeFromRoute,
