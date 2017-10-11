@@ -2,7 +2,7 @@ import { Session } from "meteor/session";
 import { Template } from "meteor/templating";
 import { Tracker } from "meteor/tracker";
 import { FlowRouter } from "meteor/kadira:flow-router";
-import { getAddingModeFromRoute, setEditMode, setFormLabels } from "/imports/util/client/client-functions.js";
+import { getAddingModeFromRoute, setEditMode, setFormLabels, setFormValues } from "/imports/util/client/client-functions.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Models from "/imports/api/models/models.js";
 import "/imports/ui/components/loading/loading_T.js";
@@ -29,7 +29,7 @@ Template.manufacturers_item_T.rendered = () => {
       template.subscribe("models.private", manufacturer, () => {
         Tracker.afterFlush(() => {
           setFormLabels(Manufacturers.simpleSchema());
-          // TODO: automatyczne wypełnianie formularza
+          setFormValues(Manufacturers.simpleSchema(), Manufacturers.findOne({ _id: FlowRouter.getParam("_id") }));
         });
       });
     });
