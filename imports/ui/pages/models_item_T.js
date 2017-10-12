@@ -2,10 +2,12 @@ import { Meteor } from "meteor/meteor";
 import { Session } from "meteor/session";
 import { Template } from "meteor/templating";
 import { Tracker } from "meteor/tracker";
+import { FlowRouter } from "meteor/kadira:flow-router";
 import { $ } from "meteor/jquery";
-import { getAddingModeFromRoute, setEditMode, setFormLabels } from "/imports/util/client/client-functions.js";
-import Models from "/imports/api/models/models.js";
+import { getAddingModeFromRoute, setEditMode, setFormLabels, setFormValues } from "/imports/util/client/client-functions.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
+import Models from "/imports/api/models/models.js";
+import "/imports/ui/components/loading/loading_T.js";
 import "/imports/ui/components/item_menu/item_menu_cancel_T.js";
 import "/imports/ui/components/item_menu/item_menu_close_T.js";
 import "/imports/ui/components/item_menu/item_menu_delete_T.js";
@@ -21,13 +23,19 @@ Template.models_item_T.onCreated(() => {
 
 Template.models_item_T.rendered = () => {
   const template = Template.instance();
-  template.subscribe("manufacturers.private", () => {
-    Tracker.afterFlush(() => {
-      setFormLabels(Models.simpleSchema());
-      $("select").material_select();
-      // TODO: uzupełnianie danych formularza
+  if (Session.equals("isEditMode", true)) {
+    setFormLabels(Models.simpleSchema());
+  } else {
+    const modelId = FlowRouter.getParam("_id");
+    template.subscribe("models.private", "", () => {
+      template.subscribe("manufacturers.private", () => {
+        Tracker.afterFlush(() => {
+          setFormLabels(Models.simpleSchema());
+          setFormValues(Models.simpleSchema(), Models.findOne({ _id: modelId }));
+        });
+      });
     });
-  });
+  }
 };
 
 
