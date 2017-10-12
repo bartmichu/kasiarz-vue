@@ -25,7 +25,7 @@ Template.manufacturers_item_T.rendered = () => {
     setFormLabels(Manufacturers.simpleSchema());
   } else {
     const manufacturerId = FlowRouter.getParam("_id");
-    template.subscribe("manufacturers.private", () => {
+    template.subscribe("manufacturers.private", manufacturerId, () => {
       template.subscribe("models.private", "", manufacturerId, () => {
         Tracker.afterFlush(() => {
           setFormLabels(Manufacturers.simpleSchema());
