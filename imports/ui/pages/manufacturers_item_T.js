@@ -24,12 +24,12 @@ Template.manufacturers_item_T.rendered = () => {
   if (Session.equals("isEditMode", true)) {
     setFormLabels(Manufacturers.simpleSchema());
   } else {
-    const manufacturer = FlowRouter.getParam("_id");
+    const manufacturerId = FlowRouter.getParam("_id");
     template.subscribe("manufacturers.private", () => {
-      template.subscribe("models.private", manufacturer, () => {
+      template.subscribe("models.private", "", manufacturerId, () => {
         Tracker.afterFlush(() => {
           setFormLabels(Manufacturers.simpleSchema());
-          setFormValues(Manufacturers.simpleSchema(), Manufacturers.findOne({ _id: FlowRouter.getParam("_id") }));
+          setFormValues(Manufacturers.simpleSchema(), Manufacturers.findOne({ _id: manufacturerId }));
         });
       });
     });
