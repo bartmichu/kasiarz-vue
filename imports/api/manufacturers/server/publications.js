@@ -4,8 +4,9 @@ import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 
 
 Meteor.publish("manufacturers.private", (manufacturerId) => {
-  // TODO usunąć w wersji produkcyjnej - symulacja opóźnienia połączenia
-  Meteor._sleepForMs(1000);
+
+  // symulacja opóźnienia połączenia
+  // Meteor._sleepForMs(1000);
 
   const actualUserId = Meteor.userId();
   if (actualUserId) {
