@@ -70,7 +70,7 @@ const setFormValues = (schema, data) => {
     }
 
     const uiElement = $(jqEscapeAndHash(fieldName));
-    if (uiElement.is("input,textarea")) {
+    if (uiElement.is("input,textarea,select")) {
       if (fieldValue instanceof Date) {
         uiElement.val(formatDate(fieldValue));
         valuesChanged = true;
@@ -92,7 +92,7 @@ const getFormValues = (schema) => {
 
   Object.keys(schema.getDefinition()).forEach((fieldName) => {
     const uiElement = $(jqEscapeAndHash(fieldName));
-    if (uiElement.is("input,textarea") && (uiElement.attr("disabled") !== "disabled")) {
+    if (uiElement.is("input,textarea,select") && (uiElement.attr("disabled") !== "disabled")) {
       if (fieldName.indexOf(".") !== -1) {
         const object = fieldName.split(".")[0];
         const property = fieldName.split(".")[1];

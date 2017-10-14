@@ -22,6 +22,7 @@ Template.models_item_T.onCreated(() => {
 
 
 Template.models_item_T.rendered = () => {
+  $("select").material_select();
   const template = Template.instance();
   if (Session.equals("isEditMode", true)) {
     setFormLabels(Models.simpleSchema());
