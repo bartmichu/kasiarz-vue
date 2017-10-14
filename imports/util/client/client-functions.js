@@ -43,7 +43,7 @@ const setFormLabels = (schema) => {
 const formatDate = date => moment(date).format("DD-MM-YYYY, HH:mm");
 
 
-const escapeJq = id => `#${id.replace(/(:|\.|\[|\]|,|=|@)/g, "\\$1")}`;
+const jqEscapeAndHash = id => `#${id.replace(/(:|\.|\[|\]|,|=|@)/g, "\\$1")}`;
 
 
 const setFormValues = (schema, data) => {
@@ -59,7 +59,7 @@ const setFormValues = (schema, data) => {
       fieldValue = data[fieldName];
     }
 
-    const uiElement = $(escapeJq(fieldName));
+    const uiElement = $(jqEscapeAndHash(fieldName));
     if (uiElement.is("input,textarea")) {
       if (fieldValue instanceof Date) {
         uiElement.val(formatDate(fieldValue));
@@ -81,7 +81,7 @@ const getFormValues = (schema) => {
   const data = {};
 
   Object.keys(schema.getDefinition()).forEach((fieldName) => {
-    const uiElement = $(escapeJq(fieldName));
+    const uiElement = $(jqEscapeAndHash(fieldName));
     if (uiElement.is("input,textarea") && (uiElement.attr("disabled") !== "disabled")) {
       if (fieldName.indexOf(".") !== -1) {
         const object = fieldName.split(".")[0];
@@ -108,7 +108,7 @@ export {
   setDirty,
   formatDate,
   getFormValues,
-  escapeJq,
+  jqEscapeAndHash,
   resetSessionVariables,
   setEditMode,
   getAddingModeFromRoute,
