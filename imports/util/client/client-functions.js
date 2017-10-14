@@ -1,6 +1,7 @@
 import { Session } from "meteor/session";
 import { FlowRouter } from "meteor/kadira:flow-router";
 import { $ } from "meteor/jquery";
+import { Meteor } from "meteor/meteor";
 import { Materialize } from "meteor/materialize:materialize";
 import moment from "moment";
 
@@ -76,9 +77,37 @@ const setFormValues = (schema, data) => {
 };
 
 
+const getFormValues = (schema) => {
+  const data = {};
+
+  Object.keys(schema.getDefinition()).forEach((fieldName) => {
+    const uiElement = $(escapeJq(fieldName));
+    if (uiElement.is("input,textarea") && (uiElement.attr("disabled") !== "disabled")) {
+      if (fieldName.indexOf(".") !== -1) {
+        const object = fieldName.split(".")[0];
+        const property = fieldName.split(".")[1];
+
+        if (typeof data[object] === "undefined") {
+          data[object] = {};
+        }
+
+        data[object][property] = uiElement.val();
+      } else {
+        data[fieldName] = uiElement.val();
+      }
+    }
+
+    data.uzytkownikId = Meteor.userId();
+  });
+
+  return data;
+};
+
+
 export {
   setDirty,
   formatDate,
+  getFormValues,
   escapeJq,
   resetSessionVariables,
   setEditMode,
