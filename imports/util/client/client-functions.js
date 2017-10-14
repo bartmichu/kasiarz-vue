@@ -47,25 +47,25 @@ const escapeJq = id => `#${id.replace(/(:|\.|\[|\]|,|=|@)/g, "\\$1")}`;
 
 
 const setFormValues = (schema, data) => {
-  Object.keys(schema.getDefinition()).forEach((fieldLabel) => {
+  Object.keys(schema.getDefinition()).forEach((fieldName) => {
     let valuesChanged = false;
-    let value = "";
-    let trueFieldLabel = fieldLabel;
+    let fieldValue = "";
 
-    if (trueFieldLabel.indexOf(".") !== -1) {
-      trueFieldLabel = trueFieldLabel.split(".")[1];
-      value = data[fieldLabel.split(".")[0]][trueFieldLabel];
+    if (fieldName.indexOf(".") !== -1) {
+      const object = fieldName.split(".")[0];
+      const property = fieldName.split(".")[1];
+      fieldValue = data[object][property];
     } else {
-      value = data[trueFieldLabel];
+      fieldValue = data[fieldName];
     }
 
-    const uiElement = $(escapeJq(fieldLabel));
+    const uiElement = $(escapeJq(fieldName));
     if (uiElement.is("input,textarea")) {
-      if (value instanceof Date) {
-        uiElement.val(formatDate(value));
+      if (fieldValue instanceof Date) {
+        uiElement.val(formatDate(fieldValue));
         valuesChanged = true;
       } else {
-        uiElement.val(value);
+        uiElement.val(fieldValue);
         valuesChanged = true;
       }
     }
