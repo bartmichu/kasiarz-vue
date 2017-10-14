@@ -44,7 +44,8 @@ const formatDate = date => moment(date).format("DD-MM-YYYY, HH:mm");
 
 
 /**
- * Poprzedza znaki specjalne dwoma ukośnikami wstecznymi ("\\") oraz umieszcza znak kratki ("#") na początku podanego ciągu.
+ * Poprzedza znaki specjalne dwoma ukośnikami wstecznymi ("\\") oraz umieszcza znak kratki ("#")
+ * na początku podanego ciągu.
  * 
  * Na podstawie kodu z dokumentacji jQuery:
  * http://learn.jquery.com/using-jquery-core/faq/how-do-i-select-an-element-by-an-id-that-has-characters-used-in-css-notation/
