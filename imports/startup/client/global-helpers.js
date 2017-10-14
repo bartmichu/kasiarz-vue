@@ -15,7 +15,7 @@ Template.registerHelper("isEditModeGH", () => Session.get("isEditMode"));
 Template.registerHelper("isAddingModeGH", () => FlowRouter.current().route.name.split(".").reverse()[0] === "add");
 
 
-Template.registerHelper("setRequiredGH", (field) => {
+Template.registerHelper("setRequiredGH", (fieldName) => {
   let returnValue = "";
   if (Session.equals("isEditMode", true)) {
     // TODO: refaktoryzacja
@@ -30,7 +30,7 @@ Template.registerHelper("setRequiredGH", (field) => {
       default:
         break;
     }
-    returnValue = collection.simpleSchema().getDefinition(field, ["optional"]).optional ? "" : "required";
+    returnValue = collection.simpleSchema().getDefinition(fieldName, ["optional"]).optional ? "" : "required";
   }
   return returnValue;
 });
