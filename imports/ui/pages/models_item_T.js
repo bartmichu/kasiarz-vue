@@ -24,8 +24,13 @@ Template.models_item_T.onCreated(() => {
 Template.models_item_T.rendered = () => {
   $("select").material_select();
   const template = Template.instance();
+
   if (Session.equals("isEditMode", true)) {
-    setFormLabels(Models.simpleSchema());
+    template.subscribe("manufacturers.private", "", () => {
+      Tracker.afterFlush(() => {
+        setFormLabels(Models.simpleSchema());
+      });
+    });
   } else {
     const modelId = FlowRouter.getParam("_id");
     template.subscribe("models.private", modelId, "", () => {
