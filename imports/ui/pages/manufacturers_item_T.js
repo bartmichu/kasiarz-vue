@@ -29,7 +29,7 @@ Template.manufacturers_item_T.rendered = () => {
       template.subscribe("models.private", "", manufacturerId, () => {
         Tracker.afterFlush(() => {
           setFormLabels();
-          setFormValues(Manufacturers.simpleSchema(), Manufacturers.findOne({ _id: manufacturerId }));
+          setFormValues();
         });
       });
     });

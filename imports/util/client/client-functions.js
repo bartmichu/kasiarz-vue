@@ -48,37 +48,6 @@ const formatDate = date => moment(date).format("DD-MM-YYYY, HH:mm");
 const jqEscapeAndHash = id => `#${id.replace(/(:|\.|\[|\]|,|=|@)/g, "\\$1")}`;
 
 
-const setFormValues = (schema, data) => {
-  Object.keys(schema.getDefinition()).forEach((fieldName) => {
-    let valuesChanged = false;
-    let fieldValue = "";
-
-    if (fieldName.indexOf(".") !== -1) {
-      const object = fieldName.split(".")[0];
-      const property = fieldName.split(".")[1];
-      fieldValue = data[object][property];
-    } else {
-      fieldValue = data[fieldName];
-    }
-
-    const uiElement = $(jqEscapeAndHash(fieldName));
-    if (uiElement.is("input,textarea,select")) {
-      if (fieldValue instanceof Date) {
-        uiElement.val(formatDate(fieldValue));
-        valuesChanged = true;
-      } else {
-        uiElement.val(fieldValue);
-        valuesChanged = true;
-      }
-    }
-
-    if (valuesChanged) {
-      Materialize.updateTextFields();
-    }
-  });
-};
-
-
 const getFormValues = (schema) => {
   const data = {};
 
@@ -130,6 +99,40 @@ const setFormLabels = () => {
     const label = $(element);
     if (label.attr("id") && (label.attr("id").split("-")[0] === "etykieta_pola")) {
       $(label).text(schema.label(label.attr("for")));
+    }
+  });
+};
+
+
+// TODO: refaktoryzacja parametrów funkcji
+const setFormValues = () => {
+  const collection = getCollectionFromRoute();
+  const data = collection.findOne({ _id: FlowRouter.getParam("_id") });
+  Object.keys(collection.simpleSchema().getDefinition()).forEach((fieldName) => {
+    let valuesChanged = false;
+    let fieldValue = "";
+
+    if (fieldName.indexOf(".") !== -1) {
+      const object = fieldName.split(".")[0];
+      const property = fieldName.split(".")[1];
+      fieldValue = data[object][property];
+    } else {
+      fieldValue = data[fieldName];
+    }
+
+    const uiElement = $(jqEscapeAndHash(fieldName));
+    if (uiElement.is("input,textarea,select")) {
+      if (fieldValue instanceof Date) {
+        uiElement.val(formatDate(fieldValue));
+        valuesChanged = true;
+      } else {
+        uiElement.val(fieldValue);
+        valuesChanged = true;
+      }
+    }
+
+    if (valuesChanged) {
+      Materialize.updateTextFields();
     }
   });
 };

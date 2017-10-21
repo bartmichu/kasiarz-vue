@@ -48,7 +48,7 @@ Template.item_menu_save_T.events({
             $("#modal-save-error").modal("open");
           } else {
             setEditMode(false);
-            setFormValues(collection.simpleSchema(), collection.findOne({ _id: FlowRouter.getParam("_id") }));
+            setFormValues();
           }
         });
       }

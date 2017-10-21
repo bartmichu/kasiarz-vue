@@ -22,8 +22,7 @@ Template.item_menu_cancel_T.events({
     if (Template.instance().isAddingMode) {
       routeBack();
     } else {
-      const collection = getCollectionFromRoute();
-      setFormValues(collection.simpleSchema(), collection.findOne({ _id: FlowRouter.getParam("_id") }));
+      setFormValues();
     }
   },
 });
