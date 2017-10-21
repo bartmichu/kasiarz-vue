@@ -3,6 +3,8 @@ import { FlowRouter } from "meteor/kadira:flow-router";
 import { $ } from "meteor/jquery";
 import { Meteor } from "meteor/meteor";
 import { Materialize } from "meteor/materialize:materialize";
+import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
+import Models from "/imports/api/models/models.js";
 import moment from "moment";
 
 
@@ -114,10 +116,29 @@ const getFormValues = (schema) => {
 };
 
 
+const getCollectionFromRoute = () => {
+  let collection = null;
+  switch (FlowRouter.current().route.group.name) {
+    case "manufacturers": {
+      collection = Manufacturers;
+      break;
+    }
+    case "models": {
+      collection = Models;
+      break;
+    }
+    default:
+      break;
+  }
+  return collection;
+};
+
+
 export {
   setDirty,
   formatDate,
   getFormValues,
+  getCollectionFromRoute,
   jqEscapeAndHash,
   resetSessionVariables,
   setEditMode,
