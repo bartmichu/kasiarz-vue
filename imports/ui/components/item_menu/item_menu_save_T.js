@@ -29,7 +29,7 @@ Template.item_menu_save_T.events({
     const collection = getCollectionFromRoute();
     let formData = null;
     validationContext = collection.simpleSchema().newContext("formularz");
-    formData = getFormValues(collection.simpleSchema());
+    formData = getFormValues();
 
     validationContext.validate(formData);
     if (validationContext.isValid()) {

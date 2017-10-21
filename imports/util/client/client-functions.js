@@ -48,33 +48,6 @@ const formatDate = date => moment(date).format("DD-MM-YYYY, HH:mm");
 const jqEscapeAndHash = id => `#${id.replace(/(:|\.|\[|\]|,|=|@)/g, "\\$1")}`;
 
 
-const getFormValues = (schema) => {
-  const data = {};
-
-  Object.keys(schema.getDefinition()).forEach((fieldName) => {
-    const uiElement = $(jqEscapeAndHash(fieldName));
-    if (uiElement.is("input,textarea,select") && (uiElement.attr("disabled") !== "disabled")) {
-      if (fieldName.indexOf(".") !== -1) {
-        const object = fieldName.split(".")[0];
-        const property = fieldName.split(".")[1];
-
-        if (typeof data[object] === "undefined") {
-          data[object] = {};
-        }
-
-        data[object][property] = uiElement.val();
-      } else {
-        data[fieldName] = uiElement.val();
-      }
-    }
-
-    data.uzytkownikId = Meteor.userId();
-  });
-
-  return data;
-};
-
-
 const getCollectionFromRoute = () => {
   let collection = null;
   switch (FlowRouter.current().route.group.name) {
@@ -135,6 +108,33 @@ const setFormValues = () => {
       Materialize.updateTextFields();
     }
   });
+};
+
+
+const getFormValues = () => {
+  const data = {};
+
+  Object.keys(getCollectionFromRoute().simpleSchema().getDefinition()).forEach((fieldName) => {
+    const uiElement = $(jqEscapeAndHash(fieldName));
+    if (uiElement.is("input,textarea,select") && (uiElement.attr("disabled") !== "disabled")) {
+      if (fieldName.indexOf(".") !== -1) {
+        const object = fieldName.split(".")[0];
+        const property = fieldName.split(".")[1];
+
+        if (typeof data[object] === "undefined") {
+          data[object] = {};
+        }
+
+        data[object][property] = uiElement.val();
+      } else {
+        data[fieldName] = uiElement.val();
+      }
+    }
+
+    data.uzytkownikId = Meteor.userId();
+  });
+
+  return data;
 };
 
 
