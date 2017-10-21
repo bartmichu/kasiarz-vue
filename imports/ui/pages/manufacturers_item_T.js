@@ -22,13 +22,13 @@ Template.manufacturers_item_T.onCreated(() => {
 Template.manufacturers_item_T.rendered = () => {
   const template = Template.instance();
   if (Session.equals("isEditMode", true)) {
-    setFormLabels(Manufacturers.simpleSchema());
+    setFormLabels();
   } else {
     const manufacturerId = FlowRouter.getParam("_id");
     template.subscribe("manufacturers.private", manufacturerId, () => {
       template.subscribe("models.private", "", manufacturerId, () => {
         Tracker.afterFlush(() => {
-          setFormLabels(Manufacturers.simpleSchema());
+          setFormLabels();
           setFormValues(Manufacturers.simpleSchema(), Manufacturers.findOne({ _id: manufacturerId }));
         });
       });

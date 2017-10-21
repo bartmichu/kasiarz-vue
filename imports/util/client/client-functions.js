@@ -32,16 +32,6 @@ const routeBack = () => {
 };
 
 
-const setFormLabels = (schema) => {
-  $("label").each((index, element) => {
-    const label = $(element);
-    if (label.attr("id") && (label.attr("id").split("-")[0] === "etykieta_pola")) {
-      $(label).text(schema.label(label.attr("for")));
-    }
-  });
-};
-
-
 const formatDate = date => moment(date).format("DD-MM-YYYY, HH:mm");
 
 
@@ -131,6 +121,17 @@ const getCollectionFromRoute = () => {
       break;
   }
   return collection;
+};
+
+
+const setFormLabels = () => {
+  const schema = getCollectionFromRoute().simpleSchema();
+  $("label").each((index, element) => {
+    const label = $(element);
+    if (label.attr("id") && (label.attr("id").split("-")[0] === "etykieta_pola")) {
+      $(label).text(schema.label(label.attr("for")));
+    }
+  });
 };
 
 

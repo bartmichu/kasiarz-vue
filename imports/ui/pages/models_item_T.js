@@ -28,7 +28,7 @@ Template.models_item_T.rendered = () => {
   if (Session.equals("isEditMode", true)) {
     template.subscribe("manufacturers.private", "", () => {
       Tracker.afterFlush(() => {
-        setFormLabels(Models.simpleSchema());
+        setFormLabels();
       });
     });
   } else {
@@ -36,7 +36,7 @@ Template.models_item_T.rendered = () => {
     template.subscribe("models.private", modelId, "", () => {
       template.subscribe("manufacturers.private", "", () => {
         Tracker.afterFlush(() => {
-          setFormLabels(Models.simpleSchema());
+          setFormLabels();
           setFormValues(Models.simpleSchema(), Models.findOne({ _id: modelId }));
         });
       });
