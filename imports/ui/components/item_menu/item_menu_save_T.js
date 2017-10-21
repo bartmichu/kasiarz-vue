@@ -3,7 +3,7 @@ import { Session } from "meteor/session";
 import { Template } from "meteor/templating";
 import { $ } from "meteor/jquery";
 import { FlowRouter } from "meteor/kadira:flow-router";
-import { getAddingModeFromRoute, setEditMode, routeBack, getFormValues } from "/imports/util/client/client-functions.js";
+import { getAddingModeFromRoute, setEditMode, routeBack, getFormValues, setFormValues } from "/imports/util/client/client-functions.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Models from "/imports/api/models/models.js";
 import "./item_menu_save_T.html";
@@ -63,7 +63,7 @@ Template.item_menu_save_T.events({
             $("#modal-save-error").modal("open");
           } else {
             setEditMode(false);
-            // TODO: uzupelnijDaneFormularza (aktualizacja daty edycji)
+            setFormValues(collection.simpleSchema(), collection.findOne({ _id: FlowRouter.getParam("_id") }));
           }
         });
       }
