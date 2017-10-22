@@ -3,6 +3,7 @@ import { FlowRouter } from "meteor/kadira:flow-router";
 import { ReactiveVar } from "meteor/reactive-var";
 import Models from "/imports/api/models/models.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
+import { sortHandler } from "/imports/util/client/client-functions.js";
 import "/imports/ui/components/list_placeholder/list_placeholder_T.js";
 import "/imports/ui/components/loading/loading_T.js";
 import "/imports/ui/components/list_menu/list_menu_add_T.js";
@@ -46,12 +47,5 @@ Template.models_T.events({
   "click tr": (event) => {
     FlowRouter.go("models.model", { _id: event.currentTarget.id });
   },
-  "click th": (event, template) => {
-    const newSortField = event.target.id.split("-").reverse()[0];
-    if (newSortField === template.sorfField.get()) {
-      template.sortOrder.set(template.sortOrder.get() * (-1));
-    } else {
-      template.sorfField.set(newSortField);
-    }
-  },
+  "click th": (event, template) => sortHandler(event, template),
 });

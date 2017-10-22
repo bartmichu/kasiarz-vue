@@ -137,6 +137,16 @@ const getFormValues = () => {
 };
 
 
+const sortHandler = (event, template) => {
+  const newSortField = event.target.id.split("-").reverse()[0];
+  if (newSortField === template.sorfField.get()) {
+    template.sortOrder.set(template.sortOrder.get() * (-1));
+  } else {
+    template.sorfField.set(newSortField);
+  }
+};
+
+
 export {
   setDirty,
   formatDate,
@@ -149,4 +159,5 @@ export {
   setFormLabels,
   setFormValues,
   routeBack,
+  sortHandler,
 };
