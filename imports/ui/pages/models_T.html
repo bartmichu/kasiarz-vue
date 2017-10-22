@@ -21,6 +21,7 @@
                   <thead>
                     <th id="header-nazwa">{{getLabelH "nazwa"}}</th>
                     <th id="header-producentId">{{getLabelH "producentId"}}</th>
+                    <th id="header-dataModyfikacji">{{getLabelH "dataModyfikacji"}}</th>
                   </thead>
                   <tbody>
                     {{#each getSubscriptionDataH}}
@@ -29,6 +30,7 @@
                         {{#with producentId}}
                           <td>{{getManufacturerNameH}}</td>
                         {{/with}}
+                        <td>{{formatDateGH dataModyfikacji}}</td>
                       </tr>
                     {{/each}}
                   </tbody>
