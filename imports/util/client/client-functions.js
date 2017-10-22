@@ -77,7 +77,6 @@ const setFormLabels = () => {
 };
 
 
-// TODO: refaktoryzacja parametrów funkcji
 const setFormValues = () => {
   const collection = getCollectionFromRoute();
   const data = collection.findOne({ _id: FlowRouter.getParam("_id") });
