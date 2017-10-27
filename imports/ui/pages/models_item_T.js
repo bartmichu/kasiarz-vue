@@ -6,7 +6,6 @@ import { FlowRouter } from "meteor/kadira:flow-router";
 import { $ } from "meteor/jquery";
 import { getAddingModeFromRoute, setEditMode, setFormLabels, setFormValues } from "/imports/util/client/client-functions.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
-import Models from "/imports/api/models/models.js";
 import "/imports/ui/components/loading/loading_T.js";
 import "/imports/ui/components/item_menu/item_menu_cancel_T.js";
 import "/imports/ui/components/item_menu/item_menu_close_T.js";
