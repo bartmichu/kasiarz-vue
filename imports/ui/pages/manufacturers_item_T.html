@@ -44,20 +44,6 @@
                       <textarea id="dodatkoweInformacje" class="materialize-textarea" type="text" {{setDisabledAttributeGH}}></textarea>
                       <label id="etykieta_pola-dodatkoweInformacje" for="dodatkoweInformacje"></label>
                     </div>
-
-                    {{#with getDataH}}
-                      {{#if hasModelsH}}
-                        <div class="col s12 b8k-bottom-margin">
-                          <p>Lista urządzeń producenta:</p>
-                          {{#each modelsH}}
-                            <p>
-                              <input type="checkbox" checked="checked" disabled="disabled">
-                              <label>{{nazwa}}</label>
-                            </p>
-                          {{/each}}
-                        </div>
-                      {{/if}}
-                    {{/with}}
                   </div>
 
                   {{#unless isAddingModeGH}}
@@ -82,6 +68,32 @@
             </div>
           {{/if}}
         </div>
+
+        {{#if Template.subscriptionsReady}}
+          {{#with getDataH}}
+            {{#if hasModelsH}}
+              <div class="b8k-spacer"></div>
+              <div class="card">
+                <div class="card-content grey lighten-1">
+                  <h5 class="grey-text text-darken-3">Modele urządzeń producenta</h5>
+                </div>
+
+                <div class="card-action">
+                  <div class="row">
+                    <div class="col s12">
+                      {{#each modelsH}}
+                        <p>
+                          <input type="checkbox" checked="checked" disabled="disabled">
+                          <label>{{nazwa}}</label>
+                        </p>
+                      {{/each}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {{/if}}
+          {{/with}}
+        {{/if}}
 
       </div>
     </div>
