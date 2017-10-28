@@ -6,14 +6,22 @@
 
         <div class="card">
           <div class="card-content grey lighten-1">
-            <h5 class="grey-text text-darken-3">Dane producenta</h5>
-            {{#if Template.subscriptionsReady}}
-              {{#if isEditModeGH}}
-                {{> item_menu_cancel_T}} {{> item_menu_save_T}}
-              {{else}}
-                {{> item_menu_delete_T}} {{> item_menu_edit_T}} {{> item_menu_close_T}}
-              {{/if}}
-            {{/if}}
+            <div class="row">
+              <div class="col s12">
+                <div class="left">
+                  <h5 class="grey-text text-darken-3">Dane producenta</h5>
+                </div>
+                <div class="right">
+                  {{#if Template.subscriptionsReady}}
+                    {{#if isEditModeGH}}
+                      {{> item_menu_cancel_T}} {{> item_menu_save_T}}
+                    {{else}}
+                      {{> item_menu_delete_T}} {{> item_menu_edit_T}} {{> item_menu_close_T}}
+                    {{/if}}
+                  {{/if}}
+                </div>
+              </div>
+            </div>
           </div>
 
           {{#if Template.subscriptionsReady}}
@@ -75,7 +83,14 @@
               <div class="b8k-spacer"></div>
               <div class="card">
                 <div class="card-content grey lighten-1">
-                  <h5 class="grey-text text-darken-3">Modele urządzeń producenta</h5>
+                  <div class="row">
+                    <div class="col s12">
+                      <div class="left">
+                        <h5 class="grey-text text-darken-3">Modele urządzeń producenta</h5>
+                      </div>
+                      <div class="right"></div>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="card-action">
