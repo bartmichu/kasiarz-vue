@@ -29,10 +29,10 @@
 
                     <div class="input-field col s12 l6">
                       <select id="producentId" {{setDisabledAttributeGH}} {{fixDisabledAttributeH}}>
-                      {{#each manufacturersH}}
-                        <option value="{{_id}}">{{nazwa}}</option>
-                      {{/each}}
-                    </select>
+                        {{#each manufacturersH}}
+                          <option value="{{_id}}">{{nazwa}}</option>
+                        {{/each}}
+                      </select>
                       <label id="etykieta_pola-producentId" for="producentId"></label>
                     </div>
 
@@ -40,8 +40,10 @@
                       <textarea id="dodatkoweInformacje" class="materialize-textarea" type="text" {{setDisabledAttributeGH}}></textarea>
                       <label id="etykieta_pola-dodatkoweInformacje" for="dodatkoweInformacje"></label>
                     </div>
+                  </div>
 
-                    {{#unless isAddingModeGH}}
+                  {{#unless isAddingModeGH}}
+                    <div class="row">
                       <div class="input-field col s12 l6">
                         <input id="dataUtworzenia" type="text" disabled title="pole uzupełniane automatycznie">
                         <label id="etykieta_pola-dataUtworzenia" for="dataUtworzenia"></label>
@@ -50,8 +52,8 @@
                         <input id="dataModyfikacji" type="text" disabled title="pole uzupełniane automatycznie">
                         <label id="etykieta_pola-dataModyfikacji" for="dataModyfikacji"></label>
                       </div>
-                    {{/unless}}
-                  </div>
+                    </div>
+                  {{/unless}}
 
                 </form>
               </div>
