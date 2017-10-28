@@ -24,7 +24,7 @@ Template.models_item_T.rendered = () => {
   $("select").material_select();
   const template = Template.instance();
 
-  if (Session.equals("isEditMode", true)) {
+  if (getAddingModeFromRoute()) {
     template.subscribe("manufacturers.private", "", () => {
       Tracker.afterFlush(() => {
         setFormLabels();

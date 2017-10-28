@@ -21,7 +21,7 @@ Template.manufacturers_item_T.onCreated(() => {
 
 Template.manufacturers_item_T.rendered = () => {
   const template = Template.instance();
-  if (Session.equals("isEditMode", true)) {
+  if (getAddingModeFromRoute()) {
     setFormLabels();
   } else {
     const manufacturerId = FlowRouter.getParam("_id");
