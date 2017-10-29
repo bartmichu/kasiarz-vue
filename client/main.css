@@ -12,3 +12,8 @@ body {
 .b8k-spacer {
   height: 30px;
 }
+
+
+.b8k-not-bold {
+  font-weight: inherit !important;
+}
