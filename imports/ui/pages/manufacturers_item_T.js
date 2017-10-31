@@ -1,7 +1,7 @@
 import { Session } from "meteor/session";
 import { Template } from "meteor/templating";
 import { Tracker } from "meteor/tracker";
-import { FlowRouter } from "meteor/kadira:flow-router";
+import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { getAddingModeFromRoute, setEditMode, setFormLabels, setFormValues } from "/imports/util/client/client-functions.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Models from "/imports/api/models/models.js";

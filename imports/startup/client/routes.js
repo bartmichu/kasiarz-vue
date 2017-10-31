@@ -1,7 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { Session } from "meteor/session";
-import { FlowRouter } from "meteor/kadira:flow-router";
-import { BlazeLayout } from "meteor/kadira:blaze-layout";
+import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import "/imports/ui/components/application_menu/application_menu_T.js";
 import "/imports/ui/layouts/body_T.js";
 import "/imports/ui/pages/login_T.js";

@@ -1,5 +1,5 @@
 import { Template } from "meteor/templating";
-import { FlowRouter } from "meteor/kadira:flow-router";
+import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { ReactiveVar } from "meteor/reactive-var";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import { sortHandler } from "/imports/util/client/client-functions.js";

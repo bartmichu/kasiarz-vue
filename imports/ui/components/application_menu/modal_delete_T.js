@@ -1,7 +1,7 @@
 import { Meteor } from "meteor/meteor";
 import { Template } from "meteor/templating";
 import { $ } from "meteor/jquery";
-import { FlowRouter } from "meteor/kadira:flow-router";
+import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { routeBack } from "/imports/util/client/client-functions.js";
 import "./modal_delete_T.html";
 
