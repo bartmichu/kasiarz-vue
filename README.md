@@ -3,6 +3,6 @@ Na tą chwilę program jest w bardzo wczesnej fazie rozwoju i jego podstawowa fu
 
 Stos technologiczny:
 - Meteor
-- FlowRouter
+- FlowRouter Extra
 - simpl-schema
-- Semantic UI / Materialize
+- Materialize
