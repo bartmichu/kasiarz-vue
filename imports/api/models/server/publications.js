@@ -13,12 +13,10 @@ Meteor.publish("models.private", (modelIdFilter, manufacturerIdFilter) => {
 
     if (modelIdFilter.length > 0) {
       data = Models.find({ uzytkownikId: actualUserId, _id: modelIdFilter });
+    } else if (manufacturerIdFilter.length > 0) {
+      data = Models.find({ uzytkownikId: actualUserId, producentId: manufacturerIdFilter });
     } else {
-      if (manufacturerIdFilter.length > 0) {
-        data = Models.find({ uzytkownikId: actualUserId, producentId: manufacturerIdFilter });
-      } else {
-        data = Models.find({ uzytkownikId: actualUserId });
-      }
+      data = Models.find({ uzytkownikId: actualUserId });
     }
 
     if (data) {
