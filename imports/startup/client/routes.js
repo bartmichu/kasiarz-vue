@@ -32,9 +32,8 @@ function redirectIfLoggedIn(context, redirect) {
 FlowRouter.route("/", {
   name: "index",
   action() {
-    BlazeLayout.render("body_T", {
+    this.render("body_T", "placeholder_T", {
       app_menu_section: "application_menu_T",
-      app_main_section: "placeholder_T",
     });
   },
 });
@@ -44,9 +43,8 @@ FlowRouter.route("/logowanie", {
   name: "login",
   triggersEnter: [redirectIfLoggedIn],
   action() {
-    BlazeLayout.render("body_T", {
+    this.render("body_T", "login_T", {
       app_menu_section: "",
-      app_main_section: "login_T",
     });
   },
 });
@@ -60,9 +58,8 @@ const manufacturers = FlowRouter.group({
 manufacturers.route("/", {
   name: "manufacturers",
   action() {
-    BlazeLayout.render("body_T", {
+    this.render("body_T", "manufacturers_T", {
       app_menu_section: "application_menu_T",
-      app_main_section: "manufacturers_T",
     });
   },
 });
@@ -70,9 +67,8 @@ manufacturers.route("/", {
 manufacturers.route("/id/:_id", {
   name: "manufacturers.manufacturer",
   action() {
-    BlazeLayout.render("body_T", {
+    this.render("body_T", "manufacturers_item_T", {
       app_menu_section: "application_menu_T",
-      app_main_section: "manufacturers_item_T",
     });
   },
 });
@@ -80,9 +76,8 @@ manufacturers.route("/id/:_id", {
 manufacturers.route("/dodaj", {
   name: "manufacturers.add",
   action() {
-    BlazeLayout.render("body_T", {
+    this.render("body_T", "manufacturers_item_T", {
       app_menu_section: "application_menu_T",
-      app_main_section: "manufacturers_item_T",
     });
   },
 });
@@ -96,9 +91,8 @@ const models = FlowRouter.group({
 models.route("/", {
   name: "models",
   action() {
-    BlazeLayout.render("body_T", {
+    this.render("body_T", "models_T", {
       app_menu_section: "application_menu_T",
-      app_main_section: "models_T",
     });
   },
 });
@@ -106,9 +100,8 @@ models.route("/", {
 models.route("/id/:_id", {
   name: "models.model",
   action() {
-    BlazeLayout.render("body_T", {
+    this.render("body_T", "models_item_T", {
       app_menu_section: "application_menu_T",
-      app_main_section: "models_item_T",
     });
   },
 });
@@ -116,9 +109,8 @@ models.route("/id/:_id", {
 models.route("/dodaj", {
   name: "models.add",
   action() {
-    BlazeLayout.render("body_T", {
+    this.render("body_T", "models_item_T", {
       app_menu_section: "application_menu_T",
-      app_main_section: "models_item_T",
     });
   },
 });
