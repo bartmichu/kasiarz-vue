@@ -62,4 +62,10 @@ Template.manufacturers_item_T.events({
   "blur input, blur textarea": (event) => {
     event.target.value = event.target.value.trim();
   },
+  "click label": (event) => {
+    const splitId = event.currentTarget.id.split("-");
+    if (splitId[0] === "model") {
+      FlowRouter.go("models.model", { _id: splitId[1] });
+    }
+  },
 });
