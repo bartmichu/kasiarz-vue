@@ -3,19 +3,19 @@ import { check, Match } from "meteor/check";
 import Models from "/imports/api/models/models.js";
 
 
-Meteor.publish("models.private", (modelId, manufacturerId) => {
+Meteor.publish("models.private", (modelIdFilter, manufacturerIdFilter) => {
   const actualUserId = Meteor.userId();
   if (actualUserId) {
-    check(modelId, Match.Maybe(String));
-    check(manufacturerId, Match.Maybe(String));
+    check(modelIdFilter, Match.Maybe(String));
+    check(manufacturerIdFilter, Match.Maybe(String));
 
     let data = null;
 
-    if (modelId.length > 0) {
-      data = Models.find({ uzytkownikId: actualUserId, _id: modelId });
+    if (modelIdFilter.length > 0) {
+      data = Models.find({ uzytkownikId: actualUserId, _id: modelIdFilter });
     } else {
-      if (manufacturerId.length > 0) {
-        data = Models.find({ uzytkownikId: actualUserId, producentId: manufacturerId });
+      if (manufacturerIdFilter.length > 0) {
+        data = Models.find({ uzytkownikId: actualUserId, producentId: manufacturerIdFilter });
       } else {
         data = Models.find({ uzytkownikId: actualUserId });
       }
