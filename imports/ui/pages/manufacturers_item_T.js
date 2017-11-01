@@ -11,6 +11,7 @@ import "/imports/ui/components/item_menu/item_menu_close_T.js";
 import "/imports/ui/components/item_menu/item_menu_delete_T.js";
 import "/imports/ui/components/item_menu/item_menu_edit_T.js";
 import "/imports/ui/components/item_menu/item_menu_save_T.js";
+import "/imports/ui/components/list_placeholder/list_placeholder_T.js";
 import "./manufacturers_item_T.html";
 
 
