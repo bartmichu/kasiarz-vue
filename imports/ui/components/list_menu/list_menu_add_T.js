@@ -5,6 +5,16 @@ import "./list_menu_add_T.html";
 
 Template.list_menu_add_T.events({
   "click #button-add": () => {
-    FlowRouter.go(`${FlowRouter.current().route.name}.add`);
+    const routeName = FlowRouter.current().route.name;
+    switch (routeName) {
+      case "manufacturers.manufacturer": {
+        FlowRouter.go("models.add");
+        break;
+      }
+      default: {
+        FlowRouter.go(`${FlowRouter.current().route.name}.add`);
+        break;
+      }
+    }
   },
 });
