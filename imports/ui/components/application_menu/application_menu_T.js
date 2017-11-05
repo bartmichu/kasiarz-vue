@@ -45,6 +45,13 @@ Template.application_menu_T.events({
       FlowRouter.go("models");
     }
   },
+  "click #item-mservice": () => {
+    if (Session.equals("isDirty", true)) {
+      $("#modal-dirty").modal("open");
+    } else {
+      FlowRouter.go("shop");
+    }
+  },
   "click #item-logout": () => {
     if (Session.equals("isDirty", true)) {
       $("#modal-dirty").modal("open");
