@@ -6,3 +6,7 @@ import "/imports/api/models/models.js";
 import "/imports/api/models/schema.js";
 import "/imports/api/models/server/publications.js";
 import "/imports/api/models/server/methods.js";
+import "/imports/api/shops/shops.js";
+import "/imports/api/shops/schema.js";
+import "/imports/api/shops/server/publications.js";
+import "/imports/api/shops/server/methods.js";
