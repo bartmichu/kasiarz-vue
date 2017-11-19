@@ -38,7 +38,6 @@ const shopSchema = new SimpleSchema({
     max: 100,
     optional: true,
   },
-
   adres: {
     type: Object,
   },
