@@ -9,6 +9,7 @@ import "/imports/ui/pages/manufacturers_T.js";
 import "/imports/ui/pages/manufacturers_item_T.js";
 import "/imports/ui/pages/models_T.js";
 import "/imports/ui/pages/models_item_T.js";
+import "/imports/ui/pages/shop_T.js";
 
 
 function setPreviousUrl() {
@@ -110,6 +111,21 @@ models.route("/dodaj", {
   name: "models.add",
   action() {
     this.render("body_T", "models_item_T", {
+      app_menu_section: "application_menu_T",
+    });
+  },
+});
+
+
+const shop = FlowRouter.group({
+  prefix: "/serwis",
+  name: "shop",
+});
+
+shop.route("/", {
+  name: "shop",
+  action() {
+    this.render("body_T", "shop_T", {
       app_menu_section: "application_menu_T",
     });
   },
