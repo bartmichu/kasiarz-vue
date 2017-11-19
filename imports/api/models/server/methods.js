@@ -1,5 +1,4 @@
 import { Meteor } from "meteor/meteor";
-import { Mongo } from "meteor/mongo";
 import { ValidatedMethod } from "meteor/mdg:validated-method";
 import { check } from "meteor/check";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
