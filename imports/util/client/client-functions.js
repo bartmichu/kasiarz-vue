@@ -4,6 +4,7 @@ import { $ } from "meteor/jquery";
 import { Meteor } from "meteor/meteor";
 import { Materialize } from "meteor/materialize:materialize";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
+import Shops from "/imports/api/shops/shops.js";
 import Models from "/imports/api/models/models.js";
 import moment from "moment";
 
@@ -59,6 +60,10 @@ const getCollectionFromRoute = () => {
       collection = Models;
       break;
     }
+    case "shop": {
+      collection = Shops;
+      break;
+    }
     default:
       break;
   }
@@ -79,7 +84,10 @@ const setFormLabels = () => {
 
 const setFormValues = () => {
   const collection = getCollectionFromRoute();
-  const data = collection.findOne({ _id: FlowRouter.getParam("_id") });
+  const documentId = FlowRouter.getParam("_id");
+  let data = null;
+  data = typeof documentId === "undefined" ? collection.findOne({}) : collection.findOne({ _id: documentId });
+
   Object.keys(collection.simpleSchema().getDefinition()).forEach((fieldName) => {
     let valuesChanged = false;
     let fieldValue = "";
