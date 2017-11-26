@@ -1,6 +1,5 @@
 import { Template } from "meteor/templating";
-import { FlowRouter } from "meteor/ostrio:flow-router-extra";
-import { getAddingModeFromRoute, setEditMode, routeBack, setFormValues, getCollectionFromRoute } from "/imports/util/client/client-functions.js";
+import { getAddingModeFromRoute, setEditMode, routeBack, setFormValues } from "/imports/util/client/client-functions.js";
 import "./item_menu_cancel_T.html";
 
 
