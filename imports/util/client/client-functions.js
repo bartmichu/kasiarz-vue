@@ -60,7 +60,7 @@ const getCollectionFromRoute = () => {
       collection = Models;
       break;
     }
-    case "shop": {
+    case "shops": {
       collection = Shops;
       break;
     }

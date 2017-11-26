@@ -49,7 +49,7 @@ Template.application_menu_T.events({
     if (Session.equals("isDirty", true)) {
       $("#modal-dirty").modal("open");
     } else {
-      FlowRouter.go("shop");
+      FlowRouter.go("shops");
     }
   },
   "click #item-logout": () => {

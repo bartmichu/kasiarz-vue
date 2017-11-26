@@ -117,13 +117,13 @@ models.route("/dodaj", {
 });
 
 
-const shop = FlowRouter.group({
+const shops = FlowRouter.group({
   prefix: "/serwis",
-  name: "shop",
+  name: "shops",
 });
 
-shop.route("/", {
-  name: "shop",
+shops.route("/", {
+  name: "shops",
   action() {
     this.render("body_T", "shop_T", {
       app_menu_section: "application_menu_T",
