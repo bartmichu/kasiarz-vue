@@ -56,7 +56,11 @@
                     </div>
 
                     <div class="input-field col s12 m4">
-                      <input id="adres.wojewodztwo" type="text" {{setDisabledAttributeGH}}>
+                      <select id="adres.wojewodztwo" {{setDisabledAttributeGH}} {{fixDisabledAttributeH}}>
+                        {{#each voivodeshipsH}}
+                          <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                      </select>
                       <label id="etykieta_pola-adres.wojewodztwo" for="adres.wojewodztwo"></label>
                     </div>
 
