@@ -4,6 +4,7 @@
 
 import { Meteor } from "meteor/meteor";
 import Shops from "/imports/api/shops/shops.js";
+import voivodeships from "/imports/util/dictionaries/voivodeships.js";
 
 
 Meteor.startup(() => {
@@ -18,7 +19,7 @@ Meteor.startup(() => {
         pesel: "",
         adres: {
           kraj: "Poland",
-          wojewodztwo: "Hidijowd",
+          wojewodztwo: voivodeships[0],
           gminaDzielnica: "",
           ulica: "Iron Street",
           nrDomu: "191",
