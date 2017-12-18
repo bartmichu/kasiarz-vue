@@ -122,8 +122,8 @@ const shops = FlowRouter.group({
   name: "shops",
 });
 
-shops.route("/", {
-  name: "shops",
+shops.route("/id/:_id", {
+  name: "shops.shop",
   action() {
     this.render("body_T", "shop_T", {
       app_menu_section: "application_menu_T",
