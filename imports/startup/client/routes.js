@@ -9,6 +9,8 @@ import "/imports/ui/pages/manufacturers_T.js";
 import "/imports/ui/pages/manufacturers_item_T.js";
 import "/imports/ui/pages/models_T.js";
 import "/imports/ui/pages/models_item_T.js";
+import "/imports/ui/pages/offices_T.js";
+import "/imports/ui/pages/offices_item_T.js";
 import "/imports/ui/pages/shop_T.js";
 
 
@@ -126,6 +128,39 @@ shops.route("/id/:_id", {
   name: "shops.shop",
   action() {
     this.render("body_T", "shop_T", {
+      app_menu_section: "application_menu_T",
+    });
+  },
+});
+
+
+const offices = FlowRouter.group({
+  prefix: "/urzedy",
+  name: "offices",
+});
+
+offices.route("/", {
+  name: "offices",
+  action() {
+    this.render("body_T", "offices_T", {
+      app_menu_section: "application_menu_T",
+    });
+  },
+});
+
+offices.route("/id/:_id", {
+  name: "offices.office",
+  action() {
+    this.render("body_T", "offices_item_T", {
+      app_menu_section: "application_menu_T",
+    });
+  },
+});
+
+offices.route("/dodaj", {
+  name: "offices.add",
+  action() {
+    this.render("body_T", "offices_item_T", {
       app_menu_section: "application_menu_T",
     });
   },
