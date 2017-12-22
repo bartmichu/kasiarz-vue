@@ -50,6 +50,13 @@ Template.application_menu_T.events({
       FlowRouter.go("models");
     }
   },
+  "click #item-offices": () => {
+    if (Session.equals("isDirty", true)) {
+      $("#modal-dirty").modal("open");
+    } else {
+      FlowRouter.go("offices");
+    }
+  },
   "click #item-shop": () => {
     if (Session.equals("isDirty", true)) {
       $("#modal-dirty").modal("open");
