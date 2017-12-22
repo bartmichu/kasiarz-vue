@@ -1,0 +1,56 @@
+<template name="offices_T">
+
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+
+        <div class="card">
+          <div class="card-content grey lighten-1">
+            <div class="row">
+              <div class="col s12">
+                <div class="left">
+                  <h5 class="grey-text text-darken-3 left">Urzędy skarbowe</h5>
+                </div>
+                <div class="right">
+                  {{> list_menu_add_T}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {{#if Template.subscriptionsReady}}
+            {{#if isEmptyCollectionH}}
+              <div class="card-action">
+                {{> list_placeholder_T}}
+              </div>
+            {{else}}
+              <div class="card-action">
+                <table class="highlight responsive-table">
+                  <thead>
+                    <th id="header-nazwa">{{getLabelH "nazwa"}}</th>
+                    <th id="header-dataModyfikacji">{{getLabelH "dataModyfikacji"}}</th>
+                  </thead>
+                  <tbody>
+                    {{#each getSubscriptionDataH}}
+                      <tr id="{{_id}}">
+                        <td>{{nazwa}}</td>
+                        <td>{{formatDateGH dataModyfikacji}}</td>
+                      </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+              </div>
+            {{/if}}
+          {{else}}
+            <div class="card-action center aligned">
+              {{> loading_T}}
+            </div>
+          {{/if}}
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</template>
