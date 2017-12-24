@@ -6,6 +6,7 @@ import { Materialize } from "meteor/materialize:materialize";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Shops from "/imports/api/shops/shops.js";
 import Models from "/imports/api/models/models.js";
+import Offices from "/imports/api/offices/offices.js";
 import moment from "moment";
 
 
@@ -62,6 +63,10 @@ const getCollectionFromRoute = () => {
     }
     case "shops": {
       collection = Shops;
+      break;
+    }
+    case "offices": {
+      collection = Offices;
       break;
     }
     default:
