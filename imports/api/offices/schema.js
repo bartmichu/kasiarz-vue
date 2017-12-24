@@ -1,5 +1,5 @@
-import { SimpleSchema } from "simpl-schema";
-import { Offices } from "/imports/api/offices/offices.js";
+import SimpleSchema from "simpl-schema";
+import Offices from "/imports/api/offices/offices.js";
 import voivodeships from "/imports/util/dictionaries/voivodeships.js";
 
 
