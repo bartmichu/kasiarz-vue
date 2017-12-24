@@ -9,13 +9,13 @@ import "/imports/ui/components/loading/loading_T.js";
 import "/imports/ui/components/item_menu/item_menu_cancel_T.js";
 import "/imports/ui/components/item_menu/item_menu_edit_T.js";
 import "/imports/ui/components/item_menu/item_menu_save_T.js";
-import "./shop_T.html";
+import "./shops_item_T.html";
 
 
-Template.shop_T.onCreated(() => { });
+Template.shops_item_T.onCreated(() => { });
 
 
-Template.shop_T.rendered = () => {
+Template.shops_item_T.rendered = () => {
   $("select").material_select();
   const template = Template.instance();
 
@@ -28,7 +28,7 @@ Template.shop_T.rendered = () => {
 };
 
 
-Template.shop_T.helpers({
+Template.shops_item_T.helpers({
   voivodeshipsH() {
     return voivodeships;
   },
@@ -41,7 +41,7 @@ Template.shop_T.helpers({
 });
 
 
-Template.shop_T.events({
+Template.shops_item_T.events({
   submit(event) {
     event.preventDefault();
   },

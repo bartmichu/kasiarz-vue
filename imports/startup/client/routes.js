@@ -11,7 +11,7 @@ import "/imports/ui/pages/models_T.js";
 import "/imports/ui/pages/models_item_T.js";
 import "/imports/ui/pages/offices_T.js";
 import "/imports/ui/pages/offices_item_T.js";
-import "/imports/ui/pages/shop_T.js";
+import "/imports/ui/pages/shops_item_T.js";
 
 
 function setPreviousUrl() {
@@ -127,7 +127,7 @@ const shops = FlowRouter.group({
 shops.route("/id/:_id", {
   name: "shops.shop",
   action() {
-    this.render("body_T", "shop_T", {
+    this.render("body_T", "shops_item_T", {
       app_menu_section: "application_menu_T",
     });
   },
