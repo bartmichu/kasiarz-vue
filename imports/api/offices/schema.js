@@ -56,14 +56,14 @@ const officeSchema = new SimpleSchema({
     max: 100,
     optional: true,
   },
-  "adres.numerDomu": {
+  "adres.nrDomu": {
     type: String,
     label: "Numer domu",
     min: 1,
     max: 100,
     optional: false,
   },
-  "adres.numerLokalu": {
+  "adres.nrLokalu": {
     type: String,
     label: "Numer lokalu",
     max: 100,
