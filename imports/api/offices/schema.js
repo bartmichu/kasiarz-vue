@@ -18,13 +18,6 @@ const officeSchema = new SimpleSchema({
     max: 100,
     optional: false,
   },
-  nazwaSortowalna: {
-    type: String,
-    label: "Pełna nazwa (sortowalna)",
-    min: 1,
-    max: 100,
-    optional: true,
-  },
   adresat: {
     type: String,
     label: "Adresat",
