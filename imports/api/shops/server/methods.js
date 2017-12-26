@@ -32,7 +32,7 @@ const updateShop = new ValidatedMethod({
         pesel: formData.pesel,
         "adres.kraj": formData.adres.kraj,
         "adres.wojewodztwo": formData.adres.wojewodztwo,
-        "adres.gminaDzielnica": formData.adres.gminaFzielnica,
+        "adres.gminaDzielnica": formData.adres.gminaDzielnica,
         "adres.ulica": formData.adres.ulica,
         "adres.nrDomu": formData.adres.nrDomu,
         "adres.nrLokalu": formData.adres.nrLokalu,
