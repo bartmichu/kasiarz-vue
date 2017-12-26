@@ -28,12 +28,14 @@
                 <table class="highlight responsive-table">
                   <thead>
                     <th id="header-nazwa">{{getLabelH "nazwa"}}</th>
+                    <th id="header-nazwa">{{getLabelH "adres.miejscowosc"}}</th>
                     <th id="header-dataModyfikacji">{{getLabelH "dataModyfikacji"}}</th>
                   </thead>
                   <tbody>
                     {{#each getSubscriptionDataH}}
                       <tr id="{{_id}}">
                         <td>{{nazwa}}</td>
+                        <td>{{adres.miejscowosc}}</td>
                         <td>{{formatDateGH dataModyfikacji}}</td>
                       </tr>
                     {{/each}}
