@@ -42,13 +42,13 @@ Template.login_T.events({
   submit(event) {
     event.preventDefault();
   },
-  "keydown input, input input, paste input": function resetFailedLogin(event, template) {
+  "keydown input, input input, paste input": (event, template) => {
     template.failedLogin.set(false);
   },
-  "blur #field-user": function trimUserField() {
+  "blur #field-user": () => {
     $("#field-user").val($("#field-user").val().trim());
   },
-  "click #button-login": function login(event, template) {
+  "click #button-login": (event, template) => {
     let user = $("#field-user").val();
     let password = $("#field-password").val();
 
