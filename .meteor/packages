@@ -26,6 +26,6 @@ mdg:validated-method
 jquery@1.11.10
 aldeed:schema-deny
 aldeed:collection2-core
-juliancwirko:postcss
 browser-policy@1.1.0
 ostrio:flow-router-extra
+standard-minifier-css
