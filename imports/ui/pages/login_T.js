@@ -2,6 +2,7 @@ import { Meteor } from "meteor/meteor";
 import { ReactiveVar } from "meteor/reactive-var";
 import { Template } from "meteor/templating";
 import { $ } from "meteor/jquery";
+import "/public/semantic/semantic.js";
 import "./login_T.html";
 
 
@@ -18,10 +19,15 @@ Template.login_T.onCreated(() => {
  */
 Template.login_T.helpers({
   failedLoginIndicatorH() {
-    return Template.instance().failedLogin.get() ? "red" : "grey darken-3";
+    let className = "";
+    if (Template.instance().failedLogin.get()) {
+      $("#button-login").transition("shake", { duration: 100 });
+      className = "negative";
+    }
+    return className;
   },
   progressIndicatorH() {
-    return Meteor.loggingIn() ? "disabled" : "";
+    return Meteor.loggingIn() ? "loading" : "";
   },
   loginButtonTextH() {
     return Template.instance().failedLogin.get() ? "nieprawidłowe dane" : "kontynuuj";
