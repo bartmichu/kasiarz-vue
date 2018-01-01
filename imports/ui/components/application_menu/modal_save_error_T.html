@@ -1,13 +1,21 @@
 <template name="modal_save_error_T">
 
-  <div id="modal-save-error" class="modal">
-    <div class="modal-content">
-      <h4>Błąd walidacji</h4>
-      <p>Niepoprawny format danych. Upewnij się, że wszystkie wymagane pola są wypełnione.</p>
+  <div id="modal-save-error" class="ui small modal">
+
+    <div class="header">Błąd walidacji</div>
+
+    <div class="image content">
+      <div class="description">
+        <p>Niepoprawny format danych. Upewnij się, że wszystkie wymagane pola są wypełnione.</p>
+      </div>
     </div>
-    <div class="modal-footer">
-      <a id="button-close" href="" class="modal-action modal-close waves-effect btn grey darken-3">OK</a>
+
+    <div class="actions">
+      <div class="ui cancel secondary button">
+        <i class="checkmark icon"></i>OK
+      </div>
     </div>
+
   </div>
 
 </template>
