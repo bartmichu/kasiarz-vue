@@ -33,35 +33,35 @@ Template.application_menu_T.events({
   },
   "click #item-manufacturers": () => {
     if (Session.equals("isDirty", true)) {
-      $("#modal-dirty").modal("open");
+      $("#modal-dirty").modal("show");
     } else {
       FlowRouter.go("manufacturers");
     }
   },
   "click #item-models": () => {
     if (Session.equals("isDirty", true)) {
-      $("#modal-dirty").modal("open");
+      $("#modal-dirty").modal("show");
     } else {
       FlowRouter.go("models");
     }
   },
   "click #item-offices": () => {
     if (Session.equals("isDirty", true)) {
-      $("#modal-dirty").modal("open");
+      $("#modal-dirty").modal("show");
     } else {
       FlowRouter.go("offices");
     }
   },
   "click #item-shop": () => {
     if (Session.equals("isDirty", true)) {
-      $("#modal-dirty").modal("open");
+      $("#modal-dirty").modal("show");
     } else {
       FlowRouter.go("shops.shop", { _id: Shops.findOne({})._id });
     }
   },
   "click #item-logout": () => {
     if (Session.equals("isDirty", true)) {
-      $("#modal-dirty").modal("open");
+      $("#modal-dirty").modal("show");
     } else {
       FlowRouter.go("index");
       Meteor.logout();
