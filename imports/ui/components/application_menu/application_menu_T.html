@@ -1,36 +1,35 @@
 <template name="application_menu_T">
 
-  <nav class="grey darken-3">
-    <div class="nav-wrapper">
-      <div class="container">
+  <div class="ui top fixed inverted menu">
+    <div class="ui container">
 
-        <ul class="left">
-          <li><a id="item-forms" href=""><i class="material-icons left">note_add</i>Formularze</a></li>
-          <li><a id="item-archive" href=""><i class="material-icons left">folder</i>Archiwum</a></li>
-          <li><a id="item-clients" href=""><i class="material-icons left">business</i>Klienci</a></li>
-        </ul>
+      <a id="item-forms" class="item">
+        <i class="file text icon"></i>Formularze</a>
+      <a id="item-archive" class="item">
+        <i class="archive icon"></i>Archiwum</a>
+      <a id="item-clients" class="item">
+        <i class="address book icon"></i>Klienci</a>
 
-        <ul class="right">
-          <li><a href="" id="dropdown-button-settings" class="dropdown-button" data-activates="dropdown-settings"><i class="material-icons">settings_applications</i></a></li>
-          <li><a href="" id="dropdown-button-user" class="dropdown-button" data-activates="dropdown-user"><i class="material-icons">account_box</i></a></li>
-        </ul>
-
-        <ul id="dropdown-settings" class="dropdown-content grey darken-3">
-          <li><a id="item-manufacturers" href="" class="white-text">Producenci urządzeń</a></li>
-          <li><a id="item-models" href="" class="white-text">Modele urządzeń</a></li>
-          <li><a id="item-offices" href="" class="white-text">Urzędy skarbowe</a></li>
-          <li><a id="item-shop" href="" class="white-text">Dane serwisu</a></li>
-        </ul>
-
-        <ul id="dropdown-user" class="dropdown-content grey darken-3">
-          <li><a id="item-logout" href="" class="white-text">Wyloguj się</a></li>
-        </ul>
-
+      <div class="right menu">
+        <div id="dropdown-button-settings" class="ui simple dropdown item">
+          <i class="setting icon"></i>
+          <div class="menu">
+            <div id="item-offices" class="item">Urzędy skarbowe</div>
+            <div id="item-manufacturers" class="item">Producenci urządzeń</div>
+            <div id="item-models" class="item">Modele urządzeń</div>
+            <div id="item-shops" class="item">Dane serwisu</div>
+          </div>
+        </div>
+        <div id="dropdown-button-user" class="ui simple dropdown item">
+          <i class="user icon"></i>
+          <div class="menu">
+            <div id="item-logout" class="item">Wyloguj się</div>
+          </div>
+        </div>
       </div>
-    </div>
-  </nav>
 
-  <div class="b8k-spacer"></div>
+    </div>
+  </div>
 
   {{> modal_dirty_T }} {{> modal_delete_T}} {{> modal_delete_error_T}} {{> modal_save_error_T }}
 

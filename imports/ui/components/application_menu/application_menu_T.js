@@ -5,6 +5,7 @@ import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { $ } from "meteor/jquery";
 import { resetSessionVariables } from "/imports/util/client/client-functions.js";
 import Shops from "/imports/api/shops/shops.js";
+import "/public/semantic/semantic.min.js";
 import "/imports/ui/components/application_menu/modal_dirty_T.js";
 import "/imports/ui/components/application_menu/modal_delete_T.js";
 import "/imports/ui/components/application_menu/modal_delete_error_T.js";
@@ -16,20 +17,14 @@ Template.application_menu_T.onCreated(() => {
   Template.instance().subscribe("shops.private");
 });
 
+
 Template.application_menu_T.rendered = () => {
-  $("#dropdown-button-settings").dropdown({
-    constrainWidth: false,
-    hover: false,
-    belowOrigin: true,
-    alignment: "left",
-  });
-  $("#dropdown-button-user").dropdown({
-    constrainWidth: false,
-    hover: false,
-    belowOrigin: true,
-    alignment: "left",
-  });
+  $("#dropdown-button-settings").dropdown();
+  $("#dropdown-button-user").dropdown();
 };
+
+
+Template.application_menu_T.helpers({});
 
 
 Template.application_menu_T.events({
