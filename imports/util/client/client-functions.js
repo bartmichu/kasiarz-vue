@@ -2,7 +2,6 @@ import { Session } from "meteor/session";
 import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { $ } from "meteor/jquery";
 import { Meteor } from "meteor/meteor";
-import { Materialize } from "meteor/materialize:materialize";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Shops from "/imports/api/shops/shops.js";
 import Models from "/imports/api/models/models.js";
@@ -116,7 +115,7 @@ const setFormValues = () => {
     }
 
     if (valuesChanged) {
-      Materialize.updateTextFields();
+      // Materialize.updateTextFields();
     }
   });
 };
