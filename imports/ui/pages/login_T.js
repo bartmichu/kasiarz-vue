@@ -2,7 +2,7 @@ import { Meteor } from "meteor/meteor";
 import { ReactiveVar } from "meteor/reactive-var";
 import { Template } from "meteor/templating";
 import { $ } from "meteor/jquery";
-import "/public/semantic/semantic.js";
+import "/public/semantic/semantic.min.js";
 import "./login_T.html";
 
 
