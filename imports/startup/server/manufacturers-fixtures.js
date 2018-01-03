@@ -8,7 +8,7 @@ import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 
 Meteor.startup(() => {
   if (Manufacturers.find().count() === 0) {
-    const userId = Meteor.users.findOne({ username: "kasiarz" })._id;
+    const userId = Meteor.users.findOne({ username: "demo" })._id;
     const dummyData = [
       {
         uzytkownikId: userId,

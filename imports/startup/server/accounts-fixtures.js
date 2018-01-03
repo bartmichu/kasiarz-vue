@@ -5,7 +5,7 @@ import { Accounts } from "meteor/accounts-base";
 Meteor.startup(() => {
   if (Meteor.users.find().count() === 0) {
     Accounts.createUser({
-      username: "kasiarz",
+      username: "demo",
       password: "kasiarz",
       profile: {
         daneOsobowe: {

@@ -9,7 +9,7 @@ import voivodeships from "/imports/util/dictionaries/voivodeships.js";
 
 Meteor.startup(() => {
   if (Shops.find().count() === 0) {
-    const userId = Meteor.users.findOne({ username: "kasiarz" })._id;
+    const userId = Meteor.users.findOne({ username: "demo" })._id;
     const dummyData = [
       {
         uzytkownikId: userId,
