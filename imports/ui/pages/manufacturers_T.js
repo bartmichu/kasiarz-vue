@@ -6,6 +6,7 @@ import { sortHandler } from "/imports/util/client/client-functions.js";
 import "/imports/ui/components/list_placeholder/list_placeholder_T.js";
 import "/imports/ui/components/loading/loading_T.js";
 import "/imports/ui/components/list_menu/list_menu_add_T.js";
+import "/public/semantic/semantic.min.js";
 import "./manufacturers_T.html";
 
 
@@ -39,8 +40,8 @@ Template.manufacturers_T.events({
   submit(event) {
     event.preventDefault();
   },
-  "click tr": (event) => {
+  "click tbody tr": (event) => {
     FlowRouter.go("manufacturers.manufacturer", { _id: event.currentTarget.id });
   },
-  "click th": (event, template) => sortHandler(event, template),
+  "click thead th": (event, template) => sortHandler(event, template),
 });
