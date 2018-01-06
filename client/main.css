@@ -3,6 +3,10 @@ html {
   overflow-y: scroll;
 }
 
+body {
+  background: #f0f0f0 !important;
+}
+
 .b8k-vertical-spacer {
   height: 40px;
 }
