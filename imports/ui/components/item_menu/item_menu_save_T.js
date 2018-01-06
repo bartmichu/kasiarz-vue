@@ -17,7 +17,7 @@ Template.item_menu_save_T.helpers({
     return Template.instance().isAddingMode ? "zapisz nowy" : "zapisz zmiany";
   },
   buttonStyleH() {
-    return Session.get("isDirty") ? "red" : "grey darken-3";
+    return Session.get("isDirty") ? "primary" : "secondary";
   },
 });
 
@@ -36,7 +36,7 @@ Template.item_menu_save_T.events({
       if (Template.instance().isAddingMode) {
         Meteor.call(context.concat(".insert"), formData, (error) => {
           if (error) {
-            $("#modal-save-error").modal("open");
+            $("#modal-save-error").modal("show");
           } else {
             setEditMode(false);
             routeBack();
@@ -45,7 +45,7 @@ Template.item_menu_save_T.events({
       } else {
         Meteor.call(context.concat(".update"), { documentId: FlowRouter.getParam("_id"), formData }, (error) => {
           if (error) {
-            $("#modal-save-error").modal("open");
+            $("#modal-save-error").modal("show");
           } else {
             setEditMode(false);
             setFormValues();
@@ -53,7 +53,7 @@ Template.item_menu_save_T.events({
         });
       }
     } else {
-      $("#modal-save-error").modal("open");
+      $("#modal-save-error").modal("show");
     }
   },
 });
