@@ -1,12 +1,12 @@
 <template name="manufacturers_T">
 
-  <div class="b8k-vertical-spacer"></div>
-
+  <!-- container start -->
   <div class="ui grid container">
     <div class="row">
       <div class="sixteen wide column">
 
-        <div class="ui fluid card">
+        <!-- card start -->
+        <div class="ui fluid card b8k-top-margin">
 
           <div class="content">
             <div class="header">Producenci urządzeń
@@ -47,16 +47,17 @@
                   </tfoot>
                 </table>
               {{/if}}
-
             {{else}}
               {{> loading_T}}
             {{/if}}
           </div>
 
         </div>
+        <!-- card end -->
 
       </div>
     </div>
   </div>
+  <!-- container end -->
 
 </template>

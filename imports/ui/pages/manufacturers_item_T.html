@@ -1,14 +1,12 @@
 <template name="manufacturers_item_T">
 
-  <div class="b8k-vertical-spacer"></div>
-
   <!-- container start -->
   <div class="ui grid container">
     <div class="row">
       <div class="sixteen wide column">
 
         <!-- card start -->
-        <div class="ui fluid card">
+        <div class="ui fluid card b8k-top-margin">
 
           <div class="content">
             <div class="header">Dane producenta
@@ -66,7 +64,7 @@
 
         {{#unless isAddingModeGH}}
           <!-- card start -->
-          <div class="ui fluid card">
+          <div class="ui fluid card b8k-top-margin">
 
             <div class="content">
               <div class="header">Modele urządzeń producenta
@@ -86,8 +84,8 @@
                       <div class="grouped fields">
                         {{#each modelsH}}
                           <div class="field">
-                            <div class="ui radio checkbox">
-                              <input type="radio" disabled="disabled">
+                            <div class="ui read-only checkbox">
+                              <input type="checkbox">
                               <label id="model-{{_id}}">{{nazwa}}</label>
                             </div>
                           </div>
@@ -108,7 +106,7 @@
 
           {{#if Template.subscriptionsReady}}
             <!-- card start -->
-            <div class="ui fluid card">
+            <div class="ui fluid card b8k-top-margin">
 
               <div class="content">
                 <form class="ui form">
