@@ -1,3 +1,11 @@
 /*******************************
     User Variable Overrides
 *******************************/
+
+@inputBackground: #fafafa;
+@inputFocusBackground: #feef03;
+
+@inputBorder: 1px dashed @borderColor;
+
+@disabledOpacity: 1;
+@disabledLabelOpacity: 1;
