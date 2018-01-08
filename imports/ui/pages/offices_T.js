@@ -39,8 +39,8 @@ Template.offices_T.events({
   submit(event) {
     event.preventDefault();
   },
-  "click tr": (event) => {
+  "click tbody tr": (event) => {
     FlowRouter.go("offices.office", { _id: event.currentTarget.id });
   },
-  "click th": (event, template) => sortHandler(event, template),
+  "click thead th": (event, template) => sortHandler(event, template),
 });
