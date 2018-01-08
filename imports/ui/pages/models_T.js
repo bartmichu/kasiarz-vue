@@ -44,8 +44,8 @@ Template.models_T.events({
   submit(event) {
     event.preventDefault();
   },
-  "click tr": (event) => {
+  "click tbody tr": (event) => {
     FlowRouter.go("models.model", { _id: event.currentTarget.id });
   },
-  "click th": (event, template) => sortHandler(event, template),
+  "click thead th": (event, template) => sortHandler(event, template),
 });
