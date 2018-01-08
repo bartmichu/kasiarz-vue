@@ -12152,7 +12152,7 @@ img.ui.bordered.image {
 
 .ui.disabled.input,
 .ui.input:not(.disabled) input[disabled] {
-  opacity: 0.45;
+  opacity: 1;
 }
 
 .ui.disabled.input input,
@@ -17828,8 +17828,8 @@ ol.ui.horizontal.list li:before,
   line-height: 1.21428571em;
   padding: 0.67857143em 1em;
   font-size: 1em;
-  background: #FFFFFF;
-  border: 1px solid rgba(34, 36, 38, 0.15);
+  background: #fafafa;
+  border: 1px dashed rgba(34, 36, 38, 0.15);
   color: rgba(0, 0, 0, 0.87);
   border-radius: 0px;
   -webkit-box-shadow: 0em 0em 0em 0em transparent inset;
@@ -17845,8 +17845,8 @@ ol.ui.horizontal.list li:before,
   -webkit-appearance: none;
   tap-highlight-color: rgba(255, 255, 255, 0);
   padding: 0.78571429em 1em;
-  background: #FFFFFF;
-  border: 1px solid rgba(34, 36, 38, 0.15);
+  background: #fafafa;
+  border: 1px dashed rgba(34, 36, 38, 0.15);
   outline: none;
   color: rgba(0, 0, 0, 0.87);
   border-radius: 0px;
@@ -17887,7 +17887,7 @@ ol.ui.horizontal.list li:before,
   height: auto;
   width: 100%;
   background: #FFFFFF;
-  border: 1px solid rgba(34, 36, 38, 0.15);
+  border: 1px dashed rgba(34, 36, 38, 0.15);
   border-radius: 0px;
   -webkit-box-shadow: 0em 0em 0em 0em transparent inset;
   box-shadow: 0em 0em 0em 0em transparent inset;
@@ -18115,7 +18115,7 @@ ol.ui.horizontal.list li:before,
   color: rgba(0, 0, 0, 0.95);
   border-color: #85B7D9;
   border-radius: 0px;
-  background: #FFFFFF;
+  background: #feef03;
   -webkit-box-shadow: 0px 0em 0em 0em rgba(34, 36, 38, 0.35) inset;
   box-shadow: 0px 0em 0em 0em rgba(34, 36, 38, 0.35) inset;
 }
@@ -18124,7 +18124,7 @@ ol.ui.horizontal.list li:before,
   color: rgba(0, 0, 0, 0.95);
   border-color: #85B7D9;
   border-radius: 0px;
-  background: #FFFFFF;
+  background: #feef03;
   -webkit-box-shadow: 0px 0em 0em 0em rgba(34, 36, 38, 0.35) inset;
   box-shadow: 0px 0em 0em 0em rgba(34, 36, 38, 0.35) inset;
   -webkit-appearance: none;
@@ -18358,12 +18358,12 @@ ol.ui.horizontal.list li:before,
 .ui.form .disabled.field,
 .ui.form .field :disabled {
   pointer-events: none;
-  opacity: 0.45;
+  opacity: 1;
 }
 
 .ui.form .field.disabled > label,
 .ui.form .fields.disabled > label {
-  opacity: 0.45;
+  opacity: 1;
 }
 
 .ui.form .field.disabled :disabled {
@@ -18505,7 +18505,7 @@ ol.ui.horizontal.list li:before,
 .ui.inverted.form input[type="text"],
 .ui.inverted.form input[type="file"],
 .ui.inverted.form input[type="url"] {
-  background: #FFFFFF;
+  background: #fafafa;
   border-color: rgba(255, 255, 255, 0.1);
   color: rgba(0, 0, 0, 0.87);
   -webkit-box-shadow: none;
@@ -18896,6 +18896,12 @@ ol.ui.horizontal.list li:before,
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.form .disabled.fields .field,
+.ui.form .disabled.field,
+.ui.form .field :disabled {
+  border: 1px solid #fafafa;
+}
 /*!
  * # Semantic UI 2.2.13 - Grid
  * http://github.com/semantic-org/semantic-ui/
