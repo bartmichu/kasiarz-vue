@@ -66,7 +66,7 @@ Template.models_item_T.events({
   },
   "input input, input textarea": () => {
     if (Session.equals("isEditMode", true)) {
-      Session.set("isDirty", true);
+      setDirty(true);
     }
   },
   "blur input, blur textarea": (event) => {

@@ -2,7 +2,7 @@ import { Session } from "meteor/session";
 import { Template } from "meteor/templating";
 import { Tracker } from "meteor/tracker";
 import { FlowRouter } from "meteor/ostrio:flow-router-extra";
-import { getAddingModeFromRoute, setEditMode, setFormLabels, setFormValues } from "/imports/util/client/client-functions.js";
+import { getAddingModeFromRoute, setEditMode, setFormLabels, setFormValues, setDirty } from "/imports/util/client/client-functions.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Models from "/imports/api/models/models.js";
 import "/imports/ui/components/loading/loading_T.js";
@@ -58,7 +58,7 @@ Template.manufacturers_item_T.events({
   },
   "input input, input textarea": () => {
     if (Session.equals("isEditMode", true)) {
-      Session.set("isDirty", true);
+      setDirty(true);
     }
   },
   "blur input, blur textarea": (event) => {

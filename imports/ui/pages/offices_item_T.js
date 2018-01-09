@@ -4,7 +4,7 @@ import { Template } from "meteor/templating";
 import { Tracker } from "meteor/tracker";
 import { $ } from "meteor/jquery";
 import { FlowRouter } from "meteor/ostrio:flow-router-extra";
-import { getAddingModeFromRoute, setEditMode, setFormLabels, setFormValues } from "/imports/util/client/client-functions.js";
+import { getAddingModeFromRoute, setEditMode, setFormLabels, setFormValues, setDirty } from "/imports/util/client/client-functions.js";
 import voivodeships from "/imports/util/dictionaries/voivodeships.js";
 import Offices from "/imports/api/offices/offices.js";
 import "/imports/ui/components/loading/loading_T.js";
@@ -62,7 +62,7 @@ Template.offices_item_T.events({
   },
   "input input, input textarea": () => {
     if (Session.equals("isEditMode", true)) {
-      Session.set("isDirty", true);
+      setDirty(true);
     }
   },
   "blur input, blur textarea": (event) => {
