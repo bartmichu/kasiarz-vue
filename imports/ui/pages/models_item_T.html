@@ -1,80 +1,95 @@
 <template name="models_item_T">
 
-  <div class="container">
+  <!-- container start -->
+  <div class="ui grid container">
     <div class="row">
-      <div class="col s12">
+      <div class="sixteen wide column">
 
-        <div class="card">
-          <div class="card-content grey lighten-1">
-            <div class="row">
-              <div class="col s12">
-                <div class="left">
-                  <h5 class="grey-text text-darken-3">Dane modelu</h5>
-                </div>
-                <div class="right">
-                  {{#if Template.subscriptionsReady}}
-                    {{#if isEditModeGH}}
-                      {{> item_menu_cancel_T}} {{> item_menu_save_T}}
-                    {{else}}
-                      {{> item_menu_delete_T}} {{> item_menu_edit_T}} {{> item_menu_close_T}}
-                    {{/if}}
+        <!-- card start -->
+        <div class="ui fluid card b8k-top-margin">
+
+          <div class="content">
+            <div class="header">Dane modelu
+              <div class="right floated">
+                {{#if Template.subscriptionsReady}}
+                  {{#if isEditModeGH}}
+                    {{> item_menu_cancel_T}} {{> item_menu_save_T}}
+                  {{else}}
+                    {{> item_menu_delete_T}} {{> item_menu_edit_T}} {{> item_menu_close_T}}
                   {{/if}}
-                </div>
+                {{/if}}
               </div>
             </div>
           </div>
 
           {{#if Template.subscriptionsReady}}
-            <div class="card-action">
-              <div class="row">
-                <form class="col s12">
+            <div class="content">
+              <form class="ui form">
+                <div class="field">
+                  <div class="field">
+                    <label id="etykieta_pola-nazwa" for="nazwa"></label>
+                    <input id="nazwa" type="text" {{setDisabledAttributeGH}}>
+                  </div>
+                </div>
 
-                  <div class="row">
-                    <div class="input-field col s12 l6">
-                      <input id="nazwa" type="text" {{setDisabledAttributeGH}}>
-                      <label id="etykieta_pola-nazwa" for="nazwa"></label>
-                    </div>
-
-                    <div class="input-field col s12 l6">
-                      <select id="producentId" {{setDisabledAttributeGH}} {{fixDisabledAttributeH}}>
-                        {{#each manufacturersH}}
-                          <option value="{{_id}}">{{nazwa}}</option>
-                        {{/each}}
-                      </select>
-                      <label id="etykieta_pola-producentId" for="producentId"></label>
-                    </div>
-
-                    <div class="input-field col s12">
-                      <textarea id="dodatkoweInformacje" class="materialize-textarea" type="text" {{setDisabledAttributeGH}}></textarea>
-                      <label id="etykieta_pola-dodatkoweInformacje" for="dodatkoweInformacje"></label>
+                <div class="field">
+                  <label id="etykieta_pola-producentId" for="producentId"></label>
+                  <div id="dropdown-model-manufacturer" class="ui fluid search selection {{setDisabledAttributeGH}} dropdown">
+                    <input id="producentId" type="hidden">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">wybierz producenta</div>
+                    <div class="menu">
+                      {{#each manufacturersH}}
+                        <div class="item" data-value="{{_id}}">{{nazwa}}</div>
+                      {{/each}}
                     </div>
                   </div>
+                </div>
 
-                  {{#unless isAddingModeGH}}
-                    <div class="row">
-                      <div class="input-field col s12 l6">
-                        <input id="dataUtworzenia" class="b8k-not-bold" type="text" disabled title="pole uzupełniane automatycznie">
-                        <label id="etykieta_pola-dataUtworzenia" for="dataUtworzenia"></label>
-                      </div>
-                      <div class="input-field col s12 l6">
-                        <input id="dataModyfikacji" class="b8k-not-bold" type="text" disabled title="pole uzupełniane automatycznie">
-                        <label id="etykieta_pola-dataModyfikacji" for="dataModyfikacji"></label>
-                      </div>
-                    </div>
-                  {{/unless}}
-
-                </form>
-              </div>
+                <div class="field">
+                  <label id="etykieta_pola-dodatkoweInformacje" for="dodatkoweInformacje"></label>
+                  <textarea id="dodatkoweInformacje" rows="2" {{setDisabledAttributeGH}}></textarea>
+                </div>
+              </form>
             </div>
           {{else}}
-            <div class="card-action center aligned">
-              {{> loading_T}}
-            </div>
+            <div class="content">{{> loading_T}}</div>
           {{/if}}
+
         </div>
+        <!-- card end -->
+
+        {{#unless isAddingModeGH}}
+          {{#if Template.subscriptionsReady}}
+            <!-- card start -->
+            <div class="ui fluid card b8k-top-margin">
+
+              <div class="content">
+                <form class="ui form">
+                  <div class="three fields">
+                    <div class="field" title="pole uzupełniane automatycznie">
+                      <label id="etykieta_pola-dataUtworzenia" for="dataUtworzenia"></label>
+                      <input id="dataUtworzenia" type="text" disabled>
+                    </div>
+
+                    <div class="field" title="pole uzupełniane automatycznie">
+                      <label id="etykieta_pola-dataModyfikacji" for="dataModyfikacji"></label>
+                      <input id="dataModyfikacji" type="text" disabled>
+                    </div>
+
+                    <div class="field"></div>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+            <!-- card end -->
+          {{/if}}
+        {{/unless}}
 
       </div>
     </div>
   </div>
+  <!-- container end -->
 
 </template>
