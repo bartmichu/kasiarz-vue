@@ -1,4 +1,3 @@
-import { Meteor } from "meteor/meteor";
 import { Session } from "meteor/session";
 import { Template } from "meteor/templating";
 import { Tracker } from "meteor/tracker";
@@ -15,6 +14,7 @@ import "/imports/ui/components/item_menu/item_menu_edit_T.js";
 import "/imports/ui/components/item_menu/item_menu_save_T.js";
 import "/imports/ui/components/list_placeholder/list_placeholder_T.js";
 import "/imports/ui/components/list_menu/list_menu_add_T.js";
+import "/public/semantic/semantic.min.js";
 import "./offices_item_T.html";
 
 
@@ -24,16 +24,26 @@ Template.offices_item_T.onCreated(() => {
 
 
 Template.offices_item_T.rendered = () => {
-  $("select").material_select();
+  $("#dropdown-office-voivodeship").dropdown({
+    onChange() {
+      if (Session.equals("isEditMode", true)) {
+        setDirty(true);
+      }
+    },
+  });
+
   const template = Template.instance();
+
   if (getAddingModeFromRoute()) {
     setFormLabels();
+    $("#dropdown-office-voivodeship").dropdown();
   } else {
     const officeId = FlowRouter.getParam("_id");
     template.subscribe("offices.private", officeId, () => {
       Tracker.afterFlush(() => {
         setFormLabels();
         setFormValues();
+        $("#dropdown-office-voivodeship").dropdown();
       });
     });
   }
@@ -46,12 +56,6 @@ Template.offices_item_T.helpers({
   },
   voivodeshipsH() {
     return voivodeships;
-  },
-  fixDisabledAttributeH() {
-    // HACK: odwrotny stan disabled bez defer
-    Meteor.defer(() => {
-      $("select").material_select();
-    });
   },
 });
 
