@@ -30,7 +30,7 @@ Template.application_menu_T.helpers({
         className = "";
         break;
       case "connecting":
-        className = "blue";
+        className = "yellow";
         break;
       case "failed":
         className = "red";
