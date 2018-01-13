@@ -4,5 +4,17 @@
 
 .ui.disabled.dropdown,
 .ui.dropdown .menu > .disabled.item {
-  border: 1px solid @selectionBackground;
+  border: 1px solid @selectionBackground !important;
+}
+
+.ui.selection.dropdown {
+  border: 1px dashed @selectionBorderColor;
+}
+
+.ui.search.dropdown.active {
+  background: #feef03;
+}
+
+.ui.selection.active.dropdown .menu {
+  border: 1px dashed @selectionVisibleBorderColor;
 }

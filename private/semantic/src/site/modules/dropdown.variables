@@ -4,8 +4,9 @@
 
 @disabledOpacity: 1;
 
-@selectionVisibleBorderColor: #feef03;
-@selectionActiveHoverBorderColor: #feef03;
-
 @selectionBackground: #f8f8f9;
 
+@selectionTextUnderlayIconOpacity: 1;
+@selectionTextUnderlayColor: @textColor;
+
+@selectionHoverBorderColor: @selectionBorderColor;
