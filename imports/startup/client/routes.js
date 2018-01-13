@@ -11,6 +11,7 @@ import "/imports/ui/pages/models_T.js";
 import "/imports/ui/pages/models_item_T.js";
 import "/imports/ui/pages/offices_T.js";
 import "/imports/ui/pages/offices_item_T.js";
+import "/imports/ui/pages/shops_T.js";
 import "/imports/ui/pages/shops_item_T.js";
 
 
@@ -122,6 +123,15 @@ models.route("/dodaj", {
 const shops = FlowRouter.group({
   prefix: "/serwis",
   name: "shops",
+});
+
+shops.route("/", {
+  name: "shops",
+  action() {
+    this.render("body_T", "shops_T", {
+      app_menu_section: "application_menu_T",
+    });
+  },
 });
 
 shops.route("/id/:_id", {
