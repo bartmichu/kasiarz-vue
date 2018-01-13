@@ -21,7 +21,32 @@ Template.application_menu_T.rendered = () => {
 };
 
 
-Template.application_menu_T.helpers({});
+Template.application_menu_T.helpers({
+  connectionStatusIndicatorH() {
+    const status = Meteor.status().status;
+    let className = "";
+    switch (status) {
+      case "connected":
+        className = "";
+        break;
+      case "connecting":
+        className = "blue";
+        break;
+      case "failed":
+        className = "red";
+        break;
+      case "waiting":
+        className = "yellow";
+        break;
+      case "offline":
+        className = "red";
+        break;
+      default:
+        break;
+    }
+    return className;
+  },
+});
 
 
 Template.application_menu_T.events({
