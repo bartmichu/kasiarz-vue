@@ -1,3 +1,11 @@
 /*******************************
     User Variable Overrides
 *******************************/
+
+@disabledOpacity: 1;
+
+@selectionVisibleBorderColor: #feef03;
+@selectionActiveHoverBorderColor: #feef03;
+
+@selectionBackground: #f8f8f9;
+

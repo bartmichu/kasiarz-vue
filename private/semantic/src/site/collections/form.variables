@@ -2,7 +2,7 @@
     User Variable Overrides
 *******************************/
 
-@inputBackground: #fafafa;
+@inputBackground: #f8f8f9;
 @inputFocusBackground: #feef03;
 
 @inputBorder: 1px dashed @borderColor;
