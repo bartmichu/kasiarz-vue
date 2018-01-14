@@ -13,6 +13,7 @@ import "/imports/ui/pages/offices_T.js";
 import "/imports/ui/pages/offices_item_T.js";
 import "/imports/ui/pages/shops_T.js";
 import "/imports/ui/pages/shops_item_T.js";
+import "/imports/ui/pages/employees_T.js";
 
 
 function setPreviousUrl() {
@@ -171,6 +172,21 @@ offices.route("/dodaj", {
   name: "offices.add",
   action() {
     this.render("body_T", "offices_item_T", {
+      app_menu_section: "application_menu_T",
+    });
+  },
+});
+
+
+const employees = FlowRouter.group({
+  prefix: "/serwisanci",
+  name: "employees",
+});
+
+employees.route("/", {
+  name: "employees",
+  action() {
+    this.render("body_T", "employees_T", {
       app_menu_section: "application_menu_T",
     });
   },
