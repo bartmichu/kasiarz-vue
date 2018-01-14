@@ -6,6 +6,8 @@ import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Shops from "/imports/api/shops/shops.js";
 import Models from "/imports/api/models/models.js";
 import Offices from "/imports/api/offices/offices.js";
+import Clients from "/imports/api/clients/clients.js";
+import Employees from "/imports/api/employees/employees.js";
 import moment from "moment";
 import "/public/semantic/semantic.min.js";
 
@@ -67,6 +69,14 @@ const getCollectionFromRoute = () => {
     }
     case "offices": {
       collection = Offices;
+      break;
+    }
+    case "clients": {
+      collection = Clients;
+      break;
+    }
+    case "employees": {
+      collection = Employees;
       break;
     }
     default:
