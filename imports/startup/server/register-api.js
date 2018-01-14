@@ -18,3 +18,7 @@ import "/imports/api/employees/employees.js";
 import "/imports/api/employees/schema.js";
 import "/imports/api/employees/server/publications.js";
 import "/imports/api/employees/server/methods.js";
+import "/imports/api/clients/clients.js";
+import "/imports/api/clients/schema.js";
+import "/imports/api/clients/server/publications.js";
+import "/imports/api/clients/server/methods.js";
