@@ -3,7 +3,7 @@ import { Template } from "meteor/templating";
 import { Tracker } from "meteor/tracker";
 import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { $ } from "meteor/jquery";
-import { getAddingModeFromRoute, setEditMode, setFormLabels, setFormValues, setDirty } from "/imports/util/client/client-functions.js";
+import { getAddingModeFromRoute, setEditMode, setFormLabels, setFormValues, setDirty, jqEscapeAndHash } from "/imports/util/client/client-functions.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import "/imports/ui/components/loading/loading_T.js";
 import "/imports/ui/components/item_menu/item_menu_cancel_T.js";
@@ -21,7 +21,7 @@ Template.models_item_T.onCreated(() => {
 
 
 Template.models_item_T.rendered = () => {
-  $("#dropdown-model-manufacturer").dropdown({
+  $(jqEscapeAndHash("dropdown-producentId")).dropdown({
     onChange() {
       if (Session.equals("isEditMode", true)) {
         setDirty(true);
@@ -35,7 +35,7 @@ Template.models_item_T.rendered = () => {
     template.subscribe("manufacturers.private", "", () => {
       Tracker.afterFlush(() => {
         setFormLabels();
-        $("#dropdown-model-manufacturer").dropdown();
+        $(jqEscapeAndHash("dropdown-producentId")).dropdown();
       });
     });
   } else {
@@ -45,7 +45,6 @@ Template.models_item_T.rendered = () => {
         Tracker.afterFlush(() => {
           setFormLabels();
           setFormValues();
-          $("#dropdown-model-manufacturer").dropdown();
         });
       });
     });

@@ -3,7 +3,7 @@ import { Template } from "meteor/templating";
 import { Tracker } from "meteor/tracker";
 import { $ } from "meteor/jquery";
 import { FlowRouter } from "meteor/ostrio:flow-router-extra";
-import { getAddingModeFromRoute, setEditMode, setFormLabels, setFormValues, setDirty } from "/imports/util/client/client-functions.js";
+import { getAddingModeFromRoute, setEditMode, setFormLabels, setFormValues, setDirty, jqEscapeAndHash } from "/imports/util/client/client-functions.js";
 import voivodeships from "/imports/util/dictionaries/voivodeships.js";
 import Offices from "/imports/api/offices/offices.js";
 import "/imports/ui/components/loading/loading_T.js";
@@ -24,7 +24,7 @@ Template.offices_item_T.onCreated(() => {
 
 
 Template.offices_item_T.rendered = () => {
-  $("#dropdown-office-voivodeship").dropdown({
+  $(jqEscapeAndHash("dropdown-adres.wojewodztwo")).dropdown({
     onChange() {
       if (Session.equals("isEditMode", true)) {
         setDirty(true);
@@ -36,14 +36,13 @@ Template.offices_item_T.rendered = () => {
 
   if (getAddingModeFromRoute()) {
     setFormLabels();
-    $("#dropdown-office-voivodeship").dropdown();
+    $(jqEscapeAndHash("dropdown-adres.wojewodztwo")).dropdown();
   } else {
     const officeId = FlowRouter.getParam("_id");
     template.subscribe("offices.private", officeId, () => {
       Tracker.afterFlush(() => {
         setFormLabels();
         setFormValues();
-        $("#dropdown-office-voivodeship").dropdown();
       });
     });
   }

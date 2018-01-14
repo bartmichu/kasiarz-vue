@@ -7,6 +7,7 @@ import Shops from "/imports/api/shops/shops.js";
 import Models from "/imports/api/models/models.js";
 import Offices from "/imports/api/offices/offices.js";
 import moment from "moment";
+import "/public/semantic/semantic.min.js";
 
 
 const setDirty = state => Session.set("isDirty", state);
@@ -111,6 +112,11 @@ const setFormValues = () => {
       } else {
         uiElement.val(fieldValue);
         valuesChanged = true;
+      }
+
+      // HACK: odświeżenie wartości dropdown (Semantic UI)
+      if (uiElement.attr("type") === "hidden") {
+        $(jqEscapeAndHash(`dropdown-${fieldName}`)).dropdown("set selected");
       }
     }
 
