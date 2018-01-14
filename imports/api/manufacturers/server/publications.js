@@ -4,7 +4,6 @@ import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 
 
 Meteor.publish("manufacturers.private", (manufacturerIdFilter) => {
-
   // symulacja opóźnienia połączenia
   // Meteor._sleepForMs(1000);
 
