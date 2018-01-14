@@ -6,3 +6,5 @@ import "/imports/api/shops/shops.js";
 import "/imports/api/shops/schema.js";
 import "/imports/api/offices/offices.js";
 import "/imports/api/offices/schema.js";
+import "/imports/api/employees/employees.js";
+import "/imports/api/employees/schema.js";

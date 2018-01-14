@@ -14,3 +14,7 @@ import "/imports/api/offices/offices.js";
 import "/imports/api/offices/schema.js";
 import "/imports/api/offices/server/publications.js";
 import "/imports/api/offices/server/methods.js";
+import "/imports/api/employees/employees.js";
+import "/imports/api/employees/schema.js";
+import "/imports/api/employees/server/publications.js";
+import "/imports/api/employees/server/methods.js";
