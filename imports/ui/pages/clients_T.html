@@ -1,0 +1,65 @@
+<template name="clients_T">
+
+  <!-- container start -->
+  <div class="ui grid container">
+    <div class="row">
+      <div class="sixteen wide column">
+
+        <!-- card start -->
+        <div class="ui fluid card b8k-top-margin">
+
+          <div class="content">
+            <div class="header">Klienci
+              <div class="right floated">
+                {{> list_menu_add_T}}
+              </div>
+            </div>
+          </div>
+
+          <div class="content">
+            {{#if Template.subscriptionsReady}}
+              {{#if isEmptyCollectionH}}
+                {{> list_placeholder_T}}
+              {{else}}
+                <table class="ui very basic selectable padded fixed table">
+                  <thead>
+                    <tr>
+                      <th id="header-nazwa" class="six wide">{{getLabelH "nazwa"}}</th>
+                      <th id="header-nip" class="six wide">{{getLabelH "nip"}}</th>
+                      <th id="header-adres.miejscowosc" class="six wide">{{getLabelH "adres.miejscowosc"}}</th>
+                      <th id="header-dataModyfikacji" class="four wide">{{getLabelH "dataModyfikacji"}}</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {{#each getSubscriptionDataH}}
+                      <tr id="{{_id}}">
+                        <td>{{nazwa}}</td>
+                        <td>{{nip}}</td>
+                        <td>{{adres.miejscowosc}}</td>
+                        <td>{{formatDateGH dataModyfikacji}}</td>
+                      </tr>
+                    {{/each}}
+                  </tbody>
+
+                  <tfoot>
+                    <tr>
+                      <th colspan="4" class="center aligned">Liczba pozycji: {{numberOfElementsH}}</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              {{/if}}
+            {{else}}
+              {{> loading_T}}
+            {{/if}}
+          </div>
+
+        </div>
+        <!-- card end -->
+
+      </div>
+    </div>
+  </div>
+  <!-- container end -->
+
+</template>
