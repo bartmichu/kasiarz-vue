@@ -17,7 +17,7 @@ Template.shops_item_T.onCreated(() => { });
 
 Template.shops_item_T.rendered = () => {
   const template = Template.instance();
-  template.subscribe("shops.private", () => {
+  template.subscribe("shops.private", "", () => {
     Tracker.afterFlush(() => {
       setFormLabels();
       setFormValues();
