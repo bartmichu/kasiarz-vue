@@ -15,6 +15,7 @@ import "/imports/ui/pages/shops_T.js";
 import "/imports/ui/pages/shops_item_T.js";
 import "/imports/ui/pages/employees_T.js";
 import "/imports/ui/pages/clients_T.js";
+import "/imports/ui/pages/clients_item_T.js";
 
 
 function setPreviousUrl() {
@@ -203,6 +204,24 @@ clients.route("/", {
   name: "clients",
   action() {
     this.render("body_T", "clients_T", {
+      app_menu_section: "application_menu_T",
+    });
+  },
+});
+
+clients.route("/id/:_id", {
+  name: "clients.client",
+  action() {
+    this.render("body_T", "clients_item_T", {
+      app_menu_section: "application_menu_T",
+    });
+  },
+});
+
+clients.route("/dodaj", {
+  name: "clients.add",
+  action() {
+    this.render("body_T", "clients_item_T", {
       app_menu_section: "application_menu_T",
     });
   },
