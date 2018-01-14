@@ -14,6 +14,7 @@ import "/imports/ui/pages/offices_item_T.js";
 import "/imports/ui/pages/shops_T.js";
 import "/imports/ui/pages/shops_item_T.js";
 import "/imports/ui/pages/employees_T.js";
+import "/imports/ui/pages/clients_T.js";
 
 
 function setPreviousUrl() {
@@ -187,6 +188,21 @@ employees.route("/", {
   name: "employees",
   action() {
     this.render("body_T", "employees_T", {
+      app_menu_section: "application_menu_T",
+    });
+  },
+});
+
+
+const clients = FlowRouter.group({
+  prefix: "/klienci",
+  name: "clients",
+});
+
+clients.route("/", {
+  name: "clients",
+  action() {
+    this.render("body_T", "clients_T", {
       app_menu_section: "application_menu_T",
     });
   },
