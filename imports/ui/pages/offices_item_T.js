@@ -24,25 +24,29 @@ Template.offices_item_T.onCreated(() => {
 
 
 Template.offices_item_T.rendered = () => {
-  $(jqEscapeAndHash("dropdown-adres.wojewodztwo")).dropdown({
-    onChange() {
-      if (Session.equals("isEditMode", true)) {
-        setDirty(true);
-      }
-    },
-  });
-
   const template = Template.instance();
-
   if (getAddingModeFromRoute()) {
     setFormLabels();
-    $(jqEscapeAndHash("dropdown-adres.wojewodztwo")).dropdown();
+    $(jqEscapeAndHash("dropdown-adres.wojewodztwo")).dropdown({
+      onChange() {
+        if (Session.equals("isEditMode", true)) {
+          setDirty(true);
+        }
+      },
+    });
   } else {
     const officeId = FlowRouter.getParam("_id");
     template.subscribe("offices.private", officeId, () => {
       Tracker.afterFlush(() => {
         setFormLabels();
         setFormValues();
+        $(jqEscapeAndHash("dropdown-adres.wojewodztwo")).dropdown({
+          onChange() {
+            if (Session.equals("isEditMode", true)) {
+              setDirty(true);
+            }
+          },
+        });
       });
     });
   }

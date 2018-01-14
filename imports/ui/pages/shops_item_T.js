@@ -16,20 +16,18 @@ Template.shops_item_T.onCreated(() => { });
 
 
 Template.shops_item_T.rendered = () => {
-  $(jqEscapeAndHash("#dropdown-adres.wojewodztwo")).dropdown({
-    onChange() {
-      if (Session.equals("isEditMode", true)) {
-        setDirty(true);
-      }
-    },
-  });
-
   const template = Template.instance();
-
   template.subscribe("shops.private", () => {
     Tracker.afterFlush(() => {
       setFormLabels();
       setFormValues();
+      $(jqEscapeAndHash("dropdown-adres.wojewodztwo")).dropdown({
+        onChange() {
+          if (Session.equals("isEditMode", true)) {
+            setDirty(true);
+          }
+        },
+      });
     });
   });
 };

@@ -21,21 +21,18 @@ Template.models_item_T.onCreated(() => {
 
 
 Template.models_item_T.rendered = () => {
-  $(jqEscapeAndHash("dropdown-producentId")).dropdown({
-    onChange() {
-      if (Session.equals("isEditMode", true)) {
-        setDirty(true);
-      }
-    },
-  });
-
   const template = Template.instance();
-
   if (getAddingModeFromRoute()) {
     template.subscribe("manufacturers.private", "", () => {
       Tracker.afterFlush(() => {
         setFormLabels();
-        $(jqEscapeAndHash("dropdown-producentId")).dropdown();
+        $(jqEscapeAndHash("dropdown-producentId")).dropdown({
+          onChange() {
+            if (Session.equals("isEditMode", true)) {
+              setDirty(true);
+            }
+          },
+        });
       });
     });
   } else {
@@ -45,6 +42,13 @@ Template.models_item_T.rendered = () => {
         Tracker.afterFlush(() => {
           setFormLabels();
           setFormValues();
+          $(jqEscapeAndHash("dropdown-producentId")).dropdown({
+            onChange() {
+              if (Session.equals("isEditMode", true)) {
+                setDirty(true);
+              }
+            },
+          });
         });
       });
     });
