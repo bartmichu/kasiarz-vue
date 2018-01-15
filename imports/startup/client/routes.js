@@ -14,6 +14,7 @@ import "/imports/ui/pages/offices_item_T.js";
 import "/imports/ui/pages/shops_T.js";
 import "/imports/ui/pages/shops_item_T.js";
 import "/imports/ui/pages/employees_T.js";
+import "/imports/ui/pages/employees_item_T.js";
 import "/imports/ui/pages/clients_T.js";
 import "/imports/ui/pages/clients_item_T.js";
 
@@ -189,6 +190,24 @@ employees.route("/", {
   name: "employees",
   action() {
     this.render("body_T", "employees_T", {
+      app_menu_section: "application_menu_T",
+    });
+  },
+});
+
+employees.route("/id/:_id", {
+  name: "employees.employee",
+  action() {
+    this.render("body_T", "employees_item_T", {
+      app_menu_section: "application_menu_T",
+    });
+  },
+});
+
+employees.route("/dodaj", {
+  name: "employees.add",
+  action() {
+    this.render("body_T", "employees_item_T", {
       app_menu_section: "application_menu_T",
     });
   },
