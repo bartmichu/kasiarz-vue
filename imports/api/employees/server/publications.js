@@ -14,7 +14,7 @@ Meteor.publish("employees.private", (employeeIdFilter, shopIdFilter) => {
     if (employeeIdFilter.length > 0) {
       data = Employees.find({ uzytkownikId: actualUserId, _id: employeeIdFilter });
     } else if (shopIdFilter.length > 0) {
-      data = Employees.find({ uzytkownikId: actualUserId, shopId: shopIdFilter });
+      data = Employees.find({ uzytkownikId: actualUserId, serwisId: shopIdFilter });
     } else {
       data = Employees.find({ uzytkownikId: actualUserId });
     }
