@@ -1,18 +1,20 @@
 import { Meteor } from "meteor/meteor";
 import { ValidatedMethod } from "meteor/mdg:validated-method";
+import { check } from "meteor/check";
 import Shops from "/imports/api/shops/shops.js";
 
 
 const updateShop = new ValidatedMethod({
   name: "shops.update",
-  validate({ formData }) {
+  validate({ documentId, formData }) {
     const actualUserId = Meteor.userId();
     if (actualUserId === null) {
       throw new Meteor.Error("Błąd wywołania metody");
     } else {
+      check(documentId, String);
       const validationContext = Shops.simpleSchema().newContext();
       if (validationContext.validate(formData) === true) {
-        const shop = Shops.findOne({});
+        const shop = Shops.findOne({ _id: documentId });
         if (!shop || (shop.uzytkownikId !== actualUserId)) {
           throw new Meteor.Error("Błąd wywołania metody");
         }
@@ -21,9 +23,7 @@ const updateShop = new ValidatedMethod({
       }
     }
   },
-  run({ formData }) {
-    // HACK: Na tą chwilę w bazie powinny być dane tylko jednego serwisu
-    const documentId = Shops.findOne({})._id;
+  run({ documentId, formData }) {
     return Shops.update({ _id: documentId }, {
       $set: {
         nazwa: formData.nazwa,
