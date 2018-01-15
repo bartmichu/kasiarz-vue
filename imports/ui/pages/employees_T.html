@@ -24,7 +24,7 @@
                 <table class="ui very basic selectable padded fixed table">
                   <thead>
                     <tr>
-                      <th id="header-nazwa" class="six wide">{{getLabelH "nazwa"}}</th>
+                      <th id="header-imieNazwisko" class="six wide">{{getLabelH "imieNazwisko"}}</th>
                       <th id="header-serwisId" class="six wide">{{getLabelH "serwisId"}}</th>
                       <th id="header-dataModyfikacji" class="four wide">{{getLabelH "dataModyfikacji"}}</th>
                     </tr>
@@ -33,7 +33,7 @@
                   <tbody>
                     {{#each getSubscriptionDataH}}
                       <tr id="{{_id}}">
-                        <td>{{nazwa}}</td>
+                        <td>{{imieNazwisko}}</td>
                         {{#with serwisId}}
                           <td>{{getShopNameH}}</td>
                         {{/with}}
