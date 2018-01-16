@@ -48,6 +48,15 @@
                   <label id="etykieta_pola-dodatkoweInformacje" for="dodatkoweInformacje"></label>
                   <textarea id="dodatkoweInformacje" rows="2" {{setDisabledAttributeGH}}></textarea>
                 </div>
+
+                <!-- HACK start -->
+                <div class="field">
+                  <input id="uprawnienia.numerUprawnien" type="hidden">
+                </div>
+                <div class="field">
+                  <input id="uprawnienia.modele" type="hidden">
+                </div>
+                <!-- HACK end -->
               </form>
             </div>
           {{else}}
@@ -58,6 +67,36 @@
         <!-- card end -->
 
         {{#unless isAddingModeGH}}
+
+          <!-- card start -->
+          <div class="ui fluid card b8k-top-margin">
+
+            <div class="content">
+              <div class="header">Uprawnienia serwisanta
+                <div class="right floated">
+                  {{#if Template.subscriptionsReady}}
+                    <button id="button-addLicense" class="ui secondary button">dodaj</button>
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+
+            {{#if Template.subscriptionsReady}}
+              {{#if hasLicensesH}}
+                <div class="content">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis numquam, id, nisi obcaecati sapiente commodi aliquid, consequatur
+                  non repudiandae modi laboriosam. Aliquid molestias ipsa minima qui esse eius consectetur tenetur.
+                </div>
+              {{else}}
+                {{> list_placeholder_T}}
+              {{/if}}
+            {{else}}
+              <div class="content">{{> loading_T}}</div>
+            {{/if}}
+
+          </div>
+          <!-- card end -->
+
           {{#if Template.subscriptionsReady}}
             <!-- card start -->
             <div class="ui fluid card b8k-top-margin">
