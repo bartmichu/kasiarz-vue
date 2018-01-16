@@ -43,7 +43,7 @@ Template.employees_item_T.rendered = () => {
         Tracker.afterFlush(() => {
           setFormLabels();
           setFormValues();
-          $(jqEscapeAndHash("dropdown-shopId")).dropdown({
+          $(jqEscapeAndHash("dropdown-serwisId")).dropdown({
             onChange() {
               if (Session.equals("isEditMode", true)) {
                 setDirty(true);
