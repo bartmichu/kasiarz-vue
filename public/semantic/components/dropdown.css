@@ -1518,3 +1518,6 @@ select.ui.dropdown {
 .ui.selection.active.dropdown .menu {
   border: 1px dashed #96C8DA;
 }
+.ui.multiple.dropdown.active {
+  background: #feef03;
+}

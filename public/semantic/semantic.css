@@ -31335,6 +31335,10 @@ select.ui.dropdown {
 .ui.selection.active.dropdown .menu {
   border: 1px dashed #96C8DA;
 }
+
+.ui.multiple.dropdown.active {
+  background: #feef03;
+}
 /*!
  * # Semantic UI 2.2.13 - Video
  * http://github.com/semantic-org/semantic-ui/
