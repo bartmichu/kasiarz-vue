@@ -20,6 +20,11 @@ export const insertEmployee = new ValidatedMethod({
       }
 
       employee.uzytkownikId = actualUserId;
+      // HACK
+      employee.uprawnienia = {
+        numerUprawnien: "",
+        modele: "",
+      };
 
       const validationContext = Employees.simpleSchema().newContext();
       if (validationContext.validate(employee) !== true) {
