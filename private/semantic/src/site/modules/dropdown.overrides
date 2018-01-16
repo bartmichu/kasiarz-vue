@@ -18,3 +18,7 @@
 .ui.selection.active.dropdown .menu {
   border: 1px dashed @selectionVisibleBorderColor;
 }
+
+.ui.multiple.dropdown.active {
+  background: #feef03;
+}
