@@ -86,6 +86,11 @@ const getCollectionFromRoute = () => {
 };
 
 
+const getSchemaFields = collection => Object.keys(collection.simpleSchema().getDefinition())
+  .filter(fieldName => !(fieldName.endsWith(".$")))
+  .map(fieldName => fieldName.replace(".$.", "."));
+
+
 const setFormLabels = () => {
   const schema = getCollectionFromRoute().simpleSchema();
   $("label").each((index, element) => {
@@ -102,7 +107,7 @@ const setFormValues = () => {
   const documentId = FlowRouter.getParam("_id");
   const data = (typeof documentId === "undefined") ? collection.findOne({}) : collection.findOne({ _id: documentId });
 
-  Object.keys(collection.simpleSchema().getDefinition()).forEach((fieldName) => {
+  getSchemaFields(collection).forEach((fieldName) => {
     let valuesChanged = false;
     let fieldValue = "";
 
