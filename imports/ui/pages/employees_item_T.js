@@ -78,6 +78,7 @@ Template.employees_item_T.events({
     event.target.value = event.target.value.trim();
   },
   "click #button-addLicense": () => {
+    FlowRouter.setQueryParams({ newLicense: "1" });
     $("#modal-addLicense").modal("show");
   },
 });
