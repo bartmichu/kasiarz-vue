@@ -102,6 +102,7 @@ const setFormLabels = () => {
 };
 
 
+// TODO: brzydactwo
 const setFormValues = () => {
   const collection = getCollectionFromRoute();
   const documentId = FlowRouter.getParam("_id");
