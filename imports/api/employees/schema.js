@@ -23,19 +23,22 @@ const employeeSchema = new SimpleSchema({
     optional: false,
   },
   uprawnienia: {
+    type: Array,
+    minCount: 0,
+    maxCount: 100,
+  },
+  "uprawnienia.$": {
     type: Object,
   },
-  "uprawnienia.numerUprawnien": {
+  "uprawnienia.$.numerUprawnien": {
     type: String,
     label: "Numer uprawnień",
     max: 100,
-    optional: true,
   },
-  "uprawnienia.modele": {
+  "uprawnienia.$.modele": {
     type: String,
     label: "Modele urządzeń",
     max: 100,
-    optional: true,
   },
   dodatkoweInformacje: {
     type: String,
