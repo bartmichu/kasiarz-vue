@@ -1,7 +1,7 @@
 <template name="employees_license_modal_T">
 
   <!-- modal start -->
-  <div id="modal-addLicense" class="ui modal">
+  <div id="modal-addLicense" class="ui large modal">
 
     <div class="header">Dodaj uprawnienia</div>
 
@@ -22,7 +22,7 @@
                 <div class="default text">wybierz modele</div>
                 <div class="menu">
                   {{#each modelsH}}
-                    <div class="item" data-value="{{_id}}">{{nazwa}}</div>
+                    <div class="item" data-value="{{_id}}">{{nazwa}} ({{getManufacturerNameH producentId}})</div>
                   {{/each}}
                 </div>
               </div>
