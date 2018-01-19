@@ -49,7 +49,7 @@ const formatDate = date => moment(date).format("DD-MM-YYYY, HH:mm");
  * @param {String} id identyfikator
  * @returns odpowiednio zmodyfikowany ciąg tekstowy
  */
-const jqEscapeAndHash = id => `#${id.replace(/(:|\.|\[|\]|,|=|@)/g, "\\$1")}`;
+const jqEscapeAndHash = id => `#${id.replace(/(:|\.|\[|\]|\$|,|=|@)/g, "\\$1")}`;
 
 
 const getCollectionFromRoute = () => {
