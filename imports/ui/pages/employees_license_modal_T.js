@@ -26,8 +26,7 @@ Template.employees_license_modal_T.rendered = () => {
         Tracker.afterFlush(() => {
           // setFormLabels();
           // setFormValues();
-
-          $(jqEscapeAndHash("dropdown-uprawnienia.modele")).dropdown({
+          $(jqEscapeAndHash("dropdown-uprawnienia.$.modele")).dropdown({
             onChange() {
               setDirty(true);
             },
@@ -38,7 +37,7 @@ Template.employees_license_modal_T.rendered = () => {
             duration: 100,
             autofocus: true,
             onShow() {
-              $(jqEscapeAndHash("dropdown-uprawnienia.modele")).dropdown("clear");
+              $(jqEscapeAndHash("dropdown-uprawnienia.$.modele")).dropdown("clear");
             },
             onApprove() {
               Meteor.call("employee.addLicense", FlowRouter.getParam("_id"), (error) => {
