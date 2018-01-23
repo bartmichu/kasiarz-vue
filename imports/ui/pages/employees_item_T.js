@@ -5,8 +5,10 @@ import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { $ } from "meteor/jquery";
 import { getAddingModeFromRoute, setEditMode, setFormLabels, setFormValues, setDirty, jqEscapeAndHash } from "/imports/util/client/client-functions.js";
 import Shops from "/imports/api/shops/shops.js";
+import Employees from "/imports/api/employees/employees.js";
 import "/imports/ui/components/loading/loading_T.js";
 import "/imports/ui/components/list_placeholder/list_placeholder_T.js";
+import "/imports/ui/components/related_placeholder/related_placeholder_T.js";
 import "/imports/ui/components/item_menu/item_menu_cancel_T.js";
 import "/imports/ui/components/item_menu/item_menu_close_T.js";
 import "/imports/ui/components/item_menu/item_menu_delete_T.js";
@@ -61,6 +63,12 @@ Template.employees_item_T.rendered = () => {
 Template.employees_item_T.helpers({
   shopsH() {
     return Shops.find({}, { sort: { imieNazwisko: 1 } });
+  },
+  licensesH() {
+    return Employees.findOne().uprawnienia;
+  },
+  hasLicensesH() {
+    return Employees.findOne().uprawnienia.length > 0;
   },
 });
 

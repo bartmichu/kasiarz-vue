@@ -48,15 +48,6 @@
                   <label id="etykieta_pola-dodatkoweInformacje" for="dodatkoweInformacje"></label>
                   <textarea id="dodatkoweInformacje" rows="2" {{setDisabledAttributeGH}}></textarea>
                 </div>
-
-                <!-- HACK start -->
-                <div class="field">
-                  <input id="uprawnienia.$.numerUprawnien">
-                </div>
-                <div class="field">
-                  <input id="uprawnienia.$.modele" type="hidden">
-                </div>
-                <!-- HACK end -->
               </form>
             </div>
           {{else}}
@@ -66,26 +57,38 @@
         </div>
         <!-- card end -->
 
-        {{#unless isAddingModeGH}}
+        <!-- card start -->
+        <div class="ui fluid card b8k-top-margin">
 
-          <!-- card start -->
-          <div class="ui fluid card b8k-top-margin">
-
-            <div class="content">
-              <div class="header">Uprawnienia serwisanta
+          <div class="content">
+            <div class="header">Uprawnienia serwisanta
+              {{#unless isAddingModeGH}}
                 <div class="right floated">
                   {{#if Template.subscriptionsReady}}
                     <button id="button-addLicense" class="ui secondary button">dodaj</button>
                   {{/if}}
                 </div>
-              </div>
+              {{/unless}}
             </div>
-
+          </div>
+          {{#if isAddingModeGH}}
+            <div class="content">{{> related_placeholder_T}}</div>
+          {{else}}
             {{#if Template.subscriptionsReady}}
               {{#if hasLicensesH}}
                 <div class="content">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis numquam, id, nisi obcaecati sapiente commodi aliquid, consequatur
-                  non repudiandae modi laboriosam. Aliquid molestias ipsa minima qui esse eius consectetur tenetur.
+                  <form class="ui form">
+                    <div class="grouped fields">
+                      {{#each licensesH}}
+                        <div class="field">
+                          <div class="ui read-only checkbox">
+                            <input type="checkbox">
+                            <label id="{{numerUprawnien}}">{{numerUprawnien}}</label>
+                          </div>
+                        </div>
+                      {{/each}}
+                    </div>
+                  </form>
                 </div>
               {{else}}
                 {{> list_placeholder_T}}
@@ -93,10 +96,12 @@
             {{else}}
               <div class="content">{{> loading_T}}</div>
             {{/if}}
+          {{/if}}
 
-          </div>
-          <!-- card end -->
+        </div>
+        <!-- card end -->
 
+        {{#unless isAddingModeGH}}
           {{#if Template.subscriptionsReady}}
             <!-- card start -->
             <div class="ui fluid card b8k-top-margin">
