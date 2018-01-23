@@ -146,7 +146,7 @@ const setFormValues = () => {
 const getFormValues = () => {
   const data = {};
 
-  Object.keys(getCollectionFromRoute().simpleSchema().getDefinition()).forEach((fieldName) => {
+  getSchemaFields(getCollectionFromRoute()).forEach((fieldName) => {
     const uiElement = $(jqEscapeAndHash(fieldName));
     if (uiElement.is("input,textarea,select") && (uiElement.attr("disabled") !== "disabled")) {
       if (fieldName.indexOf(".") !== -1) {
