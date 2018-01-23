@@ -61,20 +61,25 @@
         </div>
         <!-- card end -->
 
-        {{#unless isAddingModeGH}}
-          <!-- card start -->
-          <div class="ui fluid card b8k-top-margin">
 
-            <div class="content">
-              <div class="header">Powiązane modele urządzeń
+        <!-- card start -->
+        <div class="ui fluid card b8k-top-margin">
+
+          <div class="content">
+            <div class="header">Powiązane modele urządzeń
+              {{#unless isAddingModeGH}}
                 <div class="right floated">
                   {{#if Template.subscriptionsReady}}
                     {{> list_menu_add_T}}
                   {{/if}}
                 </div>
-              </div>
+              {{/unless}}
             </div>
+          </div>
 
+          {{#if isAddingModeGH}}
+            {{> related_placeholder_T}}
+          {{else}}
             {{#if Template.subscriptionsReady}}
               {{#with getDataH}}
                 {{#if hasModelsH}}
@@ -99,10 +104,12 @@
             {{else}}
               <div class="content">{{> loading_T}}</div>
             {{/if}}
+          {{/if}}
 
-          </div>
-          <!-- card end -->
+        </div>
+        <!-- card end -->
 
+        {{#unless isAddingModeGH}}
           {{#if Template.subscriptionsReady}}
             <!-- card start -->
             <div class="ui fluid card b8k-top-margin">
@@ -110,7 +117,6 @@
             </div>
             <!-- card end -->
           {{/if}}
-
         {{/unless}}
 
       </div>
