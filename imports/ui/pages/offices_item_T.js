@@ -7,6 +7,7 @@ import { getAddingModeFromRoute, setEditMode, setFormLabels, setFormValues, setD
 import voivodeships from "/imports/util/dictionaries/voivodeships.js";
 import Offices from "/imports/api/offices/offices.js";
 import "/imports/ui/components/loading/loading_T.js";
+import "/imports/ui/components/item_footer/item_footer_T.js";
 import "/imports/ui/components/item_menu/item_menu_cancel_T.js";
 import "/imports/ui/components/item_menu/item_menu_close_T.js";
 import "/imports/ui/components/item_menu/item_menu_delete_T.js";

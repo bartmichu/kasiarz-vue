@@ -126,25 +126,7 @@
           {{#if Template.subscriptionsReady}}
             <!-- card start -->
             <div class="ui fluid card b8k-top-margin">
-
-              <div class="content">
-                <form class="ui form">
-                  <div class="three fields">
-                    <div class="field" title="pole uzupełniane automatycznie">
-                      <label id="etykieta_pola-dataUtworzenia" for="dataUtworzenia"></label>
-                      <input id="dataUtworzenia" type="text" disabled>
-                    </div>
-
-                    <div class="field" title="pole uzupełniane automatycznie">
-                      <label id="etykieta_pola-dataModyfikacji" for="dataModyfikacji"></label>
-                      <input id="dataModyfikacji" type="text" disabled>
-                    </div>
-
-                    <div class="field"></div>
-                  </div>
-                </form>
-              </div>
-
+              {{> item_footer_T}}
             </div>
             <!-- card end -->
           {{/if}}
