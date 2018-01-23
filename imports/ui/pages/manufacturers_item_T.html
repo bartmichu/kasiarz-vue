@@ -77,13 +77,13 @@
             </div>
           </div>
 
-          {{#if isAddingModeGH}}
-            {{> related_placeholder_T}}
-          {{else}}
-            {{#if Template.subscriptionsReady}}
-              {{#with getDataH}}
-                {{#if hasModelsH}}
-                  <div class="content">
+          <div class="content">
+            {{#if isAddingModeGH}}
+              {{> related_placeholder_T}}
+            {{else}}
+              {{#if Template.subscriptionsReady}}
+                {{#with getDataH}}
+                  {{#if hasModelsH}}
                     <form class="ui form">
                       <div class="grouped fields">
                         {{#each modelsH}}
@@ -96,15 +96,15 @@
                         {{/each}}
                       </div>
                     </form>
-                  </div>
-                {{else}}
-                  {{> list_placeholder_T}}
-                {{/if}}
-              {{/with}}
-            {{else}}
-              <div class="content">{{> loading_T}}</div>
+                  {{else}}
+                    {{>list_placeholder_T}}
+                  {{/if}}
+                {{/with}}
+              {{else}}
+                {{> loading_T}}
+              {{/if}}
             {{/if}}
-          {{/if}}
+          </div>
 
         </div>
         <!-- card end -->

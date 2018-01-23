@@ -152,10 +152,10 @@
               </div>
             </div>
 
-            {{#if Template.subscriptionsReady}}
-              {{#with getDataH}}
-                {{#if hasEmployeesH}}
-                  <div class="content">
+            <div class="content">
+              {{#if Template.subscriptionsReady}}
+                {{#with getDataH}}
+                  {{#if hasEmployeesH}}
                     <form class="ui form">
                       <div class="grouped fields">
                         {{#each employeesH}}
@@ -168,14 +168,14 @@
                         {{/each}}
                       </div>
                     </form>
-                  </div>
-                {{else}}
-                  {{> list_placeholder_T}}
-                {{/if}}
-              {{/with}}
-            {{else}}
-              <div class="content">{{> loading_T}}</div>
-            {{/if}}
+                  {{else}}
+                    {{> list_placeholder_T}}
+                  {{/if}}
+                {{/with}}
+              {{else}}
+                {{> loading_T}}
+              {{/if}}
+            </div>
 
           </div>
           <!-- card end -->

@@ -71,12 +71,13 @@
               {{/unless}}
             </div>
           </div>
-          {{#if isAddingModeGH}}
-            <div class="content">{{> related_placeholder_T}}</div>
-          {{else}}
-            {{#if Template.subscriptionsReady}}
-              {{#if hasLicensesH}}
-                <div class="content">
+
+          <div class="content">
+            {{#if isAddingModeGH}}
+              {{> related_placeholder_T}}
+            {{else}}
+              {{#if Template.subscriptionsReady}}
+                {{#if hasLicensesH}}
                   <form class="ui form">
                     <div class="grouped fields">
                       {{#each licensesH}}
@@ -89,14 +90,14 @@
                       {{/each}}
                     </div>
                   </form>
-                </div>
+                {{else}}
+                  {{> list_placeholder_T}}
+                {{/if}}
               {{else}}
-                {{> list_placeholder_T}}
+                {{> loading_T}}
               {{/if}}
-            {{else}}
-              <div class="content">{{> loading_T}}</div>
             {{/if}}
-          {{/if}}
+          </div>
 
         </div>
         <!-- card end -->
