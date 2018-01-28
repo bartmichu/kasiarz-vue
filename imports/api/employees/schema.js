@@ -24,8 +24,8 @@ const employeeSchema = new SimpleSchema({
   },
   uprawnienia: {
     type: Array,
-    minCount: 0,
     maxCount: 100,
+    optional: true,
   },
   "uprawnienia.$": {
     type: Object,
