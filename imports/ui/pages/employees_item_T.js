@@ -80,7 +80,8 @@ Template.employees_item_T.events({
     }
   },
   "blur input, blur textarea": (event) => {
-    event.target.value = event.target.value.trim();
+    const eventTarget = event.target;
+    eventTarget.value = eventTarget.value.trim();
   },
   "click #button-addLicense": () => {
     FlowRouter.setQueryParams({ newLicense: "1" });
