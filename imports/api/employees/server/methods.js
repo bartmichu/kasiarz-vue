@@ -29,6 +29,7 @@ export const insertEmployee = new ValidatedMethod({
   },
   run(employee) {
     employee.uzytkownikId = Meteor.userId();
+    employee.uprawnienia = [];
     employee.dataUtworzenia = new Date();
     employee.dataModyfikacji = employee.dataUtworzenia;
     return Employees.insert(employee);
