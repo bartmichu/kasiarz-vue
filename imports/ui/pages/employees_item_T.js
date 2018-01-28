@@ -63,8 +63,9 @@ Template.employees_item_T.helpers({
     return Employees.findOne().uprawnienia;
   },
   hasLicensesH() {
-    const licensesField = Employees.findOne().uprawnienia;
-    return licensesField && licensesField.length > 0;
+    return Employees.findOne()
+      && Employees.findOne().uprawnienia
+      && Employees.findOne().uprawnienia.length > 0;
   },
 });
 
