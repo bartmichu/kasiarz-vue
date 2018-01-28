@@ -21,44 +21,38 @@ import "./employees_item_T.html";
 
 
 Template.employees_item_T.onCreated(() => {
+  function afterFlush() {
+    setFormLabels();
+    if (getAddingModeFromRoute) {
+      setFormValues();
+    }
+    $(jqEscapeAndHash("dropdown-serwisId")).dropdown({
+      onChange() {
+        if (Session.equals("isEditMode", true)) {
+          setDirty(true);
+        }
+      },
+    });
+  }
+  const template = Template.instance();
   setEditMode(getAddingModeFromRoute());
+  template.subscribe("shops.private", "", () => {
+    if (getAddingModeFromRoute) {
+      Tracker.afterFlush(() => {
+        afterFlush();
+      });
+    } else {
+      template.subscribe("employees.private", FlowRouter.getParam("_id"), "", () => {
+        Tracker.afterFlush(() => {
+          afterFlush();
+        });
+      });
+    }
+  });
 });
 
 
-Template.employees_item_T.rendered = () => {
-  const template = Template.instance();
-  if (getAddingModeFromRoute()) {
-    template.subscribe("shops.private", "", () => {
-      Tracker.afterFlush(() => {
-        setFormLabels();
-        $(jqEscapeAndHash("dropdown-serwisId")).dropdown({
-          onChange() {
-            if (Session.equals("isEditMode", true)) {
-              setDirty(true);
-            }
-          },
-        });
-      });
-    });
-  } else {
-    const employeeId = FlowRouter.getParam("_id");
-    template.subscribe("employees.private", employeeId, "", () => {
-      template.subscribe("shops.private", "", () => {
-        Tracker.afterFlush(() => {
-          setFormLabels();
-          setFormValues();
-          $(jqEscapeAndHash("dropdown-serwisId")).dropdown({
-            onChange() {
-              if (Session.equals("isEditMode", true)) {
-                setDirty(true);
-              }
-            },
-          });
-        });
-      });
-    });
-  }
-};
+Template.employees_item_T.rendered = () => { };
 
 
 Template.employees_item_T.helpers({
