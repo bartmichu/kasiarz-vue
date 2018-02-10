@@ -4,8 +4,8 @@ import { Tracker } from "meteor/tracker";
 import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { $ } from "meteor/jquery";
 import { getAddingModeFromRoute, setEditMode, setFormLabels, setFormValues, setDirty, jqEscapeAndHash } from "/imports/util/client/client-functions.js";
-import Shops from "/imports/api/shops/shops.js";
 import Employees from "/imports/api/employees/employees.js";
+import Shops from "/imports/api/shops/shops.js";
 import "/imports/ui/components/loading/loading_T.js";
 import "/imports/ui/components/list_placeholder/list_placeholder_T.js";
 import "/imports/ui/components/item_footer/item_footer_T.js";
@@ -21,33 +21,29 @@ import "./employees_item_T.html";
 
 
 Template.employees_item_T.onCreated(() => {
-  function afterFlush() {
-    setFormLabels();
-    if (getAddingModeFromRoute) {
-      setFormValues();
-    }
-    $(jqEscapeAndHash("dropdown-serwisId")).dropdown({
-      onChange() {
-        if (Session.equals("isEditMode", true)) {
-          setDirty(true);
-        }
-      },
-    });
-  }
   const template = Template.instance();
-  setEditMode(getAddingModeFromRoute());
-  template.subscribe("shops.private", "", () => {
-    if (getAddingModeFromRoute) {
+  const isAddingMode = getAddingModeFromRoute();
+
+  setEditMode(isAddingMode);
+
+  template.subscribe("employees.private", isAddingMode ? "" : FlowRouter.getParam("_id"), "", () => {
+    template.subscribe("shops.private", "", () => {
       Tracker.afterFlush(() => {
-        afterFlush();
-      });
-    } else {
-      template.subscribe("employees.private", FlowRouter.getParam("_id"), "", () => {
-        Tracker.afterFlush(() => {
-          afterFlush();
+        setFormLabels();
+
+        if (!isAddingMode) {
+          setFormValues();
+        }
+
+        $(jqEscapeAndHash("dropdown-serwisId")).dropdown({
+          onChange() {
+            if (Session.equals("isEditMode", true)) {
+              setDirty(true);
+            }
+          },
         });
       });
-    }
+    });
   });
 });
 
