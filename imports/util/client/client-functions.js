@@ -105,8 +105,7 @@ const setFormLabels = () => {
 // TODO: brzydactwo
 const setFormValues = () => {
   const collection = getCollectionFromRoute();
-  const documentId = FlowRouter.getParam("_id");
-  const data = (typeof documentId === "undefined") ? collection.findOne({}) : collection.findOne({ _id: documentId });
+  const data = collection.findOne({ _id: FlowRouter.getParam("_id") });
 
   getSchemaFields(collection).forEach((fieldName) => {
     let valuesChanged = false;
