@@ -23,25 +23,26 @@ import "./employees_item_T.html";
 Template.employees_item_T.onCreated(() => {
   const template = Template.instance();
   const isAddingMode = getAddingModeFromRoute();
+  const afterFlushCallback = function afterFlushCallback() {
+    setFormLabels();
+    if (!isAddingMode) {
+      setFormValues();
+    }
+    $(jqEscapeAndHash("dropdown-serwisId")).dropdown({
+      onChange() {
+        if (Session.equals("isEditMode", true)) {
+          setDirty(true);
+        }
+      },
+    });
+  };
 
   setEditMode(isAddingMode);
 
   template.subscribe("employees.private", isAddingMode ? "" : FlowRouter.getParam("_id"), "", () => {
     template.subscribe("shops.private", "", () => {
       Tracker.afterFlush(() => {
-        setFormLabels();
-
-        if (!isAddingMode) {
-          setFormValues();
-        }
-
-        $(jqEscapeAndHash("dropdown-serwisId")).dropdown({
-          onChange() {
-            if (Session.equals("isEditMode", true)) {
-              setDirty(true);
-            }
-          },
-        });
+        afterFlushCallback();
       });
     });
   });
