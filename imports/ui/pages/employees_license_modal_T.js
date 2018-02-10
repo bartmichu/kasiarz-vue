@@ -84,6 +84,7 @@ Template.employees_license_modal_T.events({
     }
   },
   "blur input, blur textarea": (event) => {
-    event.target.value = event.target.value.trim();
+    const eventTarget = event.target;
+    eventTarget.value = eventTarget.value.trim();
   },
 });

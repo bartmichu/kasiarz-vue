@@ -74,6 +74,7 @@ Template.clients_item_T.events({
     }
   },
   "blur input, blur textarea": (event) => {
-    event.target.value = event.target.value.trim();
+    const eventTarget = event.target;
+    eventTarget.value = eventTarget.value.trim();
   },
 });
