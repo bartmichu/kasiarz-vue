@@ -3,6 +3,7 @@ import { ValidatedMethod } from "meteor/mdg:validated-method";
 import { check } from "meteor/check";
 import Shops from "/imports/api/shops/shops.js";
 import Employees from "/imports/api/employees/employees.js";
+import licenseSchema from "/imports/api/employees/schema.js";
 
 
 export const insertEmployee = new ValidatedMethod({
@@ -82,6 +83,38 @@ export const updateEmployee = new ValidatedMethod({
         imieNazwisko: formData.imieNazwisko,
         serwisId: formData.serwisId,
         dodatkoweInformacje: formData.dodatkoweInformacje,
+        dataModyfikacji: new Date(),
+      },
+    });
+  },
+});
+
+
+export const addLicense = new ValidatedMethod({
+  name: "employees.addLicense",
+  validate({ documentId, formData }) {
+    const actualUserId = Meteor.userId();
+    if (actualUserId === null) {
+      throw new Meteor.Error("Błąd wywołania metody");
+    } else {
+      check(documentId, String);
+      const validationContext = licenseSchema.newContext();
+      if (validationContext.validate(formData) === true) {
+        const employee = Employees.findOne({ _id: documentId });
+        if (!employee || (employee.uzytkownikId !== actualUserId)) {
+          throw new Meteor.Error("Błąd wywołania metody");
+        }
+      } else {
+        throw new Meteor.Error("Błąd wywołania metody");
+      }
+    }
+  },
+  run({ documentId, formData }) {
+    return Employees.update({ _id: documentId }, {
+      $push: {
+        uprawnienia: formData,
+      },
+      $set: {
         dataModyfikacji: new Date(),
       },
     });
