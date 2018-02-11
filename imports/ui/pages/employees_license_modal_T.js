@@ -35,17 +35,24 @@ Template.employees_license_modal_T.onCreated(() => {
         }
       },
       onApprove() {
-        Meteor.call("employee.addLicense", FlowRouter.getParam("_id"), (error) => {
-          if (error) {
-            console.log("error");
-          } else {
-            // routeBack();
-            console.log("success");
-          }
-        });
+        if (FlowRouter.getQueryParam("newLicense") === "1") {
+          // TODO: zautomatyzować
+          const formData = {
+            numerUprawnien: $(jqEscapeAndHash("uprawnienia.$.numerUprawnien")).val(),
+            modele: $(jqEscapeAndHash("dropdown-uprawnienia.$.modele")).dropdown("get value").split(","),
+            dodatkoweInformacje: $(jqEscapeAndHash("uprawnienia.$.dodatkoweInformacje")).val(),
+          };
+          Meteor.call("employees.addLicense", { documentId: FlowRouter.getParam("_id"), formData }, (error) => {
+            if (error) {
+              console.log(error);
+              // TODO: wyświetlić odpowiedni modal
+            }
+          });
+        }
         $(jqEscapeAndHash("uprawnienia.$.numerUprawnien")).val("");
         $(jqEscapeAndHash("dropdown-uprawnienia.$.modele")).dropdown("clear");
         FlowRouter.setQueryParams({ newLicense: null });
+        // TODO: odświeżenie daty modyfikacji
       },
       onDeny() {
         if (FlowRouter.getQueryParam("newLicense") === "1") {
