@@ -2,6 +2,32 @@ import SimpleSchema from "simpl-schema";
 import Employees from "/imports/api/employees/employees.js";
 
 
+const licenseSchema = new SimpleSchema({
+  numerUprawnien: {
+    type: String,
+    label: "Numer uprawnień",
+    optional: false,
+    min: 1,
+    max: 100,
+  },
+  modele: {
+    type: Array,
+    label: "Modele urządzeń",
+    maxCount: 100,
+    optional: false,
+  },
+  "modele.$": {
+    type: String,
+    regEx: SimpleSchema.RegEx.Id,
+  },
+  dodatkoweInformacje: {
+    type: String,
+    label: "Dodatkowe informacje",
+    max: 300,
+    optional: true,
+  },
+});
+
 const employeeSchema = new SimpleSchema({
   uzytkownikId: {
     type: String,
@@ -28,17 +54,7 @@ const employeeSchema = new SimpleSchema({
     optional: true,
   },
   "uprawnienia.$": {
-    type: Object,
-  },
-  "uprawnienia.$.numerUprawnien": {
-    type: String,
-    label: "Numer uprawnień",
-    max: 100,
-  },
-  "uprawnienia.$.modele": {
-    type: String,
-    label: "Modele urządzeń",
-    max: 100,
+    type: licenseSchema,
   },
   dodatkoweInformacje: {
     type: String,
@@ -61,3 +77,5 @@ const employeeSchema = new SimpleSchema({
 
 
 Employees.attachSchema(employeeSchema);
+
+export default licenseSchema;
