@@ -2,7 +2,6 @@ import { Session } from "meteor/session";
 import { Meteor } from "meteor/meteor";
 import { Template } from "meteor/templating";
 import { Tracker } from "meteor/tracker";
-import { ReactiveVar } from "meteor/reactive-var";
 import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { $ } from "meteor/jquery";
 import { setFormLabels, setFormValues, setDirty, jqEscapeAndHash } from "/imports/util/client/client-functions.js";
@@ -14,54 +13,62 @@ import "./employees_license_modal_T.html";
 
 
 Template.employees_license_modal_T.onCreated(() => {
-  Template.instance().isAddingMode = new ReactiveVar(FlowRouter.getQueryParam("newLicense") === "1");
+  const template = Template.instance();
+  const afterFlushCallback = function afterFlushCallback() {
+    setFormLabels();
+
+    // form values are set in modal's onShow callback
+
+    $(jqEscapeAndHash("dropdown-uprawnienia.$.modele")).dropdown({
+      onChange() {
+        setDirty(true);
+      },
+    });
+
+    $("#modal-addLicense").modal({
+      closable: false,
+      duration: 100,
+      autofocus: true,
+      onShow() {
+        if (FlowRouter.getQueryParam("newLicense") === "1") {
+          setFormValues();
+        }
+      },
+      onApprove() {
+        Meteor.call("employee.addLicense", FlowRouter.getParam("_id"), (error) => {
+          if (error) {
+            console.log("error");
+          } else {
+            // routeBack();
+            console.log("success");
+          }
+        });
+        $(jqEscapeAndHash("uprawnienia.$.numerUprawnien")).val("");
+        $(jqEscapeAndHash("dropdown-uprawnienia.$.modele")).dropdown("clear");
+        FlowRouter.setQueryParams({ newLicense: null });
+      },
+      onDeny() {
+        if (FlowRouter.getQueryParam("newLicense") === "1") {
+          setDirty(false);
+        }
+        $(jqEscapeAndHash("uprawnienia.$.numerUprawnien")).val("");
+        $(jqEscapeAndHash("dropdown-uprawnienia.$.modele")).dropdown("clear");
+        FlowRouter.setQueryParams({ newLicense: null });
+      },
+    });
+  };
+
+  template.subscribe("manufacturers.private", "", () => {
+    template.subscribe("models.private", "", "", () => {
+      Tracker.afterFlush(() => {
+        afterFlushCallback();
+      });
+    });
+  });
 });
 
 
-Template.employees_license_modal_T.rendered = () => {
-  const template = Template.instance();
-  template.subscribe("manufacturers.private", "", () => {
-    template.subscribe("models.private", "", "", () => {
-      if (template.isAddingMode) {
-        Tracker.afterFlush(() => {
-          // setFormLabels();
-          // setFormValues();
-          $(jqEscapeAndHash("dropdown-uprawnienia.$.modele")).dropdown({
-            onChange() {
-              setDirty(true);
-            },
-          });
-
-          $("#modal-addLicense").modal({
-            closable: false,
-            duration: 100,
-            autofocus: true,
-            onShow() {
-              $(jqEscapeAndHash("dropdown-uprawnienia.$.modele")).dropdown("clear");
-            },
-            onApprove() {
-              Meteor.call("employee.addLicense", FlowRouter.getParam("_id"), (error) => {
-                if (error) {
-                  console.log("error");
-                } else {
-                  // routeBack();
-                  console.log("success");
-                }
-              });
-              FlowRouter.setQueryParams({ newLicense: null });
-            },
-            onDeny() {
-              if (template.isAddingMode) {
-                setDirty(false);
-              }
-              FlowRouter.setQueryParams({ newLicense: null });
-            },
-          });
-        });
-      }
-    });
-  });
-};
+Template.employees_license_modal_T.rendered = () => { };
 
 
 Template.employees_license_modal_T.helpers({
