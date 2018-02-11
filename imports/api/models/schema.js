@@ -5,6 +5,7 @@ import Models from "/imports/api/models/models.js";
 const modelSchema = new SimpleSchema({
   uzytkownikId: {
     type: String,
+    regEx: SimpleSchema.RegEx.Id,
     label: "ID użytkownika",
     min: 1,
     optional: false,
@@ -19,6 +20,7 @@ const modelSchema = new SimpleSchema({
   },
   producentId: {
     type: String,
+    regEx: SimpleSchema.RegEx.Id,
     label: "Producent",
     optional: false,
   },

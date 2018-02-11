@@ -31,6 +31,7 @@ const licenseSchema = new SimpleSchema({
 const employeeSchema = new SimpleSchema({
   uzytkownikId: {
     type: String,
+    regEx: SimpleSchema.RegEx.Id,
     label: "ID użytkownika",
     min: 1,
     optional: false,
@@ -45,6 +46,7 @@ const employeeSchema = new SimpleSchema({
   },
   serwisId: {
     type: String,
+    regEx: SimpleSchema.RegEx.Id,
     label: "Serwis",
     optional: false,
   },

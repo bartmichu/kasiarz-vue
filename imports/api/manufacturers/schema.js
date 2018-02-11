@@ -5,6 +5,7 @@ import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 const manufacturerSchema = new SimpleSchema({
   uzytkownikId: {
     type: String,
+    regEx: SimpleSchema.RegEx.Id,
     label: "ID użytkownika",
     min: 1,
     optional: false,

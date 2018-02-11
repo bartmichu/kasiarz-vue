@@ -6,6 +6,7 @@ import voivodeships from "/imports/util/dictionaries/voivodeships.js";
 const clientSchema = new SimpleSchema({
   uzytkownikId: {
     type: String,
+    regEx: SimpleSchema.RegEx.Id,
     label: "ID użytkownika",
     min: 1,
     optional: false,
@@ -108,6 +109,7 @@ const clientSchema = new SimpleSchema({
   },
   email: {
     type: String,
+    regEx: SimpleSchema.RegEx.Email,
     label: "E-mail",
     max: 100,
     optional: true,
