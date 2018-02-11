@@ -20,14 +20,13 @@ import "./offices_item_T.html";
 
 
 Template.offices_item_T.onCreated(() => {
-  setEditMode(getAddingModeFromRoute());
-});
-
-
-Template.offices_item_T.rendered = () => {
   const template = Template.instance();
-  if (getAddingModeFromRoute()) {
+  const isAddingMode = getAddingModeFromRoute();
+  const afterFlushCallback = function afterFlushCallback() {
     setFormLabels();
+    if (!isAddingMode) {
+      setFormValues();
+    }
     $(jqEscapeAndHash("dropdown-adres.wojewodztwo")).dropdown({
       onChange() {
         if (Session.equals("isEditMode", true)) {
@@ -35,23 +34,25 @@ Template.offices_item_T.rendered = () => {
         }
       },
     });
+  };
+
+  setEditMode(isAddingMode);
+
+  if (isAddingMode) {
+    Tracker.afterFlush(() => {
+      afterFlushCallback();
+    });
   } else {
-    const officeId = FlowRouter.getParam("_id");
-    template.subscribe("offices.private", officeId, () => {
+    template.subscribe("offices.private", FlowRouter.getParam("_id"), () => {
       Tracker.afterFlush(() => {
-        setFormLabels();
-        setFormValues();
-        $(jqEscapeAndHash("dropdown-adres.wojewodztwo")).dropdown({
-          onChange() {
-            if (Session.equals("isEditMode", true)) {
-              setDirty(true);
-            }
-          },
-        });
+        afterFlushCallback();
       });
     });
   }
-};
+});
+
+
+Template.offices_item_T.rendered = () => { };
 
 
 Template.offices_item_T.helpers({

@@ -39,12 +39,18 @@ Template.employees_item_T.onCreated(() => {
 
   setEditMode(isAddingMode);
 
-  template.subscribe("employees.private", isAddingMode ? "" : FlowRouter.getParam("_id"), "", () => {
-    template.subscribe("shops.private", "", () => {
+  template.subscribe("shops.private", "", () => {
+    if (isAddingMode) {
       Tracker.afterFlush(() => {
         afterFlushCallback();
       });
-    });
+    } else {
+      template.subscribe("employees.private", FlowRouter.getParam("_id"), "", () => {
+        Tracker.afterFlush(() => {
+          afterFlushCallback();
+        });
+      });
+    }
   });
 });
 

@@ -17,44 +17,41 @@ import "./models_item_T.html";
 
 
 Template.models_item_T.onCreated(() => {
-  setEditMode(getAddingModeFromRoute());
+  const template = Template.instance();
+  const isAddingMode = getAddingModeFromRoute();
+  const afterFlushCallback = function afterFlushCallback() {
+    setFormLabels();
+    if (!isAddingMode) {
+      setFormValues();
+    }
+    $(jqEscapeAndHash("dropdown-producentId")).dropdown({
+      onChange() {
+        if (Session.equals("isEditMode", true)) {
+          setDirty(true);
+        }
+      },
+    });
+  };
+
+  setEditMode(isAddingMode);
+
+  template.subscribe("manufacturers.private", "", () => {
+    if (isAddingMode) {
+      Tracker.afterFlush(() => {
+        afterFlushCallback();
+      });
+    } else {
+      template.subscribe("models.private", FlowRouter.getParam("_id"), "", () => {
+        Tracker.afterFlush(() => {
+          afterFlushCallback();
+        });
+      });
+    }
+  });
 });
 
 
-Template.models_item_T.rendered = () => {
-  const template = Template.instance();
-  if (getAddingModeFromRoute()) {
-    template.subscribe("manufacturers.private", "", () => {
-      Tracker.afterFlush(() => {
-        setFormLabels();
-        $(jqEscapeAndHash("dropdown-producentId")).dropdown({
-          onChange() {
-            if (Session.equals("isEditMode", true)) {
-              setDirty(true);
-            }
-          },
-        });
-      });
-    });
-  } else {
-    const modelId = FlowRouter.getParam("_id");
-    template.subscribe("models.private", modelId, "", () => {
-      template.subscribe("manufacturers.private", "", () => {
-        Tracker.afterFlush(() => {
-          setFormLabels();
-          setFormValues();
-          $(jqEscapeAndHash("dropdown-producentId")).dropdown({
-            onChange() {
-              if (Session.equals("isEditMode", true)) {
-                setDirty(true);
-              }
-            },
-          });
-        });
-      });
-    });
-  }
-};
+Template.models_item_T.rendered = () => { };
 
 
 Template.models_item_T.helpers({

@@ -3,7 +3,7 @@ import { Template } from "meteor/templating";
 import { Tracker } from "meteor/tracker";
 import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { $ } from "meteor/jquery";
-import { setFormLabels, setFormValues, setDirty, jqEscapeAndHash } from "/imports/util/client/client-functions.js";
+import { setFormLabels, setFormValues, setDirty, jqEscapeAndHash, getAddingModeFromRoute } from "/imports/util/client/client-functions.js";
 import voivodeships from "/imports/util/dictionaries/voivodeships.js";
 import Shops from "/imports/api/shops/shops.js";
 import Employees from "/imports/api/employees/employees.js";
@@ -18,28 +18,37 @@ import "/public/semantic/semantic.min.js";
 import "./shops_item_T.html";
 
 
-Template.shops_item_T.onCreated(() => { });
-
-
-Template.shops_item_T.rendered = () => {
+Template.shops_item_T.onCreated(() => {
   const template = Template.instance();
-  const shopId = FlowRouter.getParam("_id");
-  template.subscribe("shops.private", shopId, () => {
-    template.subscribe("employees.private", "", shopId, () => {
-      Tracker.afterFlush(() => {
-        setFormLabels();
-        setFormValues();
-        $(jqEscapeAndHash("dropdown-adres.wojewodztwo")).dropdown({
-          onChange() {
-            if (Session.equals("isEditMode", true)) {
-              setDirty(true);
-            }
-          },
+  const isAddingMode = getAddingModeFromRoute();
+  const afterFlushCallback = function afterFlushCallback() {
+    setFormLabels();
+    if (!isAddingMode) {
+      setFormValues();
+    }
+    $(jqEscapeAndHash("dropdown-adres.wojewodztwo")).dropdown({
+      onChange() {
+        if (Session.equals("isEditMode", true)) {
+          setDirty(true);
+        }
+      },
+    });
+  };
+
+  if (!isAddingMode) {
+    const shopId = FlowRouter.getParam("_id");
+    template.subscribe("shops.private", shopId, () => {
+      template.subscribe("employees.private", "", shopId, () => {
+        Tracker.afterFlush(() => {
+          afterFlushCallback();
         });
       });
     });
-  });
-};
+  }
+});
+
+
+Template.shops_item_T.rendered = () => { };
 
 
 Template.shops_item_T.helpers({

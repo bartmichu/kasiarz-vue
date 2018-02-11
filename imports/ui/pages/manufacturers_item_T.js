@@ -19,26 +19,35 @@ import "./manufacturers_item_T.html";
 
 
 Template.manufacturers_item_T.onCreated(() => {
-  setEditMode(getAddingModeFromRoute());
-});
-
-
-Template.manufacturers_item_T.rendered = () => {
   const template = Template.instance();
-  if (getAddingModeFromRoute()) {
+  const isAddingMode = getAddingModeFromRoute();
+  const afterFlushCallback = function afterFlushCallback() {
     setFormLabels();
+    if (!isAddingMode) {
+      setFormValues();
+    }
+  };
+
+  setEditMode(getAddingModeFromRoute());
+
+  if (isAddingMode) {
+    Tracker.afterFlush(() => {
+      afterFlushCallback();
+    });
   } else {
     const manufacturerId = FlowRouter.getParam("_id");
     template.subscribe("manufacturers.private", manufacturerId, () => {
       template.subscribe("models.private", "", manufacturerId, () => {
         Tracker.afterFlush(() => {
-          setFormLabels();
-          setFormValues();
+          afterFlushCallback();
         });
       });
     });
   }
-};
+});
+
+
+Template.manufacturers_item_T.rendered = () => { };
 
 
 Template.manufacturers_item_T.helpers({
