@@ -78,18 +78,17 @@
             {{else}}
               {{#if Template.subscriptionsReady}}
                 {{#if hasLicensesH}}
-                  <form class="ui form">
-                    <div class="grouped fields">
-                      {{#each licensesH}}
-                        <div class="field">
-                          <div class="ui read-only checkbox">
-                            <input type="checkbox">
-                            <label id="{{numerUprawnien}}">{{numerUprawnien}}</label>
-                          </div>
+                  <div class="ui list">
+                    {{#each licensesH}}
+                      <a class="item">
+                        <i class="right triangle icon"></i>
+                        <div class="content">
+                          <div class="header">{{numerUprawnien}}</div>
+                          <div class="description">{{modelsH}}</div>
                         </div>
-                      {{/each}}
-                    </div>
-                  </form>
+                      </a>
+                    {{/each}}
+                  </div>
                 {{else}}
                   {{> list_placeholder_T}}
                 {{/if}}

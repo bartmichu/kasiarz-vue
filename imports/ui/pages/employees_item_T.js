@@ -6,6 +6,8 @@ import { $ } from "meteor/jquery";
 import { getAddingModeFromRoute, setEditMode, setFormLabels, setFormValues, setDirty, jqEscapeAndHash } from "/imports/util/client/client-functions.js";
 import Employees from "/imports/api/employees/employees.js";
 import Shops from "/imports/api/shops/shops.js";
+import Models from "/imports/api/models/models.js";
+import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import "/imports/ui/components/loading/loading_T.js";
 import "/imports/ui/components/list_placeholder/list_placeholder_T.js";
 import "/imports/ui/components/item_footer/item_footer_T.js";
@@ -46,8 +48,12 @@ Template.employees_item_T.onCreated(() => {
       });
     } else {
       template.subscribe("employees.private", FlowRouter.getParam("_id"), "", () => {
-        Tracker.afterFlush(() => {
-          afterFlushCallback();
+        template.subscribe("models.private", "", "", () => {
+          template.subscribe("manufacturers.private", "", () => {
+            Tracker.afterFlush(() => {
+              afterFlushCallback();
+            });
+          });
         });
       });
     }
@@ -64,6 +70,13 @@ Template.employees_item_T.helpers({
   },
   licensesH() {
     return Employees.findOne().uprawnienia;
+  },
+  modelsH() {
+    // return this.modele.map(modelId => Models.findOne({ _id: modelId }).nazwa).join(", ");
+    return this.modele.map((modelId) => {
+      const model = Models.findOne({ _id: modelId });
+      return `${model.nazwa} (${Manufacturers.findOne({ _id: model.producentId }).nazwa})`;
+    }).join(", ");
   },
   hasLicensesH() {
     return Employees.findOne()
