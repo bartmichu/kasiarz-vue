@@ -30,7 +30,7 @@ Meteor.startup(() => {
           skrytkaPocztowa: "",
         },
         telefon: "123-123-123",
-        email: "none",
+        email: "example@email.com",
         dataUtworzenia: new Date(),
       },
     ];
