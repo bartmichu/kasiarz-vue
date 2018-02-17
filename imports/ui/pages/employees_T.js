@@ -11,7 +11,7 @@ import "./employees_T.html";
 
 
 Template.employees_T.onCreated(() => {
-  Template.instance().subscribe("employees.private", "", "");
+  Template.instance().subscribe("employees.all");
   Template.instance().subscribe("shops.private", "");
   // TODO: ustawianie wartości domyślnej
   Template.instance().sorfField = new ReactiveVar("dataModyfikacji");

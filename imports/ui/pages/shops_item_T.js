@@ -38,7 +38,7 @@ Template.shops_item_T.onCreated(() => {
   if (!isAddingMode) {
     const shopId = FlowRouter.getParam("_id");
     template.subscribe("shops.private", shopId, () => {
-      template.subscribe("employees.private", "", shopId, () => {
+      template.subscribe("employees.shopFilter", shopId, () => {
         Tracker.afterFlush(() => {
           afterFlushCallback();
         });
