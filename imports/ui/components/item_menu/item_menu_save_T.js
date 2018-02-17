@@ -24,13 +24,11 @@ Template.item_menu_save_T.helpers({
 
 Template.item_menu_save_T.events({
   "click #button-save": () => {
-    const context = FlowRouter.current().route.group.name;
-    let validationContext = null;
     const collection = getCollectionFromRoute();
     const schema = collection.simpleSchema();
-    let formData = null;
-    validationContext = schema.newContext("formularz");
-    formData = schema.clean(getFormValues());
+    const context = FlowRouter.current().route.group.name;
+    const validationContext = schema.newContext("formularz");
+    const formData = schema.clean(getFormValues());
 
     validationContext.validate(formData);
     if (validationContext.isValid()) {
