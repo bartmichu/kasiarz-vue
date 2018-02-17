@@ -3,7 +3,7 @@ import { check, Match } from "meteor/check";
 import Clients from "/imports/api/clients/clients.js";
 
 
-Meteor.publish("clients.private", (clientIdFilter) => {
+Meteor.publish("clients.private", function publishFunction(clientIdFilter) {
   const actualUserId = Meteor.userId();
 
   if (actualUserId) {
@@ -22,6 +22,5 @@ Meteor.publish("clients.private", (clientIdFilter) => {
     }
   }
 
-  // TODO: sprawdzić jak to się ma do arrow function
   return this.ready();
 });

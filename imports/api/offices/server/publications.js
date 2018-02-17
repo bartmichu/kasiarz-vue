@@ -3,7 +3,7 @@ import { check, Match } from "meteor/check";
 import Offices from "/imports/api/offices/offices.js";
 
 
-Meteor.publish("offices.private", (officeIdFilter) => {
+Meteor.publish("offices.private", function publishFunction(officeIdFilter) {
   // symulacja opóźnienia połączenia
   // Meteor._sleepForMs(1000);
 
@@ -24,6 +24,5 @@ Meteor.publish("offices.private", (officeIdFilter) => {
     }
   }
 
-  // TODO: sprawdzić jak to się ma do arrow function
   return this.ready();
 });

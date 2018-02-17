@@ -3,7 +3,7 @@ import { check, Match } from "meteor/check";
 import Shops from "/imports/api/shops/shops.js";
 
 
-Meteor.publish("shops.private", (shopIdFilter) => {
+Meteor.publish("shops.private", function publishFunction(shopIdFilter) {
   const actualUserId = Meteor.userId();
   if (actualUserId) {
     check(shopIdFilter, Match.Maybe(String));
@@ -21,6 +21,5 @@ Meteor.publish("shops.private", (shopIdFilter) => {
     }
   }
 
-  // TODO: sprawdzić jak to się ma do arrow function
   return this.ready();
 });

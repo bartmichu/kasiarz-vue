@@ -3,7 +3,7 @@ import { check, Match } from "meteor/check";
 import Models from "/imports/api/models/models.js";
 
 
-Meteor.publish("models.private", (modelIdFilter, manufacturerIdFilter) => {
+Meteor.publish("models.private", function publishFunction(modelIdFilter, manufacturerIdFilter) {
   const actualUserId = Meteor.userId();
   if (actualUserId) {
     check(modelIdFilter, Match.Maybe(String));
@@ -24,6 +24,5 @@ Meteor.publish("models.private", (modelIdFilter, manufacturerIdFilter) => {
     }
   }
 
-  // TODO: sprawdzić jak to się ma do arrow function
   return this.ready();
 });
