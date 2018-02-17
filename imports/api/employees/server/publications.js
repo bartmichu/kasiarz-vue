@@ -26,3 +26,19 @@ Meteor.publish("employees.private", function publishFunction(employeeIdFilter, s
 
   return this.ready();
 });
+
+Meteor.publish("employees.model", function publishFunction(modelId) {
+  const actualUserId = Meteor.userId();
+  if (actualUserId) {
+    // TODO: non empty string
+    check(modelId, String);
+
+    const data = Employees.find({ uzytkownikId: actualUserId, "uprawnienia.modele": modelId });
+
+    if (data) {
+      return data;
+    }
+  }
+
+  return this.ready();
+});

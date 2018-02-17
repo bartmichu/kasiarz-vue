@@ -5,7 +5,9 @@ import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { $ } from "meteor/jquery";
 import { getAddingModeFromRoute, setEditMode, setFormLabels, setFormValues, setDirty, jqEscapeAndHash } from "/imports/util/client/client-functions.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
+import Employees from "/imports/api/employees/employees.js";
 import "/imports/ui/components/loading/loading_T.js";
+import "/imports/ui/components/list_placeholder/list_placeholder_T.js";
 import "/imports/ui/components/item_footer/item_footer_T.js";
 import "/imports/ui/components/item_menu/item_menu_cancel_T.js";
 import "/imports/ui/components/item_menu/item_menu_close_T.js";
@@ -42,8 +44,10 @@ Template.models_item_T.onCreated(() => {
       });
     } else {
       template.subscribe("models.private", FlowRouter.getParam("_id"), "", () => {
-        Tracker.afterFlush(() => {
-          afterFlushCallback();
+        template.subscribe("employees.model", FlowRouter.getParam("_id"), () => {
+          Tracker.afterFlush(() => {
+            afterFlushCallback();
+          });
         });
       });
     }
@@ -57,6 +61,12 @@ Template.models_item_T.rendered = () => { };
 Template.models_item_T.helpers({
   manufacturersH() {
     return Manufacturers.find({}, { sort: { nazwa: 1 } });
+  },
+  hasLicensesH() {
+    return Employees.find().count() > 0;
+  },
+  employeesH() {
+    return Employees.find();
   },
 });
 
