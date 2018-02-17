@@ -27,9 +27,10 @@ Template.item_menu_save_T.events({
     const context = FlowRouter.current().route.group.name;
     let validationContext = null;
     const collection = getCollectionFromRoute();
+    const schema = collection.simpleSchema();
     let formData = null;
-    validationContext = collection.simpleSchema().newContext("formularz");
-    formData = getFormValues();
+    validationContext = schema.newContext("formularz");
+    formData = schema.clean(getFormValues());
 
     validationContext.validate(formData);
     if (validationContext.isValid()) {
