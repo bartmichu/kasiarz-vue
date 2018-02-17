@@ -41,15 +41,15 @@ Template.employees_item_T.onCreated(() => {
 
   setEditMode(isAddingMode);
 
-  template.subscribe("shops.private", "", () => {
+  template.subscribe("shops.all", () => {
     if (isAddingMode) {
       Tracker.afterFlush(() => {
         afterFlushCallback();
       });
     } else {
       template.subscribe("employees.employeeFilter", FlowRouter.getParam("_id"), () => {
-        template.subscribe("models.private", "", "", () => {
-          template.subscribe("manufacturers.private", "", () => {
+        template.subscribe("models.all", () => {
+          template.subscribe("manufacturers.all", () => {
             Tracker.afterFlush(() => {
               afterFlushCallback();
             });

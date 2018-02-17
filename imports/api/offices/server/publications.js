@@ -1,23 +1,28 @@
 import { Meteor } from "meteor/meteor";
-import { check, Match } from "meteor/check";
+import { check } from "meteor/check";
 import Offices from "/imports/api/offices/offices.js";
+import { isNonEmptyString } from "/imports/util/server/server-functions.js";
 
 
-Meteor.publish("offices.private", function publishFunction(officeIdFilter) {
-  // symulacja opóźnienia połączenia
-  // Meteor._sleepForMs(1000);
-
+Meteor.publish("offices.all", function publishFunction() {
   const actualUserId = Meteor.userId();
   if (actualUserId) {
-    check(officeIdFilter, Match.Maybe(String));
+    const data = Offices.find({ uzytkownikId: actualUserId });
 
-    let data = null;
-
-    if (officeIdFilter.length > 0) {
-      data = Offices.find({ uzytkownikId: actualUserId, _id: officeIdFilter });
-    } else {
-      data = Offices.find({ uzytkownikId: actualUserId });
+    if (data) {
+      return data;
     }
+  }
+
+  return this.ready();
+});
+
+Meteor.publish("offices.officeFilter", function publishFunction(officeId) {
+  const actualUserId = Meteor.userId();
+  if (actualUserId) {
+    check(officeId, isNonEmptyString);
+
+    const data = Offices.find({ uzytkownikId: actualUserId, _id: officeId });
 
     if (data) {
       return data;

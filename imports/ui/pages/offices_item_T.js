@@ -43,7 +43,7 @@ Template.offices_item_T.onCreated(() => {
       afterFlushCallback();
     });
   } else {
-    template.subscribe("offices.private", FlowRouter.getParam("_id"), () => {
+    template.subscribe("offices.officeFilter", FlowRouter.getParam("_id"), () => {
       Tracker.afterFlush(() => {
         afterFlushCallback();
       });

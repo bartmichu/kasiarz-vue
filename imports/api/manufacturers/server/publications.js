@@ -1,23 +1,28 @@
 import { Meteor } from "meteor/meteor";
-import { check, Match } from "meteor/check";
+import { check } from "meteor/check";
+import { isNonEmptyString } from "/imports/util/server/server-functions.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 
 
-Meteor.publish("manufacturers.private", function publishFunction(manufacturerIdFilter) {
-  // symulacja opóźnienia połączenia
-  // Meteor._sleepForMs(1000);
-
+Meteor.publish("manufacturers.all", function publishFunction() {
   const actualUserId = Meteor.userId();
   if (actualUserId) {
-    check(manufacturerIdFilter, Match.Maybe(String));
+    const data = Manufacturers.find({ uzytkownikId: actualUserId });
 
-    let data = null;
-
-    if (manufacturerIdFilter.length > 0) {
-      data = Manufacturers.find({ uzytkownikId: actualUserId, _id: manufacturerIdFilter });
-    } else {
-      data = Manufacturers.find({ uzytkownikId: actualUserId });
+    if (data) {
+      return data;
     }
+  }
+
+  return this.ready();
+});
+
+Meteor.publish("manufacturers.manufacturerFilter", function publishFunction(manufacturerId) {
+  const actualUserId = Meteor.userId();
+  if (actualUserId) {
+    check(manufacturerId, isNonEmptyString);
+
+    const data = Manufacturers.find({ uzytkownikId: actualUserId, _id: manufacturerId });
 
     if (data) {
       return data;

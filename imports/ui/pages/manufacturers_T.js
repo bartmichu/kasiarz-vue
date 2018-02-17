@@ -11,7 +11,7 @@ import "./manufacturers_T.html";
 
 
 Template.manufacturers_T.onCreated(() => {
-  Template.instance().subscribe("manufacturers.private", "");
+  Template.instance().subscribe("manufacturers.all");
   // TODO: ustawianie wartości domyślnej
   Template.instance().sorfField = new ReactiveVar("dataModyfikacji");
   Template.instance().sortOrder = new ReactiveVar("1");

@@ -43,7 +43,7 @@ Template.clients_item_T.onCreated(() => {
       afterFlushCallback();
     });
   } else {
-    template.subscribe("clients.private", FlowRouter.getParam("_id"), () => {
+    template.subscribe("clients.clientFilter", FlowRouter.getParam("_id"), () => {
       Tracker.afterFlush(() => {
         afterFlushCallback();
       });
