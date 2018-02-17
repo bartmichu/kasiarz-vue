@@ -76,7 +76,7 @@ Template.manufacturers_item_T.events({
     const eventTarget = event.target;
     eventTarget.value = eventTarget.value.trim();
   },
-  "click label": (event) => {
+  "click a.item": (event) => {
     const splitId = event.currentTarget.id.split("-");
     if (splitId[0] === "model") {
       FlowRouter.go("models.model", { _id: splitId[1] });

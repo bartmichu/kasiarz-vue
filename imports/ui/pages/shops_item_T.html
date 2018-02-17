@@ -156,18 +156,16 @@
               {{#if Template.subscriptionsReady}}
                 {{#with getDataH}}
                   {{#if hasEmployeesH}}
-                    <form class="ui form">
-                      <div class="grouped fields">
-                        {{#each employeesH}}
-                          <div class="field">
-                            <div class="ui read-only checkbox">
-                              <input type="checkbox">
-                              <label id="employee-{{_id}}">{{imieNazwisko}}</label>
-                            </div>
+                    <div class="ui list">
+                      {{#each employeesH}}
+                        <a class="item">
+                          <i class="minus icon"></i>
+                          <div class="content">
+                            <div class="description">{{imieNazwisko}}</div>
                           </div>
-                        {{/each}}
-                      </div>
-                    </form>
+                        </a>
+                      {{/each}}
+                    </div>
                   {{else}}
                     {{> list_placeholder_T}}
                   {{/if}}
