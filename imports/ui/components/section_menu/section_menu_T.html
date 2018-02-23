@@ -1,0 +1,20 @@
+<template name="section_menu_T">
+
+  <div class="content">
+    <div class="ui huge breadcrumb">
+      {{#each crumbsH}}
+        <div class="section">{{this}}</div>
+        <i class="right chevron icon divider"></i>
+      {{/each}}
+    </div>
+    <div class="right floated">
+      {{#if deleteButtonH}}
+        {{> item_menu_delete_T}}
+      {{/if}}
+      {{#if closeButtonH}}
+        {{> item_menu_close_T}}
+      {{/if}}
+    </div>
+  </div>
+
+</template>
