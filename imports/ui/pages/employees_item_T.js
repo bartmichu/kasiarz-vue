@@ -17,6 +17,7 @@ import "/imports/ui/components/item_menu/item_menu_close_T.js";
 import "/imports/ui/components/item_menu/item_menu_delete_T.js";
 import "/imports/ui/components/item_menu/item_menu_edit_T.js";
 import "/imports/ui/components/item_menu/item_menu_save_T.js";
+import "/imports/ui/components/section_menu/section_menu_T.js";
 import "/public/semantic/semantic.min.js";
 import "./employees_license_modal_T.js";
 import "./employees_item_T.html";

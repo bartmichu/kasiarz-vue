@@ -6,6 +6,7 @@ import { $ } from "meteor/jquery";
 import { getAddingModeFromRoute, setEditMode, setFormLabels, setFormValues, setDirty, jqEscapeAndHash } from "/imports/util/client/client-functions.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Employees from "/imports/api/employees/employees.js";
+import "/imports/ui/components/section_menu/section_menu_T.js";
 import "/imports/ui/components/loading/loading_T.js";
 import "/imports/ui/components/list_placeholder/list_placeholder_T.js";
 import "/imports/ui/components/item_footer/item_footer_T.js";

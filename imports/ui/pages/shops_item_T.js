@@ -14,6 +14,7 @@ import "/imports/ui/components/item_menu/item_menu_edit_T.js";
 import "/imports/ui/components/item_menu/item_menu_save_T.js";
 import "/imports/ui/components/list_placeholder/list_placeholder_T.js";
 import "/imports/ui/components/list_menu/list_menu_add_T.js";
+import "/imports/ui/components/section_menu/section_menu_T.js";
 import "/public/semantic/semantic.min.js";
 import "./shops_item_T.html";
 

@@ -3,6 +3,7 @@ import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { ReactiveVar } from "meteor/reactive-var";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import { sortHandler } from "/imports/util/client/client-functions.js";
+import "/imports/ui/components/section_menu/section_menu_T.js";
 import "/imports/ui/components/list_placeholder/list_placeholder_T.js";
 import "/imports/ui/components/loading/loading_T.js";
 import "/imports/ui/components/list_menu/list_menu_add_T.js";

@@ -7,6 +7,12 @@
 
         <!-- card start -->
         <div class="ui fluid card b8k-top-margin">
+          {{> section_menu_T}}
+        </div>
+        <!-- card end -->
+
+        <!-- card start -->
+        <div class="ui fluid card b8k-top-margin">
 
           <div class="content">
             <div class="header">Dane producenta
@@ -15,7 +21,7 @@
                   {{#if isEditModeGH}}
                     {{> item_menu_cancel_T}} {{> item_menu_save_T}}
                   {{else}}
-                    {{> item_menu_delete_T}} {{> item_menu_edit_T}} {{> item_menu_close_T}}
+                    {{> item_menu_edit_T}}
                   {{/if}}
                 {{/if}}
               </div>
