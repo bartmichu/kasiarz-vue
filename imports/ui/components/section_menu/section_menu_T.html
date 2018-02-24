@@ -7,14 +7,16 @@
         <i class="right chevron icon divider"></i>
       {{/each}}
     </div>
-    <div class="right floated">
-      {{#if deleteButtonH}}
-        {{> item_menu_delete_T}}
-      {{/if}}
-      {{#if closeButtonH}}
-        {{> item_menu_close_T}}
-      {{/if}}
-    </div>
+    {{#unless isEditModeGH}}
+      <div class="right floated">
+        {{#if deleteButtonH}}
+          {{> item_menu_delete_T}}
+        {{/if}}
+        {{#if closeButtonH}}
+          {{> item_menu_close_T}}
+        {{/if}}
+      </div>
+    {{/unless}}
   </div>
 
 </template>
