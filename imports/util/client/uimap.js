@@ -1,6 +1,6 @@
 const uimap = {
   models: {
-    header: "Modele urządzeń",
+    header: "Lista modeli urządzeń",
     crumbs: ["Konfiguracja", "Modele"],
     buttons: {
       close: true,
@@ -15,7 +15,7 @@ const uimap = {
     },
   },
   manufacturers: {
-    header: "Producenci urządzeń",
+    header: "Lista producentów urządzeń",
     crumbs: ["Konfiguracja", "Producenci"],
     buttons: {
       close: true,
@@ -30,7 +30,7 @@ const uimap = {
     },
   },
   shops: {
-    header: "Serwisy",
+    header: "Lista serwisów",
     crumbs: ["Konfiguracja", "Serwisy"],
     buttons: {
       close: true,
@@ -44,7 +44,7 @@ const uimap = {
     },
   },
   employees: {
-    header: "Serwisanci",
+    header: "Lista serwisantów",
     crumbs: ["Konfiguracja", "Serwisanci"],
     buttons: {
       close: true,
@@ -59,7 +59,7 @@ const uimap = {
     },
   },
   offices: {
-    header: "Urzędy skarbowe",
+    header: "Lista urzędów skarbowych",
     crumbs: ["Konfiguracja", "Urzędy skarbowe"],
     buttons: {
       close: true,
@@ -74,7 +74,7 @@ const uimap = {
     },
   },
   clients: {
-    header: "Klienci",
+    header: "Lista klientów",
     crumbs: ["Klienci"],
     buttons: {
       close: true,
