@@ -31,29 +31,8 @@
           {{#if Template.subscriptionsReady}}
             <div class="content">
               <form class="ui form">
-                <div class="field">
-                  <label id="etykieta_pola-imieNazwisko" for="imieNazwisko"></label>
-                  <input id="imieNazwisko" type="text" {{setDisabledAttributeGH}}>
-                </div>
-
-                <div class="field">
-                  <label id="etykieta_pola-serwisId" for="serwisId"></label>
-                  <div id="dropdown-serwisId" class="ui fluid search selection {{setDisabledAttributeGH}} dropdown">
-                    <input id="serwisId" type="hidden">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">wybierz serwis</div>
-                    <div class="menu">
-                      {{#each shopsH}}
-                        <div class="item" data-value="{{_id}}">{{nazwa}}</div>
-                      {{/each}}
-                    </div>
-                  </div>
-                </div>
-
-                <div class="field">
-                  <label id="etykieta_pola-dodatkoweInformacje" for="dodatkoweInformacje"></label>
-                  <textarea id="dodatkoweInformacje" rows="2" {{setDisabledAttributeGH}}></textarea>
-                </div>
+                {{> input_field_T dataFieldName="imieNazwisko" schema=(schemaH "imieNazwisko")}} {{> select_field_T dataFieldName="serwisId" schema=(schemaH "serwisId") items=(shopsH) defaultText="wybierz serwis"}}
+                {{> textarea_field_T dataFieldName="dodatkoweInformacje" schema=(schemaH "dodatkoweInformacje")}}
               </form>
             </div>
           {{else}}
@@ -111,7 +90,14 @@
           {{#if Template.subscriptionsReady}}
             <!-- card start -->
             <div class="ui fluid card b8k-top-margin">
-              {{> item_footer_T}}
+              <div class="content">
+                <form class="ui form">
+                  <div class="three fields">
+                    {{> input_field_T dataFieldName="dataUtworzenia" schema=(schemaH "dataUtworzenia") disabled="yes"}} {{> input_field_T dataFieldName="dataModyfikacji" schema=(schemaH "dataModyfikacji") disabled="yes"}}
+                    <div class="field"></div>
+                  </div>
+                </form>
+              </div>
             </div>
             <!-- card end -->
           {{/if}}

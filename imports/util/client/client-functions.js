@@ -95,7 +95,7 @@ const setFormLabels = () => {
   const schema = getCollectionFromRoute().simpleSchema();
   $("label").each((index, element) => {
     const label = $(element);
-    if (label.attr("id") && (label.attr("id").split("-")[0] === "etykieta_pola")) {
+    if (label.attr("id") && (label.attr("id").split("-")[0] === "label__")) {
       $(label).text(schema.label(label.attr("for")));
     }
   });

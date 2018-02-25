@@ -32,32 +32,15 @@
             <div class="content">
               <form class="ui form">
 
-                <div class="field">
-                  <label id="etykieta_pola-nazwa" for="nazwa"></label>
-                  <input id="nazwa" type="text" {{setDisabledAttributeGH}}>
-                </div>
+                {{> input_field_T dataFieldName="nazwa" schema=(schemaH "nazwa")}}
 
                 <div class="three fields">
-                  <div class="field">
-                    <label id="etykieta_pola-adres.ulica" for="adres.ulica"></label>
-                    <input id="adres.ulica" type="text" {{setDisabledAttributeGH}}>
-                  </div>
-
-                  <div class="field">
-                    <label id="etykieta_pola-adres.kodPocztowy" for="adres.kodPocztowy"></label>
-                    <input id="adres.kodPocztowy" type="text" {{setDisabledAttributeGH}}>
-                  </div>
-
-                  <div class="field">
-                    <label id="etykieta_pola-adres.miejscowosc" for="adres.miejscowosc"></label>
-                    <input id="adres.miejscowosc" type="text" {{setDisabledAttributeGH}}>
-                  </div>
+                  {{> input_field_T dataFieldName="adres.ulica" schema=(schemaH "adres.ulica")}} {{> input_field_T dataFieldName="adres.kodPocztowy" schema=(schemaH "adres.kodPocztowy")}}
+                  {{> input_field_T dataFieldName="adres.miejscowosc" schema=(schemaH "adres.miejscowosc")}}
                 </div>
 
-                <div class="field">
-                  <label id="etykieta_pola-dodatkoweInformacje" for="dodatkoweInformacje"></label>
-                  <textarea id="dodatkoweInformacje" rows="2" {{setDisabledAttributeGH}}></textarea>
-                </div>
+                {{> textarea_field_T dataFieldName="dodatkoweInformacje" schema=(schemaH "dodatkoweInformacje")}}
+
               </form>
             </div>
           {{else}}
@@ -109,7 +92,14 @@
           {{#if Template.subscriptionsReady}}
             <!-- card start -->
             <div class="ui fluid card b8k-top-margin">
-              {{> item_footer_T}}
+              <div class="content">
+                <form class="ui form">
+                  <div class="three fields">
+                    {{> input_field_T dataFieldName="dataUtworzenia" schema=(schemaH "dataUtworzenia") disabled="yes"}} {{> input_field_T dataFieldName="dataModyfikacji" schema=(schemaH "dataModyfikacji") disabled="yes"}}
+                    <div class="field"></div>
+                  </div>
+                </form>
+              </div>
             </div>
             <!-- card end -->
           {{/if}}
