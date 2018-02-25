@@ -14,3 +14,7 @@ body {
 .b8k-top-margin {
   margin-top: 1.5em !important;
 }
+
+.b8k-no-top-margin {
+  margin-top: 0px !important;
+}
