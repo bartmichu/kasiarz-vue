@@ -66,13 +66,15 @@
         {{#unless isAddingModeGH}}
           {{#if Template.subscriptionsReady}}
             <!-- card start -->
-            <div class="content">
-              <form class="ui form">
-                <div class="three fields">
-                  {{> input_field_T dataFieldName="dataUtworzenia" schema=(schemaH "dataUtworzenia") disabled="yes"}} {{> input_field_T dataFieldName="dataModyfikacji" schema=(schemaH "dataModyfikacji") disabled="yes"}}
-                  <div class="field"></div>
-                </div>
-              </form>
+            <div class="ui fluid card b8k-top-margin">
+              <div class="content">
+                <form class="ui form">
+                  <div class="three fields">
+                    {{> input_field_T dataFieldName="dataUtworzenia" schema=(schemaH "dataUtworzenia") disabled="yes"}} {{> input_field_T dataFieldName="dataModyfikacji" schema=(schemaH "dataModyfikacji") disabled="yes"}}
+                    <div class="field"></div>
+                  </div>
+                </form>
+              </div>
             </div>
             <!-- card end -->
           {{/if}}
