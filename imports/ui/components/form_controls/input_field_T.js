@@ -20,10 +20,10 @@ Template.input_field_T.helpers({
   disabledH() {
     let returnValue = "";
     switch (Template.instance().data.disabled) {
-      case "true":
+      case "yes":
         returnValue = "disabled";
         break;
-      case "false":
+      case "no":
         returnValue = "";
         break;
       default:

@@ -1,8 +1,8 @@
 <template name="input_field_T">
 
-  <div class="{{requiredH}} field">
+  <div class="{{#if isEditModeGH}}{{requiredH}}{{/if}} field">
     <label id="label__{{dataFieldName}}" for="{{dataFieldName}}">{{labelH}}</label>
-    <input id="{{dataFieldName}}" type="text" {{disabledH}} value="{{value}}">
+    <input id="{{dataFieldName}}" type="text" {{disabledH}}>
   </div>
 
 </template>

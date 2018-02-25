@@ -4,15 +4,6 @@ import { setDirty } from "/imports/util/client/client-functions.js";
 import "./textarea_field_T.html";
 
 
-/**
- * Data context:
- * dataFieldName
- * schema
- * value
- * disabled
- */
-
-
 Template.textarea_field_T.onCreated(() => { });
 
 
@@ -29,10 +20,10 @@ Template.textarea_field_T.helpers({
   disabledH() {
     let returnValue = "";
     switch (Template.instance().data.disabled) {
-      case "true":
+      case "yes":
         returnValue = "disabled";
         break;
-      case "false":
+      case "no":
         returnValue = "";
         break;
       default:
