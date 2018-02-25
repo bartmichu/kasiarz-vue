@@ -5,16 +5,6 @@ import { jqEscapeAndHash, setDirty } from "/imports/util/client/client-functions
 import "/public/semantic/semantic.min.js";
 import "./multiple_select_field_T.html";
 
-/**
- * Data context:
- * dataFieldName
- * schema
- * value
- * items
- * defaultText
- * disabled
- */
-
 
 Template.multiple_select_field_T.onCreated(() => { });
 
@@ -42,10 +32,10 @@ Template.multiple_select_field_T.helpers({
   disabledH() {
     let returnValue = "";
     switch (Template.instance().data.disabled) {
-      case "true":
+      case "yes":
         returnValue = "disabled";
         break;
-      case "false":
+      case "no":
         returnValue = "";
         break;
       default:

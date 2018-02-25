@@ -1,6 +1,6 @@
 <template name="multiple_select_field_T">
 
-  <div class="{{requiredH}} field">
+  <div class="{{#if isEditModeGH}}{{requiredH}}{{/if}} field">
     <label id="label__{{dataFieldName}}" for="{{dataFieldName}}">{{labelH}}</label>
     <div id="dropdown__{{dataFieldName}}" class="ui fluid multiple selection {{disabledH}} dropdown">
       <input id="{{dataFieldName}}" type="hidden">
