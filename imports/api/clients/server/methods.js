@@ -73,7 +73,7 @@ export const updateClient = new ValidatedMethod({
         nip: formData.nip,
         regonPesel: formData.regonPesel,
         "adres.kraj": formData.adres.kraj,
-        "adres.wojewodztwo": formData.adres.wojewodztwo,
+        "adres.wojewodztwoId": formData.adres.wojewodztwoId,
         "adres.gminaDzielnica": formData.adres.gminaDzielnica,
         "adres.ulica": formData.adres.ulica,
         "adres.nrDomu": formData.adres.nrDomu,

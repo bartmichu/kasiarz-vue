@@ -1,6 +1,5 @@
 import SimpleSchema from "simpl-schema";
 import Clients from "/imports/api/clients/clients.js";
-import voivodeships from "/imports/util/dictionaries/voivodeships.js";
 
 
 const clientSchema = new SimpleSchema({
@@ -42,12 +41,11 @@ const clientSchema = new SimpleSchema({
     max: 100,
     optional: false,
   },
-  "adres.wojewodztwo": {
-    type: String,
+  "adres.wojewodztwoId": {
+    type: SimpleSchema.RegEx.Id,
     label: "Województwo",
     min: 1,
     max: 100,
-    allowedValues: voivodeships,
     optional: false,
   },
   "adres.gminaDzielnica": {

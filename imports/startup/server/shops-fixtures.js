@@ -4,12 +4,14 @@
 
 import { Meteor } from "meteor/meteor";
 import Shops from "/imports/api/shops/shops.js";
-import voivodeships from "/imports/util/dictionaries/voivodeships.js";
+import Voivodeships from "/imports/api/voivodeships/voivodeships.js";
 
 
 Meteor.startup(() => {
   if (Shops.find().count() === 0) {
     const userId = Meteor.users.findOne({ username: "demo" })._id;
+    const voivodeshipsCount = Voivodeships.find().count();
+    const randomNumber = Math.floor(Math.random() * voivodeshipsCount);
     const dummyData = [
       {
         uzytkownikId: userId,
@@ -19,7 +21,7 @@ Meteor.startup(() => {
         pesel: "",
         adres: {
           kraj: "Poland",
-          wojewodztwo: voivodeships[0],
+          wojewodztwoId: Voivodeships.find({}, { skip: randomNumber, limit: 1 }).fetch()[0]._id,
           gminaDzielnica: "",
           ulica: "Iron Street",
           nrDomu: "191",

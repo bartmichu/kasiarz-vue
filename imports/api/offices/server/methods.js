@@ -72,7 +72,7 @@ export const updateOffice = new ValidatedMethod({
         nazwa: formData.nazwa,
         adresat: formData.adresat,
         "adres.kraj": formData.adres.kraj,
-        "adres.wojewodztwo": formData.adres.wojewodztwo,
+        "adres.wojewodztwoId": formData.adres.wojewodztwoId,
         "adres.gminaDzielnica": formData.adres.gminaDzielnica,
         "adres.ulica": formData.adres.ulica,
         "adres.nrDomu": formData.adres.nrDomu,

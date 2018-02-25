@@ -1,6 +1,5 @@
 import SimpleSchema from "simpl-schema";
 import Shops from "/imports/api/shops/shops.js";
-import voivodeships from "/imports/util/dictionaries/voivodeships.js";
 
 
 const shopSchema = new SimpleSchema({
@@ -48,12 +47,11 @@ const shopSchema = new SimpleSchema({
     max: 100,
     optional: false,
   },
-  "adres.wojewodztwo": {
-    type: String,
+  "adres.wojewodztwoId": {
+    type: SimpleSchema.RegEx.Id,
     label: "Województwo",
     min: 1,
     max: 100,
-    allowedValues: voivodeships,
     optional: false,
   },
   "adres.gminaDzielnica": {

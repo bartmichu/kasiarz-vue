@@ -4,7 +4,7 @@ import { Tracker } from "meteor/tracker";
 import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { $ } from "meteor/jquery";
 import { setFormValues, setDirty, jqEscapeAndHash, getAddingModeFromRoute } from "/imports/util/client/client-functions.js";
-import voivodeships from "/imports/util/dictionaries/voivodeships.js";
+import Voivodeships from "/imports/api/voivodeships/voivodeships.js";
 import Shops from "/imports/api/shops/shops.js";
 import Employees from "/imports/api/employees/employees.js";
 import "/imports/ui/components/loading/loading_T.js";
@@ -28,7 +28,7 @@ Template.shops_item_T.onCreated(() => {
     if (!isAddingMode) {
       setFormValues();
     }
-    $(jqEscapeAndHash("dropdown__adres.wojewodztwo")).dropdown({
+    $(jqEscapeAndHash("dropdown__adres.wojewodztwoId")).dropdown({
       onChange() {
         if (Session.equals("isEditMode", true)) {
           setDirty(true);
@@ -37,16 +37,18 @@ Template.shops_item_T.onCreated(() => {
     });
   };
 
-  if (!isAddingMode) {
-    const shopId = FlowRouter.getParam("_id");
-    template.subscribe("shops.shopFilter", shopId, () => {
-      template.subscribe("employees.shopFilter", shopId, () => {
-        Tracker.afterFlush(() => {
-          afterFlushCallback();
+  template.subscribe("voivodeships.public", () => {
+    if (!isAddingMode) {
+      const shopId = FlowRouter.getParam("_id");
+      template.subscribe("shops.shopFilter", shopId, () => {
+        template.subscribe("employees.shopFilter", shopId, () => {
+          Tracker.afterFlush(() => {
+            afterFlushCallback();
+          });
         });
       });
-    });
-  }
+    }
+  });
 });
 
 
@@ -55,7 +57,7 @@ Template.shops_item_T.rendered = () => { };
 
 Template.shops_item_T.helpers({
   voivodeshipsH() {
-    return voivodeships;
+    return Voivodeships.find();
   },
   getDataH() {
     return Shops.findOne({ _id: FlowRouter.getParam("_id") });

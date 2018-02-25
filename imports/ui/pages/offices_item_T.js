@@ -3,8 +3,8 @@ import { Template } from "meteor/templating";
 import { Tracker } from "meteor/tracker";
 import { $ } from "meteor/jquery";
 import { FlowRouter } from "meteor/ostrio:flow-router-extra";
-import { getAddingModeFromRoute, setEditMode, setFormLabels, setFormValues, setDirty, jqEscapeAndHash } from "/imports/util/client/client-functions.js";
-import voivodeships from "/imports/util/dictionaries/voivodeships.js";
+import { getAddingModeFromRoute, setEditMode, setFormValues, setDirty, jqEscapeAndHash } from "/imports/util/client/client-functions.js";
+import Voivodeships from "/imports/api/voivodeships/voivodeships.js";
 import Offices from "/imports/api/offices/offices.js";
 import "/imports/ui/components/loading/loading_T.js";
 import "/imports/ui/components/item_menu/item_menu_cancel_T.js";
@@ -26,11 +26,10 @@ Template.offices_item_T.onCreated(() => {
   const template = Template.instance();
   const isAddingMode = getAddingModeFromRoute();
   const afterFlushCallback = function afterFlushCallback() {
-    setFormLabels();
     if (!isAddingMode) {
       setFormValues();
     }
-    $(jqEscapeAndHash("dropdown__adres.wojewodztwo")).dropdown({
+    $(jqEscapeAndHash("dropdown__adres.wojewodztwoId")).dropdown({
       onChange() {
         if (Session.equals("isEditMode", true)) {
           setDirty(true);
@@ -41,17 +40,19 @@ Template.offices_item_T.onCreated(() => {
 
   setEditMode(isAddingMode);
 
-  if (isAddingMode) {
-    Tracker.afterFlush(() => {
-      afterFlushCallback();
-    });
-  } else {
-    template.subscribe("offices.officeFilter", FlowRouter.getParam("_id"), () => {
+  template.subscribe("voivodeships.public", () => {
+    if (isAddingMode) {
       Tracker.afterFlush(() => {
         afterFlushCallback();
       });
-    });
-  }
+    } else {
+      template.subscribe("offices.officeFilter", FlowRouter.getParam("_id"), () => {
+        Tracker.afterFlush(() => {
+          afterFlushCallback();
+        });
+      });
+    }
+  });
 });
 
 
@@ -63,7 +64,7 @@ Template.offices_item_T.helpers({
     return Offices.findOne({ _id: FlowRouter.getParam("_id") });
   },
   voivodeshipsH() {
-    return voivodeships;
+    return Voivodeships.find();
   },
   schemaH(field) {
     return Offices.simpleSchema().getDefinition(field);

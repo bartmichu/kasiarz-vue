@@ -27,3 +27,7 @@ import "/imports/api/clients/clients.js";
 import "/imports/api/clients/schema.js";
 import "/imports/api/clients/server/publications.js";
 import "/imports/api/clients/server/methods.js";
+
+import "/imports/api/voivodeships/voivodeships.js";
+import "/imports/api/voivodeships/schema.js";
+import "/imports/api/voivodeships/server/publications.js";
