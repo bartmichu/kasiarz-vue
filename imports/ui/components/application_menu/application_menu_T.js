@@ -16,8 +16,8 @@ Template.application_menu_T.onCreated(() => { });
 
 
 Template.application_menu_T.rendered = () => {
-  $("#dropdown-button-settings").dropdown();
-  $("#dropdown-button-user").dropdown();
+  $("#dropdown__button-settings").dropdown();
+  $("#dropdown__button-user").dropdown();
 };
 
 

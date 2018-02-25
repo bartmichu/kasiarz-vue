@@ -28,7 +28,7 @@ Template.shops_item_T.onCreated(() => {
     if (!isAddingMode) {
       setFormValues();
     }
-    $(jqEscapeAndHash("dropdown-adres.wojewodztwo")).dropdown({
+    $(jqEscapeAndHash("dropdown__adres.wojewodztwo")).dropdown({
       onChange() {
         if (Session.equals("isEditMode", true)) {
           setDirty(true);

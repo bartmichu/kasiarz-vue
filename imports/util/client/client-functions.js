@@ -131,7 +131,7 @@ const setFormValues = () => {
 
       // HACK: odświeżenie wartości dropdown (Semantic UI)
       if (uiElement.attr("type") === "hidden") {
-        $(jqEscapeAndHash(`dropdown-${fieldName}`)).dropdown("set selected");
+        $(jqEscapeAndHash(`dropdown__${fieldName}`)).dropdown("set selected");
       }
     }
 

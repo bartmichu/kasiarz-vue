@@ -19,7 +19,7 @@ Template.employees_license_modal_T.onCreated(() => {
 
     // form values are set in modal's onShow callback
 
-    $(jqEscapeAndHash("dropdown-uprawnienia.$.modele")).dropdown({
+    $(jqEscapeAndHash("dropdown__uprawnienia.$.modele")).dropdown({
       onChange() {
         setDirty(true);
       },
@@ -39,7 +39,7 @@ Template.employees_license_modal_T.onCreated(() => {
           // TODO: zautomatyzować
           const formData = {
             numerUprawnien: $(jqEscapeAndHash("uprawnienia.$.numerUprawnien")).val(),
-            modele: $(jqEscapeAndHash("dropdown-uprawnienia.$.modele")).dropdown("get value").split(","),
+            modele: $(jqEscapeAndHash("dropdown__uprawnienia.$.modele")).dropdown("get value").split(","),
             dodatkoweInformacje: $(jqEscapeAndHash("uprawnienia.$.dodatkoweInformacje")).val(),
           };
           Meteor.call("employees.addLicense", { documentId: FlowRouter.getParam("_id"), formData }, (error) => {
@@ -50,7 +50,7 @@ Template.employees_license_modal_T.onCreated(() => {
           });
         }
         $(jqEscapeAndHash("uprawnienia.$.numerUprawnien")).val("");
-        $(jqEscapeAndHash("dropdown-uprawnienia.$.modele")).dropdown("clear");
+        $(jqEscapeAndHash("dropdown__uprawnienia.$.modele")).dropdown("clear");
         FlowRouter.setQueryParams({ newLicense: null });
         // TODO: odświeżenie daty modyfikacji
       },
@@ -59,7 +59,7 @@ Template.employees_license_modal_T.onCreated(() => {
           setDirty(false);
         }
         $(jqEscapeAndHash("uprawnienia.$.numerUprawnien")).val("");
-        $(jqEscapeAndHash("dropdown-uprawnienia.$.modele")).dropdown("clear");
+        $(jqEscapeAndHash("dropdown__uprawnienia.$.modele")).dropdown("clear");
         FlowRouter.setQueryParams({ newLicense: null });
       },
     });

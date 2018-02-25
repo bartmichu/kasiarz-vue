@@ -31,7 +31,7 @@ Template.employees_item_T.onCreated(() => {
     if (!isAddingMode) {
       setFormValues();
     }
-    $(jqEscapeAndHash("dropdown-serwisId")).dropdown({
+    $(jqEscapeAndHash("dropdown__serwisId")).dropdown({
       onChange() {
         if (Session.equals("isEditMode", true)) {
           setDirty(true);
