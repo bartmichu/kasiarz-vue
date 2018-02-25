@@ -88,13 +88,6 @@ Template.application_menu_T.events({
       FlowRouter.go("employees");
     }
   },
-  "click #item-clients": () => {
-    if (Session.equals("isDirty", true)) {
-      $("#modal-dirty").modal("show");
-    } else {
-      FlowRouter.go("clients");
-    }
-  },
   "click #item-logout": () => {
     if (Session.equals("isDirty", true)) {
       $("#modal-dirty").modal("show");
