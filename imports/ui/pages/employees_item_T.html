@@ -48,11 +48,13 @@
           <div class="content">
             <div class="header">Uprawnienia serwisanta
               {{#unless isAddingModeGH}}
-                <div class="right floated">
-                  {{#if Template.subscriptionsReady}}
-                    <button id="button-addLicense" class="ui secondary button">dodaj</button>
-                  {{/if}}
-                </div>
+                {{#unless isEditModeGH}}
+                  <div class="right floated">
+                    {{#if Template.subscriptionsReady}}
+                      <button id="button-addLicense" class="ui secondary button">dodaj</button>
+                    {{/if}}
+                  </div>
+                {{/unless}}
               {{/unless}}
             </div>
           </div>
