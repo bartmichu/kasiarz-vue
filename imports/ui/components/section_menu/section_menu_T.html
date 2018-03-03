@@ -6,6 +6,13 @@
         <div class="section">{{this}}</div>
         <i class="right chevron icon divider"></i>
       {{/each}}
+      {{#if isAddingModeGH}}
+        <div class="section">Dodawanie</div>
+      {{else}}
+        {{#if isEditModeGH}}
+          <div class="section">Edycja</div>
+        {{/if}}
+      {{/if}}
     </div>
     {{#unless isEditModeGH}}
       <div class="right floated">
