@@ -155,6 +155,16 @@ shops.route("/id/:_id", {
   },
 });
 
+shops.route("/dodaj", {
+  name: "shops.add",
+  action() {
+    Session.set("uiSection", "shop");
+    this.render("body_T", "shops_item_T", {
+      app_menu_section: "application_menu_T",
+    });
+  },
+});
+
 
 const offices = FlowRouter.group({
   prefix: "/urzedy",

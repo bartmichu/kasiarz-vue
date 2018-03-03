@@ -34,6 +34,7 @@ const uimap = {
     header: "Dane serwisu",
     crumbs: ["Konfiguracja", "Serwisy", "Serwis"],
     buttons: {
+      delete: true,
       close: true,
     },
   },

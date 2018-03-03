@@ -3,7 +3,7 @@ import { Template } from "meteor/templating";
 import { Tracker } from "meteor/tracker";
 import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { $ } from "meteor/jquery";
-import { setFormValues, setDirty, jqEscapeAndHash, getAddingModeFromRoute } from "/imports/util/client/client-functions.js";
+import { setFormValues, setDirty, jqEscapeAndHash, getAddingModeFromRoute, setEditMode } from "/imports/util/client/client-functions.js";
 import Voivodeships from "/imports/api/voivodeships/voivodeships.js";
 import Shops from "/imports/api/shops/shops.js";
 import Employees from "/imports/api/employees/employees.js";
@@ -37,6 +37,8 @@ Template.shops_item_T.onCreated(() => {
     });
   };
 
+  setEditMode(isAddingMode);
+
   template.subscribe("voivodeships.public", () => {
     if (!isAddingMode) {
       const shopId = FlowRouter.getParam("_id");
@@ -46,6 +48,10 @@ Template.shops_item_T.onCreated(() => {
             afterFlushCallback();
           });
         });
+      });
+    } else {
+      Tracker.afterFlush(() => {
+        afterFlushCallback();
       });
     }
   });
