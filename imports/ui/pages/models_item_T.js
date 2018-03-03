@@ -9,7 +9,7 @@ import Models from "/imports/api/models/models.js";
 import Employees from "/imports/api/employees/employees.js";
 import "/imports/ui/components/section_menu/section_menu_T.js";
 import "/imports/ui/components/loading/loading_T.js";
-import "/imports/ui/components/list_placeholder/list_placeholder_T.js";
+import "/imports/ui/components/related_placeholder/related_placeholder_T.js";
 import "/imports/ui/components/item_menu/item_menu_cancel_T.js";
 import "/imports/ui/components/item_menu/item_menu_close_T.js";
 import "/imports/ui/components/item_menu/item_menu_delete_T.js";
