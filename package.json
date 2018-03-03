@@ -4,7 +4,8 @@
   "scripts": {
     "start": "meteor run",
     "debug": "meteor run --inspect",
-    "semantic:build": "cd ./private/semantic/ && gulp build"
+    "semantic:build": "cd ./private/semantic/ && gulp build",
+    "meteor:build": "meteor build --server-only --architecture os.linux.x86_64 ../kasiarz-package"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.39",
