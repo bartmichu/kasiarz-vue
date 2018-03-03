@@ -6,7 +6,7 @@ import { $ } from "meteor/jquery";
 import { setFormValues, setDirty, jqEscapeAndHash, setEditMode } from "/imports/util/client/client-functions.js";
 import Models from "/imports/api/models/models.js";
 import Employees from "/imports/api/employees/employees.js";
-import "/imports/ui/components/loading/loading_T.js";
+import "/imports/ui/components/loading_placeholder/loading_placeholder_T.js";
 import "/imports/ui/components/form_controls/input_field_T.js";
 import "/imports/ui/components/form_controls/textarea_field_T.js";
 import "/imports/ui/components/form_controls/multiple_select_field_T.js";

@@ -7,7 +7,7 @@ import { setFormValues, setDirty, jqEscapeAndHash, getAddingModeFromRoute, setEd
 import Voivodeships from "/imports/api/voivodeships/voivodeships.js";
 import Shops from "/imports/api/shops/shops.js";
 import Employees from "/imports/api/employees/employees.js";
-import "/imports/ui/components/loading/loading_T.js";
+import "/imports/ui/components/loading_placeholder/loading_placeholder_T.js";
 import "/imports/ui/components/item_menu/item_menu_cancel_T.js";
 import "/imports/ui/components/item_menu/item_menu_edit_T.js";
 import "/imports/ui/components/item_menu/item_menu_save_T.js";

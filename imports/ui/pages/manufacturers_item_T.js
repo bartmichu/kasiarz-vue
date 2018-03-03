@@ -4,7 +4,7 @@ import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { getAddingModeFromRoute, setEditMode, setFormValues } from "/imports/util/client/client-functions.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Models from "/imports/api/models/models.js";
-import "/imports/ui/components/loading/loading_T.js";
+import "/imports/ui/components/loading_placeholder/loading_placeholder_T.js";
 import "/imports/ui/components/section_menu/section_menu_T.js";
 import "/imports/ui/components/item_menu/item_menu_cancel_T.js";
 import "/imports/ui/components/item_menu/item_menu_close_T.js";

@@ -6,7 +6,7 @@ import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { getAddingModeFromRoute, setEditMode, setFormValues, setDirty, jqEscapeAndHash } from "/imports/util/client/client-functions.js";
 import Voivodeships from "/imports/api/voivodeships/voivodeships.js";
 import Offices from "/imports/api/offices/offices.js";
-import "/imports/ui/components/loading/loading_T.js";
+import "/imports/ui/components/loading_placeholder/loading_placeholder_T.js";
 import "/imports/ui/components/item_menu/item_menu_cancel_T.js";
 import "/imports/ui/components/item_menu/item_menu_close_T.js";
 import "/imports/ui/components/item_menu/item_menu_delete_T.js";
