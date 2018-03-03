@@ -43,16 +43,14 @@
         <!-- details card end -->
 
         <!-- employees card start -->
-        <div class="ui fluid card b8k-top-margin">
+        {{#unless isAddingModeGH}}
+          <div class="ui fluid card b8k-top-margin">
 
-          <div class="content">
-            <div class="header">Powiązani serwisanci</div>
-          </div>
+            <div class="content">
+              <div class="header">Powiązani serwisanci</div>
+            </div>
 
-          <div class="content">
-            {{#if isAddingModeGH}}
-              {{> related_placeholder_T}}
-            {{else}}
+            <div class="content">
               {{#if Template.subscriptionsReady}}
                 {{#if hasLicensesH}}
                   <div class="ui list">
@@ -71,13 +69,11 @@
               {{else}}
                 {{> loading_T}}
               {{/if}}
-            {{/if}}
+            </div>
+
           </div>
+          <!-- employees card end -->
 
-        </div>
-        <!-- employees card end -->
-
-        {{#unless isAddingModeGH}}
           {{#if Template.subscriptionsReady}}
             <!-- footer card start -->
             <div class="ui fluid card b8k-top-margin">

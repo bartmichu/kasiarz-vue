@@ -50,18 +50,15 @@
         </div>
         <!-- details card end -->
 
+        {{#unless isAddingModeGH}}
+          <!-- models card start -->
+          <div class="ui fluid card b8k-top-margin">
 
-        <!-- models card start -->
-        <div class="ui fluid card b8k-top-margin">
+            <div class="content">
+              <div class="header">Powiązane modele urządzeń</div>
+            </div>
 
-          <div class="content">
-            <div class="header">Powiązane modele urządzeń</div>
-          </div>
-
-          <div class="content">
-            {{#if isAddingModeGH}}
-              {{> related_placeholder_T}}
-            {{else}}
+            <div class="content">
               {{#if Template.subscriptionsReady}}
                 {{#with getDataH}}
                   {{#if hasModelsH}}
@@ -82,13 +79,11 @@
               {{else}}
                 {{> loading_T}}
               {{/if}}
-            {{/if}}
+            </div>
+
           </div>
+          <!-- models card end -->
 
-        </div>
-        <!-- models card end -->
-
-        {{#unless isAddingModeGH}}
           {{#if Template.subscriptionsReady}}
             <!-- footer card start -->
             <div class="ui fluid card b8k-top-margin">
