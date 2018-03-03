@@ -12,7 +12,6 @@ import "/imports/ui/components/item_menu/item_menu_delete_T.js";
 import "/imports/ui/components/item_menu/item_menu_edit_T.js";
 import "/imports/ui/components/item_menu/item_menu_save_T.js";
 import "/imports/ui/components/list_placeholder/list_placeholder_T.js";
-import "/imports/ui/components/related_placeholder/related_placeholder_T.js";
 import "/imports/ui/components/list_menu/list_menu_add_T.js";
 import "/imports/ui/components/form_controls/input_field_T.js";
 import "/imports/ui/components/form_controls/textarea_field_T.js";
