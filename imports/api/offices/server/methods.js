@@ -35,7 +35,7 @@ export const removeOffice = new ValidatedMethod({
       throw new Meteor.Error("Błąd wywołania metody");
     } else {
       check(documentId, String);
-      const office = Offices.findOne({ _id: documentId });
+      const office = Offices.findOne({ uzytkownikId: actualUserId, _id: documentId });
       if (!office || (office.uzytkownikId !== actualUserId)) {
         throw new Meteor.Error("Błąd wywołania metody");
       }
@@ -57,7 +57,7 @@ export const updateOffice = new ValidatedMethod({
       check(documentId, String);
       const validationContext = Offices.simpleSchema().newContext();
       if (validationContext.validate(formData) === true) {
-        const office = Offices.findOne({ _id: documentId });
+        const office = Offices.findOne({ uzytkownikId: actualUserId, _id: documentId });
         if (!office || (office.uzytkownikId !== actualUserId)) {
           throw new Meteor.Error("Błąd wywołania metody");
         }

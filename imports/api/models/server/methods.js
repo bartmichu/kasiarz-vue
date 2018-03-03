@@ -14,7 +14,7 @@ export const insertModel = new ValidatedMethod({
     } else {
       const manufacturerId = model.producentId;
       check(manufacturerId, String);
-      const manufacturer = Manufacturers.findOne({ _id: manufacturerId });
+      const manufacturer = Manufacturers.findOne({ uzytkownikId: actualUserId, _id: manufacturerId });
       if (!manufacturer || (manufacturer.uzytkownikId !== actualUserId)) {
         throw new Meteor.Error("Błąd wywołania metody");
       }
@@ -44,7 +44,7 @@ export const removeModel = new ValidatedMethod({
       throw new Meteor.Error("Błąd wywołania metody");
     } else {
       check(documentId, String);
-      const model = Models.findOne({ _id: documentId });
+      const model = Models.findOne({ uzytkownikId: actualUserId, _id: documentId });
       if (!model || (model.uzytkownikId !== actualUserId)) {
         throw new Meteor.Error("Błąd wywołania metody");
       }
@@ -66,7 +66,7 @@ export const updateModel = new ValidatedMethod({
       check(documentId, String);
       const validationContext = Models.simpleSchema().newContext();
       if (validationContext.validate(formData) === true) {
-        const model = Models.findOne({ _id: documentId });
+        const model = Models.findOne({ uzytkownikId: actualUserId, _id: documentId });
         if (!model || (model.uzytkownikId !== actualUserId)) {
           throw new Meteor.Error("Błąd wywołania metody");
         }

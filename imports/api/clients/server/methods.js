@@ -35,7 +35,7 @@ export const removeClient = new ValidatedMethod({
       throw new Meteor.Error("Błąd wywołania metody");
     } else {
       check(documentId, String);
-      const client = Clients.findOne({ _id: documentId });
+      const client = Clients.findOne({ uzytkownikId: actualUserId, _id: documentId });
       if (!client || (client.uzytkownikId !== actualUserId)) {
         throw new Meteor.Error("Błąd wywołania metody");
       }
@@ -57,7 +57,7 @@ export const updateClient = new ValidatedMethod({
       check(documentId, String);
       const validationContext = Clients.simpleSchema().newContext();
       if (validationContext.validate(formData) === true) {
-        const client = Clients.findOne({ _id: documentId });
+        const client = Clients.findOne({ uzytkownikId: actualUserId, _id: documentId });
         if (!client || (client.uzytkownikId !== actualUserId)) {
           throw new Meteor.Error("Błąd wywołania metody");
         }

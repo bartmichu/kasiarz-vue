@@ -15,7 +15,7 @@ export const insertEmployee = new ValidatedMethod({
     } else {
       const shopId = employee.serwisId;
       check(shopId, String);
-      const shop = Shops.findOne({ _id: shopId });
+      const shop = Shops.findOne({ uzytkownikId: actualUserId, _id: shopId });
       if (!shop || (shop.uzytkownikId !== actualUserId)) {
         throw new Meteor.Error("Błąd wywołania metody");
       }
@@ -46,7 +46,7 @@ export const removeEmployee = new ValidatedMethod({
       throw new Meteor.Error("Błąd wywołania metody");
     } else {
       check(documentId, String);
-      const employee = Employees.findOne({ _id: documentId });
+      const employee = Employees.findOne({ uzytkownikId: actualUserId, _id: documentId });
       if (!employee || (employee.uzytkownikId !== actualUserId)) {
         throw new Meteor.Error("Błąd wywołania metody");
       }
@@ -68,7 +68,7 @@ export const updateEmployee = new ValidatedMethod({
       check(documentId, String);
       const validationContext = Employees.simpleSchema().newContext();
       if (validationContext.validate(formData) === true) {
-        const employee = Employees.findOne({ _id: documentId });
+        const employee = Employees.findOne({ uzytkownikId: actualUserId, _id: documentId });
         if (!employee || (employee.uzytkownikId !== actualUserId)) {
           throw new Meteor.Error("Błąd wywołania metody");
         }
@@ -100,7 +100,7 @@ export const addLicense = new ValidatedMethod({
       check(documentId, String);
       const validationContext = licenseSchema.newContext();
       if (validationContext.validate(formData) === true) {
-        const employee = Employees.findOne({ _id: documentId });
+        const employee = Employees.findOne({ uzytkownikId: actualUserId, _id: documentId });
         if (!employee || (employee.uzytkownikId !== actualUserId)) {
           throw new Meteor.Error("Błąd wywołania metody");
         }

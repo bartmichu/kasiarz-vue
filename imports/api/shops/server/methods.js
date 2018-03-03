@@ -37,7 +37,7 @@ export const updateShop = new ValidatedMethod({
       check(documentId, String);
       const validationContext = Shops.simpleSchema().newContext();
       if (validationContext.validate(formData) === true) {
-        const shop = Shops.findOne({ _id: documentId });
+        const shop = Shops.findOne({ uzytkownikId: actualUserId, _id: documentId });
         if (!shop || (shop.uzytkownikId !== actualUserId)) {
           throw new Meteor.Error("Błąd wywołania metody");
         }

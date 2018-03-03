@@ -36,10 +36,10 @@ export const removeManufacturer = new ValidatedMethod({
       throw new Meteor.Error("Błąd wywołania metody");
     } else {
       check(documentId, String);
-      const manufacturer = Manufacturers.findOne({ _id: documentId });
+      const manufacturer = Manufacturers.findOne({ uzytkownikId: actualUserId, _id: documentId });
       if (!manufacturer || (manufacturer.uzytkownikId !== actualUserId)) {
         throw new Meteor.Error("Błąd wywołania metody");
-      } else if (Models.find({ producentId: manufacturer._id }).count() > 0) {
+      } else if (Models.find({ uzytkownikId: actualUserId, producentId: manufacturer._id }).count() > 0) {
         throw new Meteor.Error("Błąd wywołania metody");
       }
     }
@@ -60,7 +60,7 @@ export const updateManufacturer = new ValidatedMethod({
       check(documentId, String);
       const validationContext = Manufacturers.simpleSchema().newContext();
       if (validationContext.validate(formData) === true) {
-        const manufacturer = Manufacturers.findOne({ _id: documentId });
+        const manufacturer = Manufacturers.findOne({ uzytkownikId: actualUserId, _id: documentId });
         if (!manufacturer || (manufacturer.uzytkownikId !== actualUserId)) {
           throw new Meteor.Error("Błąd wywołania metody");
         }
