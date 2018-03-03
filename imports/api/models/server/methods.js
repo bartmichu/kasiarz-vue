@@ -2,6 +2,7 @@ import { Meteor } from "meteor/meteor";
 import { ValidatedMethod } from "meteor/mdg:validated-method";
 import { check } from "meteor/check";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
+import Employees from "/imports/api/employees/employees.js";
 import Models from "/imports/api/models/models.js";
 
 
@@ -46,6 +47,8 @@ export const removeModel = new ValidatedMethod({
       check(documentId, String);
       const model = Models.findOne({ uzytkownikId: actualUserId, _id: documentId });
       if (!model || (model.uzytkownikId !== actualUserId)) {
+        throw new Meteor.Error("Błąd wywołania metody");
+      } else if (Employees.find({ uzytkownikId: actualUserId, "uprawnienia.modele": model._id }).count() > 0) {
         throw new Meteor.Error("Błąd wywołania metody");
       }
     }

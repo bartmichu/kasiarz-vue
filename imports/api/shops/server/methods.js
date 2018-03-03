@@ -2,6 +2,7 @@ import { Meteor } from "meteor/meteor";
 import { ValidatedMethod } from "meteor/mdg:validated-method";
 import { check } from "meteor/check";
 import Shops from "/imports/api/shops/shops.js";
+import Employees from "/imports/api/employees/employees.js";
 
 
 export const insertShop = new ValidatedMethod({
@@ -37,6 +38,8 @@ export const removeShop = new ValidatedMethod({
       check(documentId, String);
       const shop = Shops.findOne({ uzytkownikId: actualUserId, _id: documentId });
       if (!shop || (shop.uzytkownikId !== actualUserId)) {
+        throw new Meteor.Error("Błąd wywołania metody");
+      } else if (Employees.find({ uzytkownikId: actualUserId, serwisId: shop._id }).count() > 0) {
         throw new Meteor.Error("Błąd wywołania metody");
       }
     }
