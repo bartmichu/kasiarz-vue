@@ -27,6 +27,26 @@ export const insertShop = new ValidatedMethod({
 });
 
 
+export const removeShop = new ValidatedMethod({
+  name: "shops.remove",
+  validate(documentId) {
+    const actualUserId = Meteor.userId();
+    if (actualUserId === null) {
+      throw new Meteor.Error("Błąd wywołania metody");
+    } else {
+      check(documentId, String);
+      const shop = Shops.findOne({ uzytkownikId: actualUserId, _id: documentId });
+      if (!shop || (shop.uzytkownikId !== actualUserId)) {
+        throw new Meteor.Error("Błąd wywołania metody");
+      }
+    }
+  },
+  run(documentId) {
+    return Shops.remove({ _id: documentId });
+  },
+});
+
+
 export const updateShop = new ValidatedMethod({
   name: "shops.update",
   validate({ documentId, formData }) {
