@@ -84,6 +84,37 @@
           </div>
           <!-- models card end -->
 
+          <!-- employees card start -->
+          <div class="ui fluid card b8k-top-margin">
+
+            <div class="content">
+              <div class="header">Powiązani serwisanci</div>
+            </div>
+
+            <div class="content">
+              {{#if Template.subscriptionsReady}}
+                {{#if hasLicensesH}}
+                  <div class="ui list">
+                    {{#each employeesH}}
+                      <a class="item">
+                        <i class="minus icon"></i>
+                        <div class="content">
+                          <div class="description">{{imieNazwisko}}</div>
+                        </div>
+                      </a>
+                    {{/each}}
+                  </div>
+                {{else}}
+                  {{> related_placeholder_T}}
+                {{/if}}
+              {{else}}
+                {{> loading_placeholder_T}}
+              {{/if}}
+            </div>
+
+          </div>
+          <!-- employees card end -->
+
           {{#if Template.subscriptionsReady}}
             <!-- footer card start -->
             <div class="ui fluid card b8k-top-margin">

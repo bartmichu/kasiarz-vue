@@ -4,6 +4,7 @@ import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { getAddingModeFromRoute, setEditMode, setFormValues } from "/imports/util/client/client-functions.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Models from "/imports/api/models/models.js";
+import Employees from "/imports/api/employees/employees.js";
 import "/imports/ui/components/loading_placeholder/loading_placeholder_T.js";
 import "/imports/ui/components/section_menu/section_menu_T.js";
 import "/imports/ui/components/item_menu/item_menu_cancel_T.js";
@@ -37,8 +38,10 @@ Template.manufacturers_item_T.onCreated(() => {
     const manufacturerId = FlowRouter.getParam("_id");
     template.subscribe("manufacturers.manufacturerFilter", manufacturerId, () => {
       template.subscribe("models.manufacturerFilter", manufacturerId, () => {
-        Tracker.afterFlush(() => {
-          afterFlushCallback();
+        template.subscribe("employees.all", () => {
+          Tracker.afterFlush(() => {
+            afterFlushCallback();
+          });
         });
       });
     });
@@ -61,6 +64,14 @@ Template.manufacturers_item_T.helpers({
   },
   schemaH(field) {
     return Manufacturers.simpleSchema().getDefinition(field);
+  },
+  hasLicensesH() {
+    const manufacturerModels = Models.find({}, { fields: { _id: 1 } }).map(model => model._id);
+    return Employees.find({ "uprawnienia.modele": { $in: manufacturerModels } }).count() > 0;
+  },
+  employeesH() {
+    const manufacturerModels = Models.find({}, { fields: { _id: 1 } }).map(model => model._id);
+    return Employees.find({ "uprawnienia.modele": { $in: manufacturerModels } });
   },
 });
 
