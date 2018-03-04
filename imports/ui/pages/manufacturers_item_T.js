@@ -37,7 +37,7 @@ Template.manufacturers_item_T.onCreated(() => {
   } else {
     const manufacturerId = FlowRouter.getParam("_id");
     template.subscribe("manufacturers.one", manufacturerId, () => {
-      template.subscribe("models.manufacturerFilter", manufacturerId, () => {
+      template.subscribe("models.manufacturer.basic", manufacturerId, () => {
         template.subscribe("employees.all", () => {
           Tracker.afterFlush(() => {
             afterFlushCallback();

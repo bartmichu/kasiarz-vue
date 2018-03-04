@@ -68,7 +68,7 @@ Template.employees_license_modal_T.onCreated(() => {
     });
   };
 
-  template.subscribe("models.all", () => {
+  template.subscribe("models.basic", () => {
     Tracker.afterFlush(() => {
       afterFlushCallback();
     });

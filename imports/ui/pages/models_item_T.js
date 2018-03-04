@@ -46,7 +46,7 @@ Template.models_item_T.onCreated(() => {
         afterFlushCallback();
       });
     } else {
-      template.subscribe("models.modelFilter", FlowRouter.getParam("_id"), () => {
+      template.subscribe("models.one", FlowRouter.getParam("_id"), () => {
         template.subscribe("employees.modelFilter", FlowRouter.getParam("_id"), () => {
           Tracker.afterFlush(() => {
             afterFlushCallback();
