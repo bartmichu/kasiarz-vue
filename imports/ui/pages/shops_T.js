@@ -12,7 +12,7 @@ import "./shops_T.html";
 
 
 Template.shops_T.onCreated(() => {
-  Template.instance().subscribe("shops.all");
+  Template.instance().subscribe("shops.list");
   // TODO: ustawianie wartości domyślnej
   Template.instance().sorfField = new ReactiveVar("dataModyfikacji");
   Template.instance().sortOrder = new ReactiveVar("1");

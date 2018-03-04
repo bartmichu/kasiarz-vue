@@ -41,7 +41,7 @@ Template.employees_item_T.onCreated(() => {
 
   setEditMode(isAddingMode);
 
-  template.subscribe("shops.all", () => {
+  template.subscribe("shops.basic", () => {
     if (isAddingMode) {
       Tracker.afterFlush(() => {
         afterFlushCallback();
