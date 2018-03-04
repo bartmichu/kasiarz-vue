@@ -118,6 +118,17 @@ const clientSchema = new SimpleSchema({
     max: 300,
     optional: true,
   },
+  miejscaInstalacji: {
+    type: Array,
+    label: "Miejsce instalacji",
+    maxCount: 100,
+    optional: true,
+  },
+  "miejscaInstalacji.$": {
+    type: String,
+    max: 300,
+    optional: true,
+  },
   dataUtworzenia: {
     type: Date,
     label: "Data utworzenia",
