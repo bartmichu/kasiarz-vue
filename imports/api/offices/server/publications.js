@@ -4,10 +4,10 @@ import Offices from "/imports/api/offices/offices.js";
 import { isNonEmptyString } from "/imports/util/server/server-functions.js";
 
 
-Meteor.publish("offices.all", function publishFunction() {
+Meteor.publish("offices.list", function publishFunction() {
   const actualUserId = Meteor.userId();
   if (actualUserId) {
-    const data = Offices.find({ uzytkownikId: actualUserId });
+    const data = Offices.find({ uzytkownikId: actualUserId }, { fields: { nazwa: 1, "adres.miejscowosc": 1, dataModyfikacji: 1 } });
 
     if (data) {
       return data;
@@ -17,7 +17,8 @@ Meteor.publish("offices.all", function publishFunction() {
   return this.ready();
 });
 
-Meteor.publish("offices.officeFilter", function publishFunction(officeId) {
+
+Meteor.publish("offices.one", function publishFunction(officeId) {
   const actualUserId = Meteor.userId();
   if (actualUserId) {
     check(officeId, isNonEmptyString);

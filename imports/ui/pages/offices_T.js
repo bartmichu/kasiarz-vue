@@ -11,7 +11,7 @@ import "./offices_T.html";
 
 
 Template.offices_T.onCreated(() => {
-  Template.instance().subscribe("offices.all");
+  Template.instance().subscribe("offices.list");
   // TODO: ustawianie wartości domyślnej
   Template.instance().sorfField = new ReactiveVar("dataModyfikacji");
   Template.instance().sortOrder = new ReactiveVar("1");
