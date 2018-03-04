@@ -49,7 +49,7 @@ Template.employees_item_T.onCreated(() => {
     } else {
       template.subscribe("employees.employeeFilter", FlowRouter.getParam("_id"), () => {
         template.subscribe("models.all", () => {
-          template.subscribe("manufacturers.all", () => {
+          template.subscribe("manufacturers.basic", () => {
             Tracker.afterFlush(() => {
               afterFlushCallback();
             });

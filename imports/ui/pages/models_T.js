@@ -13,7 +13,7 @@ import "./models_T.html";
 
 Template.models_T.onCreated(() => {
   Template.instance().subscribe("models.all");
-  Template.instance().subscribe("manufacturers.all");
+  Template.instance().subscribe("manufacturers.basic");
   // TODO: ustawianie wartości domyślnej
   Template.instance().sorfField = new ReactiveVar("dataModyfikacji");
   Template.instance().sortOrder = new ReactiveVar("1");

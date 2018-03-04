@@ -40,7 +40,7 @@ Template.models_item_T.onCreated(() => {
 
   setEditMode(isAddingMode);
 
-  template.subscribe("manufacturers.all", () => {
+  template.subscribe("manufacturers.basic", () => {
     if (isAddingMode) {
       Tracker.afterFlush(() => {
         afterFlushCallback();
