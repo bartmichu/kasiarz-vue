@@ -72,7 +72,6 @@ Template.employees_item_T.helpers({
     return Employees.findOne().uprawnienia;
   },
   modelsH() {
-    // return this.modele.map(modelId => Models.findOne({ _id: modelId }).nazwa).join(", ");
     return this.modele.map((modelId) => {
       const model = Models.findOne({ _id: modelId });
       return `${model.nazwa} (${Manufacturers.findOne({ _id: model.producentId }).nazwa})`;
