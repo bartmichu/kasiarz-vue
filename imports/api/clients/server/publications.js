@@ -7,7 +7,7 @@ import { isNonEmptyString } from "/imports/util/server/server-functions.js";
 Meteor.publish("clients.list", function publishFunction() {
   const actualUserId = Meteor.userId();
   if (actualUserId) {
-    const data = Clients.find({ uzytkownikId: actualUserId }, { filter: { nazwa: 1 } });
+    const data = Clients.find({ uzytkownikId: actualUserId }, { fields: { nazwa: 1 } });
 
     if (data) {
       return data;
