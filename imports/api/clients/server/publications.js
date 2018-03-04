@@ -4,10 +4,10 @@ import Clients from "/imports/api/clients/clients.js";
 import { isNonEmptyString } from "/imports/util/server/server-functions.js";
 
 
-Meteor.publish("clients.all", function publishFunction() {
+Meteor.publish("clients.list", function publishFunction() {
   const actualUserId = Meteor.userId();
   if (actualUserId) {
-    const data = Clients.find({ uzytkownikId: actualUserId });
+    const data = Clients.find({ uzytkownikId: actualUserId }, { filter: { nazwa: 1 } });
 
     if (data) {
       return data;
@@ -17,7 +17,8 @@ Meteor.publish("clients.all", function publishFunction() {
   return this.ready();
 });
 
-Meteor.publish("clients.clientFilter", function publishFunction(clientId) {
+
+Meteor.publish("clients.one", function publishFunction(clientId) {
   const actualUserId = Meteor.userId();
   if (actualUserId) {
     check(clientId, isNonEmptyString);
