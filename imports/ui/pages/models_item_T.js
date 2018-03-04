@@ -47,7 +47,7 @@ Template.models_item_T.onCreated(() => {
       });
     } else {
       template.subscribe("models.one", FlowRouter.getParam("_id"), () => {
-        template.subscribe("employees.modelFilter", FlowRouter.getParam("_id"), () => {
+        template.subscribe("employees.model.basic", FlowRouter.getParam("_id"), () => {
           Tracker.afterFlush(() => {
             afterFlushCallback();
           });

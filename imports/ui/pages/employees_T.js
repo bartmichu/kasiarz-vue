@@ -12,7 +12,7 @@ import "./employees_T.html";
 
 
 Template.employees_T.onCreated(() => {
-  Template.instance().subscribe("employees.all");
+  Template.instance().subscribe("employees.list");
   Template.instance().subscribe("shops.basic");
   // TODO: ustawianie wartości domyślnej
   Template.instance().sorfField = new ReactiveVar("dataModyfikacji");

@@ -47,8 +47,8 @@ Template.employees_item_T.onCreated(() => {
         afterFlushCallback();
       });
     } else {
-      template.subscribe("employees.employeeFilter", FlowRouter.getParam("_id"), () => {
-        template.subscribe("models.list", () => {
+      template.subscribe("employees.one", FlowRouter.getParam("_id"), () => {
+        template.subscribe("models.extended", () => {
           template.subscribe("manufacturers.basic", () => {
             Tracker.afterFlush(() => {
               afterFlushCallback();

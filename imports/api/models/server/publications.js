@@ -32,6 +32,20 @@ Meteor.publish("models.basic", function publishFunction() {
 });
 
 
+Meteor.publish("models.extended", function publishFunction() {
+  const actualUserId = Meteor.userId();
+  if (actualUserId) {
+    const data = Models.find({ uzytkownikId: actualUserId }, { fields: { nazwa: 1, producentId: 1 } });
+
+    if (data) {
+      return data;
+    }
+  }
+
+  return this.ready();
+});
+
+
 Meteor.publish("models.one", function publishFunction(modelId) {
   const actualUserId = Meteor.userId();
   if (actualUserId) {
