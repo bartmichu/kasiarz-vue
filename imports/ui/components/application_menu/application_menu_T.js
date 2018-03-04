@@ -53,6 +53,13 @@ Template.application_menu_T.events({
   "click a": (event) => {
     event.preventDefault();
   },
+  "click #item-clients": () => {
+    if (Session.equals("isDirty", true)) {
+      $("#modal-dirty").modal("show");
+    } else {
+      FlowRouter.go("clients");
+    }
+  },
   "click #item-manufacturers": () => {
     if (Session.equals("isDirty", true)) {
       $("#modal-dirty").modal("show");

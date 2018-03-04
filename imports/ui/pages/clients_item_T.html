@@ -1,0 +1,99 @@
+<template name="clients_item_T">
+
+  <!-- container start -->
+  <div class="ui grid container">
+    <div class="row">
+      <div class="sixteen wide column">
+
+        <!-- breadcrumb card start -->
+        <div class="ui fluid card b8k-top-margin">
+          {{> section_menu_T}}
+        </div>
+        <!-- breadcrumb card end -->
+
+        <!-- details card start -->
+        <div class="ui fluid card b8k-top-margin">
+
+          <div class="content">
+            <div class="header">{{sectionHeaderTextGH}}
+              <div class="right floated">
+                {{#if Template.subscriptionsReady}}
+                  {{#if isEditModeGH}}
+                    {{> item_menu_cancel_T}} {{> item_menu_save_T}}
+                  {{else}}
+                    {{> item_menu_edit_T}}
+                  {{/if}}
+                {{/if}}
+              </div>
+            </div>
+          </div>
+
+          {{#if Template.subscriptionsReady}}
+            <div class="content">
+              <form class="ui form">
+                {{> input_field_T dataFieldName="nazwa" schema=(schemaH "nazwa")}}
+
+                <div class="three fields">
+                  {{> input_field_T dataFieldName="nip" schema=(schemaH "nip")}} {{> input_field_T dataFieldName="regonPesel" schema=(schemaH "regonPesel")}}
+                  <div class="field"></div>
+                </div>
+
+                <div class="three fields">
+                  {{> input_field_T dataFieldName="adres.kraj" schema=(schemaH "adres.kraj")}} {{> select_field_T dataFieldName="adres.wojewodztwoId" schema=(schemaH "adres.wojewodztwoId") items=(voivodeshipsH) defaultText="wybierz województwo"}}
+                  {{> input_field_T dataFieldName="adres.gminaDzielnica" schema=(schemaH "adres.gminaDzielnica")}}
+                </div>
+
+                <div class="three fields">
+                  {{> input_field_T dataFieldName="adres.ulica" schema=(schemaH "adres.ulica")}} {{> input_field_T dataFieldName="adres.nrDomu" schema=(schemaH "adres.nrDomu")}}
+                  {{> input_field_T dataFieldName="adres.nrLokalu" schema=(schemaH "adres.nrLokalu")}}
+                </div>
+
+                <div class="three fields">
+                  {{> input_field_T dataFieldName="adres.miejscowosc" schema=(schemaH "adres.miejscowosc")}} {{> input_field_T dataFieldName="adres.kodPocztowy" schema=(schemaH "adres.kodPocztowy")}}
+                  {{> input_field_T dataFieldName="adres.poczta" schema=(schemaH "adres.poczta")}}
+                </div>
+
+                <div class="three fields">
+                  {{> input_field_T dataFieldName="adres.skrytkaPocztowa" schema=(schemaH "adres.skrytkaPocztowa")}}
+                  <div class="field"></div>
+                  <div class="field"></div>
+                </div>
+
+                <div class="three fields">
+                  {{> input_field_T dataFieldName="email" schema=(schemaH "email")}} {{> input_field_T dataFieldName="telefon" schema=(schemaH "telefon")}}
+                  <div class="field"></div>
+                </div>
+
+                {{> textarea_field_T dataFieldName="dodatkoweInformacje" schema=(schemaH "dodatkoweInformacje")}}
+              </form>
+            </div>
+          {{else}}
+            <div class="content">{{> loading_placeholder_T}}</div>
+          {{/if}}
+
+        </div>
+        <!-- details card end -->
+
+        {{#unless isAddingModeGH}}
+          {{#if Template.subscriptionsReady}}
+            <!-- footer card start -->
+            <div class="ui fluid card b8k-top-margin">
+              <div class="content">
+                <form class="ui form">
+                  <div class="three fields">
+                    {{> input_field_T dataFieldName="dataUtworzenia" schema=(schemaH "dataUtworzenia") disabled="yes"}} {{> input_field_T dataFieldName="dataModyfikacji" schema=(schemaH "dataModyfikacji") disabled="yes"}}
+                    <div class="field"></div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- footer card end -->
+          {{/if}}
+        {{/unless}}
+
+      </div>
+    </div>
+  </div>
+  <!-- container end -->
+
+</template>
