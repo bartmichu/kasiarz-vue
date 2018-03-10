@@ -17,6 +17,8 @@ import "/imports/ui/pages/employees_T.js";
 import "/imports/ui/pages/employees_item_T.js";
 import "/imports/ui/pages/clients_T.js";
 import "/imports/ui/pages/clients_item_T.js";
+import "/imports/ui/pages/devices_T.js";
+import "/imports/ui/pages/devices_item_T.js";
 
 
 function setPreviousUrl() {
@@ -270,6 +272,42 @@ clients.route("/dodaj", {
   action() {
     Session.set("uiSection", "client");
     this.render("body_T", "clients_item_T", {
+      app_menu_section: "application_menu_T",
+    });
+  },
+});
+
+
+const devices = FlowRouter.group({
+  prefix: "/urządzenia",
+  name: "devices",
+});
+
+devices.route("/", {
+  name: "devices",
+  action() {
+    Session.set("uiSection", "devices");
+    this.render("body_T", "devices_T", {
+      app_menu_section: "application_menu_T",
+    });
+  },
+});
+
+devices.route("/id/:_id", {
+  name: "devices.device",
+  action() {
+    Session.set("uiSection", "device");
+    this.render("body_T", "devices_item_T", {
+      app_menu_section: "application_menu_T",
+    });
+  },
+});
+
+devices.route("/dodaj", {
+  name: "devices.add",
+  action() {
+    Session.set("uiSection", "device");
+    this.render("body_T", "devices_item_T", {
       app_menu_section: "application_menu_T",
     });
   },
