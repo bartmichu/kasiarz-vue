@@ -60,6 +60,13 @@ Template.application_menu_T.events({
       FlowRouter.go("clients");
     }
   },
+  "click #item-devices": () => {
+    if (Session.equals("isDirty", true)) {
+      $("#modal-dirty").modal("show");
+    } else {
+      FlowRouter.go("devices");
+    }
+  },
   "click #item-manufacturers": () => {
     if (Session.equals("isDirty", true)) {
       $("#modal-dirty").modal("show");
