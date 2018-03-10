@@ -77,6 +77,19 @@ const uimap = {
       close: true,
     },
   },
+  devices: {
+    header: "Lista urządzeń",
+    crumbs: ["Urządzenia"],
+    buttons: {},
+  },
+  device: {
+    header: "Dane urządzenia",
+    crumbs: ["Urządzenia", "Urządzenie"],
+    buttons: {
+      delete: true,
+      close: true,
+    },
+  },
 };
 
 
