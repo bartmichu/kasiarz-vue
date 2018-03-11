@@ -36,7 +36,6 @@ Meteor.startup(() => {
   if (Clients.find().count() === 0) {
     const userId = Meteor.users.findOne({ username: "demo" })._id;
     const voivodeshipsCount = Voivodeships.find().count();
-    const randomNumber = Math.floor(Math.random() * voivodeshipsCount);
     const dummyData = [
       {
         nazwa: "EXOZENT Susana Monroe",
@@ -1122,6 +1121,7 @@ Meteor.startup(() => {
     ];
 
     dummyData.forEach((client) => {
+      const randomNumber = Math.floor(Math.random() * voivodeshipsCount);
       client.uzytkownikId = userId;
       client.adres.wojewodztwoId = Voivodeships.find({}, { skip: randomNumber, limit: 1 }).fetch()[0]._id;
       client.dataUtworzenia = new Date();
