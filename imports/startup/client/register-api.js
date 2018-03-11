@@ -16,5 +16,8 @@ import "/imports/api/employees/schema.js";
 import "/imports/api/clients/clients.js";
 import "/imports/api/clients/schema.js";
 
+import "/imports/api/devices/devices.js";
+import "/imports/api/devices/schema.js";
+
 import "/imports/api/voivodeships/voivodeships.js";
 import "/imports/api/voivodeships/schema.js";
