@@ -1121,12 +1121,16 @@ Meteor.startup(() => {
     ];
 
     dummyData.forEach((client) => {
-      const randomNumber = Math.floor(Math.random() * voivodeshipsCount);
       client.uzytkownikId = userId;
+
+      const randomNumber = Math.floor(Math.random() * voivodeshipsCount);
       client.adres.wojewodztwoId = Voivodeships.find({}, { skip: randomNumber, limit: 1 }).fetch()[0]._id;
+
       client.dataUtworzenia = new Date();
       client.dataModyfikacji = client.dataUtworzenia;
+
       client.dodatkoweInformacje = "dummy data";
+
       Clients.insert(client);
     });
   }
