@@ -1,0 +1,75 @@
+<template name="devices_T">
+
+  <!-- container start -->
+  <div class="ui grid container">
+    <div class="row">
+      <div class="sixteen wide column">
+
+        <!-- breadcrumb card start -->
+        <div class="ui fluid card b8k-top-margin">
+          {{> section_menu_T}}
+        </div>
+        <!-- breadcrumb card end -->
+
+        <!-- list card start -->
+        <div class="ui fluid card b8k-top-margin">
+
+          <div class="content">
+            <div class="header">{{sectionHeaderTextGH}}
+              <div class="right floated">
+                {{> list_menu_add_T}}
+              </div>
+            </div>
+          </div>
+
+          <div class="content">
+            {{#if Template.subscriptionsReady}}
+              {{#if isEmptyCollectionH}}
+                {{> list_placeholder_T}}
+              {{else}}
+                <table class="ui very basic selectable padded fixed table">
+                  <thead>
+                    <tr>
+                      <th id="header-modelId" class="four wide">{{getLabelH "modelId"}}</th>
+                      <th id="header-klientId" class="four wide">{{getLabelH "klientId"}}</th>
+                      <th id="header-dataFiskalizacji" class="four wide">{{getLabelH "dataFiskalizacji"}}</th>
+                      <th id="header-dataModyfikacji" class="three wide">{{getLabelH "dataModyfikacji"}}</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {{#each getSubscriptionDataH}}
+                      <tr id="{{_id}}">
+                        {{#with modelId}}
+                          <td>{{getModelNameH}}</td>
+                        {{/with}}
+                        {{#with klientId}}
+                          <td>{{getClientNameH}}</td>
+                        {{/with}}
+                        <td>{{formatDateGH dataFiskalizacji}}</td>
+                        <td>{{formatDateGH dataModyfikacji}}</td>
+                      </tr>
+                    {{/each}}
+                  </tbody>
+
+                  <tfoot>
+                    <tr>
+                      <th colspan="4" class="center aligned">Liczba pozycji: {{numberOfElementsH}}</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              {{/if}}
+            {{else}}
+              {{> loading_placeholder_T}}
+            {{/if}}
+          </div>
+
+        </div>
+        <!-- list card end -->
+
+      </div>
+    </div>
+  </div>
+  <!-- container end -->
+
+</template>
