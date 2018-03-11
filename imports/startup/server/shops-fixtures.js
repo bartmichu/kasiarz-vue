@@ -14,7 +14,6 @@ Meteor.startup(() => {
     const randomNumber = Math.floor(Math.random() * voivodeshipsCount);
     const dummyData = [
       {
-        uzytkownikId: userId,
         nazwa: "Dataplex Services",
         nip: "1234567890",
         regon: "",
@@ -33,13 +32,17 @@ Meteor.startup(() => {
         },
         telefon: "123-123-123",
         email: "example@email.com",
-        dataUtworzenia: new Date(),
       },
     ];
 
     dummyData.forEach((shop) => {
+      shop.uzytkownikId = userId;
+
+      shop.dataUtworzenia = new Date();
       shop.dataModyfikacji = shop.dataUtworzenia;
+
       shop.dodatkoweInformacje = "dummy data";
+
       Shops.insert(shop);
     });
   }

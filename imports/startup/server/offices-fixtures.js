@@ -306,12 +306,16 @@ Meteor.startup(() => {
     ];
 
     dummyData.forEach((office) => {
-      const randomNumber = Math.floor(Math.random() * voivodeshipsCount);
       office.uzytkownikId = userId;
+
+      const randomNumber = Math.floor(Math.random() * voivodeshipsCount);
       office.adres.wojewodztwoId = Voivodeships.find({}, { skip: randomNumber, limit: 1 }).fetch()[0]._id;
+
       office.dataUtworzenia = new Date();
       office.dataModyfikacji = office.dataUtworzenia;
+
       office.dodatkoweInformacje = "dummy data";
+
       Offices.insert(office);
     });
   }
