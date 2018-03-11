@@ -9,3 +9,4 @@ import "/imports/startup/server/manufacturers-fixtures.js";
 import "/imports/startup/server/models-fixtures.js";
 import "/imports/startup/server/shops-fixtures.js";
 import "/imports/startup/server/clients-fixtures.js";
+import "/imports/startup/server/offices-fixtures.js";
