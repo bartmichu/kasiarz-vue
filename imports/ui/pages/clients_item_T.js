@@ -60,9 +60,6 @@ Template.clients_item_T.rendered = () => { };
 
 
 Template.clients_item_T.helpers({
-  getDataH() {
-    return Clients.findOne({ _id: FlowRouter.getParam("_id") });
-  },
   voivodeshipsH() {
     return Voivodeships.find();
   },
