@@ -96,7 +96,7 @@ const getSchemaFields = collection => Object.keys(collection.simpleSchema().getD
   .map(fieldName => fieldName.replace(".$.", "."));
 
 
-// LEGACY
+// TODO: LEGACY
 const setFormLabels = () => {
   const schema = getCollectionFromRoute().simpleSchema();
   $("label").each((index, element) => {
