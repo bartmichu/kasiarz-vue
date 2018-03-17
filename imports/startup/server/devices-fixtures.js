@@ -12,6 +12,7 @@
 
 import { Meteor } from "meteor/meteor";
 import Devices from "/imports/api/devices/devices.js";
+import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Models from "/imports/api/models/models.js";
 import Clients from "/imports/api/clients/clients.js";
 
@@ -19,7 +20,6 @@ import Clients from "/imports/api/clients/clients.js";
 Meteor.startup(() => {
   if (Devices.find().count() === 0) {
     const userId = Meteor.users.findOne({ username: "demo" })._id;
-    const modelsCount = Models.find().count();
     const clientsCount = Clients.find().count();
     const dummyData = [
       {
@@ -92,8 +92,19 @@ Meteor.startup(() => {
     dummyData.forEach((device) => {
       device.uzytkownikId = userId;
 
-      let randomNumber = Math.floor(Math.random() * modelsCount);
-      device.modelId = Models.find({}, { skip: randomNumber, limit: 1 }).fetch()[0]._id;
+      const manufacturersCount = Manufacturers.find().count();
+      let randomNumber = Math.floor(Math.random() * manufacturersCount);
+      let producentId = Manufacturers.find({}, { skip: randomNumber, limit: 1 }).fetch()[0]._id;
+      while (Models.find({ producentId: producentId }).count() === 0) {
+        randomNumber = Math.floor(Math.random() * manufacturersCount);
+        producentId = Manufacturers.find({}, { skip: randomNumber, limit: 1 }).fetch()[0]._id;
+      }
+      device.producentId = producentId;
+
+      const modelsCount = Models.find({ producentId: producentId }).count();
+      randomNumber = Math.floor(Math.random() * modelsCount);
+      const modelId = Models.find({ producentId: producentId }, { skip: randomNumber, limit: 1 }).fetch()[0]._id;
+      device.modelId = modelId;
 
       randomNumber = Math.floor(Math.random() * clientsCount);
       device.klientId = Clients.find({}, { skip: randomNumber, limit: 1 }).fetch()[0]._id;
