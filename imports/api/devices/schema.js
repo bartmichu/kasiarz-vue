@@ -19,6 +19,20 @@ const deviceSchema = new SimpleSchema({
     max: 100,
     optional: false,
   },
+  numerUnikatowy: {
+    type: String,
+    label: "Numer unikatowy",
+    min: 1,
+    max: 100,
+    optional: false,
+  },
+  numerFabryczny: {
+    type: String,
+    label: "Numer fabryczny",
+    min: 1,
+    max: 100,
+    optional: false,
+  },
   klientId: {
     type: String,
     regEx: SimpleSchema.RegEx.Id,
