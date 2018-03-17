@@ -4,9 +4,11 @@
 
 // https://www.json-generator.com/
 // {
-//   miejsceInstalacji: "{{company()}} {{firstName()}} {{surname()}} ul. {{street()}} {{integer(1, 500)}}, {{integer(10, 99)}}-{{integer(100, 999)}} {{city()}}"
+//   miejsceInstalacji: "{{company()}} {{firstName()}} {{surname()}} ul. {{street()}} {{integer(1, 500)}}, {{integer(10, 99)}}-{{integer(100, 999)}} {{city()}}",
+//   numerFabryczny: "{{integer(1000000000, 9999999999)}}",
+//   numerUnikatowy: "{{integer(1000000000, 9999999999)}}"
 // }
-//
+
 
 import { Meteor } from "meteor/meteor";
 import Devices from "/imports/api/devices/devices.js";
@@ -21,49 +23,69 @@ Meteor.startup(() => {
     const clientsCount = Clients.find().count();
     const dummyData = [
       {
-        miejsceInstalacji: "Waab Rich White ul. Ralph Avenue 459, 61-403 Breinigsville",
+        miejsceInstalacji: "Magmina Rhonda Mcfadden ul. Oceanview Avenue 139, 17-978 Gilmore",
+        numerFabryczny: 5564242631,
+        numerUnikatowy: 6798816639,
       },
       {
-        miejsceInstalacji: "Cormoran Watson Savage ul. Bethel Loop 65, 84-981 Waikele",
+        miejsceInstalacji: "Bleendot Randolph Figueroa ul. Joval Court 207, 38-156 Nile",
+        numerFabryczny: 2231662299,
+        numerUnikatowy: 8077606825,
       },
       {
-        miejsceInstalacji: "Krag Christina Sellers ul. Bushwick Court 39, 60-943 Norris",
+        miejsceInstalacji: "Rodeomad Kelley Merrill ul. Howard Alley 384, 22-232 Topanga",
+        numerFabryczny: 2827857125,
+        numerUnikatowy: 7989460948,
       },
       {
-        miejsceInstalacji: "Nixelt Levy Bridges ul. Clifford Place 329, 70-958 Westphalia",
+        miejsceInstalacji: "Sulfax Nichole Black ul. Wakeman Place 283, 97-533 Tilden",
+        numerFabryczny: 1058278491,
+        numerUnikatowy: 5998250314,
       },
       {
-        miejsceInstalacji: "Uncorp Rosario Dudley ul. Christopher Avenue 432, 31-319 Gilmore",
+        miejsceInstalacji: "Apextri Valarie Henson ul. Milford Street 428, 93-259 Blackgum",
+        numerFabryczny: 9923547119,
+        numerUnikatowy: 3902710708,
       },
       {
-        miejsceInstalacji: "Rodeomad Bishop Lancaster ul. Holt Court 165, 36-813 Cazadero",
+        miejsceInstalacji: "Stockpost Judith Baird ul. Huron Street 173, 77-913 Coalmont",
+        numerFabryczny: 7610638271,
+        numerUnikatowy: 2173759692,
       },
       {
-        miejsceInstalacji: "Twiist Combs Kline ul. Grattan Street 155, 87-821 Sugartown",
+        miejsceInstalacji: "Earthpure Cherry Robbins ul. Colonial Road 22, 84-510 Kerby",
+        numerFabryczny: 9882973541,
+        numerUnikatowy: 9507969855,
       },
       {
-        miejsceInstalacji: "Zillactic Bates Burt ul. Waldane Court 92, 27-465 Brookfield",
+        miejsceInstalacji: "Qimonk Kara Dominguez ul. Kensington Walk 191, 36-119 Savannah",
+        numerFabryczny: 5168076934,
+        numerUnikatowy: 2416386209,
       },
       {
-        miejsceInstalacji: "Zentia Lacy Little ul. Stone Avenue 325, 77-582 Wright",
+        miejsceInstalacji: "Exospace Vinson Harris ul. Hill Street 477, 89-449 Comptche",
+        numerFabryczny: 9252676946,
+        numerUnikatowy: 7337192660,
       },
       {
-        miejsceInstalacji: "Insuron Foster Wynn ul. Poly Place 72, 70-442 Herald",
+        miejsceInstalacji: "Isoswitch Hays Cannon ul. Benson Avenue 128, 94-368 Waverly",
+        numerFabryczny: 8659764026,
+        numerUnikatowy: 3366966694,
       },
       {
-        miejsceInstalacji: "Proflex Payne Rasmussen ul. Wallabout Street 17, 44-667 Kenvil",
+        miejsceInstalacji: "Assistia Toni Stokes ul. Veronica Place 451, 28-918 Chumuckla",
+        numerFabryczny: 7442982574,
+        numerUnikatowy: 3641723191,
       },
       {
-        miejsceInstalacji: "Zork Sawyer Kerr ul. Canarsie Road 159, 47-805 Broadlands",
+        miejsceInstalacji: "Softmicro Osborn Gomez ul. Polhemus Place 108, 86-130 Hardyville",
+        numerFabryczny: 8852369889,
+        numerUnikatowy: 7178781380,
       },
       {
-        miejsceInstalacji: "Tubalum Malinda Marquez ul. Church Avenue 296, 78-520 Collins",
-      },
-      {
-        miejsceInstalacji: "Tubesys Boyle Wright ul. Commerce Street 330, 77-973 Kipp",
-      },
-      {
-        miejsceInstalacji: "Orbin Claire Porter ul. Cozine Avenue 147, 85-385 Ernstville",
+        miejsceInstalacji: "Uplinx Rowe Peters ul. Kane Street 274, 23-454 Rockhill",
+        numerFabryczny: 8912511388,
+        numerUnikatowy: 2012023314,
       },
     ];
 
