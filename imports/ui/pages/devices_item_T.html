@@ -1,0 +1,112 @@
+<template name="devices_item_T">
+
+  <!-- container start -->
+  <div class="ui grid container">
+    <div class="row">
+      <div class="sixteen wide column">
+
+        <!-- breadcrumb card start -->
+        <div class="ui fluid card b8k-top-margin">
+          {{> section_menu_T}}
+        </div>
+        <!-- breadcrumb card end -->
+
+        <!-- details card start -->
+        <div class="ui fluid card b8k-top-margin">
+
+          <div class="content">
+            <div class="header">{{sectionHeaderTextGH}}
+              <div class="right floated">
+                {{#if Template.subscriptionsReady}}
+                  {{#if isEditModeGH}}
+                    {{> item_menu_cancel_T}} {{> item_menu_save_T}}
+                  {{else}}
+                    {{> item_menu_edit_T}}
+                  {{/if}}
+                {{/if}}
+              </div>
+            </div>
+          </div>
+
+          {{#if Template.subscriptionsReady}}
+            <div class="content">
+              <form class="ui form">
+                <div class="two fields">
+                  {{> select_field_T dataFieldName="producentId" schema=(schemaH "producentId") items=(manufacturersH) defaultText="wybierz producenta"}}
+                  {{> select_field_T dataFieldName="modelId" schema=(schemaH "modelId") items=(modelsH) defaultText="wybierz model"}}
+                </div>
+                <div class="two fields">
+                  {{> input_field_T dataFieldName="numerUnikatowy" schema=(schemaH "numerUnikatowy")}} {{> input_field_T dataFieldName="numerFabryczny" schema=(schemaH "numerFabryczny")}}
+                </div>
+                {{> textarea_field_T dataFieldName="dodatkoweInformacje" schema=(schemaH "dodatkoweInformacje")}}
+              </form>
+            </div>
+          {{else}}
+            <div class="content">{{> loading_placeholder_T}}</div>
+          {{/if}}
+
+        </div>
+        <!-- details card end -->
+
+        {{#unless isAddingModeGH}}
+          <!-- client card start -->
+          <div class="ui fluid card b8k-top-margin">
+
+            <div class="content">
+              <div class="header">Klient</div>
+            </div>
+
+            <div class="content">
+              {{#if Template.subscriptionsReady}}
+                <form class="ui form">
+                  {{> select_field_T dataFieldName="klientId" schema=(schemaH "klientId") items=(clientsH) defaultText="wybierz klienta" disabled="yes"}}
+                  {{> textarea_field_T dataFieldName="miejsceInstalacji" schema=(schemaH "miejsceInstalacji") disabled="yes"}}
+                </form>
+              {{else}}
+                {{> loading_placeholder_T}}
+              {{/if}}
+            </div>
+
+          </div>
+          <!-- client card end -->
+
+          <!-- employees card start -->
+          <div class="ui fluid card b8k-top-margin">
+
+            <div class="content">
+              <div class="header">Serwis i serwisanci</div>
+            </div>
+
+            <div class="content">
+              {{#if Template.subscriptionsReady}}
+
+              {{else}}
+                {{> loading_placeholder_T}}
+              {{/if}}
+            </div>
+
+          </div>
+          <!-- employees card end -->
+
+          {{#if Template.subscriptionsReady}}
+            <!-- footer card start -->
+            <div class="ui fluid card b8k-top-margin">
+              <div class="content">
+                <form class="ui form">
+                  <div class="three fields">
+                    {{> input_field_T dataFieldName="dataUtworzenia" schema=(schemaH "dataUtworzenia") disabled="yes"}} {{> input_field_T dataFieldName="dataModyfikacji" schema=(schemaH "dataModyfikacji") disabled="yes"}}
+                    <div class="field"></div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- footer card end -->
+          {{/if}}
+        {{/unless}}
+
+      </div>
+    </div>
+  </div>
+  <!-- container end -->
+
+</template>
