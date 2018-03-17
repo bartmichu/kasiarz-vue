@@ -33,23 +33,7 @@ Template.devices_item_T.onCreated(() => {
     }
     $(jqEscapeAndHash("dropdown__producentId")).dropdown({
       onChange() {
-        if (Session.equals("isEditMode", true)) {
-          setDirty(true);
-        }
-      },
-    });
-    $(jqEscapeAndHash("dropdown__modelId")).dropdown({
-      onChange() {
-        if (Session.equals("isEditMode", true)) {
-          setDirty(true);
-        }
-      },
-    });
-    $(jqEscapeAndHash("dropdown__klientId")).dropdown({
-      onChange() {
-        if (Session.equals("isEditMode", true)) {
-          setDirty(true);
-        }
+
       },
     });
   };

@@ -29,13 +29,6 @@ Template.models_item_T.onCreated(() => {
     if (!isAddingMode) {
       setFormValues();
     }
-    $(jqEscapeAndHash("dropdown__producentId")).dropdown({
-      onChange() {
-        if (Session.equals("isEditMode", true)) {
-          setDirty(true);
-        }
-      },
-    });
   };
 
   setEditMode(isAddingMode);

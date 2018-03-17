@@ -29,13 +29,6 @@ Template.offices_item_T.onCreated(() => {
     if (!isAddingMode) {
       setFormValues();
     }
-    $(jqEscapeAndHash("dropdown__adres.wojewodztwoId")).dropdown({
-      onChange() {
-        if (Session.equals("isEditMode", true)) {
-          setDirty(true);
-        }
-      },
-    });
   };
 
   setEditMode(isAddingMode);
