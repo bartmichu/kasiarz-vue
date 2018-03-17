@@ -11,6 +11,14 @@ const deviceSchema = new SimpleSchema({
     optional: false,
     denyUpdate: true,
   },
+  producentId: {
+    type: String,
+    regEx: SimpleSchema.RegEx.Id,
+    label: "Producent",
+    min: 1,
+    max: 100,
+    optional: false,
+  },
   modelId: {
     type: String,
     regEx: SimpleSchema.RegEx.Id,
