@@ -75,6 +75,39 @@
         <!-- details card end -->
 
         {{#unless isAddingModeGH}}
+          <!-- devices card start -->
+          <div class="ui fluid card b8k-top-margin">
+
+            <div class="content">
+              <div class="header">Powiązane urządzenia</div>
+            </div>
+
+            <div class="content">
+              {{#if Template.subscriptionsReady}}
+                {{#with getDataH}}
+                  {{#if hasDevicesH}}
+                    <div class="ui list">
+                      {{#each devicesH}}
+                        <a class="item">
+                          <i class="minus icon"></i>
+                          <div class="content">
+                            <div class="description">{{modelId}}</div>
+                          </div>
+                        </a>
+                      {{/each}}
+                    </div>
+                  {{else}}
+                    {{> related_placeholder_T}}
+                  {{/if}}
+                {{/with}}
+              {{else}}
+                {{> loading_placeholder_T}}
+              {{/if}}
+            </div>
+
+          </div>
+          <!-- devices card end -->
+
           {{#if Template.subscriptionsReady}}
             <!-- footer card start -->
             <div class="ui fluid card b8k-top-margin">

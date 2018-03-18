@@ -32,3 +32,19 @@ Meteor.publish("devices.one", function publishFunction(deviceId) {
 
   return this.ready();
 });
+
+
+Meteor.publish("devices.client.full", function publishFunction(clientId) {
+  const actualUserId = Meteor.userId();
+  if (actualUserId) {
+    check(clientId, isNonEmptyString);
+
+    const data = Devices.find({ uzytkownikId: actualUserId, klientId: clientId });
+
+    if (data) {
+      return data;
+    }
+  }
+
+  return this.ready();
+});

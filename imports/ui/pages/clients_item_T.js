@@ -6,6 +6,7 @@ import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { getAddingModeFromRoute, setEditMode, setFormValues, setDirty, jqEscapeAndHash } from "/imports/util/client/client-functions.js";
 import Voivodeships from "/imports/api/voivodeships/voivodeships.js";
 import Clients from "/imports/api/clients/clients.js";
+import Devices from "/imports/api/devices/devices.js";
 import "/imports/ui/components/loading_placeholder/loading_placeholder_T.js";
 import "/imports/ui/components/item_menu/item_menu_cancel_T.js";
 import "/imports/ui/components/item_menu/item_menu_close_T.js";
@@ -40,8 +41,10 @@ Template.clients_item_T.onCreated(() => {
       });
     } else {
       template.subscribe("clients.one", FlowRouter.getParam("_id"), () => {
-        Tracker.afterFlush(() => {
-          afterFlushCallback();
+        template.subscribe("devices.client.full", FlowRouter.getParam("_id"), () => {
+          Tracker.afterFlush(() => {
+            afterFlushCallback();
+          });
         });
       });
     }
@@ -53,6 +56,15 @@ Template.clients_item_T.rendered = () => { };
 
 
 Template.clients_item_T.helpers({
+  getDataH() {
+    return Clients.findOne({ _id: FlowRouter.getParam("_id") });
+  },
+  hasDevicesH() {
+    return Devices.find().count() > 0;
+  },
+  devicesH() {
+    return Devices.find();
+  },
   voivodeshipsH() {
     return Voivodeships.find();
   },
