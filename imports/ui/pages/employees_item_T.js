@@ -1,9 +1,8 @@
-import { Session } from "meteor/session";
 import { Template } from "meteor/templating";
 import { Tracker } from "meteor/tracker";
 import { FlowRouter } from "meteor/ostrio:flow-router-extra";
 import { $ } from "meteor/jquery";
-import { getAddingModeFromRoute, setEditMode, setFormValues, setDirty, jqEscapeAndHash } from "/imports/util/client/client-functions.js";
+import { getAddingModeFromRoute, setEditMode, setFormValues } from "/imports/util/client/client-functions.js";
 import Employees from "/imports/api/employees/employees.js";
 import Shops from "/imports/api/shops/shops.js";
 import Models from "/imports/api/models/models.js";
