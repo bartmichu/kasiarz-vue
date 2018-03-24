@@ -44,7 +44,7 @@ const deviceSchema = new SimpleSchema({
   klientId: {
     type: String,
     regEx: SimpleSchema.RegEx.Id,
-    label: "Klient",
+    label: "Nazwa/Imię i nazwisko",
     min: 1,
     max: 100,
     optional: false,
