@@ -1,7 +1,7 @@
 import { Template } from "meteor/templating";
 import { Session } from "meteor/session";
 import { FlowRouter } from "meteor/ostrio:flow-router-extra";
-import { formatDate, getCollectionFromRoute } from "/imports/util/client/client-functions.js";
+import { formatDate } from "/imports/util/client/client-functions.js";
 import uimap from "/imports/util/client/uimap.js";
 
 
@@ -14,11 +14,10 @@ Template.registerHelper("isEditModeGH", () => Session.get("isEditMode"));
 Template.registerHelper("isAddingModeGH", () => FlowRouter.current().route.name.split(".").reverse()[0] === "add");
 
 
-Template.registerHelper("setRequiredGH", (fieldName) => {
+Template.registerHelper("setRequiredGH", (schema, fieldName) => {
   let returnValue = "";
   if (Session.equals("isEditMode", true)) {
-    const collection = getCollectionFromRoute();
-    returnValue = collection.simpleSchema().getDefinition(fieldName, ["optional"]).optional ? "" : "required";
+    returnValue = schema.getDefinition(fieldName, ["optional"]).optional ? "" : "required";
   }
   return returnValue;
 });
