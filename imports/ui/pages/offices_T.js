@@ -30,9 +30,6 @@ Template.offices_T.helpers({
   isEmptyCollectionH() {
     return Offices.find().count() === 0;
   },
-  getLabelH(field) {
-    return Offices.simpleSchema().label(field);
-  },
 });
 
 

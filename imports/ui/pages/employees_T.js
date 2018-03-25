@@ -35,9 +35,6 @@ Template.employees_T.helpers({
   getShopNameH() {
     return Shops.findOne({ _id: this.toString() }).nazwa;
   },
-  getLabelH(field) {
-    return Employees.simpleSchema().label(field);
-  },
 });
 
 

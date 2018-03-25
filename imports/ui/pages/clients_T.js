@@ -30,9 +30,6 @@ Template.clients_T.helpers({
   isEmptyCollectionH() {
     return Clients.find().count() === 0;
   },
-  getLabelH(field) {
-    return Clients.simpleSchema().label(field);
-  },
 });
 
 

@@ -31,9 +31,6 @@ Template.shops_T.helpers({
   isEmptyCollectionH() {
     return Shops.find().count() === 0;
   },
-  getLabelH(field) {
-    return Shops.simpleSchema().label(field);
-  },
 });
 
 

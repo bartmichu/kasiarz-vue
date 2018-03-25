@@ -36,9 +36,6 @@ Template.devices_T.helpers({
   isEmptyCollectionH() {
     return Devices.find().count() === 0;
   },
-  getLabelH(field) {
-    return Devices.simpleSchema().label(field);
-  },
   getModelNameH() {
     return Models.findOne({ _id: this.toString() }).nazwa;
   },

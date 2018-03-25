@@ -35,9 +35,6 @@ Template.models_T.helpers({
   getManufacturerNameH() {
     return Manufacturers.findOne({ _id: this.toString() }).nazwa;
   },
-  getLabelH(field) {
-    return Models.simpleSchema().label(field);
-  },
 });
 
 

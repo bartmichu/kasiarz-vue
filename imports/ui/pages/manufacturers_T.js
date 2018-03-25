@@ -31,9 +31,6 @@ Template.manufacturers_T.helpers({
   isEmptyCollectionH() {
     return Manufacturers.find().count() === 0;
   },
-  getLabelH(field) {
-    return Manufacturers.simpleSchema().label(field);
-  },
 });
 
 

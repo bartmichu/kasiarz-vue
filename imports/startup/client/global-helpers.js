@@ -57,3 +57,6 @@ Template.registerHelper("getCollectionSchemaGH", (collection) => {
 
 
 Template.registerHelper("getFieldSchemaGH", field => getCollectionFromRoute().simpleSchema().getDefinition(field));
+
+
+Template.registerHelper("getFieldLabelGH", field => getCollectionFromRoute().simpleSchema().label(field));
