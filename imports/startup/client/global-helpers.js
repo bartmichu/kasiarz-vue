@@ -1,7 +1,9 @@
 import { Template } from "meteor/templating";
 import { Session } from "meteor/session";
 import { FlowRouter } from "meteor/ostrio:flow-router-extra";
-import { formatDate } from "/imports/util/client/client-functions.js";
+import { formatDate, getCollectionFromRoute } from "/imports/util/client/client-functions.js";
+import Devices from "/imports/api/devices/devices.js";
+import Clients from "/imports/api/clients/clients.js";
 import uimap from "/imports/util/client/uimap.js";
 
 
@@ -30,3 +32,28 @@ Template.registerHelper("formatDateGH", date => (typeof date === "undefined" ? "
 
 
 Template.registerHelper("sectionHeaderTextGH", () => uimap[Session.get("uiSection")].header);
+
+
+Template.registerHelper("getCollectionSchemaGH", (collection) => {
+  let schema = null;
+
+  if (typeof collection === "undefined") {
+    return getCollectionFromRoute().simpleSchema();
+  }
+
+  switch (collection) {
+    case "devices":
+      schema = Devices.simpleSchema();
+      break;
+    case "clients":
+      schema = Clients.simpleSchema();
+      break;
+    default:
+      break;
+  }
+
+  return schema;
+});
+
+
+Template.registerHelper("getFieldSchemaGH", field => getCollectionFromRoute().simpleSchema().getDefinition(field));

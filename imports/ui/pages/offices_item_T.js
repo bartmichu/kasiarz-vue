@@ -59,9 +59,6 @@ Template.offices_item_T.helpers({
   voivodeshipsH() {
     return Voivodeships.find();
   },
-  schemaH(field) {
-    return Offices.simpleSchema().getDefinition(field);
-  },
 });
 
 

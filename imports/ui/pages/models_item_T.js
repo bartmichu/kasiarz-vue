@@ -64,9 +64,6 @@ Template.models_item_T.helpers({
   employeesH() {
     return Employees.find();
   },
-  schemaH(field) {
-    return Models.simpleSchema().getDefinition(field);
-  },
 });
 
 

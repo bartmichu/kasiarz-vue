@@ -66,9 +66,6 @@ Template.clients_item_T.helpers({
   voivodeshipsH() {
     return Voivodeships.find();
   },
-  schemaH(field) {
-    return Clients.simpleSchema().getDefinition(field);
-  },
 });
 
 

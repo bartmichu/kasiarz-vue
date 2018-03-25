@@ -32,14 +32,14 @@
             <div class="content">
               <form class="ui form">
 
-                {{> input_field_T dataFieldName="nazwa" schema=(schemaH "nazwa")}}
+                {{> input_field_T dataFieldName="nazwa" schema=(getFieldSchemaGH "nazwa")}}
 
                 <div class="three fields">
-                  {{> input_field_T dataFieldName="adres.ulica" schema=(schemaH "adres.ulica")}} {{> input_field_T dataFieldName="adres.kodPocztowy" schema=(schemaH "adres.kodPocztowy")}}
-                  {{> input_field_T dataFieldName="adres.miejscowosc" schema=(schemaH "adres.miejscowosc")}}
+                  {{> input_field_T dataFieldName="adres.ulica" schema=(getFieldSchemaGH "adres.ulica")}} {{> input_field_T dataFieldName="adres.kodPocztowy" schema=(getFieldSchemaGH "adres.kodPocztowy")}}
+                  {{> input_field_T dataFieldName="adres.miejscowosc" schema=(getFieldSchemaGH "adres.miejscowosc")}}
                 </div>
 
-                {{> textarea_field_T dataFieldName="dodatkoweInformacje" schema=(schemaH "dodatkoweInformacje")}}
+                {{> textarea_field_T dataFieldName="dodatkoweInformacje" schema=(getFieldSchemaGH "dodatkoweInformacje")}}
 
               </form>
             </div>
@@ -121,7 +121,7 @@
               <div class="content">
                 <form class="ui form">
                   <div class="three fields">
-                    {{> input_field_T dataFieldName="dataUtworzenia" schema=(schemaH "dataUtworzenia") disabled="yes"}} {{> input_field_T dataFieldName="dataModyfikacji" schema=(schemaH "dataModyfikacji") disabled="yes"}}
+                    {{> input_field_T dataFieldName="dataUtworzenia" schema=(getFieldSchemaGH "dataUtworzenia") disabled="yes"}} {{> input_field_T dataFieldName="dataModyfikacji" schema=(getFieldSchemaGH "dataModyfikacji") disabled="yes"}}
                     <div class="field"></div>
                   </div>
                 </form>

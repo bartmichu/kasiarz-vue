@@ -9,10 +9,10 @@
       {{#if Template.subscriptionsReady}}
         <form class="ui form">
           <div class="two fields">
-            {{> input_field_T dataFieldName="uprawnienia.$.numerUprawnien" schema=(schemaH "uprawnienia.$.numerUprawnien")}} {{> multiple_select_field_T dataFieldName="uprawnienia.$.modele" schema=(schemaH "uprawnienia.$.modele") items=(modelsH) defaultText="wybierz modele"}}
+            {{> input_field_T dataFieldName="uprawnienia.$.numerUprawnien" schema=(getFieldSchemaGH "uprawnienia.$.numerUprawnien")}} {{> multiple_select_field_T dataFieldName="uprawnienia.$.modele" schema=(getFieldSchemaGH "uprawnienia.$.modele") items=(modelsH) defaultText="wybierz modele"}}
           </div>
 
-          {{> textarea_field_T dataFieldName="uprawnienia.$.dodatkoweInformacje" schema=(schemaH "uprawnienia.$.dodatkoweInformacje")}}
+          {{> textarea_field_T dataFieldName="uprawnienia.$.dodatkoweInformacje" schema=(getFieldSchemaGH "uprawnienia.$.dodatkoweInformacje")}}
         </form>
       {{else}}
         {{> loading_placeholder_T}}

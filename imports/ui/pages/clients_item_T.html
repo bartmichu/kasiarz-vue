@@ -31,40 +31,40 @@
           {{#if Template.subscriptionsReady}}
             <div class="content">
               <form class="ui form">
-                {{> input_field_T dataFieldName="nazwa" schema=(schemaH "nazwa")}}
+                {{> input_field_T dataFieldName="nazwa" schema=(getFieldSchemaGH "nazwa")}}
 
                 <div class="three fields">
-                  {{> input_field_T dataFieldName="nip" schema=(schemaH "nip")}} {{> input_field_T dataFieldName="regonPesel" schema=(schemaH "regonPesel")}}
+                  {{> input_field_T dataFieldName="nip" schema=(getFieldSchemaGH "nip")}} {{> input_field_T dataFieldName="regonPesel" schema=(getFieldSchemaGH "regonPesel")}}
                   <div class="field"></div>
                 </div>
 
                 <div class="three fields">
-                  {{> input_field_T dataFieldName="adres.kraj" schema=(schemaH "adres.kraj")}} {{> select_field_T dataFieldName="adres.wojewodztwoId" schema=(schemaH "adres.wojewodztwoId") items=(voivodeshipsH) defaultText="wybierz województwo"}}
-                  {{> input_field_T dataFieldName="adres.gminaDzielnica" schema=(schemaH "adres.gminaDzielnica")}}
+                  {{> input_field_T dataFieldName="adres.kraj" schema=(getFieldSchemaGH "adres.kraj")}} {{> select_field_T dataFieldName="adres.wojewodztwoId" schema=(getFieldSchemaGH "adres.wojewodztwoId") items=(voivodeshipsH) defaultText="wybierz województwo"}}
+                  {{> input_field_T dataFieldName="adres.gminaDzielnica" schema=(getFieldSchemaGH "adres.gminaDzielnica")}}
                 </div>
 
                 <div class="three fields">
-                  {{> input_field_T dataFieldName="adres.ulica" schema=(schemaH "adres.ulica")}} {{> input_field_T dataFieldName="adres.nrDomu" schema=(schemaH "adres.nrDomu")}}
-                  {{> input_field_T dataFieldName="adres.nrLokalu" schema=(schemaH "adres.nrLokalu")}}
+                  {{> input_field_T dataFieldName="adres.ulica" schema=(getFieldSchemaGH "adres.ulica")}} {{> input_field_T dataFieldName="adres.nrDomu" schema=(getFieldSchemaGH "adres.nrDomu")}}
+                  {{> input_field_T dataFieldName="adres.nrLokalu" schema=(getFieldSchemaGH "adres.nrLokalu")}}
                 </div>
 
                 <div class="three fields">
-                  {{> input_field_T dataFieldName="adres.miejscowosc" schema=(schemaH "adres.miejscowosc")}} {{> input_field_T dataFieldName="adres.kodPocztowy" schema=(schemaH "adres.kodPocztowy")}}
-                  {{> input_field_T dataFieldName="adres.poczta" schema=(schemaH "adres.poczta")}}
+                  {{> input_field_T dataFieldName="adres.miejscowosc" schema=(getFieldSchemaGH "adres.miejscowosc")}} {{> input_field_T dataFieldName="adres.kodPocztowy" schema=(getFieldSchemaGH "adres.kodPocztowy")}}
+                  {{> input_field_T dataFieldName="adres.poczta" schema=(getFieldSchemaGH "adres.poczta")}}
                 </div>
 
                 <div class="three fields">
-                  {{> input_field_T dataFieldName="adres.skrytkaPocztowa" schema=(schemaH "adres.skrytkaPocztowa")}}
+                  {{> input_field_T dataFieldName="adres.skrytkaPocztowa" schema=(getFieldSchemaGH "adres.skrytkaPocztowa")}}
                   <div class="field"></div>
                   <div class="field"></div>
                 </div>
 
                 <div class="three fields">
-                  {{> input_field_T dataFieldName="email" schema=(schemaH "email")}} {{> input_field_T dataFieldName="telefon" schema=(schemaH "telefon")}}
+                  {{> input_field_T dataFieldName="email" schema=(getFieldSchemaGH "email")}} {{> input_field_T dataFieldName="telefon" schema=(getFieldSchemaGH "telefon")}}
                   <div class="field"></div>
                 </div>
 
-                {{> textarea_field_T dataFieldName="dodatkoweInformacje" schema=(schemaH "dodatkoweInformacje")}}
+                {{> textarea_field_T dataFieldName="dodatkoweInformacje" schema=(getFieldSchemaGH "dodatkoweInformacje")}}
               </form>
             </div>
           {{else}}
@@ -114,7 +114,7 @@
               <div class="content">
                 <form class="ui form">
                   <div class="three fields">
-                    {{> input_field_T dataFieldName="dataUtworzenia" schema=(schemaH "dataUtworzenia") disabled="yes"}} {{> input_field_T dataFieldName="dataModyfikacji" schema=(schemaH "dataModyfikacji") disabled="yes"}}
+                    {{> input_field_T dataFieldName="dataUtworzenia" schema=(getFieldSchemaGH "dataUtworzenia") disabled="yes"}} {{> input_field_T dataFieldName="dataModyfikacji" schema=(getFieldSchemaGH "dataModyfikacji") disabled="yes"}}
                     <div class="field"></div>
                   </div>
                 </form>

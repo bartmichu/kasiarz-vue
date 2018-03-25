@@ -62,9 +62,6 @@ Template.manufacturers_item_T.helpers({
   modelsH() {
     return Models.find();
   },
-  schemaH(field) {
-    return Manufacturers.simpleSchema().getDefinition(field);
-  },
   hasLicensesH() {
     const manufacturerModels = Models.find({}, { fields: { _id: 1 } }).map(model => model._id);
     return Employees.find({ "uprawnienia.modele": { $in: manufacturerModels } }).count() > 0;

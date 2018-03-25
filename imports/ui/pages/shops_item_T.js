@@ -67,9 +67,6 @@ Template.shops_item_T.helpers({
   employeesH() {
     return Employees.find();
   },
-  schemaH(field) {
-    return Shops.simpleSchema().getDefinition(field);
-  },
 });
 
 

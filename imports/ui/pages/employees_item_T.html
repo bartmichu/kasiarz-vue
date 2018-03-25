@@ -31,8 +31,8 @@
           {{#if Template.subscriptionsReady}}
             <div class="content">
               <form class="ui form">
-                {{> input_field_T dataFieldName="imieNazwisko" schema=(schemaH "imieNazwisko")}} {{> select_field_T dataFieldName="serwisId" schema=(schemaH "serwisId") items=(shopsH) defaultText="wybierz serwis"}}
-                {{> textarea_field_T dataFieldName="dodatkoweInformacje" schema=(schemaH "dodatkoweInformacje")}}
+                {{> input_field_T dataFieldName="imieNazwisko" schema=(getFieldSchemaGH "imieNazwisko")}} {{> select_field_T dataFieldName="serwisId" schema=(getFieldSchemaGH "serwisId") items=(shopsH) defaultText="wybierz serwis"}}
+                {{> textarea_field_T dataFieldName="dodatkoweInformacje" schema=(getFieldSchemaGH "dodatkoweInformacje")}}
               </form>
             </div>
           {{else}}
@@ -89,7 +89,7 @@
               <div class="content">
                 <form class="ui form">
                   <div class="three fields">
-                    {{> input_field_T dataFieldName="dataUtworzenia" schema=(schemaH "dataUtworzenia") disabled="yes"}} {{> input_field_T dataFieldName="dataModyfikacji" schema=(schemaH "dataModyfikacji") disabled="yes"}}
+                    {{> input_field_T dataFieldName="dataUtworzenia" schema=(getFieldSchemaGH "dataUtworzenia") disabled="yes"}} {{> input_field_T dataFieldName="dataModyfikacji" schema=(getFieldSchemaGH "dataModyfikacji") disabled="yes"}}
                     <div class="field"></div>
                   </div>
                 </form>

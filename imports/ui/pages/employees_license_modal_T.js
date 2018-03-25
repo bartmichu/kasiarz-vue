@@ -83,9 +83,6 @@ Template.employees_license_modal_T.helpers({
   modelsH() {
     return Models.find({}, { sort: { nazwa: 1 } });
   },
-  schemaH(field) {
-    return Employees.simpleSchema().getDefinition(field);
-  },
 });
 
 

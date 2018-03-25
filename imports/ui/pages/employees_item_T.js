@@ -74,9 +74,6 @@ Template.employees_item_T.helpers({
       && Employees.findOne().uprawnienia
       && Employees.findOne().uprawnienia.length > 0;
   },
-  schemaH(field) {
-    return Employees.simpleSchema().getDefinition(field);
-  },
 });
 
 
