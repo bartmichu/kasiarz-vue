@@ -1,18 +1,26 @@
 <template>
   <v-app>
     <v-navigation-drawer app></v-navigation-drawer>
-    <v-toolbar app></v-toolbar>
+
+    <ApplicationToolbar></ApplicationToolbar>
+
     <v-content>
       <v-container fluid>
         <router-view></router-view>
       </v-container>
     </v-content>
+
     <v-footer app></v-footer>
   </v-app>
 </template>
 
+
 <script>
+import ApplicationToolbar from "/imports/ui/components/ApplicationToolbar.vue";
+
 export default {
-  name: "ApplicationLayout"
+  name: "ApplicationLayout",
+
+  components: { ApplicationToolbar }
 };
 </script>
