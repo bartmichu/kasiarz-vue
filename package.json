@@ -10,7 +10,8 @@
     "vue": "^2.5.16",
     "vue-meteor-tracker": "^1.0.3",
     "vue-router": "^3.0.1",
-    "vuetify": "^1.0.17"
+    "vuetify": "^1.0.17",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
