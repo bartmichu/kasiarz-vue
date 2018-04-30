@@ -1,10 +1,12 @@
 <template>
+
   <v-card tile color="grey lighten-4">
+
     <v-toolbar card dark color="grey darken-3">
       <v-toolbar-title>Kasiarz</v-toolbar-title>
     </v-toolbar>
 
-    <v-card-title/>
+    <v-card-title></v-card-title>
 
     <v-card-text>
       <v-text-field v-model="username" type="text" solo flat clearable label="użytkownik" prepend-icon="face" @input="clearFailedLogin" @keyup.enter="signIn" @change="trimUsername" />
@@ -15,10 +17,11 @@
     </v-card-text>
 
     <v-card-actions>
-      <v-btn :color="loginButtonColor" large block depressed @click="signIn">{{ loginButtonText }}
-      </v-btn>
+      <v-btn :color="loginButtonColor" large block depressed @click="signIn">{{ loginButtonText }}</v-btn>
     </v-card-actions>
+
   </v-card>
+
 </template>
 
 
