@@ -15,7 +15,7 @@
     </v-card-text>
 
     <v-card-actions>
-      <v-btn :color="buttonColor" large block depressed @click="signIn">{{ buttonText }}
+      <v-btn :color="loginButtonColor" large block depressed @click="signIn">{{ loginButtonText }}
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -38,10 +38,10 @@ export default {
   },
 
   computed: {
-    buttonText: function buttonText() {
+    loginButtonText: function loginButtonText() {
       return this.failedLogin ? "nieprawidłowe dane" : "zaloguj mnie";
     },
-    buttonColor: function buttonColor() {
+    loginButtonColor: function loginButtonColor() {
       return this.failedLogin ? "error" : "info";
     }
   },
@@ -50,7 +50,7 @@ export default {
     clearFailedLogin: function clearFailedLogin() {
       this.failedLogin = false;
     },
-    trimUsername: function trimValue() {
+    trimUsername: function trimUsername() {
       this.username =
         typeof this.username === "string" ? this.username.trim() : "";
     },
