@@ -3,7 +3,7 @@ import { Accounts } from "meteor/accounts-base";
 import router from "/imports/startup/client/route";
 
 Accounts.onLogin(() => {
-  router.push("/");
+  router.push({ name: "index" });
 });
 
 Meteor.users.deny({

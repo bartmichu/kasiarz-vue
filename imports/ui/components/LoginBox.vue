@@ -72,7 +72,7 @@ export default {
             } else {
               // pomyślne logowanie
               this.failedLogin = false;
-              router.push("/");
+              router.push({ name: "index" });
             }
           });
         } else {

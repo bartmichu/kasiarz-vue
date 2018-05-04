@@ -65,7 +65,7 @@ export default {
     methodPlug: function methodPlug() { },
     signOut: function signOut() {
       Meteor.logout();
-      router.push("login");
+      router.push({ name: "login" });
     }
   }
 };
