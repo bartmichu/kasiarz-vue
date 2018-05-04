@@ -22,3 +22,5 @@ accounts-password
 check
 mdg:validated-method
 audit-argument-checks
+aldeed:collection2
+aldeed:schema-deny
