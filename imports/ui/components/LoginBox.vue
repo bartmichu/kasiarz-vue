@@ -26,6 +26,7 @@
 
 
 <script>
+import { Meteor } from "meteor/meteor";
 import router from "/imports/startup/client/route";
 import store from "/imports/startup/client/store";
 
@@ -66,8 +67,15 @@ export default {
           this.password !== null &&
           this.password.length > 0
         ) {
-          store.dispatch("signIn");
-          router.push("/");
+          Meteor.loginWithPassword(this.username, this.password, error => {
+            if (error) {
+              this.failedLogin = true;
+            } else {
+              // pomyślne logowanie
+              this.failedLogin = false;
+              router.push("/");
+            }
+          });
         } else {
           this.failedLogin = true;
         }
