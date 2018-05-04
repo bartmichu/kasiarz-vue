@@ -3,7 +3,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Vuetify from "vuetify/dist/vuetify";
 import "vuetify/dist/vuetify.min.css";
-import isLoggedIn from "/imports/helpers/client/isLoggedIn";
+import isLoggedIn from "/imports/helpers/client/isLoggedIn.js";
 
 import ApplicationLayout from "/imports/ui/layouts/ApplicationLayout.vue";
 import ApplicationPage from "/imports/ui/pages/ApplicationPage.vue";

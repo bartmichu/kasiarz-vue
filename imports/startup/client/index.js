@@ -1,2 +1,2 @@
-import "/imports/startup/client/accounts-configuration";
-import "/imports/startup/client/route";
+import "/imports/startup/client/accounts-configuration.js";
+import "/imports/startup/client/route.js";
