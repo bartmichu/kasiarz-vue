@@ -70,7 +70,7 @@ export default {
             if (error) {
               this.failedLogin = true;
             } else {
-              // pomyślne logowanie
+              // success - user logged in
               this.failedLogin = false;
               router.push({ name: "index" });
             }
