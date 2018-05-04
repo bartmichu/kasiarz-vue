@@ -56,7 +56,6 @@
 
 <script>
 import { Meteor } from "meteor/meteor";
-import router from "/imports/startup/client/route";
 
 export default {
   name: "ApplicationToolbar",
@@ -65,7 +64,6 @@ export default {
     methodPlug: function methodPlug() { },
     signOut: function signOut() {
       Meteor.logout();
-      router.push({ name: "login" });
     }
   }
 };

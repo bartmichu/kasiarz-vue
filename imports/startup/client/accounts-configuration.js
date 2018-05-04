@@ -6,6 +6,10 @@ Accounts.onLogin(() => {
   router.push({ name: "index" });
 });
 
+Accounts.onLogout(() => {
+  router.push({ name: "login" });
+});
+
 Meteor.users.deny({
   update() {
     return true;

@@ -27,7 +27,6 @@
 
 <script>
 import { Meteor } from "meteor/meteor";
-import router from "/imports/startup/client/route";
 
 export default {
   name: "LoginBox",
@@ -72,7 +71,6 @@ export default {
             } else {
               // success - user logged in
               this.failedLogin = false;
-              router.push({ name: "index" });
             }
           });
         } else {
