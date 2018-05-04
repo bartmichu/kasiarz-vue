@@ -18,31 +18,28 @@ const router = new VueRouter({
     {
       path: "/",
       name: "index",
-      component: ApplicationPage,
-      beforeEnter: (to, from, next) => {
-        isLoggedIn().then(
-          response => (response ? next() : next({ name: "login" }))
-        );
-      }
+      component: ApplicationPage
     },
     {
       path: "/login",
       name: "login",
-      component: LoginPage
+      component: LoginPage,
+      meta: {
+        public: true
+      }
     }
   ]
 });
 
-// router.beforeEach((to, from, next) => {
-//   if (
-//     to.matched.some(record => record.meta.requiresAuth) &&
-//     Meteor.userId() === null
-//   ) {
-//     next({ path: "/login", query: { redirect: to.fullPath } });
-//   } else {
-//     next();
-//   }
-// });
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.public)) {
+    next();
+  } else {
+    isLoggedIn().then(
+      response => (response ? next() : next({ name: "login" }))
+    );
+  }
+});
 
 Meteor.startup(() => {
   new Vue({
