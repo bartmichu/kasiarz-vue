@@ -28,7 +28,6 @@
 <script>
 import { Meteor } from "meteor/meteor";
 import router from "/imports/startup/client/route";
-import store from "/imports/startup/client/store";
 
 export default {
   name: "LoginBox",
