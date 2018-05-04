@@ -44,7 +44,7 @@
         <v-icon>face</v-icon>
       </v-btn>
       <v-list>
-        <v-list-tile @click="methodPlug">
+        <v-list-tile @click="signOut">
           <v-list-tile-title>Wyloguj się</v-list-tile-title>
         </v-list-tile>
       </v-list>
@@ -55,11 +55,18 @@
 
 
 <script>
+import { Meteor } from "meteor/meteor";
+import router from "/imports/startup/client/route";
+
 export default {
   name: "ApplicationToolbar",
 
   methods: {
-    methodPlug: function methodPlug() { }
+    methodPlug: function methodPlug() { },
+    signOut: function signOut() {
+      Meteor.logout();
+      router.push("login");
+    }
   }
 };
 </script>
