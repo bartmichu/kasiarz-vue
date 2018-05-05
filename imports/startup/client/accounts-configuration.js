@@ -1,6 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { Accounts } from "meteor/accounts-base";
-import router from "/imports/startup/client/route.js";
+import router from "/imports/startup/client/router.js";
 
 Accounts.onLogin(() => {
   router.push({ name: "index" });
