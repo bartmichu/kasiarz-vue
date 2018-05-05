@@ -1,0 +1,1139 @@
+/**
+ * TODO: usunąć w wersji produkcyjnej
+ */
+
+// https://www.json-generator.com/
+// {
+//   nazwa: "{{company().toUpperCase()}} {{firstName()}} {{surname()}}",
+//   nip: "{{integer(1000000000, 9999999999)}}",
+//   regonPesel: "",
+//   adres: {
+//     kraj: "Polska",
+//     gminaDzielnica: "{{state()}}",
+//     ulica: "{{street()}}",
+//     nrDomu: "{{integer(1, 500)}}",
+//     nrLokalu: "{{integer(1, 50)}}",
+//     miejscowosc: "{{city()}}",
+//     kodPocztowy: "{{integer(10, 99)}}-{{integer(100, 999)}}",
+//     poczta: "{{city()}}",
+//     skrytkaPocztowa: "dummy data"
+//   },
+//   telefon: "{{phone()}}",
+//   email: "{{email()}}",
+//   miejscaInstalacji: [
+//     "{{repeat(3)}}",
+//     "{{company()}} {{firstName()}} {{surname()}} ul. {{street()}} {{integer(1, 500)}}, {{integer(10, 99)}}-{{integer(100, 999)}} {{city()}}"
+//   ]
+// }
+//
+
+import { Meteor } from "meteor/meteor";
+import Clients from "/imports/api/clients/clients.js";
+import Voivodeships from "/imports/api/voivodeships/voivodeships.js";
+
+Meteor.startup(() => {
+  if (Clients.find().count() === 0) {
+    const userId = Meteor.users.findOne({ username: "demo" })._id;
+    const voivodeshipsCount = Voivodeships.find().count();
+    const dummyData = [
+      {
+        nazwa: "EXOZENT Susana Monroe",
+        nip: 5555319588,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Wisconsin",
+          ulica: "Dewitt Avenue",
+          nrDomu: 431,
+          nrLokalu: 24,
+          miejscowosc: "Iola",
+          kodPocztowy: "24-727",
+          poczta: "Lithium",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(851) 445-3130",
+        email: "susanamonroe@exozent.com",
+        miejscaInstalacji: [
+          "Isosphere Pansy Webb ul. Wyckoff Avenue 55, 67-690 Guilford",
+          "Gink Sonia Hancock ul. Banker Street 397, 64-664 Dahlen",
+          "Ovium Booth Lara ul. Dearborn Court 79, 19-206 Moscow"
+        ]
+      },
+      {
+        nazwa: "OVATION Potts Christian",
+        nip: 6849809773,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Michigan",
+          ulica: "Roosevelt Court",
+          nrDomu: 445,
+          nrLokalu: 20,
+          miejscowosc: "Gallina",
+          kodPocztowy: "76-678",
+          poczta: "Lavalette",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(820) 590-3785",
+        email: "pottschristian@ovation.com",
+        miejscaInstalacji: [
+          "Isbol Ava Lambert ul. Ridge Boulevard 244, 90-295 Winesburg",
+          "Quarex Clark Ramsey ul. Delevan Street 54, 61-125 Thatcher",
+          "Quadeebo Althea Clements ul. Grace Court 162, 85-759 Jardine"
+        ]
+      },
+      {
+        nazwa: "ENTOGROK Chambers Cross",
+        nip: 6028137391,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Washington",
+          ulica: "Evergreen Avenue",
+          nrDomu: 169,
+          nrLokalu: 2,
+          miejscowosc: "Boyd",
+          kodPocztowy: "53-520",
+          poczta: "Maplewood",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(833) 589-3900",
+        email: "chamberscross@entogrok.com",
+        miejscaInstalacji: [
+          "Honotron Nikki Stewart ul. Oxford Street 271, 22-332 Mooresburg",
+          "Polarax Brooke Copeland ul. Vanderbilt Street 89, 97-390 Cowiche",
+          "Egypto Britney Castaneda ul. Senator Street 468, 38-110 Machias"
+        ]
+      },
+      {
+        nazwa: "ERSUM Josephine Bailey",
+        nip: 1381674652,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Arkansas",
+          ulica: "Applegate Court",
+          nrDomu: 143,
+          nrLokalu: 29,
+          miejscowosc: "Tecolotito",
+          kodPocztowy: "79-324",
+          poczta: "Clarksburg",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(827) 526-3817",
+        email: "josephinebailey@ersum.com",
+        miejscaInstalacji: [
+          "Corepan Graham Lawson ul. Havens Place 20, 19-334 Hiseville",
+          "Dancerity Burns Durham ul. Hart Place 355, 84-253 Waiohinu",
+          "Zinca Marshall Zamora ul. Vanderveer Street 232, 33-648 Toftrees"
+        ]
+      },
+      {
+        nazwa: "COMTOURS Roberta Barber",
+        nip: 5504663724,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Palau",
+          ulica: "Clove Road",
+          nrDomu: 65,
+          nrLokalu: 1,
+          miejscowosc: "Allison",
+          kodPocztowy: "76-748",
+          poczta: "Needmore",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(808) 472-2520",
+        email: "robertabarber@comtours.com",
+        miejscaInstalacji: [
+          "Intradisk Bianca Duran ul. Tudor Terrace 390, 25-445 Homeland",
+          "Velos Workman Christensen ul. Whitty Lane 120, 71-845 Coinjock",
+          "Kidgrease Noreen Curry ul. Post Court 328, 99-269 Wyano"
+        ]
+      },
+      {
+        nazwa: "CEPRENE Macias Newman",
+        nip: 8186018691,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Oregon",
+          ulica: "Plaza Street",
+          nrDomu: 98,
+          nrLokalu: 21,
+          miejscowosc: "Vallonia",
+          kodPocztowy: "80-509",
+          poczta: "Avalon",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(928) 525-2161",
+        email: "maciasnewman@ceprene.com",
+        miejscaInstalacji: [
+          "Magneato Stafford Bartlett ul. Knapp Street 205, 82-609 Williams",
+          "Terascape Cox Burgess ul. Legion Street 30, 60-840 Calvary",
+          "Snowpoke Marian Barnes ul. Royce Street 340, 40-908 Harmon"
+        ]
+      },
+      {
+        nazwa: "CABLAM Oneil Barron",
+        nip: 8489813229,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "North Carolina",
+          ulica: "School Lane",
+          nrDomu: 115,
+          nrLokalu: 1,
+          miejscowosc: "Longoria",
+          kodPocztowy: "71-779",
+          poczta: "Wanamie",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(824) 447-2228",
+        email: "oneilbarron@cablam.com",
+        miejscaInstalacji: [
+          "Netplax Katharine Cain ul. Thomas Street 202, 83-848 Townsend",
+          "Cujo Geneva Carr ul. Borinquen Pl 451, 93-195 Orason",
+          "Spherix Figueroa Robinson ul. Sedgwick Street 88, 62-147 Tilleda"
+        ]
+      },
+      {
+        nazwa: "OLUCORE Johns Fulton",
+        nip: 7385870021,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Maine",
+          ulica: "Fair Street",
+          nrDomu: 200,
+          nrLokalu: 1,
+          miejscowosc: "Saranap",
+          kodPocztowy: "58-228",
+          poczta: "Levant",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(875) 592-3805",
+        email: "johnsfulton@olucore.com",
+        miejscaInstalacji: [
+          "Gynk Sonya Ball ul. Norman Avenue 279, 42-895 Jennings",
+          "Scentric Phoebe Hayes ul. Ovington Court 104, 38-735 Williamson",
+          "Valreda Spencer Butler ul. Amherst Street 223, 83-912 Soham"
+        ]
+      },
+      {
+        nazwa: "TECHTRIX Nola Hebert",
+        nip: 6074902652,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Connecticut",
+          ulica: "Hancock Street",
+          nrDomu: 323,
+          nrLokalu: 41,
+          miejscowosc: "Manchester",
+          kodPocztowy: "89-879",
+          poczta: "Wikieup",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(932) 473-3982",
+        email: "nolahebert@techtrix.com",
+        miejscaInstalacji: [
+          "Reversus Andrea Wood ul. Hope Street 291, 42-505 Abrams",
+          "Billmed Nita Burch ul. Revere Place 176, 39-792 Roeville",
+          "Netility Pitts Glenn ul. Ashland Place 51, 97-537 Rowe"
+        ]
+      },
+      {
+        nazwa: "TALKALOT Washington Mccarty",
+        nip: 3791167766,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Guam",
+          ulica: "Leonard Street",
+          nrDomu: 476,
+          nrLokalu: 46,
+          miejscowosc: "Fairacres",
+          kodPocztowy: "30-382",
+          poczta: "Vienna",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(889) 556-3058",
+        email: "washingtonmccarty@talkalot.com",
+        miejscaInstalacji: [
+          "Artiq Hilary Cantu ul. Bulwer Place 481, 39-924 Cucumber",
+          "Dognosis Dotson Meyer ul. Bliss Terrace 113, 15-486 Dola",
+          "Orbean Terrell Carson ul. Sunnyside Court 65, 61-224 Belfair"
+        ]
+      },
+      {
+        nazwa: "ZAGGLES Tricia Norris",
+        nip: 6794579411,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Marshall Islands",
+          ulica: "Union Avenue",
+          nrDomu: 5,
+          nrLokalu: 18,
+          miejscowosc: "Eggertsville",
+          kodPocztowy: "41-867",
+          poczta: "Kingstowne",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(977) 580-3333",
+        email: "tricianorris@zaggles.com",
+        miejscaInstalacji: [
+          "Comfirm Kerri Holcomb ul. Huron Street 445, 56-696 Biddle",
+          "Zilphur Kerry Navarro ul. Harwood Place 279, 46-201 Fontanelle",
+          "Musix Kara Fleming ul. Schenck Street 26, 49-435 Evergreen"
+        ]
+      },
+      {
+        nazwa: "UNEEQ Roach Beach",
+        nip: 8198481047,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "South Dakota",
+          ulica: "Mayfair Drive",
+          nrDomu: 457,
+          nrLokalu: 39,
+          miejscowosc: "Gracey",
+          kodPocztowy: "35-964",
+          poczta: "Frierson",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(868) 467-3763",
+        email: "roachbeach@uneeq.com",
+        miejscaInstalacji: [
+          "Accufarm Powell Wilkins ul. Montieth Street 439, 67-720 Emory",
+          "Vitricomp Kate Langley ul. Calyer Street 326, 39-254 Moraida",
+          "Straloy Murphy Lane ul. Amboy Street 114, 92-296 Celeryville"
+        ]
+      },
+      {
+        nazwa: "AQUOAVO Enid Waters",
+        nip: 6403541174,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Colorado",
+          ulica: "Harbor Lane",
+          nrDomu: 128,
+          nrLokalu: 9,
+          miejscowosc: "Rockhill",
+          kodPocztowy: "28-398",
+          poczta: "Dundee",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(868) 578-2602",
+        email: "enidwaters@aquoavo.com",
+        miejscaInstalacji: [
+          "Datagen Lisa Sawyer ul. Bergen Street 220, 10-290 Boykin",
+          "Handshake Rosie Morris ul. Miami Court 325, 79-577 Allamuchy",
+          "Kongle Soto Kramer ul. Arlington Place 396, 92-236 Herlong"
+        ]
+      },
+      {
+        nazwa: "NURPLEX Benson Vincent",
+        nip: 5586618198,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Massachusetts",
+          ulica: "Douglass Street",
+          nrDomu: 311,
+          nrLokalu: 16,
+          miejscowosc: "Olney",
+          kodPocztowy: "68-870",
+          poczta: "Kula",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(895) 543-2862",
+        email: "bensonvincent@nurplex.com",
+        miejscaInstalacji: [
+          "Zenthall Freda Mcconnell ul. Brown Street 482, 84-985 Yettem",
+          "Plasto Rodriguez Solomon ul. Hawthorne Street 358, 45-986 Wescosville",
+          "Comvene Terry Suarez ul. Ditmars Street 97, 63-277 Loma"
+        ]
+      },
+      {
+        nazwa: "COMVOY Juarez Savage",
+        nip: 4866186456,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Arizona",
+          ulica: "Turnbull Avenue",
+          nrDomu: 14,
+          nrLokalu: 7,
+          miejscowosc: "Bradenville",
+          kodPocztowy: "49-782",
+          poczta: "Belva",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(909) 440-2702",
+        email: "juarezsavage@comvoy.com",
+        miejscaInstalacji: [
+          "Cyclonica Nieves Howell ul. Luquer Street 88, 33-486 Whitmer",
+          "Atomica Duke Sloan ul. Campus Road 334, 79-798 Jessie",
+          "Hydrocom Robin Maldonado ul. Neptune Avenue 465, 53-530 Coalmont"
+        ]
+      },
+      {
+        nazwa: "COASH Bell Wiggins",
+        nip: 5728666068,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Utah",
+          ulica: "Friel Place",
+          nrDomu: 112,
+          nrLokalu: 23,
+          miejscowosc: "Wawona",
+          kodPocztowy: "27-201",
+          poczta: "Rockbridge",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(904) 427-2568",
+        email: "bellwiggins@coash.com",
+        miejscaInstalacji: [
+          "Voipa Brandy Guerra ul. Gelston Avenue 378, 82-743 Noxen",
+          "Telpod Jimmie Aguirre ul. Hutchinson Court 189, 18-727 Glendale",
+          "Phuel Lavonne Caldwell ul. Campus Place 154, 32-512 Geyserville"
+        ]
+      },
+      {
+        nazwa: "ISOLOGICS Neva Oneal",
+        nip: 6383896649,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "New Hampshire",
+          ulica: "Monument Walk",
+          nrDomu: 295,
+          nrLokalu: 49,
+          miejscowosc: "Oneida",
+          kodPocztowy: "47-465",
+          poczta: "Laurelton",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(877) 525-3572",
+        email: "nevaoneal@isologics.com",
+        miejscaInstalacji: [
+          "Homelux Aileen Montgomery ul. Ralph Avenue 298, 83-341 Cannondale",
+          "Insource Sellers Mcintosh ul. Flatbush Avenue 403, 38-355 Riceville",
+          "Golistic Casey Byers ul. Decatur Street 478, 25-521 Benson"
+        ]
+      },
+      {
+        nazwa: "DANCITY Bradley Crane",
+        nip: 9178066672,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Northern Mariana Islands",
+          ulica: "Nassau Street",
+          nrDomu: 203,
+          nrLokalu: 32,
+          miejscowosc: "Teasdale",
+          kodPocztowy: "80-899",
+          poczta: "Maury",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(806) 407-2710",
+        email: "bradleycrane@dancity.com",
+        miejscaInstalacji: [
+          "Fiberox Kinney Andrews ul. Jewel Street 370, 98-725 Callaghan",
+          "Kiggle Orr Stout ul. Lafayette Walk 435, 31-850 Outlook",
+          "Senmei Travis Miles ul. Tennis Court 26, 29-383 Darrtown"
+        ]
+      },
+      {
+        nazwa: "PLEXIA Gillespie Hardin",
+        nip: 6091138318,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Rhode Island",
+          ulica: "Arion Place",
+          nrDomu: 77,
+          nrLokalu: 27,
+          miejscowosc: "Roulette",
+          kodPocztowy: "24-330",
+          poczta: "Clinton",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(941) 579-2643",
+        email: "gillespiehardin@plexia.com",
+        miejscaInstalacji: [
+          "Xsports Oneill Cannon ul. India Street 331, 77-276 Winchester",
+          "Olympix Conley Knight ul. Rockaway Avenue 141, 65-956 Accoville",
+          "Anocha Jill West ul. Union Street 279, 89-839 Eastvale"
+        ]
+      },
+      {
+        nazwa: "BUZZNESS Clayton Schroeder",
+        nip: 7990918400,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Delaware",
+          ulica: "Beard Street",
+          nrDomu: 463,
+          nrLokalu: 40,
+          miejscowosc: "Moquino",
+          kodPocztowy: "50-507",
+          poczta: "Chamizal",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(803) 484-2976",
+        email: "claytonschroeder@buzzness.com",
+        miejscaInstalacji: [
+          "Interodeo Winifred Kim ul. Dakota Place 9, 28-123 Lynn",
+          "Isologia Rosanne Atkinson ul. Prospect Place 62, 68-680 Dexter",
+          "Overfork Ada Winters ul. Remsen Street 175, 49-354 Deltaville"
+        ]
+      },
+      {
+        nazwa: "GEEKETRON Aguirre Jenkins",
+        nip: 3666313602,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "South Carolina",
+          ulica: "Bancroft Place",
+          nrDomu: 240,
+          nrLokalu: 37,
+          miejscowosc: "Walland",
+          kodPocztowy: "62-248",
+          poczta: "Elfrida",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(813) 410-2480",
+        email: "aguirrejenkins@geeketron.com",
+        miejscaInstalacji: [
+          "Bleendot Patrica Ayala ul. Matthews Place 489, 56-820 Libertytown",
+          "Eventix Prince Mcdonald ul. Fenimore Street 469, 25-964 Singer",
+          "Megall Annabelle Hall ul. Nolans Lane 368, 42-721 Welch"
+        ]
+      },
+      {
+        nazwa: "AUTOGRATE Acevedo Schultz",
+        nip: 6580928785,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "New York",
+          ulica: "Eagle Street",
+          nrDomu: 282,
+          nrLokalu: 48,
+          miejscowosc: "Elbert",
+          kodPocztowy: "59-719",
+          poczta: "Disautel",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(946) 425-3043",
+        email: "acevedoschultz@autograte.com",
+        miejscaInstalacji: [
+          "Tropolis Waller Woodard ul. Suydam Street 365, 60-175 Onton",
+          "Enthaze Pratt Wells ul. Village Court 226, 60-667 Windsor",
+          "Kage Mcdaniel Michael ul. Scott Avenue 370, 99-588 Garfield"
+        ]
+      },
+      {
+        nazwa: "TERRASYS Odom Hudson",
+        nip: 7931088275,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Texas",
+          ulica: "Lincoln Road",
+          nrDomu: 222,
+          nrLokalu: 25,
+          miejscowosc: "Gardiner",
+          kodPocztowy: "49-557",
+          poczta: "Gordon",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(972) 436-3535",
+        email: "odomhudson@terrasys.com",
+        miejscaInstalacji: [
+          "Inventure Wendy Stone ul. Mermaid Avenue 378, 49-925 Elizaville",
+          "Cofine Stefanie Foreman ul. Rutherford Place 104, 13-933 Ypsilanti",
+          "Biflex Tracey Lopez ul. Sutter Avenue 500, 38-319 Chumuckla"
+        ]
+      },
+      {
+        nazwa: "ZENSOR Heath Pittman",
+        nip: 9898682515,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Idaho",
+          ulica: "Bridgewater Street",
+          nrDomu: 345,
+          nrLokalu: 21,
+          miejscowosc: "Chloride",
+          kodPocztowy: "97-299",
+          poczta: "Boonville",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(960) 423-2618",
+        email: "heathpittman@zensor.com",
+        miejscaInstalacji: [
+          "Extragene Foster Murphy ul. Chauncey Street 23, 48-439 Rivera",
+          "Shadease Good Holden ul. Vandam Street 91, 86-298 Somerset",
+          "Zoarere Fitzgerald Skinner ul. Albee Square 97, 24-595 Sehili"
+        ]
+      },
+      {
+        nazwa: "VERTIDE Doreen Hendricks",
+        nip: 7422696422,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Puerto Rico",
+          ulica: "Metropolitan Avenue",
+          nrDomu: 279,
+          nrLokalu: 18,
+          miejscowosc: "Crumpler",
+          kodPocztowy: "73-760",
+          poczta: "Nettie",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(886) 456-2284",
+        email: "doreenhendricks@vertide.com",
+        miejscaInstalacji: [
+          "Netbook Twila Gill ul. Macdougal Street 116, 62-961 Slovan",
+          "Orbixtar Carter James ul. Hampton Avenue 191, 15-471 Chestnut",
+          "Ginkle Frankie Mitchell ul. Verona Street 448, 97-939 Ezel"
+        ]
+      },
+      {
+        nazwa: "OBONES Walls Parrish",
+        nip: 5802320378,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Maryland",
+          ulica: "Maple Street",
+          nrDomu: 446,
+          nrLokalu: 1,
+          miejscowosc: "Shelby",
+          kodPocztowy: "37-394",
+          poczta: "Oretta",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(805) 540-2530",
+        email: "wallsparrish@obones.com",
+        miejscaInstalacji: [
+          "Mitroc Wooten Franklin ul. Martense Street 439, 75-626 Shasta",
+          "Providco Ayers Rivera ul. Varanda Place 210, 55-968 Hemlock",
+          "Kengen Carlson Hopkins ul. Hubbard Street 472, 99-594 Bluffview"
+        ]
+      },
+      {
+        nazwa: "GREEKER Gena Holloway",
+        nip: 3436738817,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Illinois",
+          ulica: "Centre Street",
+          nrDomu: 243,
+          nrLokalu: 35,
+          miejscowosc: "Bendon",
+          kodPocztowy: "94-848",
+          poczta: "Johnsonburg",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(886) 548-2651",
+        email: "genaholloway@greeker.com",
+        miejscaInstalacji: [
+          "Kinetica Monique Haley ul. Division Avenue 348, 63-814 Goochland",
+          "Telequiet Casandra Griffin ul. Fairview Place 382, 61-979 Dana",
+          "Cubicide Dana Paul ul. Times Placez 345, 94-847 Grill"
+        ]
+      },
+      {
+        nazwa: "GRAINSPOT Verna Holman",
+        nip: 5150084327,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Pennsylvania",
+          ulica: "Lake Place",
+          nrDomu: 125,
+          nrLokalu: 39,
+          miejscowosc: "Marshall",
+          kodPocztowy: "74-399",
+          poczta: "Gulf",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(959) 538-3563",
+        email: "vernaholman@grainspot.com",
+        miejscaInstalacji: [
+          "Comcubine Delgado Robertson ul. Canton Court 464, 69-621 Marienthal",
+          "Apextri Browning Barker ul. Fay Court 27, 84-766 Waukeenah",
+          "Digirang Ronda Conrad ul. Mill Lane 28, 95-583 Dubois"
+        ]
+      },
+      {
+        nazwa: "KENEGY Tania Weaver",
+        nip: 8748336020,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Nevada",
+          ulica: "Rodney Street",
+          nrDomu: 239,
+          nrLokalu: 44,
+          miejscowosc: "Downsville",
+          kodPocztowy: "97-537",
+          poczta: "Otranto",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(954) 536-2012",
+        email: "taniaweaver@kenegy.com",
+        miejscaInstalacji: [
+          "Frosnex Cobb Richards ul. Glenmore Avenue 149, 75-545 Roberts",
+          "Balooba Gonzalez Crosby ul. Rochester Avenue 156, 42-375 Gila",
+          "Candecor Stein Adams ul. Jefferson Street 500, 90-344 Keyport"
+        ]
+      },
+      {
+        nazwa: "COWTOWN Nell Giles",
+        nip: 2283658014,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Montana",
+          ulica: "Forrest Street",
+          nrDomu: 281,
+          nrLokalu: 24,
+          miejscowosc: "Fairmount",
+          kodPocztowy: "20-615",
+          poczta: "Wakarusa",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(982) 576-3367",
+        email: "nellgiles@cowtown.com",
+        miejscaInstalacji: [
+          "Deviltoe Samantha Goodman ul. Eldert Street 450, 40-197 Chelsea",
+          "Stockpost Shanna Jacobson ul. Balfour Place 327, 66-882 Richville",
+          "Oceanica Lois Ayers ul. Buffalo Avenue 346, 13-613 Rodanthe"
+        ]
+      },
+      {
+        nazwa: "CORPORANA Odessa Alvarez",
+        nip: 6788810762,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Tennessee",
+          ulica: "Crosby Avenue",
+          nrDomu: 138,
+          nrLokalu: 14,
+          miejscowosc: "Cassel",
+          kodPocztowy: "56-290",
+          poczta: "Devon",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(814) 515-2489",
+        email: "odessaalvarez@corporana.com",
+        miejscaInstalacji: [
+          "Bitrex Brittany Ferrell ul. Alabama Avenue 207, 15-813 Dyckesville",
+          "Corecom Carissa Erickson ul. Bedford Place 58, 45-159 Herald",
+          "Slax Jacquelyn Mcneil ul. Withers Street 375, 88-906 Sparkill"
+        ]
+      },
+      {
+        nazwa: "GLEAMINK Roman Fields",
+        nip: 9381487071,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Mississippi",
+          ulica: "Randolph Street",
+          nrDomu: 495,
+          nrLokalu: 22,
+          miejscowosc: "Odessa",
+          kodPocztowy: "63-958",
+          poczta: "Coultervillle",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(826) 588-2838",
+        email: "romanfields@gleamink.com",
+        miejscaInstalacji: [
+          "Macronaut Melendez Ellis ul. Sharon Street 103, 93-263 Tetherow",
+          "Elentrix Lelia Logan ul. Vista Place 474, 55-443 Forestburg",
+          "Viagreat Deirdre Ward ul. Lincoln Terrace 295, 52-503 Kipp"
+        ]
+      },
+      {
+        nazwa: "AUTOMON Bertha Gates",
+        nip: 3283983332,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "American Samoa",
+          ulica: "Anna Court",
+          nrDomu: 138,
+          nrLokalu: 14,
+          miejscowosc: "Bellamy",
+          kodPocztowy: "97-156",
+          poczta: "Tibbie",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(843) 467-3376",
+        email: "berthagates@automon.com",
+        miejscaInstalacji: [
+          "Entality Christi Shepard ul. Coffey Street 386, 79-546 Hiko",
+          "Kangle Blake Mccarthy ul. Bay Street 442, 83-873 Lutsen",
+          "Zepitope Logan Briggs ul. Forest Place 106, 65-679 Carbonville"
+        ]
+      },
+      {
+        nazwa: "SCHOOLIO Cooper Massey",
+        nip: 1580444708,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Missouri",
+          ulica: "Meadow Street",
+          nrDomu: 437,
+          nrLokalu: 31,
+          miejscowosc: "Templeton",
+          kodPocztowy: "70-475",
+          poczta: "Zarephath",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(827) 516-3894",
+        email: "coopermassey@schoolio.com",
+        miejscaInstalacji: [
+          "Surelogic Cornelia Hodges ul. Exeter Street 236, 99-840 Indio",
+          "Lingoage Trisha Rodriguez ul. Landis Court 118, 19-836 Dorneyville",
+          "Austech Virginia Carter ul. Green Street 136, 87-557 Kenmar"
+        ]
+      },
+      {
+        nazwa: "ZBOO Hutchinson Bauer",
+        nip: 9502328241,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Federated States Of Micronesia",
+          ulica: "Hendrickson Place",
+          nrDomu: 412,
+          nrLokalu: 42,
+          miejscowosc: "Blanford",
+          kodPocztowy: "94-327",
+          poczta: "Skyland",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(955) 549-3842",
+        email: "hutchinsonbauer@zboo.com",
+        miejscaInstalacji: [
+          "Tetak Debra Keith ul. Havemeyer Street 42, 46-778 Rosewood",
+          "Zoxy Howard Poole ul. Rutland Road 93, 73-275 Ruffin",
+          "Quonk Hudson Hunter ul. Mill Street 173, 34-731 Smeltertown"
+        ]
+      },
+      {
+        nazwa: "NAMEBOX Lupe Hubbard",
+        nip: 2438805033,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Nebraska",
+          ulica: "Newkirk Placez",
+          nrDomu: 47,
+          nrLokalu: 45,
+          miejscowosc: "Hatteras",
+          kodPocztowy: "70-960",
+          poczta: "Bodega",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(982) 421-2178",
+        email: "lupehubbard@namebox.com",
+        miejscaInstalacji: [
+          "Isologica Mcbride Neal ul. Empire Boulevard 221, 75-539 Soudan",
+          "Gaptec Vicky Keller ul. Nixon Court 268, 49-538 Dennard",
+          "Plasmosis Kristy Bentley ul. Cypress Avenue 234, 66-734 Bend"
+        ]
+      },
+      {
+        nazwa: "FUELTON Dawn Frye",
+        nip: 3785620520,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Indiana",
+          ulica: "Adler Place",
+          nrDomu: 316,
+          nrLokalu: 19,
+          miejscowosc: "Frizzleburg",
+          kodPocztowy: "29-927",
+          poczta: "Washington",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(820) 471-3097",
+        email: "dawnfrye@fuelton.com",
+        miejscaInstalacji: [
+          "Datagene Roberson Justice ul. Voorhies Avenue 467, 56-698 Gibsonia",
+          "Geekular Strickland Lyons ul. Berry Street 52, 80-236 Freetown",
+          "Softmicro Kirk Herrera ul. Wolf Place 247, 80-855 Frank"
+        ]
+      },
+      {
+        nazwa: "COMBOT Vera Malone",
+        nip: 7877661503,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Alaska",
+          ulica: "Lorraine Street",
+          nrDomu: 461,
+          nrLokalu: 49,
+          miejscowosc: "Fidelis",
+          kodPocztowy: "53-427",
+          poczta: "Spokane",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(886) 574-3541",
+        email: "veramalone@combot.com",
+        miejscaInstalacji: [
+          "Zyple Lynch Graham ul. Farragut Place 421, 54-516 Enetai",
+          "Petigems Barton Armstrong ul. Gotham Avenue 272, 63-864 Jugtown",
+          "Intergeek Bettye Bond ul. Adelphi Street 38, 53-259 Waterview"
+        ]
+      },
+      {
+        nazwa: "ROCKYARD Hamilton Lewis",
+        nip: 4939923670,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Alabama",
+          ulica: "Liberty Avenue",
+          nrDomu: 164,
+          nrLokalu: 41,
+          miejscowosc: "Hamilton",
+          kodPocztowy: "55-286",
+          poczta: "Axis",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(934) 537-2895",
+        email: "hamiltonlewis@rockyard.com",
+        miejscaInstalacji: [
+          "Kozgene Wiley Stafford ul. Lewis Avenue 162, 85-301 Cumberland",
+          "Exiand Webb Price ul. Kings Hwy 280, 82-522 Harleigh",
+          "Plasmos Sutton Valdez ul. Lombardy Street 268, 51-713 Groton"
+        ]
+      },
+      {
+        nazwa: "FRENEX Rosalinda Tillman",
+        nip: 7864178892,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Louisiana",
+          ulica: "Noll Street",
+          nrDomu: 201,
+          nrLokalu: 46,
+          miejscowosc: "Rose",
+          kodPocztowy: "43-163",
+          poczta: "Shrewsbury",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(991) 517-2672",
+        email: "rosalindatillman@frenex.com",
+        miejscaInstalacji: [
+          "Shopabout Burch Holmes ul. Narrows Avenue 460, 69-130 Glenville",
+          "Daido Annmarie Cooke ul. Waldorf Court 257, 65-305 Allendale",
+          "Hinway Cameron King ul. Newton Street 290, 50-880 Mapletown"
+        ]
+      },
+      {
+        nazwa: "COMSTRUCT Sally Buckley",
+        nip: 7428343370,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Wyoming",
+          ulica: "Seaview Court",
+          nrDomu: 376,
+          nrLokalu: 18,
+          miejscowosc: "Westerville",
+          kodPocztowy: "48-249",
+          poczta: "Brule",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(993) 571-3129",
+        email: "sallybuckley@comstruct.com",
+        miejscaInstalacji: [
+          "Realmo Ewing Everett ul. Bogart Street 6, 14-991 Statenville",
+          "Sultraxin Lilian Yates ul. Blake Court 11, 24-685 Floriston",
+          "Terrago Knapp Albert ul. Harrison Place 429, 12-376 Cliffside"
+        ]
+      },
+      {
+        nazwa: "ORONOKO Finch Hernandez",
+        nip: 2311453339,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Virginia",
+          ulica: "Menahan Street",
+          nrDomu: 1,
+          nrLokalu: 41,
+          miejscowosc: "Elwood",
+          kodPocztowy: "63-445",
+          poczta: "Bagtown",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(886) 468-3160",
+        email: "finchhernandez@oronoko.com",
+        miejscaInstalacji: [
+          "Comtour Carrie House ul. Sedgwick Place 3, 26-884 Madaket",
+          "Playce Caroline Ramos ul. Verona Place 297, 51-606 Bowie",
+          "Quailcom Rocha Russo ul. Dwight Street 469, 47-929 Sultana"
+        ]
+      },
+      {
+        nazwa: "TYPHONICA Mayer Mcgee",
+        nip: 7491526434,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Florida",
+          ulica: "McClancy Place",
+          nrDomu: 187,
+          nrLokalu: 39,
+          miejscowosc: "Churchill",
+          kodPocztowy: "90-727",
+          poczta: "Nescatunga",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(896) 546-3805",
+        email: "mayermcgee@typhonica.com",
+        miejscaInstalacji: [
+          "Gynko Sharlene Browning ul. Estate Road 208, 13-397 Calverton",
+          "Cytrex Peck Estrada ul. Coleman Street 382, 91-198 Hilltop",
+          "Comverges Harris Rios ul. Wilson Avenue 458, 80-478 Nicholson"
+        ]
+      },
+      {
+        nazwa: "EXOPLODE Abbott Solis",
+        nip: 9914027460,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Kentucky",
+          ulica: "Everit Street",
+          nrDomu: 86,
+          nrLokalu: 29,
+          miejscowosc: "Wyoming",
+          kodPocztowy: "88-867",
+          poczta: "Marbury",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(843) 427-2551",
+        email: "abbottsolis@exoplode.com",
+        miejscaInstalacji: [
+          "Rameon Deborah Moran ul. Tiffany Place 169, 63-977 Chesterfield",
+          "Luxuria Cara Lott ul. Kensington Street 414, 42-999 Carrsville",
+          "Centregy Grace Hays ul. Louise Terrace 209, 69-237 Wattsville"
+        ]
+      },
+      {
+        nazwa: "EXOSWITCH Fisher Mueller",
+        nip: 3081098914,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "California",
+          ulica: "Garland Court",
+          nrDomu: 274,
+          nrLokalu: 42,
+          miejscowosc: "Greenfields",
+          kodPocztowy: "13-118",
+          poczta: "Convent",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(905) 584-2035",
+        email: "fishermueller@exoswitch.com",
+        miejscaInstalacji: [
+          "Prismatic Hampton Sanders ul. Bayard Street 190, 93-414 Faxon",
+          "Liquicom Long Wilkerson ul. Prince Street 23, 57-934 Allentown",
+          "Bullzone Bowman Sims ul. High Street 55, 15-270 Brady"
+        ]
+      },
+      {
+        nazwa: "ISODRIVE Benjamin Burns",
+        nip: 6125316002,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Hawaii",
+          ulica: "Woodrow Court",
+          nrDomu: 191,
+          nrLokalu: 2,
+          miejscowosc: "Ironton",
+          kodPocztowy: "36-369",
+          poczta: "Bethany",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(844) 457-3296",
+        email: "benjaminburns@isodrive.com",
+        miejscaInstalacji: [
+          "Ecraze Ericka Benjamin ul. Regent Place 229, 79-755 Yonah",
+          "Pathways Mccray Odom ul. Moffat Street 180, 29-292 Tivoli",
+          "Glasstep Peggy Freeman ul. Hyman Court 334, 83-686 Klagetoh"
+        ]
+      },
+      {
+        nazwa: "VORTEXACO Lynnette Kent",
+        nip: 6034907221,
+        regonPesel: "",
+        adres: {
+          kraj: "Polska",
+          gminaDzielnica: "Vermont",
+          ulica: "Independence Avenue",
+          nrDomu: 256,
+          nrLokalu: 49,
+          miejscowosc: "Hendersonville",
+          kodPocztowy: "76-372",
+          poczta: "Shawmut",
+          skrytkaPocztowa: "dummy data"
+        },
+        telefon: "(915) 463-2711",
+        email: "lynnettekent@vortexaco.com",
+        miejscaInstalacji: [
+          "Furnigeer Monica Calderon ul. Anthony Street 335, 19-548 Logan",
+          "Photobin Hale Beard ul. Quentin Street 313, 17-152 Nelson",
+          "Orbiflex Helena Irwin ul. Will Place 70, 41-892 Harold"
+        ]
+      }
+    ];
+
+    dummyData.forEach(client => {
+      client.uzytkownikId = userId;
+
+      const randomNumber = Math.floor(Math.random() * voivodeshipsCount);
+      client.adres.wojewodztwoId = Voivodeships.find(
+        {},
+        { skip: randomNumber, limit: 1 }
+      ).fetch()[0]._id;
+
+      client.dataUtworzenia = new Date();
+      client.dataModyfikacji = client.dataUtworzenia;
+
+      client.dodatkoweInformacje = "dummy data";
+
+      Clients.insert(client);
+    });
+  }
+});
