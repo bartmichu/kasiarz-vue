@@ -4,10 +4,10 @@
     <v-toolbar-title>Kasiarz</v-toolbar-title>
 
     <v-toolbar-items>
-      <v-btn flat @click="methodPlug">
+      <v-btn flat :to="{name: 'clients'}">
         <v-icon left dark>perm_contact_calendar</v-icon>Klienci
       </v-btn>
-      <v-btn flat @click="methodPlug">
+      <v-btn flat :to="{name: 'devices'}">
         <v-icon left dark>memory</v-icon>Urządzenia
       </v-btn>
     </v-toolbar-items>
@@ -19,21 +19,21 @@
         <v-icon>settings</v-icon>
       </v-btn>
       <v-list>
-        <v-list-tile @click="methodPlug">
+        <v-list-tile :to="{name: 'manufacturers'}">
           <v-list-tile-title>Producenci urządzeń</v-list-tile-title>
         </v-list-tile>
-        <v-list-tile @click="methodPlug">
+        <v-list-tile :to="{name: 'models'}">
           <v-list-tile-title>Modele urządzeń</v-list-tile-title>
         </v-list-tile>
         <v-divider/>
-        <v-list-tile @click="methodPlug">
+        <v-list-tile :to="{name: 'shops'}">
           <v-list-tile-title>Serwisy</v-list-tile-title>
         </v-list-tile>
-        <v-list-tile @click="methodPlug">
+        <v-list-tile :to="{name: 'employees'}">
           <v-list-tile-title>Serwisanci</v-list-tile-title>
         </v-list-tile>
         <v-divider/>
-        <v-list-tile @click="methodPlug">
+        <v-list-tile :to="{name: 'offices'}">
           <v-list-tile-title>Urzędy skarbowe</v-list-tile-title>
         </v-list-tile>
       </v-list>

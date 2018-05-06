@@ -8,6 +8,13 @@ import isLoggedIn from "/imports/helpers/client/isLoggedIn.js";
 import ApplicationLayout from "/imports/ui/layouts/ApplicationLayout.vue";
 import ApplicationPage from "/imports/ui/pages/ApplicationPage.vue";
 import LoginPage from "/imports/ui/pages/LoginPage.vue";
+import ClientsPage from "/imports/ui/pages/ClientsPage.vue";
+import DevicesPage from "/imports/ui/pages/DevicesPage.vue";
+import ManufacturersPage from "/imports/ui/pages/ManufacturersPage.vue";
+import ModelsPage from "/imports/ui/pages/ModelsPage.vue";
+import ShopsPage from "/imports/ui/pages/ShopsPage.vue";
+import EmployeesPage from "/imports/ui/pages/EmployeesPage.vue";
+import OfficesPage from "/imports/ui/pages/OfficesPage.vue";
 
 Vue.use(VueRouter);
 Vue.use(Vuetify);
@@ -18,7 +25,44 @@ const router = new VueRouter({
     {
       path: "/",
       name: "index",
-      component: ApplicationPage
+      component: ApplicationPage,
+      children: [
+        {
+          path: "klienci",
+          name: "clients",
+          component: ClientsPage
+        },
+        {
+          path: "urzadzenia",
+          name: "devices",
+          component: DevicesPage
+        },
+        {
+          path: "producenci",
+          name: "manufacturers",
+          component: ManufacturersPage
+        },
+        {
+          path: "modele",
+          name: "models",
+          component: ModelsPage
+        },
+        {
+          path: "serwisy",
+          name: "shops",
+          component: ShopsPage
+        },
+        {
+          path: "serwisanci",
+          name: "employees",
+          component: EmployeesPage
+        },
+        {
+          path: "urzedy",
+          name: "offices",
+          component: OfficesPage
+        }
+      ]
     },
     {
       path: "/login",
