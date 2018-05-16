@@ -9,11 +9,11 @@
     <v-card-title></v-card-title>
 
     <v-card-text>
-      <v-text-field v-model="username" type="text" solo flat clearable label="użytkownik" prepend-icon="face" @input="clearFailedLogin" @keyup.enter="signIn" @change="trimUsername" />
+      <v-text-field v-model="username" type="text" solo flat clearable label="użytkownik" prepend-icon="face" @input="clearFailedLogin" @keyup.enter="signIn" @change="trimUsername"></v-text-field>
     </v-card-text>
 
     <v-card-text>
-      <v-text-field v-model="password" type="password" solo flat clearable label="hasło" prepend-icon="lock_outline" @input="clearFailedLogin" @keyup.enter="signIn" />
+      <v-text-field v-model="password" type="password" solo flat clearable label="hasło" prepend-icon="lock_outline" @input="clearFailedLogin" @keyup.enter="signIn"></v-text-field>
     </v-card-text>
 
     <v-card-actions>

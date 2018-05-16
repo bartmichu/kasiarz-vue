@@ -12,7 +12,7 @@
       </v-btn>
     </v-toolbar-items>
 
-    <v-spacer/>
+    <v-spacer></v-spacer>
 
     <v-menu dark open-on-hover left>
       <v-btn icon slot="activator">
@@ -25,14 +25,14 @@
         <v-list-tile :to="{name: 'models'}">
           <v-list-tile-title>Modele urządzeń</v-list-tile-title>
         </v-list-tile>
-        <v-divider/>
+        <v-divider></v-divider>
         <v-list-tile :to="{name: 'shops'}">
           <v-list-tile-title>Serwisy</v-list-tile-title>
         </v-list-tile>
         <v-list-tile :to="{name: 'employees'}">
           <v-list-tile-title>Serwisanci</v-list-tile-title>
         </v-list-tile>
-        <v-divider/>
+        <v-divider></v-divider>
         <v-list-tile :to="{name: 'offices'}">
           <v-list-tile-title>Urzędy skarbowe</v-list-tile-title>
         </v-list-tile>

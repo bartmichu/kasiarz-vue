@@ -3,7 +3,7 @@
     <v-container fluid fill-height>
       <v-layout align-center justify-center row>
         <v-flex xs12 sm7 md5 lg4 xl3>
-          <LoginBox/>
+          <LoginBox></LoginBox>
         </v-flex>
       </v-layout>
     </v-container>

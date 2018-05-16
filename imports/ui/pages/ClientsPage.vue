@@ -5,7 +5,7 @@
       <v-toolbar-title>Lista klientów</v-toolbar-title>
     </v-toolbar>
 
-    <v-card-title/>
+    <v-card-title></v-card-title>
 
     <v-card-text>
       <v-data-table :headers="headers" :items="items" hide-actions>
