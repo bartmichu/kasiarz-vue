@@ -4,6 +4,9 @@ import isNonEmptyString from "/imports/helpers/server/isNonEmptyString.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 
 Meteor.publish("manufacturers.list", function publishFunction() {
+  // TODO: remove in production
+  Meteor._sleepForMs(2000);
+
   const actualUserId = Meteor.userId();
   if (actualUserId) {
     const data = Manufacturers.find(
