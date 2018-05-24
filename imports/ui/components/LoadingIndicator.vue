@@ -1,5 +1,5 @@
 <template>
-  <v-progress-linear indeterminate="true" color="grey"></v-progress-linear>
+  <v-progress-linear indeterminate color="grey"></v-progress-linear>
 </template>
 
 
