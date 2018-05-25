@@ -3,12 +3,12 @@
   "private": true,
   "scripts": {
     "start": "meteor run",
-    "meteor:build":
-      "meteor build --server-only --architecture os.linux.x86_64 ../kasiarz-vue-package"
+    "meteor:build": "meteor build --server-only --architecture os.linux.x86_64 ../kasiarz-vue-package"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.47",
     "meteor-node-stubs": "^0.3.3",
+    "moment": "^2.22.1",
     "simpl-schema": "^1.5.0",
     "vue": "^2.5.16",
     "vue-meteor-tracker": "^1.2.3",
