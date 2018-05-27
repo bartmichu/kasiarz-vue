@@ -3,6 +3,7 @@
 
     <v-toolbar card color="grey lighten-2">
       <v-toolbar-title>Lista producentów urządzeń</v-toolbar-title>
+      <v-btn depressed color="secondary">dodaj</v-btn>
     </v-toolbar>
 
     <v-card-text v-if="!isSubscriptionReady">
@@ -12,11 +13,31 @@
     <v-card-text v-else>
       <EmptyListPlaceholder v-if="isEmptyCollection" message="Lista producentów jest pusta."></EmptyListPlaceholder>
 
-      <v-data-table v-else :headers="tableHeaders" :items="subscribedData" hide-actions>
+      <v-data-table v-else :headers="tableHeaders" :items="subscribedData" item-key="_id" hide-actions>
         <template slot="items" slot-scope="props">
-          <td>{{ props.item.nazwa }}</td>
-          <td class="text-xs-right">{{ props.item.adres.miejscowosc }}</td>
-          <td class="text-xs-right">{{ props.item.dataModyfikacji }}</td>
+          <tr @mouseover="setActiveItem(props.item._id)" @mouseout="resetActiveItem">
+            <td>{{ props.item.nazwa }}</td>
+            <td class="text-xs-right">{{ props.item.adres.miejscowosc }}</td>
+            <td class="text-xs-right">{{ formatDate(props.item.dataModyfikacji) }}</td>
+            <td class="justify-center layout px-0">
+              <v-menu v-show="isActiveItem(props.item._id)" bottom left dark>
+                <v-btn slot="activator" icon color="secondary">
+                  <v-icon>menu</v-icon>
+                </v-btn>
+                <v-list>
+                  <v-list-tile @click="">
+                    <v-list-tile-title>przeglądaj</v-list-tile-title>
+                  </v-list-tile>
+                  <v-list-tile @click="">
+                    <v-list-tile-title>edytuj</v-list-tile-title>
+                  </v-list-tile>
+                  <v-list-tile @click="">
+                    <v-list-tile-title>usuń</v-list-tile-title>
+                  </v-list-tile>
+                </v-list>
+              </v-menu>
+            </td>
+          </tr>
         </template>
       </v-data-table>
     </v-card-text>
@@ -29,6 +50,7 @@
 import EmptyListPlaceholder from "/imports/ui/components/EmptyListPlaceholder.vue";
 import LoadingIndicator from "/imports/ui/components/LoadingIndicator.vue";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
+import { formatDate } from "/imports/startup/client/mixins.js";
 
 export default {
   name: "ManufacturersPage",
@@ -37,6 +59,8 @@ export default {
     EmptyListPlaceholder,
     LoadingIndicator
   },
+
+  mixins: [formatDate],
 
   meteor: {
     $subscribe: {
@@ -47,8 +71,30 @@ export default {
     }
   },
 
+  computed: {
+    isSubscriptionReady() {
+      return this.$subReady["manufacturers.list"];
+    },
+    isEmptyCollection() {
+      return this.subscribedData.length === 0;
+    }
+  },
+
+  methods: {
+    setActiveItem(id) {
+      this.activeItemId = id;
+    },
+    resetActiveItem() {
+      this.activeItemId = "";
+    },
+    isActiveItem(id) {
+      return id === this.activeItemId;
+    }
+  },
+
   data() {
     return {
+      activeItemId: "",
       tableHeaders: [
         {
           text: "Pełna nazwa",
@@ -64,19 +110,16 @@ export default {
           text: "Data modyfikacji",
           align: "right",
           value: "dataModyfikacji"
+        },
+        {
+          text: "",
+          value: "",
+          sortable: false,
+          width: "100px"
         }
       ],
       items: []
     };
-  },
-
-  computed: {
-    isSubscriptionReady() {
-      return this.$subReady["manufacturers.list"];
-    },
-    isEmptyCollection() {
-      return this.subscribedData.length === 0;
-    }
   }
 };
 </script>
