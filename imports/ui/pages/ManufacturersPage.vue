@@ -20,22 +20,9 @@
             <td class="text-xs-right">{{ props.item.adres.miejscowosc }}</td>
             <td class="text-xs-right">{{ formatDate(props.item.dataModyfikacji) }}</td>
             <td class="justify-center layout px-0">
-              <v-menu v-show="isActiveItem(props.item._id)" bottom left dark>
-                <v-btn slot="activator" icon color="secondary">
-                  <v-icon>menu</v-icon>
-                </v-btn>
-                <v-list>
-                  <v-list-tile @click="">
-                    <v-list-tile-title>przeglądaj</v-list-tile-title>
-                  </v-list-tile>
-                  <v-list-tile @click="">
-                    <v-list-tile-title>edytuj</v-list-tile-title>
-                  </v-list-tile>
-                  <v-list-tile @click="">
-                    <v-list-tile-title>usuń</v-list-tile-title>
-                  </v-list-tile>
-                </v-list>
-              </v-menu>
+              <div v-show="isActiveItem(props.item._id)">
+                <ListItemMenu item-id="{{ props.item._id }}"></ListItemMenu>
+              </div>
             </td>
           </tr>
         </template>
@@ -49,6 +36,7 @@
 <script>
 import EmptyListPlaceholder from "/imports/ui/components/EmptyListPlaceholder.vue";
 import LoadingIndicator from "/imports/ui/components/LoadingIndicator.vue";
+import ListItemMenu from "/imports/ui/components/ListItemMenu.vue";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import { formatDate } from "/imports/startup/client/mixins.js";
 
@@ -57,7 +45,8 @@ export default {
 
   components: {
     EmptyListPlaceholder,
-    LoadingIndicator
+    LoadingIndicator,
+    ListItemMenu
   },
 
   mixins: [formatDate],
