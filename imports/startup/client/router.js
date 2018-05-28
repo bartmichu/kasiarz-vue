@@ -2,10 +2,8 @@ import { Meteor } from "meteor/meteor";
 import Vue from "vue";
 import VueRouter from "vue-router";
 import VueMeteorTracker from "vue-meteor-tracker";
-import Vuetify from "vuetify/dist/vuetify";
-import "vuetify/dist/vuetify.min.css";
 import isLoggedIn from "/imports/helpers/client/isLoggedIn.js";
-
+import ElementUI from "element-ui";
 import ApplicationLayout from "/imports/ui/layouts/ApplicationLayout.vue";
 import ApplicationPage from "/imports/ui/pages/ApplicationPage.vue";
 import LoginPage from "/imports/ui/pages/LoginPage.vue";
@@ -16,10 +14,11 @@ import ModelsPage from "/imports/ui/pages/ModelsPage.vue";
 import ShopsPage from "/imports/ui/pages/ShopsPage.vue";
 import EmployeesPage from "/imports/ui/pages/EmployeesPage.vue";
 import OfficesPage from "/imports/ui/pages/OfficesPage.vue";
+import "element-ui/lib/theme-chalk/index.css";
 
 Vue.use(VueRouter);
 Vue.use(VueMeteorTracker);
-Vue.use(Vuetify);
+Vue.use(ElementUI);
 
 const router = new VueRouter({
   mode: "history",
