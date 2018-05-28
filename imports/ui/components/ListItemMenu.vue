@@ -10,8 +10,9 @@
       <v-list-tile @click="">
         <v-list-tile-title>edytuj</v-list-tile-title>
       </v-list-tile>
-      <v-list-tile @click="">
+      <v-list-tile @click.native.stop="deleteModal = true">
         <v-list-tile-title>usuń</v-list-tile-title>
+        <DeleteItemModal></DeleteItemModal>
       </v-list-tile>
     </v-list>
   </v-menu>
@@ -19,6 +20,8 @@
 
 
 <script>
+import DeleteItemModal from "/imports/ui/components/DeleteItemModal.vue";
+
 export default {
   name: "ListItemMenu",
 
@@ -28,6 +31,16 @@ export default {
       required: true,
       default: ""
     }
+  },
+
+  data() {
+    return {
+      deleteModal: false
+    };
+  },
+
+  components: {
+    DeleteItemModal
   }
 };
 </script>
