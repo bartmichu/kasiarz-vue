@@ -15,7 +15,7 @@
       </v-list-tile>
     </v-list>
 
-    <v-dialog v-model="isDeleteModalVisible" persistent max-width="60%">
+    <v-dialog v-model="isDeleteModalVisible" :fullscreen="$vuetify.breakpoint.xs" persistent max-width="50%">
       <v-card>
         <v-card-title class="headline">Usuń element</v-card-title>
         <v-card-text>Usuwanie jest operacją nieodwracalną - czy chcesz trwale usunąć wybrany element?</v-card-text>
