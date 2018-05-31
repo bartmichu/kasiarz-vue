@@ -14,7 +14,7 @@
         <v-list-tile-title>usuń</v-list-tile-title>
       </v-list-tile>
     </v-list>
-    <DeleteConfirmationDialog :opened="deleteDialogOpened" :description="description" @close="closeDeleteDialog"></DeleteConfirmationDialog>
+    <DeleteConfirmationDialog :opened="deleteDialogOpened" @close="closeDeleteDialog" title="Usunąć producenta?"></DeleteConfirmationDialog>
   </v-menu>
 </template>
 
@@ -29,11 +29,6 @@ export default {
     "item-id": {
       type: String,
       required: true,
-      default: ""
-    },
-    description: {
-      type: String,
-      required: false,
       default: ""
     }
   },
