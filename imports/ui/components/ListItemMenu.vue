@@ -18,7 +18,8 @@
     <v-dialog v-model="isDeleteModalVisible" :fullscreen="$vuetify.breakpoint.xs" persistent max-width="50%">
       <v-card>
         <v-card-title class="headline">Usuń element</v-card-title>
-        <v-card-text>Usuwanie jest operacją nieodwracalną - czy chcesz trwale usunąć wybrany element?</v-card-text>
+        <v-card-text>Wybrany element: {{ description }}</v-card-text>
+        <v-card-text>Czy chcesz go trwale usunąć? Usuwanie jest operacją nieodwracalną.</v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="green darken-1" flat @click.native="isDeleteModalVisible = false">Nie usuwaj</v-btn>
@@ -38,6 +39,11 @@ export default {
     "item-id": {
       type: String,
       required: true,
+      default: ""
+    },
+    description: {
+      type: String,
+      required: false,
       default: ""
     }
   },
