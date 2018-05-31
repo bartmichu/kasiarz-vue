@@ -14,7 +14,7 @@
         <v-list-tile-title>usuń</v-list-tile-title>
       </v-list-tile>
     </v-list>
-    <DeleteConfirmationDialog :opened="deleteDialogOpened" @close="closeDeleteDialog" title="Usunąć producenta?"></DeleteConfirmationDialog>
+    <DeleteConfirmationDialog :opened="deleteDialogOpened" @close="closeDeleteDialog" :id="id" title="Usunąć producenta?"></DeleteConfirmationDialog>
   </v-menu>
 </template>
 

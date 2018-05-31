@@ -1,9 +1,8 @@
 <template>
   <v-dialog v-model="isOpened" :fullscreen="$vuetify.breakpoint.xs" persistent max-width="50%">
     <v-card>
-      <v-card-title class="headline">Usuń</v-card-title>
-      <v-card-text>Wybrany element: {{ description }}</v-card-text>
-      <v-card-text>Czy chcesz go trwale usunąć? Usuwanie jest operacją nieodwracalną.</v-card-text>
+      <v-card-title class="headline">{{ title }}</v-card-title>
+      <v-card-text>Usuwanie jest operacją nieodwracalną.</v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="secondary" @click.native="closeDialog">Anuluj</v-btn>
@@ -18,20 +17,29 @@ export default {
   name: "DeleteConfirmationDialog",
 
   props: {
-    description: {
+    title: {
       type: String,
       required: false,
-      default: ""
+      default: "Usunąć dany element?"
     },
     opened: {
       type: Boolean,
       required: true,
       detault: false
+    },
+    id: {
+      type: String,
+      required: true,
+      default: ""
     }
   },
 
   computed: {
     isOpened() {
+      if (this.opened) {
+        // TODO: remove in production
+        console.log(this.id);
+      }
       return this.opened;
     }
   },
