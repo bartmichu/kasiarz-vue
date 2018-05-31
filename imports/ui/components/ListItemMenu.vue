@@ -10,28 +10,18 @@
       <v-list-tile @click="">
         <v-list-tile-title>edytuj</v-list-tile-title>
       </v-list-tile>
-      <v-list-tile @click.stop="isDeleteModalVisible = true">
+      <v-list-tile @click.stop="openDeleteDialog">
         <v-list-tile-title>usuń</v-list-tile-title>
       </v-list-tile>
     </v-list>
-
-    <v-dialog v-model="isDeleteModalVisible" :fullscreen="$vuetify.breakpoint.xs" persistent max-width="50%">
-      <v-card>
-        <v-card-title class="headline">Usuń</v-card-title>
-        <v-card-text>Wybrany element: {{ description }}</v-card-text>
-        <v-card-text>Czy chcesz go trwale usunąć? Usuwanie jest operacją nieodwracalną.</v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="secondary" @click.native="isDeleteModalVisible = false">Anuluj</v-btn>
-          <v-btn color="error" @click.native="isDeleteModalVisible = false">Tak, usuń</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
+    <DeleteConfirmationDialog :opened="deleteDialogOpened" :description="description" @close="closeDeleteDialog"></DeleteConfirmationDialog>
   </v-menu>
 </template>
 
 
 <script>
+import DeleteConfirmationDialog from "/imports/ui/components/DeleteConfirmationDialog.vue";
+
 export default {
   name: "ListItemMenu",
 
@@ -50,10 +40,19 @@ export default {
 
   data() {
     return {
-      isDeleteModalVisible: false
+      deleteDialogOpened: false
     };
   },
 
-  components: {}
+  methods: {
+    closeDeleteDialog() {
+      this.deleteDialogOpened = false;
+    },
+    openDeleteDialog() {
+      this.deleteDialogOpened = true;
+    }
+  },
+
+  components: { DeleteConfirmationDialog }
 };
 </script>
