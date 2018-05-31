@@ -26,7 +26,7 @@ export default {
   name: "ListItemMenu",
 
   props: {
-    "item-id": {
+    id: {
       type: String,
       required: true,
       default: ""
