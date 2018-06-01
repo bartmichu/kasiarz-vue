@@ -29,6 +29,7 @@
       </v-data-table>
     </v-card-text>
 
+    <DeleteConfirmationDialog title="Usunąć producenta?"></DeleteConfirmationDialog>
   </v-card>
 </template>
 
@@ -37,6 +38,7 @@
 import EmptyListPlaceholder from "/imports/ui/components/EmptyListPlaceholder.vue";
 import LoadingIndicator from "/imports/ui/components/LoadingIndicator.vue";
 import ListItemMenu from "/imports/ui/components/ListItemMenu.vue";
+import DeleteConfirmationDialog from "/imports/ui/components/DeleteConfirmationDialog.vue";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import { formatDate } from "/imports/startup/client/mixins.js";
 
@@ -46,7 +48,8 @@ export default {
   components: {
     EmptyListPlaceholder,
     LoadingIndicator,
-    ListItemMenu
+    ListItemMenu,
+    DeleteConfirmationDialog
   },
 
   mixins: [formatDate],

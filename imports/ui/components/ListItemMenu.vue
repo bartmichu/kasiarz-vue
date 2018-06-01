@@ -14,14 +14,11 @@
         <v-list-tile-title>usuń</v-list-tile-title>
       </v-list-tile>
     </v-list>
-    <DeleteConfirmationDialog :id="id" title="Usunąć producenta?"></DeleteConfirmationDialog>
   </v-menu>
 </template>
 
 
 <script>
-import DeleteConfirmationDialog from "/imports/ui/components/DeleteConfirmationDialog.vue";
-
 export default {
   name: "ListItemMenu",
 
@@ -37,8 +34,6 @@ export default {
     openDeleteDialog() {
       this.$store.commit("openDeleteConfirmationDialog");
     }
-  },
-
-  components: { DeleteConfirmationDialog }
+  }
 };
 </script>
