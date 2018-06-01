@@ -6,7 +6,7 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="secondary" @click.native="closeDialog">Anuluj</v-btn>
-        <v-btn color="error" @click.native="closeDialog">Tak, usuń</v-btn>
+        <v-btn color="error" @click.native="deleteItem">Tak, usuń</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -36,10 +36,6 @@ export default {
 
   computed: {
     isOpened() {
-      if (this.opened) {
-        // TODO: remove in production
-        console.log(this.id);
-      }
       return this.opened;
     }
   },
@@ -47,6 +43,9 @@ export default {
   methods: {
     closeDialog() {
       this.$emit("close");
+    },
+    deleteItem() {
+      this.closeDialog();
     }
   }
 };
