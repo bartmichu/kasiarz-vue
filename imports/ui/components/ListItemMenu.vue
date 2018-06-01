@@ -14,7 +14,7 @@
         <v-list-tile-title>usuń</v-list-tile-title>
       </v-list-tile>
     </v-list>
-    <DeleteConfirmationDialog :opened="deleteDialogOpened" @close="closeDeleteDialog" :id="id" title="Usunąć producenta?"></DeleteConfirmationDialog>
+    <DeleteConfirmationDialog :id="id" title="Usunąć producenta?"></DeleteConfirmationDialog>
   </v-menu>
 </template>
 
@@ -33,18 +33,9 @@ export default {
     }
   },
 
-  data() {
-    return {
-      deleteDialogOpened: false
-    };
-  },
-
   methods: {
-    closeDeleteDialog() {
-      this.deleteDialogOpened = false;
-    },
     openDeleteDialog() {
-      this.deleteDialogOpened = true;
+      this.$store.commit("openDeleteConfirmationDialog");
     }
   },
 

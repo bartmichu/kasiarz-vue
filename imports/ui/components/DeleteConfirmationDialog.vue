@@ -22,11 +22,6 @@ export default {
       required: false,
       default: "Usunąć dany element?"
     },
-    opened: {
-      type: Boolean,
-      required: true,
-      detault: false
-    },
     id: {
       type: String,
       required: true,
@@ -36,16 +31,16 @@ export default {
 
   computed: {
     isOpened() {
-      return this.opened;
+      return this.$store.state.deleteConfirmationDialog;
     }
   },
 
   methods: {
     closeDialog() {
-      this.$emit("close");
+      this.$store.commit("closeDeleteConfirmationDialog");
     },
     deleteItem() {
-      this.closeDialog();
+      this.$store.commit("closeDeleteConfirmationDialog");
     }
   }
 };

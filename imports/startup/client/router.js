@@ -17,6 +17,8 @@ import ShopsPage from "/imports/ui/pages/ShopsPage.vue";
 import EmployeesPage from "/imports/ui/pages/EmployeesPage.vue";
 import OfficesPage from "/imports/ui/pages/OfficesPage.vue";
 
+import store from "/imports/startup/client/store.js";
+
 Vue.use(VueRouter);
 Vue.use(VueMeteorTracker);
 Vue.use(Vuetify);
@@ -90,6 +92,7 @@ router.beforeEach((to, from, next) => {
 Meteor.startup(() => {
   new Vue({
     router,
+    store,
     render: h => h(ApplicationLayout)
   }).$mount("app");
 });
