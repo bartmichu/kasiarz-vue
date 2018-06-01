@@ -24,7 +24,7 @@ export default {
     },
     id: {
       type: String,
-      required: true,
+      required: false,
       default: ""
     }
   },
