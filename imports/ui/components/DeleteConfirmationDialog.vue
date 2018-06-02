@@ -21,11 +21,6 @@ export default {
       type: String,
       required: false,
       default: "Usunąć dany element?"
-    },
-    id: {
-      type: String,
-      required: false,
-      default: ""
     }
   },
 
@@ -37,9 +32,11 @@ export default {
 
   methods: {
     closeDialog() {
+      this.$store.commit("resetSelectedListItemId");
       this.$store.commit("closeDeleteConfirmationDialog");
     },
     deleteItem() {
+      this.$store.commit("resetSelectedListItemId");
       this.$store.commit("closeDeleteConfirmationDialog");
     }
   }

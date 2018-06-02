@@ -5,7 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    deleteConfirmationDialog: false
+    deleteConfirmationDialog: false,
+    selectedListItemId: ""
   },
 
   mutations: {
@@ -14,6 +15,12 @@ export default new Vuex.Store({
     },
     closeDeleteConfirmationDialog() {
       this.state.deleteConfirmationDialog = false;
+    },
+    setSelectedListItemId(state, payload) {
+      this.state.selectedListItemId = payload.id;
+    },
+    resetSelectedListItemId() {
+      this.state.selectedListItemId = "";
     }
   }
 });

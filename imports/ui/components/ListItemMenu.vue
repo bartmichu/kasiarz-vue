@@ -32,6 +32,7 @@ export default {
 
   methods: {
     openDeleteDialog() {
+      this.$store.commit("setSelectedListItemId", { id: this.id });
       this.$store.commit("openDeleteConfirmationDialog");
     }
   }
