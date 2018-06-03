@@ -10,13 +10,13 @@
       <v-card-text v-else>Usuwanie jest operacją nieodwracalną.</v-card-text>
 
       <v-card-actions v-if="actionFailed">
-        <v-spacer></v-spacer>
-        <v-btn color="secondary" @click.native="closeDialog">OK</v-btn>
+        <v-btn color="secondary" @click.native="closeDialog" class="mx-auto">OK</v-btn>
       </v-card-actions>
       <v-card-actions v-else>
-        <v-spacer></v-spacer>
-        <v-btn color="secondary" @click.native="closeDialog">Anuluj</v-btn>
-        <v-btn color="error" @click.native="deleteItem">Tak, usuń</v-btn>
+        <span class="mx-auto">
+          <v-btn color="secondary" @click.native="closeDialog">Anuluj</v-btn>
+          <v-btn color="error" @click.native="deleteItem">Tak, usuń</v-btn>
+        </span>
       </v-card-actions>
 
     </v-card>
