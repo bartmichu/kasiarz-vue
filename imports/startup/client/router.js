@@ -11,7 +11,7 @@ import ApplicationPage from "/imports/ui/pages/ApplicationPage.vue";
 import LoginPage from "/imports/ui/pages/LoginPage.vue";
 import ClientsPage from "/imports/ui/pages/ClientsPage.vue";
 import DevicesPage from "/imports/ui/pages/DevicesPage.vue";
-import ManufacturersPage from "/imports/ui/pages/ManufacturersPage.vue";
+import ManufacturersListPage from "/imports/ui/pages/ManufacturersListPage.vue";
 import ModelsPage from "/imports/ui/pages/ModelsPage.vue";
 import ShopsPage from "/imports/ui/pages/ShopsPage.vue";
 import EmployeesPage from "/imports/ui/pages/EmployeesPage.vue";
@@ -44,7 +44,7 @@ const router = new VueRouter({
         {
           path: "producenci",
           name: "manufacturers",
-          component: ManufacturersPage
+          component: ManufacturersListPage
         },
         {
           path: "modele",

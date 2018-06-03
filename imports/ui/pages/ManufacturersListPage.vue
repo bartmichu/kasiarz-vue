@@ -48,7 +48,7 @@ import LoadingIndicator from "/imports/ui/components/LoadingIndicator.vue";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 
 export default {
-  name: "ManufacturersPage",
+  name: "ManufacturersListPage",
 
   meteor: {
     $subscribe: {
