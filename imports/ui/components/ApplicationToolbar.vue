@@ -1,4 +1,5 @@
 <template>
+
   <v-toolbar app dark color="grey darken-3">
 
     <v-toolbar-title>Kasiarz</v-toolbar-title>
@@ -51,6 +52,7 @@
     </v-menu>
 
   </v-toolbar>
+
 </template>
 
 

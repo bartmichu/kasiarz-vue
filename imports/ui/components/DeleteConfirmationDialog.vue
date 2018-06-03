@@ -25,6 +25,7 @@
 
 </template>
 
+
 <script>
 import { Meteor } from "meteor/meteor";
 
