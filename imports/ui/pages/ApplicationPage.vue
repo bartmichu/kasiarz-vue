@@ -1,4 +1,5 @@
 <template>
+
   <div>
 
     <ApplicationToolbar></ApplicationToolbar>
@@ -11,6 +12,7 @@
 
     <v-footer app></v-footer>
   </div>
+
 </template>
 
 
