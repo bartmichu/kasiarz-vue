@@ -108,11 +108,14 @@ export default {
     isActiveItem(id) {
       return id === this.activeItemId;
     },
-    showManufacturer() {
-      this.$router.push({
-        name: "manufacturer",
-        params: { manufacturerId: this.activeItemId }
-      });
+    showManufacturer(event) {
+      // do not change route if item menu button was clicked
+      if (event.target.tagName !== "DIV") {
+        this.$router.push({
+          name: "manufacturer",
+          params: { manufacturerId: this.activeItemId }
+        });
+      }
     }
   },
 
