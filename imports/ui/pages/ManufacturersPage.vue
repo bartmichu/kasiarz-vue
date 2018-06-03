@@ -1,4 +1,5 @@
 <template>
+
   <v-card>
 
     <v-toolbar card color="grey lighten-2">
@@ -11,6 +12,7 @@
     </v-card-text>
 
     <v-card-text v-else>
+
       <EmptyListPlaceholder v-if="isEmptyCollection" message="Lista producentów jest pusta."></EmptyListPlaceholder>
 
       <v-data-table v-else :headers="tableHeaders" :items="subscribedData" item-key="_id" hide-actions>
@@ -27,32 +29,26 @@
           </tr>
         </template>
       </v-data-table>
+
     </v-card-text>
 
     <DeleteConfirmationDialog title="Usunąć producenta?"></DeleteConfirmationDialog>
+
   </v-card>
+
 </template>
 
 
 <script>
-import EmptyListPlaceholder from "/imports/ui/components/EmptyListPlaceholder.vue";
-import LoadingIndicator from "/imports/ui/components/LoadingIndicator.vue";
-import ListItemMenu from "/imports/ui/components/ListItemMenu.vue";
-import DeleteConfirmationDialog from "/imports/ui/components/DeleteConfirmationDialog.vue";
-import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import { formatDate } from "/imports/startup/client/mixins.js";
+import DeleteConfirmationDialog from "/imports/ui/components/DeleteConfirmationDialog.vue";
+import EmptyListPlaceholder from "/imports/ui/components/EmptyListPlaceholder.vue";
+import ListItemMenu from "/imports/ui/components/ListItemMenu.vue";
+import LoadingIndicator from "/imports/ui/components/LoadingIndicator.vue";
+import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 
 export default {
   name: "ManufacturersPage",
-
-  components: {
-    EmptyListPlaceholder,
-    LoadingIndicator,
-    ListItemMenu,
-    DeleteConfirmationDialog
-  },
-
-  mixins: [formatDate],
 
   meteor: {
     $subscribe: {
@@ -60,27 +56,6 @@ export default {
     },
     subscribedData() {
       return Manufacturers.find({});
-    }
-  },
-
-  computed: {
-    isSubscriptionReady() {
-      return this.$subReady["manufacturers.list"];
-    },
-    isEmptyCollection() {
-      return this.subscribedData.length === 0;
-    }
-  },
-
-  methods: {
-    setActiveItem(id) {
-      this.activeItemId = id;
-    },
-    resetActiveItem() {
-      this.activeItemId = "";
-    },
-    isActiveItem(id) {
-      return id === this.activeItemId;
     }
   },
 
@@ -112,6 +87,36 @@ export default {
       ],
       items: []
     };
+  },
+
+  computed: {
+    isSubscriptionReady() {
+      return this.$subReady["manufacturers.list"];
+    },
+    isEmptyCollection() {
+      return this.subscribedData.length === 0;
+    }
+  },
+
+  methods: {
+    setActiveItem(id) {
+      this.activeItemId = id;
+    },
+    resetActiveItem() {
+      this.activeItemId = "";
+    },
+    isActiveItem(id) {
+      return id === this.activeItemId;
+    }
+  },
+
+  mixins: [formatDate],
+
+  components: {
+    EmptyListPlaceholder,
+    LoadingIndicator,
+    ListItemMenu,
+    DeleteConfirmationDialog
   }
 };
 </script>
