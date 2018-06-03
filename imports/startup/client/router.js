@@ -12,6 +12,7 @@ import LoginPage from "/imports/ui/pages/login/LoginPage.vue";
 import ClientsPage from "/imports/ui/mockups/ClientsPage.vue";
 import DevicesPage from "/imports/ui/mockups/DevicesPage.vue";
 import ManufacturersListPage from "/imports/ui/pages/manufacturers/ManufacturersListPage.vue";
+import ManufacturerPage from "/imports/ui/pages/manufacturers/ManufacturerPage.vue";
 import ModelsPage from "/imports/ui/mockups/ModelsPage.vue";
 import ShopsPage from "/imports/ui/mockups/ShopsPage.vue";
 import EmployeesPage from "/imports/ui/mockups/EmployeesPage.vue";
@@ -45,6 +46,11 @@ const router = new VueRouter({
           path: "producenci",
           name: "manufacturers",
           component: ManufacturersListPage
+        },
+        {
+          path: "producent/:id",
+          name: "manufacturer",
+          component: ManufacturerPage
         },
         {
           path: "modele",
