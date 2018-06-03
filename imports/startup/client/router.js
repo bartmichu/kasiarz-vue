@@ -48,7 +48,7 @@ const router = new VueRouter({
           component: ManufacturersListPage
         },
         {
-          path: "producent/:id",
+          path: "producent/:manufacturerId",
           name: "manufacturer",
           component: ManufacturerPage
         },

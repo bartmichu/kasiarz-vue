@@ -111,7 +111,7 @@ export default {
     showManufacturer() {
       this.$router.push({
         name: "manufacturer",
-        params: { id: this.activeItemId }
+        params: { manufacturerId: this.activeItemId }
       });
     }
   },
