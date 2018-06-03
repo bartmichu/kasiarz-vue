@@ -61,7 +61,6 @@ export default {
   name: "ApplicationToolbar",
 
   methods: {
-    methodPlug: function methodPlug() { },
     signOut: function signOut() {
       Meteor.logout();
     }
