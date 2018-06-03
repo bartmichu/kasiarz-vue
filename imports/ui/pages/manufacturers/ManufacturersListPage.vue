@@ -17,7 +17,7 @@
 
       <v-data-table v-else :headers="tableHeaders" :items="subscribedData" item-key="_id" hide-actions>
         <template slot="items" slot-scope="props">
-          <tr @mouseover="setActiveItem(props.item._id)" @mouseout="resetActiveItem">
+          <tr @mouseover="setActiveItem(props.item._id)" @mouseout="resetActiveItem" @click="showManufacturer">
             <td>{{ props.item.nazwa }}</td>
             <td class="text-xs-right">{{ props.item.adres.miejscowosc }}</td>
             <td class="text-xs-right">{{ formatDate(props.item.dataModyfikacji) }}</td>
@@ -107,6 +107,12 @@ export default {
     },
     isActiveItem(id) {
       return id === this.activeItemId;
+    },
+    showManufacturer() {
+      this.$router.push({
+        name: "manufacturer",
+        params: { id: this.activeItemId }
+      });
     }
   },
 

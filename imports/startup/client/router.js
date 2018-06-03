@@ -8,14 +8,14 @@ import isLoggedIn from "/imports/helpers/client/isLoggedIn.js";
 
 import ApplicationLayout from "/imports/ui/layouts/ApplicationLayout.vue";
 import ApplicationPage from "/imports/ui/pages/ApplicationPage.vue";
-import LoginPage from "/imports/ui/pages/LoginPage.vue";
-import ClientsPage from "/imports/ui/pages/ClientsPage.vue";
-import DevicesPage from "/imports/ui/pages/DevicesPage.vue";
-import ManufacturersListPage from "/imports/ui/pages/ManufacturersListPage.vue";
-import ModelsPage from "/imports/ui/pages/ModelsPage.vue";
-import ShopsPage from "/imports/ui/pages/ShopsPage.vue";
-import EmployeesPage from "/imports/ui/pages/EmployeesPage.vue";
-import OfficesPage from "/imports/ui/pages/OfficesPage.vue";
+import LoginPage from "/imports/ui/pages/login/LoginPage.vue";
+import ClientsPage from "/imports/ui/mockups/ClientsPage.vue";
+import DevicesPage from "/imports/ui/mockups/DevicesPage.vue";
+import ManufacturersListPage from "/imports/ui/pages/manufacturers/ManufacturersListPage.vue";
+import ModelsPage from "/imports/ui/mockups/ModelsPage.vue";
+import ShopsPage from "/imports/ui/mockups/ShopsPage.vue";
+import EmployeesPage from "/imports/ui/mockups/EmployeesPage.vue";
+import OfficesPage from "/imports/ui/mockups/OfficesPage.vue";
 
 import store from "/imports/startup/client/store.js";
 
