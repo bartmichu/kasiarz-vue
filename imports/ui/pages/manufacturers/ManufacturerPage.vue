@@ -10,7 +10,6 @@
     <v-card-text v-if="!isSubscriptionReady">
       <LoadingIndicator></LoadingIndicator>
     </v-card-text>
-
     <v-card-text v-else>
 
     </v-card-text>
@@ -29,27 +28,28 @@ export default {
   name: "ManufacturerPage",
 
   meteor: {
-    // const manufacturerId = FlowRouter.getParam("_id");
-    // template.subscribe("manufacturers.one", manufacturerId, () => {
-    //   template.subscribe("models.manufacturer.basic", manufacturerId, () => {
-    //     template.subscribe("employees.extended", () => {
-    //       Tracker.afterFlush(() => {
-    //         afterFlushCallback();
-    //       });
-    //     });
-    //   });
-    // });
     $subscribe: {
-      "manufacturers.list": []
+      "manufacturers.one": function subscribe() {
+        return [this.$route.params.manufacturerId];
+      },
+      "models.manufacturer.basic": function subscribe() {
+        return [this.$route.params.manufacturerId];
+      },
+      "employees.extended": []
     },
     subscribedData() {
-      return Manufacturers.find({});
+      return Manufacturers.findOne({ _id: this.$route.params.manufacturerId });
     }
   },
 
   computed: {
     isSubscriptionReady() {
-      return this.$subReady["manufacturers.list"];
+      // TODO: refactor
+      return (
+        this.$subReady["manufacturers.one"] &&
+        this.$subReady["models.manufacturer.basic"] &&
+        this.$subReady["employees.extended"]
+      );
     }
   },
 
