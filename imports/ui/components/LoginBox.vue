@@ -16,8 +16,11 @@
       <v-text-field v-model="password" type="password" solo flat clearable label="hasło" prepend-icon="lock_outline" @input="clearFailedLogin" @keyup.enter="signIn"></v-text-field>
     </v-card-text>
 
-    <v-card-actions>
-      <v-btn :color="loginButtonColor" large block depressed @click="signIn">{{ loginButtonText }}</v-btn>
+    <v-alert v-if="failedLogin" value="true" color="error" class="text-xs-center">
+      Nieprawidłowe dane logowania. Spróbuj ponownie.
+    </v-alert>
+    <v-card-actions v-else>
+      <v-btn color="primary" large block depressed @click="signIn">zaloguj mnie</v-btn>
     </v-card-actions>
 
   </v-card>
@@ -37,15 +40,6 @@ export default {
       password: "",
       failedLogin: false
     };
-  },
-
-  computed: {
-    loginButtonText: function loginButtonText() {
-      return this.failedLogin ? "nieprawidłowe dane" : "zaloguj mnie";
-    },
-    loginButtonColor: function loginButtonColor() {
-      return this.failedLogin ? "error" : "info";
-    }
   },
 
   methods: {
