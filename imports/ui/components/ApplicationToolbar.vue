@@ -1,8 +1,8 @@
 <template>
 
-  <v-toolbar app dark color="grey darken-3">
+  <v-toolbar dark color="grey darken-3">
 
-    <v-toolbar-title>Kasiarz</v-toolbar-title>
+    <!-- <v-toolbar-title></v-toolbar-title> -->
 
     <v-toolbar-items>
       <v-btn flat :to="{name: 'clients'}">
