@@ -2,6 +2,8 @@
 
   <div>
 
+    <StatusBar></StatusBar>
+
     <ApplicationToolbar></ApplicationToolbar>
 
     <v-content class="mt-4">
@@ -11,6 +13,7 @@
     </v-content>
 
     <v-footer app></v-footer>
+
   </div>
 
 </template>
@@ -18,10 +21,11 @@
 
 <script>
 import ApplicationToolbar from "/imports/ui/components/ApplicationToolbar.vue";
+import StatusBar from "/imports/ui/components/StatusBar.vue";
 
 export default {
   name: "ApplicationPage",
 
-  components: { ApplicationToolbar }
+  components: { ApplicationToolbar, StatusBar }
 };
 </script>
