@@ -45,12 +45,14 @@ const router = new VueRouter({
         {
           path: "producenci",
           name: "manufacturers",
-          component: ManufacturersListPage
-        },
-        {
-          path: "producent/:manufacturerId",
-          name: "manufacturer",
-          component: ManufacturerPage
+          component: ManufacturersListPage,
+          children: [
+            {
+              path: "producent/:manufacturerId",
+              name: "manufacturer",
+              component: ManufacturerPage
+            }
+          ]
         },
         {
           path: "modele",

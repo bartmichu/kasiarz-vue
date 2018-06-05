@@ -1,20 +1,24 @@
 <template>
 
-  <v-card>
+  <v-dialog v-model="isOpened" :fullscreen="$vuetify.breakpoint.xs" persistent max-width="90%">
 
-    <v-toolbar card color="grey lighten-2">
-      <v-toolbar-title>Dane producenta</v-toolbar-title>
-      <v-btn depressed color="secondary">edytuj</v-btn>
-    </v-toolbar>
+    <v-card>
 
-    <v-card-text v-if="!isSubscriptionReady">
-      <LoadingIndicator></LoadingIndicator>
-    </v-card-text>
-    <v-card-text v-else>
+      <v-toolbar card color="grey lighten-2">
+        <v-toolbar-title>Dane producenta</v-toolbar-title>
+        <v-btn depressed color="secondary" @click="closeDialog">zamknij</v-btn>
+      </v-toolbar>
 
-    </v-card-text>
+      <v-card-text v-if="!isSubscriptionReady">
+        <LoadingIndicator></LoadingIndicator>
+      </v-card-text>
+      <v-card-text v-else>
 
-  </v-card>
+      </v-card-text>
+
+    </v-card>
+
+  </v-dialog>
 
 </template>
 
@@ -50,6 +54,19 @@ export default {
         this.$subReady["models.manufacturer.basic"] &&
         this.$subReady["employees.extended"]
       );
+    },
+    isOpened() {
+      return this.$store.state.detailsDialog;
+    }
+  },
+
+  methods: {
+    closeDialog() {
+      this.$store.commit("closeDetailsDialog");
+      // TODO history?
+      this.$router.push({
+        name: "manufacturers"
+      });
     }
   },
 

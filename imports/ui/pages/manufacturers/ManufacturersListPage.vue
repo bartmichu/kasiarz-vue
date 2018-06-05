@@ -32,6 +32,8 @@
 
     </v-card-text>
 
+    <router-view></router-view>
+
     <DeleteConfirmationDialog title="Usunąć producenta?"></DeleteConfirmationDialog>
 
   </v-card>
@@ -115,6 +117,7 @@ export default {
           name: "manufacturer",
           params: { manufacturerId: this.activeItemId }
         });
+        this.$store.commit("openDetailsDialog");
       }
     }
   },

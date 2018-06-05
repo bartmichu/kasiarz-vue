@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     deleteConfirmationDialog: false,
+    detailsDialog: false,
     selectedListItemId: ""
   },
 
@@ -15,6 +16,12 @@ export default new Vuex.Store({
     },
     closeDeleteConfirmationDialog() {
       this.state.deleteConfirmationDialog = false;
+    },
+    openDetailsDialog() {
+      this.state.detailsDialog = true;
+    },
+    closeDetailsDialog() {
+      this.state.detailsDialog = false;
     },
     setSelectedListItemId(state, payload) {
       this.state.selectedListItemId = payload.id;
