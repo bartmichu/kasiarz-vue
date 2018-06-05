@@ -12,8 +12,6 @@
       </v-container>
     </v-content>
 
-    <v-footer app></v-footer>
-
   </div>
 
 </template>
