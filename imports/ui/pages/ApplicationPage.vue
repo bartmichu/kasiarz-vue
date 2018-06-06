@@ -1,17 +1,13 @@
 <template>
 
   <div>
-
     <StatusBar></StatusBar>
-
     <ApplicationToolbar></ApplicationToolbar>
-
     <v-content class="mt-4">
       <v-container fluid>
         <router-view></router-view>
       </v-container>
     </v-content>
-
   </div>
 
 </template>
