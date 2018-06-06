@@ -1,6 +1,6 @@
+import { check } from "meteor/check";
 import { Meteor } from "meteor/meteor";
 import { ValidatedMethod } from "meteor/mdg:validated-method";
-import { check } from "meteor/check";
 import Clients from "/imports/api/clients/clients.js";
 
 export const insertClient = new ValidatedMethod({

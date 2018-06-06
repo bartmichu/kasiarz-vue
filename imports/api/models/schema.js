@@ -1,5 +1,5 @@
-import SimpleSchema from "simpl-schema";
 import Models from "/imports/api/models/models.js";
+import SimpleSchema from "simpl-schema";
 
 const modelSchema = new SimpleSchema({
   uzytkownikId: {

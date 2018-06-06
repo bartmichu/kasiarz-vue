@@ -1,5 +1,5 @@
-import SimpleSchema from "simpl-schema";
 import Shops from "/imports/api/shops/shops.js";
+import SimpleSchema from "simpl-schema";
 
 const shopSchema = new SimpleSchema({
   uzytkownikId: {

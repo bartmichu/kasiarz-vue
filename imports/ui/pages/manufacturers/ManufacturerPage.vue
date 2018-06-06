@@ -24,9 +24,9 @@
 
 
 <script>
-import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
-import LoadingIndicator from "/imports/ui/components/LoadingIndicator.vue";
 import { formatDate } from "/imports/startup/client/mixins.js";
+import LoadingIndicator from "/imports/ui/components/LoadingIndicator.vue";
+import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 
 export default {
   name: "ManufacturerPage",

@@ -1,7 +1,7 @@
-import { Meteor } from "meteor/meteor";
 import { check } from "meteor/check";
-import Offices from "/imports/api/offices/offices.js";
+import { Meteor } from "meteor/meteor";
 import isNonEmptyString from "/imports/helpers/server/isNonEmptyString.js";
+import Offices from "/imports/api/offices/offices.js";
 
 Meteor.publish("offices.list", function publishFunction() {
   const actualUserId = Meteor.userId();

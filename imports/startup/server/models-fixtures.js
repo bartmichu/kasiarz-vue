@@ -3,8 +3,8 @@
  */
 
 import { Meteor } from "meteor/meteor";
-import Models from "/imports/api/models/models.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
+import Models from "/imports/api/models/models.js";
 
 Meteor.startup(() => {
   if (Models.find().count() === 0) {

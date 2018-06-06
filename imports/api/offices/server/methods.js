@@ -1,6 +1,6 @@
+import { check } from "meteor/check";
 import { Meteor } from "meteor/meteor";
 import { ValidatedMethod } from "meteor/mdg:validated-method";
-import { check } from "meteor/check";
 import Offices from "/imports/api/offices/offices.js";
 
 export const insertOffice = new ValidatedMethod({

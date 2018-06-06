@@ -1,5 +1,5 @@
-import { Meteor } from "meteor/meteor";
 import { check } from "meteor/check";
+import { Meteor } from "meteor/meteor";
 import isNonEmptyString from "/imports/helpers/server/isNonEmptyString.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 

@@ -1,5 +1,5 @@
-import SimpleSchema from "simpl-schema";
 import Clients from "/imports/api/clients/clients.js";
+import SimpleSchema from "simpl-schema";
 
 const clientSchema = new SimpleSchema({
   uzytkownikId: {

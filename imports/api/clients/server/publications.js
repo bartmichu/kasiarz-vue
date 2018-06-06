@@ -1,5 +1,5 @@
-import { Meteor } from "meteor/meteor";
 import { check } from "meteor/check";
+import { Meteor } from "meteor/meteor";
 import Clients from "/imports/api/clients/clients.js";
 import isNonEmptyString from "/imports/helpers/server/isNonEmptyString.js";
 

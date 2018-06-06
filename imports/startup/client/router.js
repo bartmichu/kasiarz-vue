@@ -1,24 +1,22 @@
-import { Meteor } from "meteor/meteor";
-import Vue from "vue";
-import VueRouter from "vue-router";
-import VueMeteorTracker from "vue-meteor-tracker";
-import Vuetify from "vuetify/dist/vuetify";
 import "vuetify/dist/vuetify.min.css";
-import isLoggedIn from "/imports/helpers/client/isLoggedIn.js";
-
+import { Meteor } from "meteor/meteor";
 import ApplicationLayout from "/imports/ui/layouts/ApplicationLayout.vue";
 import ApplicationPage from "/imports/ui/pages/ApplicationPage.vue";
-import LoginPage from "/imports/ui/pages/login/LoginPage.vue";
 import ClientsPage from "/imports/ui/mockups/ClientsPage.vue";
 import DevicesPage from "/imports/ui/mockups/DevicesPage.vue";
-import ManufacturersListPage from "/imports/ui/pages/manufacturers/ManufacturersListPage.vue";
-import ManufacturerPage from "/imports/ui/pages/manufacturers/ManufacturerPage.vue";
-import ModelsPage from "/imports/ui/mockups/ModelsPage.vue";
-import ShopsPage from "/imports/ui/mockups/ShopsPage.vue";
 import EmployeesPage from "/imports/ui/mockups/EmployeesPage.vue";
+import isLoggedIn from "/imports/helpers/client/isLoggedIn.js";
+import LoginPage from "/imports/ui/pages/login/LoginPage.vue";
+import ManufacturerPage from "/imports/ui/pages/manufacturers/ManufacturerPage.vue";
+import ManufacturersListPage from "/imports/ui/pages/manufacturers/ManufacturersListPage.vue";
+import ModelsPage from "/imports/ui/mockups/ModelsPage.vue";
 import OfficesPage from "/imports/ui/mockups/OfficesPage.vue";
-
+import ShopsPage from "/imports/ui/mockups/ShopsPage.vue";
 import store from "/imports/startup/client/store.js";
+import Vue from "vue";
+import VueMeteorTracker from "vue-meteor-tracker";
+import VueRouter from "vue-router";
+import Vuetify from "vuetify/dist/vuetify";
 
 Vue.use(VueRouter);
 Vue.use(VueMeteorTracker);

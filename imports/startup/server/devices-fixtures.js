@@ -10,10 +10,10 @@
 // }
 
 import { Meteor } from "meteor/meteor";
+import Clients from "/imports/api/clients/clients.js";
 import Devices from "/imports/api/devices/devices.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Models from "/imports/api/models/models.js";
-import Clients from "/imports/api/clients/clients.js";
 
 Meteor.startup(() => {
   if (Devices.find().count() === 0) {

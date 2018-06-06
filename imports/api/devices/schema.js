@@ -1,5 +1,5 @@
-import SimpleSchema from "simpl-schema";
 import Devices from "/imports/api/devices/devices.js";
+import SimpleSchema from "simpl-schema";
 
 const deviceSchema = new SimpleSchema({
   uzytkownikId: {

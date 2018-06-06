@@ -1,8 +1,8 @@
+import { check } from "meteor/check";
 import { Meteor } from "meteor/meteor";
 import { ValidatedMethod } from "meteor/mdg:validated-method";
-import { check } from "meteor/check";
-import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Employees from "/imports/api/employees/employees.js";
+import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Models from "/imports/api/models/models.js";
 
 export const insertModel = new ValidatedMethod({

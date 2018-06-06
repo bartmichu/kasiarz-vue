@@ -1,5 +1,5 @@
-import SimpleSchema from "simpl-schema";
 import Employees from "/imports/api/employees/employees.js";
+import SimpleSchema from "simpl-schema";
 
 const licenseSchema = new SimpleSchema({
   numerUprawnien: {

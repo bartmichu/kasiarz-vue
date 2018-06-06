@@ -1,5 +1,5 @@
-import SimpleSchema from "simpl-schema";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
+import SimpleSchema from "simpl-schema";
 
 const manufacturerSchema = new SimpleSchema({
   uzytkownikId: {
