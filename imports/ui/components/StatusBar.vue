@@ -2,7 +2,7 @@
 
   <v-system-bar dark status color="grey darken-4">
     <v-spacer></v-spacer>
-    <span>zalogowany jako: {{ username }}</span>
+    <span>{{ user }}</span>
   </v-system-bar>
 
 </template>
@@ -15,11 +15,23 @@ export default {
   name: "StatusBar",
 
   computed: {
-    username() {
-      if (Meteor.user() && Meteor.user().username) {
-        return Meteor.user().username.toUpperCase();
+    user() {
+      let username = "";
+      let firstName = "";
+      let lastName = "";
+
+      if (Meteor.user()) {
+        if (Meteor.user().username) {
+          username = Meteor.user().username.toUpperCase();
+        }
+
+        if (Meteor.user().profile && Meteor.user().profile.daneOsobowe) {
+          firstName = Meteor.user().profile.daneOsobowe.imie || firstName;
+          lastName = Meteor.user().profile.daneOsobowe.nazwisko || lastName;
+        }
       }
-      return "";
+
+      return `${firstName} ${lastName} (${username})`.trim();
     }
   }
 };
