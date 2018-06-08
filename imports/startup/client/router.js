@@ -14,13 +14,7 @@ import OfficesPage from "/imports/ui/mockups/OfficesPage.vue";
 import ShopsPage from "/imports/ui/mockups/ShopsPage.vue";
 import store from "/imports/startup/client/store.js";
 import Vue from "vue";
-import VueMeteorTracker from "vue-meteor-tracker";
 import VueRouter from "vue-router";
-import Vuetify from "vuetify/dist/vuetify";
-
-Vue.use(VueRouter);
-Vue.use(VueMeteorTracker);
-Vue.use(Vuetify);
 
 const router = new VueRouter({
   mode: "history",
