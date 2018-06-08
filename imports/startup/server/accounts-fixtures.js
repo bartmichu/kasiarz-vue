@@ -8,8 +8,8 @@ Meteor.startup(() => {
       password: "kasiarz",
       profile: {
         daneOsobowe: {
-          imie: "Imię",
-          nazwisko: "Nazwisko"
+          imie: "Jan",
+          nazwisko: "Kowalski"
         }
       }
     });
