@@ -2,7 +2,7 @@
 
   <v-card tile color="grey lighten-4">
 
-    <v-toolbar card dark color="grey darken-3">
+    <v-toolbar card dark color="primary">
       <v-toolbar-title>Kasiarz</v-toolbar-title>
     </v-toolbar>
 
@@ -20,7 +20,7 @@
       Nieprawidłowe dane logowania. Spróbuj ponownie.
     </v-alert>
     <v-card-actions v-else>
-      <v-btn color="primary" large block depressed @click="signIn">zaloguj mnie</v-btn>
+      <v-btn color="secondary" large block depressed @click="signIn">zaloguj mnie</v-btn>
     </v-card-actions>
 
   </v-card>
