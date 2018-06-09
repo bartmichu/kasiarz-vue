@@ -56,6 +56,10 @@
               <v-text-field label="Data utworzenia" box flat readonly></v-text-field>
             </v-flex>
           </v-layout>
+
+          <v-layout row wrap>
+            <v-btn color="secondary" @click="closeDialog">zamknij</v-btn>
+          </v-layout>
         </v-container>
       </v-card-text>
 
