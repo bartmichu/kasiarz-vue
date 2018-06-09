@@ -89,21 +89,26 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    mongoId: {
+      type: String,
+      required: false,
+      default: ""
     }
   },
 
   meteor: {
     $subscribe: {
       "manufacturers.one": function subscribe() {
-        return [this.$route.params.manufacturerId];
+        return [this.mongoId];
       },
       "models.manufacturer.basic": function subscribe() {
-        return [this.$route.params.manufacturerId];
+        return [this.mongoId];
       },
       "employees.extended": []
     },
     subscribedData() {
-      return Manufacturers.findOne({ _id: this.$route.params.manufacturerId });
+      return Manufacturers.findOne({ _id: this.mongoId });
     }
   },
 

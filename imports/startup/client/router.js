@@ -40,9 +40,10 @@ const router = new VueRouter({
           component: ManufacturersListPage,
           children: [
             {
-              path: "producent/:manufacturerId",
+              path: "producent/:mongoId",
               name: "manufacturer",
-              component: ManufacturerPage
+              component: ManufacturerPage,
+              props: true
             }
           ]
         },
