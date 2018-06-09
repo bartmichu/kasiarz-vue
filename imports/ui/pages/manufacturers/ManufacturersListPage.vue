@@ -23,7 +23,7 @@
             <td class="text-xs-right">{{ formatDate(props.item.dataModyfikacji) }}</td>
             <td class="justify-center layout px-0">
               <div v-show="isActiveItem(props.item._id)">
-                <ListItemMenu :id="props.item._id"></ListItemMenu>
+                <ListItemMenu :mongoId="props.item._id"></ListItemMenu>
               </div>
             </td>
           </tr>

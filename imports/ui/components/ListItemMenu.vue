@@ -28,7 +28,7 @@ export default {
   name: "ListItemMenu",
 
   props: {
-    id: {
+    mongoId: {
       type: String,
       required: true,
       default: ""
@@ -37,7 +37,7 @@ export default {
 
   methods: {
     openDeleteDialog() {
-      this.$store.commit("setSelectedListItemId", { id: this.id });
+      this.$store.commit("setSelectedListItemId", { id: this.mongoId });
       this.$store.commit("openDeleteConfirmationDialog");
     }
   }
