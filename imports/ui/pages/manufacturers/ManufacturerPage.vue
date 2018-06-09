@@ -85,15 +85,15 @@ export default {
   name: "ManufacturerPage",
 
   props: {
-    editMode: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
     mongoId: {
       type: String,
       required: false,
       default: ""
+    },
+    editMode: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
 

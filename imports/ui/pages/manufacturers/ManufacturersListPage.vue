@@ -115,7 +115,7 @@ export default {
       if (event.target.tagName !== "DIV") {
         this.$router.push({
           name: "manufacturer",
-          params: { mongoId: this.activeItemId }
+          params: { mongoId: this.activeItemId, editMode: false }
         });
         this.$store.commit("openDetailsDialog");
       }
