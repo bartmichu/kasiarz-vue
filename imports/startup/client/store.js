@@ -23,6 +23,7 @@ export default new Vuex.Store({
     closeDetailsDialog() {
       this.state.detailsDialog = false;
     },
+    // TODO: get rid of?
     setSelectedListItemId(state, payload) {
       this.state.selectedListItemId = payload.id;
     },
