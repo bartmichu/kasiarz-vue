@@ -22,29 +22,33 @@
         <v-container fluid grid-list-lg>
 
           <v-divider></v-divider>
-          
+
           <v-layout row wrap>
             <v-flex xs12>
               <span class="title">Podstawowe informacje</span>
-              <v-btn color="secondary" depressed>edytuj</v-btn>
+              <v-btn v-if="isDisabled" color="secondary" depressed @click="toggleEditMode()">edytuj</v-btn>
+              <span v-else>
+                <v-btn color="secondary" depressed @click="toggleEditMode(false)">anuluj</v-btn>
+                <v-btn color="secondary" depressed @click="toggleEditMode(false)">zapisz</v-btn>
+              </span>
             </v-flex>
 
             <v-flex xs12>
-              <v-text-field label="Pełna nazwa" box flat></v-text-field>
+              <v-text-field label="Pełna nazwa" box flat :disabled="isDisabled"></v-text-field>
             </v-flex>
 
             <v-flex xs12 md5>
-              <v-text-field label="Ulica" box flat></v-text-field>
+              <v-text-field label="Ulica" box flat :disabled="isDisabled"></v-text-field>
             </v-flex>
             <v-flex xs12 md2>
-              <v-text-field label="Kod pocztowy" box flat></v-text-field>
+              <v-text-field label="Kod pocztowy" box flat :disabled="isDisabled"></v-text-field>
             </v-flex>
             <v-flex xs12 md5>
-              <v-text-field label="Miejscowość" box flat></v-text-field>
+              <v-text-field label="Miejscowość" box flat :disabled="isDisabled"></v-text-field>
             </v-flex>
 
             <v-flex xs12>
-              <v-text-field label="Dodatkowe informacje" box flat multi-line rows="3"></v-text-field>
+              <v-text-field label="Dodatkowe informacje" box flat multi-line rows="3" :disabled="isDisabled"></v-text-field>
             </v-flex>
           </v-layout>
 
@@ -52,10 +56,10 @@
 
           <v-layout row wrap>
             <v-flex xs12 md6>
-              <v-text-field label="Data modyfikacji" box flat readonly></v-text-field>
+              <v-text-field label="Data modyfikacji" box flat disabled></v-text-field>
             </v-flex>
             <v-flex xs12 md6>
-              <v-text-field label="Data utworzenia" box flat readonly></v-text-field>
+              <v-text-field label="Data utworzenia" box flat disabled></v-text-field>
             </v-flex>
           </v-layout>
 
@@ -80,6 +84,14 @@ import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 export default {
   name: "ManufacturerPage",
 
+  props: {
+    editMode: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
+  },
+
   meteor: {
     $subscribe: {
       "manufacturers.one": function subscribe() {
@@ -97,7 +109,8 @@ export default {
 
   data() {
     return {
-      isFullscreen: false
+      isFullscreen: false,
+      isEditMode: this.editMode
     };
   },
 
@@ -112,6 +125,9 @@ export default {
     },
     isOpened() {
       return this.$store.state.detailsDialog;
+    },
+    isDisabled() {
+      return !this.isEditMode;
     }
   },
 
@@ -134,6 +150,9 @@ export default {
     toggleFullscreen(state) {
       this.isFullscreen =
         typeof state === "undefined" ? !this.isFullscreen : state;
+    },
+    toggleEditMode(state) {
+      this.isEditMode = typeof state === "undefined" ? !this.isEditMode : state;
     }
   },
 
