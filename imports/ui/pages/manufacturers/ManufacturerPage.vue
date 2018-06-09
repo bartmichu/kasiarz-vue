@@ -20,8 +20,10 @@
       </v-card-text>
       <v-card-text v-else>
         <v-container fluid grid-list-lg>
-          <v-layout row wrap>
 
+          <v-divider></v-divider>
+          
+          <v-layout row wrap>
             <v-flex xs12>
               <span class="title">Podstawowe informacje</span>
               <v-btn color="secondary" depressed>edytuj</v-btn>
