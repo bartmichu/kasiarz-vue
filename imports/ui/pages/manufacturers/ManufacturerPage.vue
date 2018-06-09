@@ -1,19 +1,62 @@
 <template>
 
-  <v-dialog v-model="isOpened" :fullscreen="$vuetify.breakpoint.xs" persistent max-width="90%">
+  <v-dialog v-model="isOpened" :fullscreen="isFullscreen" persistent max-width="90%">
 
-    <v-card>
+    <v-card color="grey lighten-4">
 
-      <v-toolbar card color="grey lighten-2">
-        <v-toolbar-title>Dane producenta</v-toolbar-title>
-        <v-btn depressed color="secondary" @click="closeDialog">zamknij</v-btn>
+      <v-toolbar flat dark color="primary">
+        <v-toolbar-title dark>Dane producenta</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn icon @click="toggleFullscreen()">
+          <v-icon>check_box_outline_blank</v-icon>
+        </v-btn>
+        <v-btn icon @click="closeDialog">
+          <v-icon>close</v-icon>
+        </v-btn>
       </v-toolbar>
 
       <v-card-text v-if="!isSubscriptionReady">
         <LoadingIndicator></LoadingIndicator>
       </v-card-text>
       <v-card-text v-else>
+        <v-container fluid grid-list-lg>
+          <v-layout row wrap>
 
+            <v-flex xs12>
+              <span class="title">Podstawowe informacje</span>
+              <v-btn color="secondary" depressed>edytuj</v-btn>
+            </v-flex>
+
+            <v-flex xs12>
+              <v-text-field label="Pełna nazwa" box flat></v-text-field>
+            </v-flex>
+
+            <v-flex xs12 md5>
+              <v-text-field label="Ulica" box flat></v-text-field>
+            </v-flex>
+            <v-flex xs12 md2>
+              <v-text-field label="Kod pocztowy" box flat></v-text-field>
+            </v-flex>
+            <v-flex xs12 md5>
+              <v-text-field label="Miejscowość" box flat></v-text-field>
+            </v-flex>
+
+            <v-flex xs12>
+              <v-text-field label="Dodatkowe informacje" box flat multi-line rows="3"></v-text-field>
+            </v-flex>
+          </v-layout>
+
+          <v-divider></v-divider>
+
+          <v-layout row wrap>
+            <v-flex xs12 md6>
+              <v-text-field label="Data modyfikacji" box flat readonly></v-text-field>
+            </v-flex>
+            <v-flex xs12 md6>
+              <v-text-field label="Data utworzenia" box flat readonly></v-text-field>
+            </v-flex>
+          </v-layout>
+        </v-container>
       </v-card-text>
 
     </v-card>
@@ -46,6 +89,12 @@ export default {
     }
   },
 
+  data() {
+    return {
+      isFullscreen: false
+    };
+  },
+
   computed: {
     isSubscriptionReady() {
       // TODO: refactor
@@ -60,6 +109,14 @@ export default {
     }
   },
 
+  watch: {
+    "$vuetify.breakpoint.xs": function setFullscreen(value) {
+      if (value) {
+        this.toggleFullscreen(true);
+      }
+    }
+  },
+
   methods: {
     closeDialog() {
       this.$store.commit("closeDetailsDialog");
@@ -67,6 +124,10 @@ export default {
       this.$router.push({
         name: "manufacturers"
       });
+    },
+    toggleFullscreen(state) {
+      this.isFullscreen =
+        typeof state === "undefined" ? !this.isFullscreen : state;
     }
   },
 
