@@ -1,6 +1,6 @@
 <template>
 
-  <v-toolbar dark color="grey darken-3">
+  <v-toolbar dark color="secondary">
 
     <!-- <v-toolbar-title></v-toolbar-title> -->
 

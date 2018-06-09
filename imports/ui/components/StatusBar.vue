@@ -1,6 +1,6 @@
 <template>
 
-  <v-system-bar dark status color="grey darken-4">
+  <v-system-bar window dark>
     <v-spacer></v-spacer>
     <span>{{ user }}</span>
   </v-system-bar>
