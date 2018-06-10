@@ -20,7 +20,7 @@
           <tr @mouseover="setActiveItem(props.item._id)" @mouseout="resetActiveItem" @click="showManufacturer">
             <td>{{ props.item.nazwa }}</td>
             <td class="text-xs-right">{{ props.item.adres.miejscowosc }}</td>
-            <td class="text-xs-right">{{ formatDate(props.item.dataModyfikacji) }}</td>
+            <td class="text-xs-right">{{ $_formatDate_long(props.item.dataModyfikacji) }}</td>
             <td class="justify-center layout px-0">
               <div v-show="isActiveItem(props.item._id)">
                 <ListItemMenu :mongoId="props.item._id" routeName="manufacturer"></ListItemMenu>
