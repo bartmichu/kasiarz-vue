@@ -114,7 +114,7 @@ export default {
 
   data() {
     return {
-      isFullscreen: false,
+      isFullscreen: this.$vuetify.breakpoint.xs,
       isEditMode: this.editMode
     };
   },
