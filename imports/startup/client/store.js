@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import router from "/imports/startup/client/router.js";
 
 Vue.use(Vuex);
 
@@ -17,7 +18,11 @@ export default new Vuex.Store({
     closeDeleteConfirmationDialog() {
       this.state.deleteConfirmationDialog = false;
     },
-    openDetailsDialog() {
+    openDetailsDialog(state, payload) {
+      router.push({
+        name: payload.routeName,
+        params: { mongoId: payload.mongoId, editMode: payload.editMode }
+      });
       this.state.detailsDialog = true;
     },
     closeDetailsDialog() {

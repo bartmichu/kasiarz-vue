@@ -23,7 +23,7 @@
             <td class="text-xs-right">{{ formatDate(props.item.dataModyfikacji) }}</td>
             <td class="justify-center layout px-0">
               <div v-show="isActiveItem(props.item._id)">
-                <ListItemMenu :mongoId="props.item._id"></ListItemMenu>
+                <ListItemMenu :mongoId="props.item._id" routeName="manufacturer"></ListItemMenu>
               </div>
             </td>
           </tr>
@@ -113,11 +113,11 @@ export default {
     showManufacturer(event) {
       // do not change route if item menu button was clicked
       if (event.target.tagName !== "DIV") {
-        this.$router.push({
-          name: "manufacturer",
-          params: { mongoId: this.activeItemId, editMode: false }
+        this.$store.commit("openDetailsDialog", {
+          routeName: "manufacturer",
+          mongoId: this.activeItemId,
+          editMode: false
         });
-        this.$store.commit("openDetailsDialog");
       }
     }
   },

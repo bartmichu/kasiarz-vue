@@ -7,10 +7,10 @@
     </v-btn>
 
     <v-list>
-      <v-list-tile @click="">
+      <v-list-tile @click="showItem(false)">
         <v-list-tile-title>przeglądaj</v-list-tile-title>
       </v-list-tile>
-      <v-list-tile @click="">
+      <v-list-tile @click="showItem(true)">
         <v-list-tile-title>edytuj</v-list-tile-title>
       </v-list-tile>
       <v-list-tile @click.stop="openDeleteDialog">
@@ -32,6 +32,11 @@ export default {
       type: String,
       required: true,
       default: ""
+    },
+    routeName: {
+      type: String,
+      required: true,
+      default: ""
     }
   },
 
@@ -39,6 +44,13 @@ export default {
     openDeleteDialog() {
       this.$store.commit("setSelectedListItemId", { id: this.mongoId });
       this.$store.commit("openDeleteConfirmationDialog");
+    },
+    showItem(editMode) {
+      this.$store.commit("openDetailsDialog", {
+        routeName: this.routeName,
+        mongoId: this.mongoId,
+        editMode
+      });
     }
   }
 };
