@@ -14,7 +14,7 @@
 
 
 <script>
-import LoginBox from "/imports/ui/pages/login/LoginBox.vue";
+import LoginBox from "/imports/ui/login/LoginBox.vue";
 
 export default {
   name: "LoginPage",

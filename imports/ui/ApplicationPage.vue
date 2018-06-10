@@ -1,7 +1,7 @@
 <template>
 
   <div>
-    <StatusBar></StatusBar>
+    <ApplicationStatusBar></ApplicationStatusBar>
     <ApplicationToolbar></ApplicationToolbar>
     <v-content class="mt-4">
       <v-container fluid>
@@ -14,12 +14,12 @@
 
 
 <script>
-import ApplicationToolbar from "/imports/ui/components/ApplicationToolbar.vue";
-import StatusBar from "/imports/ui/components/StatusBar.vue";
+import ApplicationToolbar from "/imports/ui/ApplicationToolbar.vue";
+import ApplicationStatusBar from "/imports/ui/ApplicationStatusBar.vue";
 
 export default {
   name: "ApplicationPage",
 
-  components: { ApplicationToolbar, StatusBar }
+  components: { ApplicationToolbar, ApplicationStatusBar }
 };
 </script>
