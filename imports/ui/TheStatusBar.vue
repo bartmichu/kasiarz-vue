@@ -12,7 +12,7 @@
 import { Meteor } from "meteor/meteor";
 
 export default {
-  name: "ApplicationStatusBar",
+  name: "TheStatusBar",
 
   computed: {
     user() {

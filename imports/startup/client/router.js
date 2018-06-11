@@ -1,7 +1,7 @@
 import "vuetify/dist/vuetify.min.css";
 import { Meteor } from "meteor/meteor";
-import ApplicationLayout from "/imports/ui/ApplicationLayout.vue";
-import ApplicationPage from "/imports/ui/ApplicationPage.vue";
+import TheLayout from "/imports/ui/TheLayout.vue";
+import ThePage from "/imports/ui/ThePage.vue";
 import ClientsPage from "/imports/ui/mockups/ClientsPage.vue";
 import DevicesPage from "/imports/ui/mockups/DevicesPage.vue";
 import EmployeesPage from "/imports/ui/mockups/EmployeesPage.vue";
@@ -22,7 +22,7 @@ const router = new VueRouter({
     {
       path: "/",
       name: "index",
-      component: ApplicationPage,
+      component: ThePage,
       children: [
         {
           path: "klienci",
@@ -94,7 +94,7 @@ Meteor.startup(() => {
   new Vue({
     router,
     store,
-    render: h => h(ApplicationLayout)
+    render: h => h(TheLayout)
   }).$mount("app");
 });
 

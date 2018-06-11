@@ -9,6 +9,6 @@
 
 <script>
 export default {
-  name: "ApplicationLayout"
+  name: "TheLayout"
 };
 </script>

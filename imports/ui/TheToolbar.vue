@@ -60,7 +60,7 @@
 import { Meteor } from "meteor/meteor";
 
 export default {
-  name: "ApplicationToolbar",
+  name: "TheToolbar",
 
   methods: {
     signOut: function signOut() {
