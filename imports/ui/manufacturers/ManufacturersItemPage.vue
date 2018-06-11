@@ -10,7 +10,7 @@
         <v-btn icon @click="toggleFullscreen()">
           <v-icon>check_box_outline_blank</v-icon>
         </v-btn>
-        <v-btn icon @click="closeDialog">
+        <v-btn icon @click="closeDialog" :disabled="isEditMode">
           <v-icon>close</v-icon>
         </v-btn>
       </v-toolbar>
@@ -64,7 +64,7 @@
           </v-layout>
 
           <v-layout row wrap>
-            <v-btn color="secondary" @click="closeDialog">zamknij</v-btn>
+            <v-btn color="secondary" @click="closeDialog" :disabled="isEditMode">zamknij</v-btn>
           </v-layout>
         </v-container>
       </v-card-text>
