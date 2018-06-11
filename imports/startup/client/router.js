@@ -7,7 +7,7 @@ import DevicesPage from "/imports/ui/mockups/DevicesPage.vue";
 import EmployeesPage from "/imports/ui/mockups/EmployeesPage.vue";
 import isLoggedIn from "/imports/helpers/client/isLoggedIn.js";
 import LoginPage from "/imports/ui/login/LoginPage.vue";
-import ManufacturerPage from "/imports/ui/manufacturers/ManufacturerPage.vue";
+import ManufacturersItemPage from "/imports/ui/manufacturers/ManufacturersItemPage.vue";
 import ManufacturersListPage from "/imports/ui/manufacturers/ManufacturersListPage.vue";
 import ModelsPage from "/imports/ui/mockups/ModelsPage.vue";
 import OfficesPage from "/imports/ui/mockups/OfficesPage.vue";
@@ -42,7 +42,7 @@ const router = new VueRouter({
             {
               path: "producent/:mongoId",
               name: "manufacturer",
-              component: ManufacturerPage,
+              component: ManufacturersItemPage,
               props: true
             }
           ]
