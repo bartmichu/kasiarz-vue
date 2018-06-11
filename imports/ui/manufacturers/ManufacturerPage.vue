@@ -1,6 +1,6 @@
 <template>
 
-  <v-dialog v-model="isOpened" :fullscreen="isFullscreen" persistent max-width="90%">
+  <v-dialog :value="isVisible" :fullscreen="isFullscreen" persistent max-width="90%">
 
     <v-card color="grey lighten-4">
 
@@ -114,6 +114,7 @@ export default {
 
   data() {
     return {
+      isVisible: true,
       isFullscreen: this.$vuetify.breakpoint.xs,
       isEditMode: this.editMode
     };
@@ -127,9 +128,6 @@ export default {
         this.$subReady["models.manufacturer.basic"] &&
         this.$subReady["employees.extended"]
       );
-    },
-    isOpened() {
-      return this.$store.state.detailsDialog;
     },
     isDisabled() {
       return !this.isEditMode;
@@ -146,7 +144,7 @@ export default {
 
   methods: {
     closeDialog() {
-      this.$store.commit("closeDetailsDialog");
+      this.isVisible = false;
       // TODO history?
       this.$router.push({
         name: "manufacturers"

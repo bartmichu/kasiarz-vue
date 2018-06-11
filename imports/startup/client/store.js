@@ -7,7 +7,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     deleteConfirmationDialog: false,
-    detailsDialog: false,
     selectedListItemId: ""
   },
 
@@ -23,10 +22,6 @@ export default new Vuex.Store({
         name: payload.routeName,
         params: { mongoId: payload.mongoId, editMode: payload.editMode }
       });
-      this.state.detailsDialog = true;
-    },
-    closeDetailsDialog() {
-      this.state.detailsDialog = false;
     },
     // TODO: get rid of?
     setSelectedListItemId(state, payload) {
