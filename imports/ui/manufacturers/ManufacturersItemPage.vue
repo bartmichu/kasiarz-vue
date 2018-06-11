@@ -65,11 +65,14 @@
 
           <v-layout row wrap>
             <v-btn color="secondary" @click="closeDialog" :disabled="isEditMode">zamknij</v-btn>
+            <v-btn color="secondary" depressed @click="openDeleteDialog" :disabled="isEditMode">usuń</v-btn>
           </v-layout>
         </v-container>
       </v-card-text>
 
     </v-card>
+
+    <DeleteConfirmationDialog title="Usunąć producenta?"></DeleteConfirmationDialog>
 
   </v-dialog>
 
@@ -78,6 +81,7 @@
 
 <script>
 import { formatDate } from "/imports/startup/client/mixins.js";
+import DeleteConfirmationDialog from "/imports/ui/components/DeleteConfirmationDialog.vue";
 import LoadingIndicator from "/imports/ui/components/LoadingIndicator.vue";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 
@@ -156,13 +160,17 @@ export default {
     },
     toggleEditMode(state) {
       this.isEditMode = typeof state === "undefined" ? !this.isEditMode : state;
+    },
+    openDeleteDialog() {
+      this.$store.commit("openDeleteConfirmationDialog");
     }
   },
 
   mixins: [formatDate],
 
   components: {
-    LoadingIndicator
+    LoadingIndicator,
+    DeleteConfirmationDialog
   }
 };
 </script>
