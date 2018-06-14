@@ -8,12 +8,12 @@
     </v-toolbar>
 
     <v-card-text v-if="!isSubscriptionReady">
-      <LoadingIndicator></LoadingIndicator>
+      <LoadingIndicator/>
     </v-card-text>
 
     <v-card-text v-else>
 
-      <EmptyListPlaceholder v-if="isEmptyCollection" message="Lista producentów jest pusta."></EmptyListPlaceholder>
+      <EmptyListPlaceholder v-if="isEmptyCollection" message="Lista producentów jest pusta." />
 
       <v-data-table v-else :headers="tableHeaders" :items="subscribedData" item-key="_id" hide-actions>
         <template slot="items" slot-scope="props">
@@ -23,7 +23,7 @@
             <td class="text-xs-right">{{ $_formatDate_long(props.item.dataModyfikacji) }}</td>
             <td class="justify-center layout px-0">
               <div v-show="isActiveItem(props.item._id)">
-                <ListItemMenu :mongoId="props.item._id" routeName="manufacturer" @deleteItemEvent="showDeleteConfirmation"></ListItemMenu>
+                <ListItemMenu :mongo-id="props.item._id" route-name="manufacturer" @deleteItemEvent="showDeleteConfirmation" />
               </div>
             </td>
           </tr>
@@ -32,9 +32,9 @@
 
     </v-card-text>
 
-    <router-view></router-view>
+    <router-view/>
 
-    <DeleteConfirmationDialog :isVisible.sync="isDeleteConfirmationVisible" title="Usunąć producenta?"></DeleteConfirmationDialog>
+    <DeleteConfirmationDialog :is-visible.sync="isDeleteConfirmationVisible" title="Usunąć producenta?" />
 
   </v-card>
 

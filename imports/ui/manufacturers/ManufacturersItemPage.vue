@@ -6,7 +6,7 @@
 
       <v-toolbar flat dark color="primary">
         <v-toolbar-title dark>Dane producenta</v-toolbar-title>
-        <v-spacer></v-spacer>
+        <v-spacer/>
         <v-btn icon @click="toggleFullscreen()">
           <v-icon>check_box_outline_blank</v-icon>
         </v-btn>
@@ -16,12 +16,12 @@
       </v-toolbar>
 
       <v-card-text v-if="!isSubscriptionReady">
-        <LoadingIndicator></LoadingIndicator>
+        <LoadingIndicator/>
       </v-card-text>
       <v-card-text v-else>
         <v-container fluid grid-list-lg>
 
-          <v-divider></v-divider>
+          <v-divider/>
 
           <v-layout row wrap>
             <v-flex xs12>
@@ -34,32 +34,32 @@
             </v-flex>
 
             <v-flex xs12>
-              <v-text-field label="Pełna nazwa" box flat :disabled="isDisabled"></v-text-field>
+              <v-text-field label="Pełna nazwa" box flat :disabled="isDisabled" />
             </v-flex>
 
             <v-flex xs12 md5>
-              <v-text-field label="Ulica" box flat :disabled="isDisabled"></v-text-field>
+              <v-text-field label="Ulica" box flat :disabled="isDisabled" />
             </v-flex>
             <v-flex xs12 md2>
-              <v-text-field label="Kod pocztowy" box flat :disabled="isDisabled"></v-text-field>
+              <v-text-field label="Kod pocztowy" box flat :disabled="isDisabled" />
             </v-flex>
             <v-flex xs12 md5>
-              <v-text-field label="Miejscowość" box flat :disabled="isDisabled"></v-text-field>
+              <v-text-field label="Miejscowość" box flat :disabled="isDisabled" />
             </v-flex>
 
             <v-flex xs12>
-              <v-text-field label="Dodatkowe informacje" box flat multi-line rows="3" :disabled="isDisabled"></v-text-field>
+              <v-text-field label="Dodatkowe informacje" box flat multi-line rows="3" :disabled="isDisabled" />
             </v-flex>
           </v-layout>
 
-          <v-divider></v-divider>
+          <v-divider/>
 
           <v-layout row wrap>
             <v-flex xs12 md6>
-              <v-text-field label="Data modyfikacji" box flat disabled></v-text-field>
+              <v-text-field label="Data modyfikacji" box flat disabled/>
             </v-flex>
             <v-flex xs12 md6>
-              <v-text-field label="Data utworzenia" box flat disabled></v-text-field>
+              <v-text-field label="Data utworzenia" box flat disabled/>
             </v-flex>
           </v-layout>
 
@@ -72,7 +72,7 @@
 
     </v-card>
 
-    <DeleteConfirmationDialog :isVisible.sync="isDeleteConfirmationVisible" title="Usunąć producenta?"></DeleteConfirmationDialog>
+    <DeleteConfirmationDialog :is-visible.sync="isDeleteConfirmationVisible" title="Usunąć producenta?" />
 
   </v-dialog>
 

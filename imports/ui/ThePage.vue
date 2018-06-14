@@ -1,11 +1,11 @@
 <template>
 
   <div>
-    <TheStatusBar></TheStatusBar>
-    <TheToolbar></TheToolbar>
+    <TheStatusBar/>
+    <TheToolbar/>
     <v-content class="mt-4">
       <v-container fluid>
-        <router-view></router-view>
+        <router-view/>
       </v-container>
     </v-content>
   </div>

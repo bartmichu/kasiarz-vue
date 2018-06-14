@@ -1,7 +1,7 @@
 <template>
 
   <v-system-bar window dark>
-    <v-spacer></v-spacer>
+    <v-spacer/>
     <span>{{ user }}</span>
   </v-system-bar>
 
