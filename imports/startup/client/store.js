@@ -10,6 +10,7 @@ export default new Vuex.Store({
   },
 
   mutations: {
+    // TODO move to mixin?
     openDetailsDialog(state, payload) {
       router.push({
         name: payload.routeName,
