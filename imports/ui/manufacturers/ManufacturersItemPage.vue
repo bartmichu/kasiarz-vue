@@ -72,7 +72,7 @@
 
     </v-card>
 
-    <DeleteConfirmationDialog :is-visible.sync="isDeleteConfirmationVisible" title="Usunąć producenta?" />
+    <DeleteConfirmationDialog :is-visible.sync="isDeleteConfirmationVisible" :mongo-id="mongoId" title="Usunąć producenta?" />
 
   </v-dialog>
 

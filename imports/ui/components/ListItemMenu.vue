@@ -2,7 +2,7 @@
 
   <v-menu bottom left dark>
 
-    <v-btn slot="activator" icon color="secondary">
+    <v-btn slot="activator" icon color="secondary" @click="notifyParent">
       <v-icon>menu</v-icon>
     </v-btn>
 
@@ -42,7 +42,6 @@ export default {
 
   methods: {
     showDeleteConfirmation() {
-      this.$store.commit("setSelectedListItemId", { id: this.mongoId });
       this.$emit("deleteItemEvent");
     },
     showItem(editMode) {
@@ -51,6 +50,9 @@ export default {
         mongoId: this.mongoId,
         editMode
       });
+    },
+    notifyParent() {
+      this.$emit("showMenuEvent");
     }
   }
 };

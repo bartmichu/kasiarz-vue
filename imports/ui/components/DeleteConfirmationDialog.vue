@@ -38,6 +38,11 @@ export default {
       required: true,
       default: false
     },
+    mongoId: {
+      type: String,
+      required: true,
+      default: ""
+    },
     title: {
       type: String,
       required: false,
@@ -67,13 +72,12 @@ export default {
 
   methods: {
     closeDialog() {
-      this.$store.commit("resetSelectedListItemId");
       this.$emit("update:isVisible", false);
     },
     deleteItem() {
       Meteor.call(
         this.$router.currentRoute.name.concat(".remove"),
-        this.$store.state.selectedListItemId,
+        this.mongoId,
         error => {
           if (error) {
             this.actionFailed = true;

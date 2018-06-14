@@ -5,10 +5,6 @@ import router from "/imports/startup/client/router.js";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-    selectedListItemId: ""
-  },
-
   mutations: {
     // TODO move to mixin?
     openDetailsDialog(state, payload) {
@@ -16,13 +12,6 @@ export default new Vuex.Store({
         name: payload.routeName,
         params: { mongoId: payload.mongoId, editMode: payload.editMode }
       });
-    },
-    // TODO: get rid of?
-    setSelectedListItemId(state, payload) {
-      this.state.selectedListItemId = payload.id;
-    },
-    resetSelectedListItemId() {
-      this.state.selectedListItemId = "";
     }
   }
 });
