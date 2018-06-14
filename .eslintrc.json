@@ -25,7 +25,6 @@
     "import/no-absolute-path": 0,
     "import/extensions": 0,
 
-    "vue/max-attributes-per-line": 0,
-    "vue/html-self-closing": 0
+    "vue/max-attributes-per-line": 0
   }
 }
