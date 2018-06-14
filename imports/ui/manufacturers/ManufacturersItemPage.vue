@@ -65,14 +65,14 @@
 
           <v-layout row wrap>
             <v-btn color="secondary" @click="closeDialog" :disabled="isEditMode">zamknij</v-btn>
-            <v-btn color="secondary" depressed @click="openDeleteDialog" :disabled="isEditMode">usuń</v-btn>
+            <v-btn color="secondary" depressed @click="showDeleteConfirmation" :disabled="isEditMode">usuń</v-btn>
           </v-layout>
         </v-container>
       </v-card-text>
 
     </v-card>
 
-    <DeleteConfirmationDialog title="Usunąć producenta?"></DeleteConfirmationDialog>
+    <DeleteConfirmationDialog :isVisible.sync="isDeleteConfirmationVisible" title="Usunąć producenta?"></DeleteConfirmationDialog>
 
   </v-dialog>
 
@@ -120,7 +120,8 @@ export default {
     return {
       isVisible: true,
       isFullscreen: this.$vuetify.breakpoint.xs,
-      isEditMode: this.editMode
+      isEditMode: this.editMode,
+      isDeleteConfirmationVisible: false
     };
   },
 
@@ -161,8 +162,8 @@ export default {
     toggleEditMode(state) {
       this.isEditMode = typeof state === "undefined" ? !this.isEditMode : state;
     },
-    openDeleteDialog() {
-      this.$store.commit("openDeleteConfirmationDialog");
+    showDeleteConfirmation() {
+      this.isDeleteConfirmationVisible = true;
     }
   },
 

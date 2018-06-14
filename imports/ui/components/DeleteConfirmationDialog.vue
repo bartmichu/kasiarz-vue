@@ -1,6 +1,6 @@
 <template>
 
-  <v-dialog v-model="isOpened" :fullscreen="$vuetify.breakpoint.xs" persistent max-width="50%">
+  <v-dialog v-model="isVisible" :fullscreen="$vuetify.breakpoint.xs" persistent max-width="50%">
 
     <v-card :color="getCardColor">
 
@@ -33,6 +33,11 @@ export default {
   name: "DeleteConfirmationDialog",
 
   props: {
+    isVisible: {
+      type: Boolean,
+      required: true,
+      default: false
+    },
     title: {
       type: String,
       required: false,
@@ -47,17 +52,14 @@ export default {
   },
 
   computed: {
-    isOpened() {
-      return this.$store.state.deleteConfirmationDialog;
-    },
     getCardColor() {
       return this.actionFailed ? "error" : "";
     }
   },
 
   watch: {
-    isOpened() {
-      if (this.$store.state.deleteConfirmationDialog) {
+    isVisible() {
+      if (this.isVisible) {
         this.actionFailed = false;
       }
     }
@@ -66,7 +68,7 @@ export default {
   methods: {
     closeDialog() {
       this.$store.commit("resetSelectedListItemId");
-      this.$store.commit("closeDeleteConfirmationDialog");
+      this.$emit("update:isVisible", false);
     },
     deleteItem() {
       Meteor.call(
@@ -77,6 +79,7 @@ export default {
             this.actionFailed = true;
           } else {
             this.closeDialog();
+            // TODO close details dialog
           }
         }
       );

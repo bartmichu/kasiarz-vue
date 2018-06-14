@@ -6,17 +6,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    deleteConfirmationDialog: false,
     selectedListItemId: ""
   },
 
   mutations: {
-    openDeleteConfirmationDialog() {
-      this.state.deleteConfirmationDialog = true;
-    },
-    closeDeleteConfirmationDialog() {
-      this.state.deleteConfirmationDialog = false;
-    },
     openDetailsDialog(state, payload) {
       router.push({
         name: payload.routeName,

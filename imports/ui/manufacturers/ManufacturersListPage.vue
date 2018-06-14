@@ -23,7 +23,7 @@
             <td class="text-xs-right">{{ $_formatDate_long(props.item.dataModyfikacji) }}</td>
             <td class="justify-center layout px-0">
               <div v-show="isActiveItem(props.item._id)">
-                <ListItemMenu :mongoId="props.item._id" routeName="manufacturer"></ListItemMenu>
+                <ListItemMenu :mongoId="props.item._id" routeName="manufacturer" @deleteItemEvent="showDeleteConfirmation"></ListItemMenu>
               </div>
             </td>
           </tr>
@@ -34,7 +34,7 @@
 
     <router-view></router-view>
 
-    <DeleteConfirmationDialog title="Usunąć producenta?"></DeleteConfirmationDialog>
+    <DeleteConfirmationDialog :isVisible.sync="isDeleteConfirmationVisible" title="Usunąć producenta?"></DeleteConfirmationDialog>
 
   </v-card>
 
@@ -64,6 +64,7 @@ export default {
   data() {
     return {
       activeItemId: "",
+      isDeleteConfirmationVisible: false,
       tableHeaders: [
         {
           text: "Pełna nazwa",
@@ -119,6 +120,9 @@ export default {
           editMode: false
         });
       }
+    },
+    showDeleteConfirmation() {
+      this.isDeleteConfirmationVisible = true;
     }
   },
 

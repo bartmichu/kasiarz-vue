@@ -13,7 +13,7 @@
       <v-list-tile @click="showItem(true)">
         <v-list-tile-title>edytuj</v-list-tile-title>
       </v-list-tile>
-      <v-list-tile @click.stop="openDeleteDialog">
+      <v-list-tile @click.stop="showDeleteConfirmation">
         <v-list-tile-title>usuń</v-list-tile-title>
       </v-list-tile>
     </v-list>
@@ -41,9 +41,9 @@ export default {
   },
 
   methods: {
-    openDeleteDialog() {
+    showDeleteConfirmation() {
       this.$store.commit("setSelectedListItemId", { id: this.mongoId });
-      this.$store.commit("openDeleteConfirmationDialog");
+      this.$emit("deleteItemEvent");
     },
     showItem(editMode) {
       this.$store.commit("openDetailsDialog", {
