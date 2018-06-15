@@ -24,7 +24,7 @@
             <td class="justify-center layout px-0">
               <v-menu v-show="isActiveItem(props.item._id)" bottom left dark>
                 <v-btn slot="activator" icon color="secondary">
-                  <v-icon>menu</v-icon>
+                  <v-icon>more_vert</v-icon>
                 </v-btn>
 
                 <v-list>
