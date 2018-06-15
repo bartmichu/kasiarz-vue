@@ -6,5 +6,6 @@ Stos technologiczny:
 * [Meteor](https://www.meteor.com/)
 * [Vue.js](https://vuejs.org/)
 * [vue-router](https://router.vuejs.org/en/)
+* [Vuex](https://vuex.vuejs.org/)
 * [Vuetify](https://vuetifyjs.com/en/)
 * [simpl-schema](https://www.npmjs.com/package/simpl-schema)
