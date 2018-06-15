@@ -76,7 +76,7 @@ export default {
     },
     deleteItem() {
       Meteor.call(
-        this.$router.currentRoute.name.concat(".remove"),
+        this.$router.currentRoute.meta.methodPrefix.concat(".remove"),
         this.mongoId,
         error => {
           if (error) {

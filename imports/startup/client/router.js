@@ -27,45 +27,69 @@ const router = new VueRouter({
         {
           path: "klienci",
           name: "clients",
-          component: ClientsPage
+          component: ClientsPage,
+          meta: {
+            methodPrefix: "clients"
+          }
         },
         {
           path: "urzadzenia",
           name: "devices",
-          component: DevicesPage
+          component: DevicesPage,
+          meta: {
+            methodPrefix: "devices"
+          }
         },
         {
           path: "producenci",
           name: "manufacturers",
           component: ManufacturersListPage,
+          meta: {
+            methodPrefix: "manufacturers"
+          },
           children: [
             {
               path: "producent/:mongoId",
               name: "manufacturer",
               component: ManufacturersItemPage,
-              props: true
+              props: true,
+              meta: {
+                methodPrefix: "manufacturers"
+              }
             }
           ]
         },
         {
           path: "modele",
           name: "models",
-          component: ModelsPage
+          component: ModelsPage,
+          meta: {
+            methodPrefix: "models"
+          }
         },
         {
           path: "serwisy",
           name: "shops",
-          component: ShopsPage
+          component: ShopsPage,
+          meta: {
+            methodPrefix: "shops"
+          }
         },
         {
           path: "serwisanci",
           name: "employees",
-          component: EmployeesPage
+          component: EmployeesPage,
+          meta: {
+            methodPrefix: "employees"
+          }
         },
         {
           path: "urzedy",
           name: "offices",
-          component: OfficesPage
+          component: OfficesPage,
+          meta: {
+            methodPrefix: "offices"
+          }
         }
       ]
     },
