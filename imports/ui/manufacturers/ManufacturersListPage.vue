@@ -17,14 +17,28 @@
 
       <v-data-table v-else :headers="tableHeaders" :items="subscribedData" item-key="_id" hide-actions>
         <template slot="items" slot-scope="props">
-          <tr @mouseover="setActiveItem(props.item._id)" @mouseout="resetActiveItem" @click="showManufacturer">
+          <tr @mouseover="setActiveItem(props.item._id)" @mouseout="resetActiveItem" @click="showManufacturer(props.item._id, false, $event)">
             <td>{{ props.item.nazwa }}</td>
             <td class="text-xs-right">{{ props.item.adres.miejscowosc }}</td>
             <td class="text-xs-right">{{ $_formatDate_long(props.item.dataModyfikacji) }}</td>
             <td class="justify-center layout px-0">
-              <div v-show="isActiveItem(props.item._id)">
-                <ListItemMenu :mongo-id="props.item._id" route-name="manufacturer" @showMenuEvent="setSelectedItemId(props.item._id)" @deleteItemEvent="showDeleteConfirmation" />
-              </div>
+              <v-menu v-show="isActiveItem(props.item._id)" bottom left dark>
+                <v-btn slot="activator" icon color="secondary">
+                  <v-icon>menu</v-icon>
+                </v-btn>
+
+                <v-list>
+                  <v-list-tile @click="showManufacturer(props.item._id, false, $event)">
+                    <v-list-tile-title>przeglądaj</v-list-tile-title>
+                  </v-list-tile>
+                  <v-list-tile @click="showManufacturer(props.item._id, true, $event)">
+                    <v-list-tile-title>edytuj</v-list-tile-title>
+                  </v-list-tile>
+                  <v-list-tile @click.stop="showDeleteConfirmation(props.item._id)">
+                    <v-list-tile-title>usuń</v-list-tile-title>
+                  </v-list-tile>
+                </v-list>
+              </v-menu>
             </td>
           </tr>
         </template>
@@ -45,7 +59,6 @@
 import { formatDate } from "/imports/startup/client/mixins.js";
 import DeleteConfirmationDialog from "/imports/ui/components/DeleteConfirmationDialog.vue";
 import EmptyListPlaceholder from "/imports/ui/components/EmptyListPlaceholder.vue";
-import ListItemMenu from "/imports/ui/components/ListItemMenu.vue";
 import LoadingIndicator from "/imports/ui/components/LoadingIndicator.vue";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 
@@ -112,20 +125,20 @@ export default {
     isActiveItem(id) {
       return id === this.activeItemId;
     },
-    showManufacturer(event) {
+    showManufacturer(mongoId, editMode, event) {
       // do not change route if item menu button was clicked
-      if (event.target.tagName !== "DIV") {
-        this.$store.commit("openDetailsDialog", {
-          routeName: "manufacturer",
-          mongoId: this.activeItemId,
-          editMode: false
-        });
+      if (event.target.classList.contains("btn__content")) {
+        return;
       }
+
+      this.$store.commit("openDetailsDialog", {
+        routeName: "manufacturer",
+        mongoId,
+        editMode
+      });
     },
-    setSelectedItemId(mongoId) {
+    showDeleteConfirmation(mongoId) {
       this.selectedItemId = mongoId;
-    },
-    showDeleteConfirmation() {
       this.isDeleteConfirmationVisible = true;
     }
   },
@@ -135,7 +148,6 @@ export default {
   components: {
     EmptyListPlaceholder,
     LoadingIndicator,
-    ListItemMenu,
     DeleteConfirmationDialog
   }
 };
