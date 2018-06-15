@@ -83,7 +83,7 @@ export default {
             this.actionFailed = true;
           } else {
             this.closeDialog();
-            // TODO close details dialog
+            this.$emit("itemDeleted");
           }
         }
       );
