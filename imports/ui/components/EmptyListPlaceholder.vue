@@ -1,6 +1,6 @@
 <template>
 
-  <v-alert value="true" color="success" icon="info">
+  <v-alert value="true" color="grey" icon="info">
     {{ message }} Użyj przycisku "dodaj" aby utworzyć nowy element.
   </v-alert>
 
