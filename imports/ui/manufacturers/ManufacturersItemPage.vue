@@ -1,6 +1,6 @@
 <template>
 
-  <v-dialog :value="isVisible" :fullscreen="isFullscreen" persistent max-width="90%">
+  <v-dialog :value="isVisible" :fullscreen="isFullscreen" scrollable persistent max-width="90%">
 
     <v-card color="grey lighten-4">
 
@@ -48,23 +48,67 @@
             </v-flex>
 
             <v-flex xs12>
-              <v-text-field label="Dodatkowe informacje" box flat multi-line rows="3" :disabled="isDisabled" />
+              <v-text-field label="Dodatkowe informacje" multi-line rows="3" box flat :disabled="isDisabled" />
             </v-flex>
           </v-layout>
 
-          <v-divider/>
+          <v-divider class="mt-5" />
 
           <v-layout row wrap>
-            <v-flex xs12 md6>
-              <v-text-field label="Data modyfikacji" box flat disabled/>
+            <v-flex xs12>
+              <span class="title">Powiązane modele urządzeń</span>
             </v-flex>
-            <v-flex xs12 md6>
-              <v-text-field label="Data utworzenia" box flat disabled/>
+
+            <v-flex v-if="hasRelatedModels" xs12>
+              <v-data-table :items="relatedModels" hide-actions hide-headers item-key="_id">
+                <template slot="items" slot-scope="props">
+                  <td>{{ props.item.nazwa }}</td>
+                </template>
+              </v-data-table>
+            </v-flex>
+            <v-flex v-else>
+              <RelatedItemsPlaceholder />
             </v-flex>
           </v-layout>
 
+          <v-divider class="mt-5" />
+
           <v-layout row wrap>
-            <v-btn color="secondary" @click="closeDialog" :disabled="isEditMode">zamknij</v-btn>
+            <v-flex xs12>
+              <span class="title">Powiązani serwisanci</span>
+            </v-flex>
+
+            <v-flex v-if="hasRelatedEmployees" xs12>
+              <v-data-table :items="relatedEmployees" hide-actions hide-headers item-key="_id">
+                <template slot="items" slot-scope="props">
+                  <td>{{ props.item.inieNazwisko }}</td>
+                </template>
+              </v-data-table>
+            </v-flex>
+            <v-flex v-else>
+              <RelatedItemsPlaceholder />
+            </v-flex>
+          </v-layout>
+
+          <v-divider class="mt-5" />
+
+          <v-layout row wrap>
+            <v-flex xs12>
+              <span class="title">Metadane</span>
+            </v-flex>
+
+            <v-flex xs12 md6>
+              <v-text-field box flat label="Data modyfikacji" disabled/>
+            </v-flex>
+            <v-flex xs12 md6>
+              <v-text-field box flat label="Data utworzenia" disabled/>
+            </v-flex>
+          </v-layout>
+
+          <v-divider class="mt-5" />
+
+          <v-layout row wrap>
+            <v-btn color="secondary" depressed @click="closeDialog" :disabled="isEditMode">zamknij</v-btn>
             <v-btn color="secondary" depressed @click="showDeleteConfirmation" :disabled="isEditMode">usuń</v-btn>
           </v-layout>
         </v-container>
@@ -84,6 +128,9 @@ import { formatDate } from "/imports/startup/client/mixins.js";
 import DeleteConfirmationDialog from "/imports/ui/components/DeleteConfirmationDialog.vue";
 import LoadingIndicator from "/imports/ui/components/LoadingIndicator.vue";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
+import Models from "/imports/api/models/models.js";
+import Employees from "/imports/api/employees/employees.js";
+import RelatedItemsPlaceholder from "/imports/ui/components/RelatedItemsPlaceholder.vue";
 
 export default {
   name: "ManufacturersItemPage",
@@ -113,6 +160,15 @@ export default {
     },
     subscribedData() {
       return Manufacturers.findOne({ _id: this.mongoId });
+    },
+    relatedModels() {
+      return Models.find();
+    },
+    relatedEmployees() {
+      const models = Models.find({}, { fields: { _id: 1 } }).map(
+        model => model._id
+      );
+      return Employees.find({ "uprawnienia.modele": { $in: models } });
     }
   },
 
@@ -136,6 +192,12 @@ export default {
     },
     isDisabled() {
       return !this.isEditMode;
+    },
+    hasRelatedModels() {
+      return this.relatedModels.length > 0;
+    },
+    hasRelatedEmployees() {
+      return this.relatedEmployees.length > 0;
     }
   },
 
@@ -171,7 +233,8 @@ export default {
 
   components: {
     LoadingIndicator,
-    DeleteConfirmationDialog
+    DeleteConfirmationDialog,
+    RelatedItemsPlaceholder
   }
 };
 </script>
