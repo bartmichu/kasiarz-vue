@@ -21,6 +21,7 @@
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "double"],
     "semi": ["error", "always"],
+    "no-underscore-dangle": 0,
 
     "import/no-absolute-path": 0,
     "import/extensions": 0,
