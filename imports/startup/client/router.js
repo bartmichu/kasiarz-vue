@@ -49,7 +49,7 @@ const router = new VueRouter({
           },
           children: [
             {
-              path: "producent/:mongoId",
+              path: ":mongoId",
               name: "manufacturer",
               component: ManufacturersItemPage,
               props: true,
