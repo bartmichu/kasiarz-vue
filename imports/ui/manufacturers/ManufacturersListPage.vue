@@ -127,7 +127,10 @@ export default {
     },
     showManufacturer(mongoId, editMode, event) {
       // do not change route if item menu button was clicked
-      if (event.target.classList.contains("btn__content")) {
+      if (
+        event.target.classList.contains("btn__content") ||
+        event.target.classList.contains("btn")
+      ) {
         return;
       }
 
