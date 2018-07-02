@@ -15,7 +15,7 @@
 
     <v-spacer/>
 
-    <v-menu dark open-on-hover left>
+    <v-menu dark left>
       <v-btn icon slot="activator">
         <v-icon>settings</v-icon>
       </v-btn>
@@ -40,7 +40,7 @@
       </v-list>
     </v-menu>
 
-    <v-menu dark open-on-hover left>
+    <v-menu dark left>
       <v-btn slot="activator" icon>
         <v-icon>face</v-icon>
       </v-btn>
