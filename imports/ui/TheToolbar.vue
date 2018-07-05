@@ -12,8 +12,10 @@
         <v-icon left dark>memory</v-icon>Urządzenia
       </v-btn>
     </v-toolbar-items>
-
+    
+    <v-divider vertical inset />
     <v-spacer/>
+    <v-divider vertical inset />
 
     <v-menu dark left>
       <v-btn icon slot="activator">
