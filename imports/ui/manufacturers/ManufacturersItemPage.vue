@@ -48,7 +48,7 @@
             </v-flex>
 
             <v-flex xs12>
-              <v-text-field label="Dodatkowe informacje" multi-line rows="3" box flat :disabled="isDisabled" />
+              <v-textarea label="Dodatkowe informacje" box flat :disabled="isDisabled" />
             </v-flex>
           </v-layout>
 
