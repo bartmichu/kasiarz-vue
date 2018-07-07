@@ -1,7 +1,7 @@
 <template>
 
   <div>
-    <span class="">Trwa pobieranie danych z serwera...</span>
+    <span>Trwa pobieranie danych z serwera...</span>
     <v-progress-linear indeterminate color="grey" height="20"/>
   </div>
 
