@@ -128,8 +128,10 @@ export default {
     showManufacturer(mongoId, editMode, event) {
       // do not change route if item menu button was clicked
       if (
-        event.target.classList.contains("btn__content") ||
-        event.target.classList.contains("btn")
+        event.target.classList.contains("v-btn__content") ||
+        event.target.classList.contains("v-btn") ||
+        event.target.classList.contains("v-icon") ||
+        event.target.classList.contains("v-menu__activator")
       ) {
         return;
       }
