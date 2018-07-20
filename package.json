@@ -6,25 +6,25 @@
     "meteor:build": "meteor build --server-only --architecture os.linux.x86_64 ../kasiarz-vue-package"
   },
   "dependencies": {
-    "@babel/runtime": "^7.0.0-beta.51",
+    "@babel/runtime": "^7.0.0-beta.54",
     "meteor-node-stubs": "^0.4.1",
     "moment": "^2.22.2",
     "simpl-schema": "^1.5.0",
     "vue": "^2.5.16",
     "vue-meteor-tracker": "^1.2.3",
     "vue-router": "^3.0.1",
-    "vuetify": "^1.1.1",
+    "vuetify": "^1.1.7",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.5",
+    "babel-eslint": "^8.2.6",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-import-resolver-meteor": "^0.4.0",
     "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-prettier": "^2.6.1",
-    "eslint-plugin-vue": "^4.5.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-vue": "^4.7.0",
     "prettier": "^1.13.7"
   }
 }
