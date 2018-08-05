@@ -5,7 +5,7 @@
 
 <script>
 export default {
-  name: "TextField",
+  name: "TextArea",
 
   props: {
     label: {
