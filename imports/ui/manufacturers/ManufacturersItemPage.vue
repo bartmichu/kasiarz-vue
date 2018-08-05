@@ -7,9 +7,10 @@
       <v-toolbar flat dark color="primary">
         <v-toolbar-title dark>Dane producenta</v-toolbar-title>
         <v-spacer/>
-        <v-btn icon @click="toggleFullscreen()">
+        <!-- TODO: re-enable when Veutify #2201 gets fixed -->
+        <!-- <v-btn icon @click="toggleFullscreen()">
           <v-icon>check_box_outline_blank</v-icon>
-        </v-btn>
+        </v-btn> -->
         <v-btn icon @click="closeDialog" :disabled="isEditMode">
           <v-icon>close</v-icon>
         </v-btn>
@@ -177,7 +178,9 @@ export default {
   data() {
     return {
       isVisible: true,
-      isFullscreen: this.$vuetify.breakpoint.xs,
+      // TODO: re-enable when Veutify #2201 gets fixed
+      // isFullscreen: this.$vuetify.breakpoint.xs,
+      isFullscreen: true,
       isEditMode: this.editMode,
       isDeleteConfirmationVisible: false
     };
