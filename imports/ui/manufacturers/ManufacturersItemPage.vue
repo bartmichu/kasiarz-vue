@@ -34,21 +34,21 @@
             </v-flex>
 
             <v-flex xs12>
-              <v-text-field label="Pełna nazwa" box flat :disabled="isDisabled" />
+              <TextField label="Pełna nazwa" :disabled="isDisabled" />
             </v-flex>
 
             <v-flex xs12 md5>
-              <v-text-field label="Ulica" box flat :disabled="isDisabled" />
+              <TextField label="Ulica" :disabled="isDisabled" />
             </v-flex>
             <v-flex xs12 md2>
-              <v-text-field label="Kod pocztowy" box flat :disabled="isDisabled" />
+              <TextField label="Kod pocztowy" :disabled="isDisabled" />
             </v-flex>
             <v-flex xs12 md5>
-              <v-text-field label="Miejscowość" box flat :disabled="isDisabled" />
+              <TextField label="Miejscowość" :disabled="isDisabled" />
             </v-flex>
 
             <v-flex xs12>
-              <v-textarea label="Dodatkowe informacje" box flat :disabled="isDisabled" />
+              <TextArea label="Dodatkowe informacje" :disabled="isDisabled" />
             </v-flex>
           </v-layout>
 
@@ -98,10 +98,10 @@
             </v-flex>
 
             <v-flex xs12 md6>
-              <v-text-field box flat label="Data modyfikacji" disabled/>
+              <TextField label="Data modyfikacji" />
             </v-flex>
             <v-flex xs12 md6>
-              <v-text-field box flat label="Data utworzenia" disabled/>
+              <TextField label="Data utworzenia" />
             </v-flex>
           </v-layout>
 
@@ -131,6 +131,8 @@ import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Models from "/imports/api/models/models.js";
 import Employees from "/imports/api/employees/employees.js";
 import RelatedItemsPlaceholder from "/imports/ui/components/RelatedItemsPlaceholder.vue";
+import TextField from "/imports/ui/components/form_controls/TextField.vue";
+import TextArea from "/imports/ui/components/form_controls/TextArea.vue";
 
 export default {
   name: "ManufacturersItemPage",
@@ -234,7 +236,9 @@ export default {
   components: {
     LoadingIndicator,
     DeleteConfirmationDialog,
-    RelatedItemsPlaceholder
+    RelatedItemsPlaceholder,
+    TextField,
+    TextArea
   }
 };
 </script>
