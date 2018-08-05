@@ -1,8 +1,8 @@
 import moment from "moment";
 
-const formatDate = {
+const dateHelpers = {
   methods: {
-    $_formatDate_long(date) {
+    $_dateHelpers_format(date) {
       return typeof date === "undefined"
         ? "brak"
         : moment(date).format("DD-MM-YYYY, HH:mm");
@@ -10,4 +10,4 @@ const formatDate = {
   }
 };
 
-export { formatDate };
+export { dateHelpers };

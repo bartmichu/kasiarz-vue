@@ -20,7 +20,7 @@
           <tr @mouseover="setActiveItem(props.item._id)" @mouseout="resetActiveItem" @click="showManufacturer(props.item._id, false, $event)">
             <td>{{ props.item.nazwa }}</td>
             <td class="text-xs-right">{{ props.item.adres.miejscowosc }}</td>
-            <td class="text-xs-right">{{ $_formatDate_long(props.item.dataModyfikacji) }}</td>
+            <td class="text-xs-right">{{ $_dateHelpers_format(props.item.dataModyfikacji) }}</td>
             <td class="justify-center layout px-0">
               <v-menu v-show="isActiveItem(props.item._id)" bottom left dark>
                 <v-btn slot="activator" icon color="secondary">
@@ -56,7 +56,7 @@
 
 
 <script>
-import { formatDate } from "/imports/startup/client/mixins.js";
+import { dateHelpers } from "/imports/startup/client/mixins.js";
 import DeleteConfirmationDialog from "/imports/ui/components/DeleteConfirmationDialog.vue";
 import EmptyListPlaceholder from "/imports/ui/components/EmptyListPlaceholder.vue";
 import LoadingIndicator from "/imports/ui/components/LoadingIndicator.vue";
@@ -148,7 +148,7 @@ export default {
     }
   },
 
-  mixins: [formatDate],
+  mixins: [dateHelpers],
 
   components: {
     EmptyListPlaceholder,

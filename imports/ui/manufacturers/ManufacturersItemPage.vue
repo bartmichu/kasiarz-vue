@@ -125,7 +125,7 @@
 
 
 <script>
-import { formatDate } from "/imports/startup/client/mixins.js";
+import { dateHelpers } from "/imports/startup/client/mixins.js";
 import DeleteConfirmationDialog from "/imports/ui/components/DeleteConfirmationDialog.vue";
 import LoadingIndicator from "/imports/ui/components/LoadingIndicator.vue";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
@@ -234,7 +234,7 @@ export default {
     }
   },
 
-  mixins: [formatDate],
+  mixins: [dateHelpers],
 
   components: {
     LoadingIndicator,
