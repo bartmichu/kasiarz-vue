@@ -1,6 +1,6 @@
 <template>
 
-  <v-dialog :value="isVisible" :fullscreen="isFullscreen" scrollable persistent max-width="90%">
+  <v-dialog :value="isVisible" :fullscreen="isFullscreen" no-click-animation scrollable persistent max-width="90%">
 
     <v-card color="grey lighten-4">
 
