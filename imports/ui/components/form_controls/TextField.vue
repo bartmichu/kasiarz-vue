@@ -1,5 +1,5 @@
 <template>
-  <v-text-field :label="label" box flat placeholder=" " background-color="white" :disabled="disabled" />
+  <v-text-field :label="getLabel" box flat :placeholder="getPlaceholder" background-color="white" :disabled="disabled" />
 </template>
 
 
@@ -13,10 +13,41 @@ export default {
       required: false,
       default: ""
     },
+    placeholder: {
+      type: String,
+      required: false,
+      default: " "
+    },
     disabled: {
       type: Boolean,
       required: false,
       default: true
+    },
+    schema: {
+      type: Object,
+      required: false,
+      default: null
+    }
+  },
+
+  computed: {
+    getLabel() {
+      const labelText =
+        Object.keys(this.$options.propsData).includes("schema") &&
+        typeof this.schema.label !== "undefined"
+          ? this.schema.label
+          : this.label;
+
+      const labelSuffix =
+        Object.keys(this.$options.propsData).includes("schema") &&
+        this.schema.optional !== true
+          ? " (wymagane)"
+          : "";
+
+      return this.disabled ? labelText : labelText.concat(labelSuffix);
+    },
+    getPlaceholder() {
+      return this.placeholder;
     }
   }
 };

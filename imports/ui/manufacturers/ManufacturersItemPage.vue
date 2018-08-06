@@ -35,21 +35,21 @@
             </v-flex>
 
             <v-flex xs12>
-              <TextField label="Pełna nazwa" :disabled="isDisabled" />
+              <TextField :schema="getFieldSchema('nazwa')" :disabled="isDisabled" />
             </v-flex>
 
             <v-flex xs12 md5>
-              <TextField label="Ulica" :disabled="isDisabled" />
+              <TextField :schema="getFieldSchema('adres.ulica')" :disabled="isDisabled" />
             </v-flex>
             <v-flex xs12 md2>
-              <TextField label="Kod pocztowy" :disabled="isDisabled" />
+              <TextField :schema="getFieldSchema('adres.kodPocztowy')" :disabled="isDisabled" />
             </v-flex>
             <v-flex xs12 md5>
-              <TextField label="Miejscowość" :disabled="isDisabled" />
+              <TextField :schema="getFieldSchema('adres.miejscowosc')" :disabled="isDisabled" />
             </v-flex>
 
             <v-flex xs12>
-              <TextArea label="Dodatkowe informacje" :disabled="isDisabled" />
+              <TextArea :schema="getFieldSchema('dodatkoweInformacje')" :disabled="isDisabled" />
             </v-flex>
           </v-layout>
 
@@ -99,10 +99,10 @@
             </v-flex>
 
             <v-flex xs12 md6>
-              <TextField label="Data modyfikacji" />
+              <TextField :schema="getFieldSchema('dataUtworzenia')" />
             </v-flex>
             <v-flex xs12 md6>
-              <TextField label="Data utworzenia" />
+              <TextField :schema="getFieldSchema('dataModyfikacji')" />
             </v-flex>
           </v-layout>
 
@@ -182,7 +182,8 @@ export default {
       // isFullscreen: this.$vuetify.breakpoint.xs,
       isFullscreen: true,
       isEditMode: this.editMode,
-      isDeleteConfirmationVisible: false
+      isDeleteConfirmationVisible: false,
+      collectionSchema: Manufacturers.simpleSchema()
     };
   },
 
@@ -231,6 +232,9 @@ export default {
     },
     showDeleteConfirmation() {
       this.isDeleteConfirmationVisible = true;
+    },
+    getFieldSchema(fieldName) {
+      return this.collectionSchema.getDefinition(fieldName);
     }
   },
 
