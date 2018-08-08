@@ -1,5 +1,5 @@
 <template>
-  <v-text-field :label="getLabel" box flat :placeholder="getPlaceholder" background-color="white" :disabled="disabled" />
+  <v-text-field :label="getLabel" box flat :placeholder="placeholder" background-color="white" :disabled="disabled" />
 </template>
 
 
@@ -45,9 +45,6 @@ export default {
           : "";
 
       return this.disabled ? labelText : labelText.concat(labelSuffix);
-    },
-    getPlaceholder() {
-      return this.placeholder;
     }
   }
 };
