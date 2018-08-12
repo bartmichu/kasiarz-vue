@@ -82,7 +82,7 @@
             <v-flex v-if="hasRelatedEmployees" xs12>
               <v-data-table :items="relatedEmployees" hide-actions hide-headers item-key="_id">
                 <template slot="items" slot-scope="props">
-                  <td>{{ props.item.inieNazwisko }}</td>
+                  <td>{{ props.item.imieNazwisko }}</td>
                 </template>
               </v-data-table>
             </v-flex>
