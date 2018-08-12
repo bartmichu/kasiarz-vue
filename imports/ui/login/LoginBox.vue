@@ -1,6 +1,6 @@
 <template>
 
-  <v-card tile color="grey lighten-4">
+  <v-card tile raised color="grey lighten-4">
 
     <v-toolbar card dark color="primary">
       <v-toolbar-title>Kasiarz</v-toolbar-title>
@@ -9,11 +9,11 @@
     <v-card-title/>
 
     <v-card-text>
-      <v-text-field v-model="username" type="text" solo flat clearable label="użytkownik" prepend-icon="face" @input="clearFailedLogin" @keyup.enter="signIn" @change="trimUsername"/>
+      <v-text-field v-model="username" type="text" flat clearable label="użytkownik" prepend-icon="face" @input="clearFailedLogin" @keyup.enter="signIn" @change="trimUsername"/>
     </v-card-text>
 
     <v-card-text>
-      <v-text-field v-model="password" type="password" solo flat clearable label="hasło" prepend-icon="lock_outline" @input="clearFailedLogin" @keyup.enter="signIn"/>
+      <v-text-field v-model="password" type="password" flat clearable label="hasło" prepend-icon="lock_outline" @input="clearFailedLogin" @keyup.enter="signIn"/>
     </v-card-text>
 
     <v-alert v-if="failedLogin" value="true" color="error" class="text-xs-center">
