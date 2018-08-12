@@ -1,5 +1,5 @@
 <template>
-  <v-text-field :label="getLabel" box flat :placeholder="placeholder" background-color="white" :disabled="disabled" />
+  <v-text-field :label="getLabel" box flat :placeholder="placeholder" :background-color="getBackgroundColor" :disabled="disabled" @focus="toggleFocus(true)" @blur="toggleFocus(false)" />
 </template>
 
 
@@ -30,6 +30,12 @@ export default {
     }
   },
 
+  data() {
+    return {
+      isFocused: false
+    };
+  },
+
   computed: {
     getLabel() {
       const labelText =
@@ -45,6 +51,19 @@ export default {
           : "";
 
       return this.disabled ? labelText : labelText.concat(labelSuffix);
+    },
+    getBackgroundColor() {
+      return this.isFocused ? "yellow" : "white";
+    }
+  },
+
+  methods: {
+    toggleFocus(state) {
+      if (typeof state === "undefined") {
+        this.isFocused = !this.isFocused;
+      } else {
+        this.isFocused = state;
+      }
     }
   }
 };
