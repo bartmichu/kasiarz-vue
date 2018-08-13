@@ -1,0 +1,34 @@
+.application .theme--light.v-label,
+.theme--light .v-label {
+  color: #000 !important;
+  font-weight: bold;
+}
+
+.application .theme--light.v-input--is-disabled .v-label,
+.application .theme--light.v-input--is-disabled input,
+.application .theme--light.v-input--is-disabled textarea,
+.theme--light .v-input--is-disabled .v-label,
+.theme--light .v-input--is-disabled input,
+.theme--light .v-input--is-disabled textarea {
+  color: #000;
+}
+
+.v-text-field--box .v-input__slot:before {
+  border-style: dashed;
+}
+
+.v-text-field .v-input__slot:before {
+  border-style: dashed;
+}
+
+.application
+  .theme--light.v-text-field.v-input--is-disabled
+  .v-input__slot:before,
+.theme--light .v-text-field.v-input--is-disabled .v-input__slot:before {
+  border-image: none;
+  border-style: hidden;
+}
+
+.v-alert.v-alert {
+  border-color: transparent !important;
+}

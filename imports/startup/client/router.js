@@ -1,4 +1,5 @@
 import "vuetify/dist/vuetify.min.css";
+import "/imports/ui/css/override.css";
 import { Meteor } from "meteor/meteor";
 import TheLayout from "/imports/ui/TheLayout.vue";
 import ThePage from "/imports/ui/ThePage.vue";
