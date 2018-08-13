@@ -47,7 +47,7 @@ export default {
       const labelSuffix =
         Object.keys(this.$options.propsData).includes("schema") &&
         this.schema.optional !== true
-          ? " (wymagane)"
+          ? " *"
           : "";
 
       return this.disabled ? labelText : labelText.concat(labelSuffix);
