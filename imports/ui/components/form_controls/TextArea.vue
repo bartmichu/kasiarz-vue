@@ -1,5 +1,5 @@
 <template>
-  <v-textarea :label="getLabel" box flat :placeholder="placeholder" :background-color="getBackgroundColor" :disabled="disabled" @focus="toggleFocus(true)" @blur="toggleFocus(false)" />
+  <v-textarea :label="getLabel" :value="value" box flat :placeholder="placeholder" :background-color="getBackgroundColor" :disabled="disabled" @focus="toggleFocus(true)" @blur="toggleFocus(false)" />
 </template>
 
 
@@ -27,6 +27,11 @@ export default {
       type: Object,
       required: false,
       default: null
+    },
+    value: {
+      type: String,
+      required: false,
+      default: ""
     }
   },
 
