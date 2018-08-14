@@ -35,21 +35,21 @@
             </v-flex>
 
             <v-flex xs12>
-              <TextField :schema="getFieldSchema('nazwa')" :disabled="isDisabled" />
+              <TextField :schema="getFieldSchema('nazwa')" :value="subscribedData.nazwa" :disabled="isDisabled" />
             </v-flex>
 
             <v-flex xs12 md5>
-              <TextField :schema="getFieldSchema('adres.ulica')" :disabled="isDisabled" />
+              <TextField :schema="getFieldSchema('adres.ulica')" :value="subscribedData.adres.ulica" :disabled="isDisabled" />
             </v-flex>
             <v-flex xs12 md2>
-              <TextField :schema="getFieldSchema('adres.kodPocztowy')" :disabled="isDisabled" />
+              <TextField :schema="getFieldSchema('adres.kodPocztowy')" :value="subscribedData.adres.kodPocztowy" :disabled="isDisabled" />
             </v-flex>
             <v-flex xs12 md5>
-              <TextField :schema="getFieldSchema('adres.miejscowosc')" :disabled="isDisabled" />
+              <TextField :schema="getFieldSchema('adres.miejscowosc')" :value="subscribedData.adres.miejscowosc" :disabled="isDisabled" />
             </v-flex>
 
             <v-flex xs12>
-              <TextArea :schema="getFieldSchema('dodatkoweInformacje')" :disabled="isDisabled" />
+              <TextArea :schema="getFieldSchema('dodatkoweInformacje')" :value="subscribedData.dodatkoweInformacje" :disabled="isDisabled" />
             </v-flex>
           </v-layout>
 
@@ -99,10 +99,10 @@
             </v-flex>
 
             <v-flex xs12 md6>
-              <TextField :schema="getFieldSchema('dataUtworzenia')" />
+              <TextField :schema="getFieldSchema('dataUtworzenia')" :value="$_dateHelpers_format(subscribedData.dataUtworzenia)" />
             </v-flex>
             <v-flex xs12 md6>
-              <TextField :schema="getFieldSchema('dataModyfikacji')" />
+              <TextField :schema="getFieldSchema('dataModyfikacji')" :value="$_dateHelpers_format(subscribedData.dataModyfikacji)" />
             </v-flex>
           </v-layout>
 
