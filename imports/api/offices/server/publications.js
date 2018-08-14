@@ -8,7 +8,7 @@ Meteor.publish("offices.list", function publishFunction() {
   if (actualUserId) {
     const data = Offices.find(
       { uzytkownikId: actualUserId },
-      { fields: { nazwa: 1, "adres.miejscowosc": 1, dataModyfikacji: 1 } }
+      { fields: { nazwa: 1, miejscowosc: 1, dataModyfikacji: 1 } }
     );
 
     if (data) {

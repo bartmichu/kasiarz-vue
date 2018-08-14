@@ -11,51 +11,39 @@ Meteor.startup(() => {
     const dummyData = [
       {
         nazwa: "Envire",
-        adres: {
-          ulica: "Melrose Street",
-          miejscowosc: "Longoria",
-          kodPocztowy: 94947
-        }
+        ulica: "Melrose Street",
+        miejscowosc: "Longoria",
+        kodPocztowy: 94947
       },
       {
         nazwa: "Rodeology",
-        adres: {
-          ulica: "Kossuth Place",
-          miejscowosc: "Brule",
-          kodPocztowy: 28515
-        }
+        ulica: "Kossuth Place",
+        miejscowosc: "Brule",
+        kodPocztowy: 28515
       },
       {
         nazwa: "Hopeli",
-        adres: {
-          ulica: "Sheffield Avenue",
-          miejscowosc: "Dellview",
-          kodPocztowy: 40579
-        }
+        ulica: "Sheffield Avenue",
+        miejscowosc: "Dellview",
+        kodPocztowy: 40579
       },
       {
         nazwa: "Ultrasure",
-        adres: {
-          ulica: "Fuller Place",
-          miejscowosc: "Vienna",
-          kodPocztowy: 17384
-        }
+        ulica: "Fuller Place",
+        miejscowosc: "Vienna",
+        kodPocztowy: 17384
       },
       {
         nazwa: "Zilla",
-        adres: {
-          ulica: "Montgomery Street",
-          miejscowosc: "Chestnut",
-          kodPocztowy: 73989
-        }
+        ulica: "Montgomery Street",
+        miejscowosc: "Chestnut",
+        kodPocztowy: 73989
       },
       {
         nazwa: "Unia",
-        adres: {
-          ulica: "Duryea Place",
-          miejscowosc: "Detroit",
-          kodPocztowy: 86526
-        }
+        ulica: "Duryea Place",
+        miejscowosc: "Detroit",
+        kodPocztowy: 86526
       }
     ];
 

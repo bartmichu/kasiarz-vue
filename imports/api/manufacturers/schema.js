@@ -17,24 +17,21 @@ const manufacturerSchema = new SimpleSchema({
     max: 100,
     optional: false
   },
-  adres: {
-    type: Object
-  },
-  "adres.ulica": {
+  ulica: {
     type: String,
     label: "Ulica",
     min: 1,
     max: 100,
     optional: false
   },
-  "adres.miejscowosc": {
+  miejscowosc: {
     type: String,
     label: "Miejscowość",
     min: 1,
     max: 100,
     optional: false
   },
-  "adres.kodPocztowy": {
+  kodPocztowy: {
     type: String,
     label: "Kod pocztowy",
     min: 1,

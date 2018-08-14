@@ -83,9 +83,9 @@ export const updateManufacturer = new ValidatedMethod({
       {
         $set: {
           nazwa: formData.nazwa,
-          "adres.ulica": formData.adres.ulica,
-          "adres.miejscowosc": formData.adres.miejscowosc,
-          "adres.kodPocztowy": formData.adres.kodPocztowy,
+          ulica: formData.ulica,
+          miejscowosc: formData.miejscowosc,
+          kodPocztowy: formData.kodPocztowy,
           dodatkoweInformacje: formData.dodatkoweInformacje,
           dataModyfikacji: new Date()
         }

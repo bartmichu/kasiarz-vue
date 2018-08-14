@@ -39,13 +39,13 @@
             </v-flex>
 
             <v-flex xs12 md5>
-              <TextField :schema="getFieldSchema('adres.ulica')" :value="subscribedData.adres.ulica" :disabled="isDisabled" />
+              <TextField :schema="getFieldSchema('ulica')" :value="subscribedData.ulica" :disabled="isDisabled" />
             </v-flex>
             <v-flex xs12 md2>
-              <TextField :schema="getFieldSchema('adres.kodPocztowy')" :value="subscribedData.adres.kodPocztowy" :disabled="isDisabled" />
+              <TextField :schema="getFieldSchema('kodPocztowy')" :value="subscribedData.kodPocztowy" :disabled="isDisabled" />
             </v-flex>
             <v-flex xs12 md5>
-              <TextField :schema="getFieldSchema('adres.miejscowosc')" :value="subscribedData.adres.miejscowosc" :disabled="isDisabled" />
+              <TextField :schema="getFieldSchema('miejscowosc')" :value="subscribedData.miejscowosc" :disabled="isDisabled" />
             </v-flex>
 
             <v-flex xs12>

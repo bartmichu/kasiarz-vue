@@ -19,7 +19,7 @@
         <template slot="items" slot-scope="props">
           <tr @mouseover="setActiveItem(props.item._id)" @mouseout="resetActiveItem" @click="showManufacturer(props.item._id, false, $event)">
             <td>{{ props.item.nazwa }}</td>
-            <td class="text-xs-right">{{ props.item.adres.miejscowosc }}</td>
+            <td class="text-xs-right">{{ props.item.miejscowosc }}</td>
             <td class="text-xs-right">{{ $_dateHelpers_format(props.item.dataModyfikacji) }}</td>
             <td class="justify-center layout px-0">
               <v-menu v-show="isActiveItem(props.item._id)" bottom left dark>
@@ -88,7 +88,7 @@ export default {
         {
           text: "Miejscowość",
           align: "right",
-          value: "adres.miejscowosc"
+          value: "miejscowosc"
         },
         {
           text: "Data modyfikacji",

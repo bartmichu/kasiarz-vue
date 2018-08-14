@@ -11,7 +11,7 @@ Meteor.publish("manufacturers.list", function publishFunction() {
       {
         fields: {
           nazwa: 1,
-          "adres.miejscowosc": 1,
+          miejscowosc: 1,
           dataModyfikacji: 1
         }
       }

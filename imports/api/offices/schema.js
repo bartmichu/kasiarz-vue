@@ -24,64 +24,61 @@ const officeSchema = new SimpleSchema({
     max: 100,
     optional: false
   },
-  adres: {
-    type: Object
-  },
-  "adres.kraj": {
+  kraj: {
     type: String,
     label: "Kraj",
     max: 100,
     defaultValue: "Polska",
     optional: true
   },
-  "adres.wojewodztwoId": {
+  wojewodztwoId: {
     type: SimpleSchema.RegEx.Id,
     label: "Województwo",
     min: 1,
     max: 100,
     optional: false
   },
-  "adres.gminaDzielnica": {
+  gminaDzielnica: {
     type: String,
     label: "Gmina / Dzielnica",
     min: 1,
     max: 100,
     optional: false
   },
-  "adres.ulica": {
+  ulica: {
     type: String,
     label: "Ulica",
     max: 100,
     optional: true
   },
-  "adres.nrDomu": {
+  nrDomu: {
     type: String,
     label: "Numer domu",
     min: 1,
     max: 100,
     optional: false
   },
-  "adres.nrLokalu": {
+  nrLokalu: {
     type: String,
     label: "Numer lokalu",
     max: 100,
     optional: true
   },
-  "adres.miejscowosc": {
+  miejscowosc: {
     type: String,
     label: "Miejscowość",
     min: 1,
     max: 100,
     optional: false
   },
-  "adres.kodPocztowy": {
+  kodPocztowy: {
     type: String,
     label: "Kod pocztowy",
     min: 1,
     max: 100,
     optional: false
   },
-  "adres.poczta": {
+  poczta: {
     type: String,
     label: "Poczta",
     min: 1,

@@ -9,7 +9,7 @@ Meteor.publish("clients.list", function publishFunction() {
     const data = Clients.find(
       { uzytkownikId: actualUserId },
       {
-        fields: { nazwa: 1, nip: 1, "adres.miejscowosc": 1, dataModyfikacji: 1 }
+        fields: { nazwa: 1, nip: 1, miejscowosc: 1, dataModyfikacji: 1 }
       }
     );
 
