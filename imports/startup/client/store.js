@@ -10,7 +10,11 @@ export default new Vuex.Store({
     openDetailsDialog(state, payload) {
       router.push({
         name: payload.routeName,
-        params: { mongoId: payload.mongoId, editMode: payload.editMode }
+        params: {
+          mongoId: payload.mongoId,
+          editMode: payload.editMode,
+          addingMode: payload.addingMode
+        }
       });
     }
   }
