@@ -69,9 +69,6 @@ export default {
   name: "ManufacturersListPage",
 
   meteor: {
-    $subscribe: {
-      "manufacturers.list": []
-    },
     subscribedData() {
       return Manufacturers.find({});
     }
@@ -158,6 +155,10 @@ export default {
     EmptyListPlaceholder,
     LoadingIndicator,
     DeleteConfirmationDialog
+  },
+
+  created() {
+    this.$subscribe("manufacturers.list");
   }
 };
 </script>
