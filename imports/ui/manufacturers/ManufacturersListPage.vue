@@ -17,7 +17,7 @@
 
       <v-data-table v-else :headers="tableHeaders" :items="subscribedData" item-key="_id" hide-actions>
         <template slot="items" slot-scope="props">
-          <tr @mouseover="setActiveItem(props.item._id)" @mouseout="resetActiveItem" @click="showManufacturer(props.item._id, false, $event)">
+          <tr @mouseover="setActiveItem(props.item._id)" @mouseout="resetActiveItem" @click="showManufacturer(props.item._id, $event)">
             <td>{{ props.item.nazwa }}</td>
             <td class="text-xs-right">{{ props.item.miejscowosc }}</td>
             <td class="text-xs-right">{{ $_dateHelpers_format(props.item.dataModyfikacji) }}</td>
@@ -28,11 +28,14 @@
                 </v-btn>
 
                 <v-list>
-                  <v-list-tile @click="showManufacturer(props.item._id, false, $event)">
+                  <v-list-tile @click="showManufacturer(props.item._id, $event)">
                     <v-list-tile-title>przeglądaj</v-list-tile-title>
                   </v-list-tile>
-                  <v-list-tile @click="showManufacturer(props.item._id, true, $event)">
+                  <v-list-tile @click="showManufacturer(props.item._id, $event, true)">
                     <v-list-tile-title>edytuj</v-list-tile-title>
+                  </v-list-tile>
+                  <v-list-tile @click="showManufacturer(props.item._id, $event, true, true)">
+                    <v-list-tile-title>dodaj</v-list-tile-title>
                   </v-list-tile>
                   <v-list-tile @click.stop="showDeleteConfirmation(props.item._id)">
                     <v-list-tile-title>usuń</v-list-tile-title>
@@ -125,7 +128,7 @@ export default {
     isActiveItem(id) {
       return id === this.activeItemId;
     },
-    showManufacturer(mongoId, editMode, event) {
+    showManufacturer(mongoId, event, editMode, addingMode) {
       // do not change route if item menu button was clicked
       if (
         event.target.classList.contains("v-btn__content") ||
@@ -139,7 +142,8 @@ export default {
       this.$store.commit("openDetailsDialog", {
         routeName: "manufacturer",
         mongoId,
-        editMode
+        editMode,
+        addingMode
       });
     },
     showDeleteConfirmation(mongoId) {
