@@ -152,15 +152,6 @@ export default {
   },
 
   meteor: {
-    $subscribe: {
-      "manufacturers.one": function subscribe() {
-        return [this.mongoId];
-      },
-      "models.manufacturer.basic": function subscribe() {
-        return [this.mongoId];
-      },
-      "employees.extended": []
-    },
     subscribedData() {
       return Manufacturers.findOne({ _id: this.mongoId });
     },
@@ -246,6 +237,14 @@ export default {
     RelatedItemsPlaceholder,
     TextField,
     TextArea
+  },
+
+  created() {
+    if (!this.addingMode) {
+      this.$subscribe("manufacturers.one", this.mongoId);
+      this.$subscribe("models.manufacturer.basic", this.mongoId);
+      this.$subscribe("employees.extended");
+    }
   }
 };
 </script>
