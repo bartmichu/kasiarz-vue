@@ -4,6 +4,9 @@ import isNonEmptyString from "/imports/helpers/server/isNonEmptyString.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 
 Meteor.publish("manufacturers.list", function publishFunction() {
+  // TODO: remove in production
+  Meteor._sleepForMs(1000);
+
   const actualUserId = Meteor.userId();
   if (actualUserId) {
     const data = Manufacturers.find(
@@ -26,6 +29,9 @@ Meteor.publish("manufacturers.list", function publishFunction() {
 });
 
 Meteor.publish("manufacturers.basic", function publishFunction() {
+  // TODO: remove in production
+  Meteor._sleepForMs(1000);
+
   const actualUserId = Meteor.userId();
   if (actualUserId) {
     const data = Manufacturers.find(
@@ -42,6 +48,9 @@ Meteor.publish("manufacturers.basic", function publishFunction() {
 });
 
 Meteor.publish("manufacturers.one", function publishFunction(manufacturerId) {
+  // TODO: remove in production
+  Meteor._sleepForMs(1000);
+
   const actualUserId = Meteor.userId();
   if (actualUserId) {
     check(manufacturerId, isNonEmptyString);
