@@ -53,65 +53,67 @@
             </v-flex>
           </v-layout>
 
-          <v-divider class="mt-5" />
+          <div v-if="!addingMode">
+            <v-divider class="mt-5" />
 
-          <v-layout row wrap>
-            <v-flex xs12>
-              <span class="title">Powiązane modele urządzeń</span>
-            </v-flex>
+            <v-layout row wrap>
+              <v-flex xs12>
+                <span class="title">Powiązane modele urządzeń</span>
+              </v-flex>
 
-            <v-flex v-if="hasRelatedModels" xs12>
-              <v-data-table :items="relatedModels" hide-actions hide-headers item-key="_id">
-                <template slot="items" slot-scope="props">
-                  <td>{{ props.item.nazwa }}</td>
-                </template>
-              </v-data-table>
-            </v-flex>
-            <v-flex v-else>
-              <RelatedItemsPlaceholder />
-            </v-flex>
-          </v-layout>
+              <v-flex v-if="hasRelatedModels" xs12>
+                <v-data-table :items="relatedModels" hide-actions hide-headers item-key="_id">
+                  <template slot="items" slot-scope="props">
+                    <td>{{ props.item.nazwa }}</td>
+                  </template>
+                </v-data-table>
+              </v-flex>
+              <v-flex v-else>
+                <RelatedItemsPlaceholder />
+              </v-flex>
+            </v-layout>
 
-          <v-divider class="mt-5" />
+            <v-divider class="mt-5" />
 
-          <v-layout row wrap>
-            <v-flex xs12>
-              <span class="title">Powiązani serwisanci</span>
-            </v-flex>
+            <v-layout row wrap>
+              <v-flex xs12>
+                <span class="title">Powiązani serwisanci</span>
+              </v-flex>
 
-            <v-flex v-if="hasRelatedEmployees" xs12>
-              <v-data-table :items="relatedEmployees" hide-actions hide-headers item-key="_id">
-                <template slot="items" slot-scope="props">
-                  <td>{{ props.item.imieNazwisko }}</td>
-                </template>
-              </v-data-table>
-            </v-flex>
-            <v-flex v-else>
-              <RelatedItemsPlaceholder />
-            </v-flex>
-          </v-layout>
+              <v-flex v-if="hasRelatedEmployees" xs12>
+                <v-data-table :items="relatedEmployees" hide-actions hide-headers item-key="_id">
+                  <template slot="items" slot-scope="props">
+                    <td>{{ props.item.imieNazwisko }}</td>
+                  </template>
+                </v-data-table>
+              </v-flex>
+              <v-flex v-else>
+                <RelatedItemsPlaceholder />
+              </v-flex>
+            </v-layout>
 
-          <v-divider class="mt-5" />
+            <v-divider class="mt-5" />
 
-          <v-layout row wrap>
-            <v-flex xs12>
-              <span class="title">Metadane</span>
-            </v-flex>
+            <v-layout row wrap>
+              <v-flex xs12>
+                <span class="title">Metadane</span>
+              </v-flex>
 
-            <v-flex xs12 md6>
-              <TextField :schema="getFieldSchema('dataUtworzenia')" :value="$_dateHelpers_format(subscribedData.dataUtworzenia)" />
-            </v-flex>
-            <v-flex xs12 md6>
-              <TextField :schema="getFieldSchema('dataModyfikacji')" :value="$_dateHelpers_format(subscribedData.dataModyfikacji)" />
-            </v-flex>
-          </v-layout>
+              <v-flex xs12 md6>
+                <TextField :schema="getFieldSchema('dataUtworzenia')" :value="$_dateHelpers_format(subscribedData.dataUtworzenia)" />
+              </v-flex>
+              <v-flex xs12 md6>
+                <TextField :schema="getFieldSchema('dataModyfikacji')" :value="$_dateHelpers_format(subscribedData.dataModyfikacji)" />
+              </v-flex>
+            </v-layout>
 
-          <v-divider class="mt-5" />
+            <v-divider class="mt-5" />
 
-          <v-layout row wrap>
-            <v-btn color="secondary" depressed @click="closeDialog" :disabled="isEditMode">zamknij</v-btn>
-            <v-btn color="secondary" depressed @click="showDeleteConfirmation" :disabled="isEditMode">usuń</v-btn>
-          </v-layout>
+            <v-layout row wrap>
+              <v-btn color="secondary" depressed @click="closeDialog" :disabled="isEditMode">zamknij</v-btn>
+              <v-btn color="secondary" depressed @click="showDeleteConfirmation" :disabled="isEditMode">usuń</v-btn>
+            </v-layout>
+          </div>
         </v-container>
       </v-card-text>
 
@@ -148,6 +150,11 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    addingMode: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
 
@@ -180,8 +187,11 @@ export default {
 
   computed: {
     isSubscriptionReady() {
-      // TODO: refactor
+      if (this.addingMode) {
+        return true;
+      }
       return (
+        // TODO: refactor
         this.$subReady["manufacturers.one"] &&
         this.$subReady["models.manufacturer.basic"] &&
         this.$subReady["employees.extended"]
