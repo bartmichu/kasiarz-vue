@@ -27,11 +27,7 @@
           <v-layout row wrap>
             <v-flex xs12>
               <span class="title">Podstawowe informacje</span>
-              <v-btn v-if="isDisabled" color="secondary" depressed @click="toggleEditMode()">edytuj</v-btn>
-              <span v-else>
-                <v-btn color="secondary" depressed @click="toggleEditMode(false)">anuluj</v-btn>
-                <v-btn color="secondary" depressed @click="toggleEditMode(false)">zapisz</v-btn>
-              </span>
+              <ItemEditMenu :edit-mode.sync="isEditMode" />
             </v-flex>
 
             <v-flex xs12>
@@ -129,6 +125,7 @@
 <script>
 import { dateHelpers } from "/imports/startup/client/mixins.js";
 import DeleteConfirmationDialog from "/imports/ui/components/DeleteConfirmationDialog.vue";
+import ItemEditMenu from "/imports/ui/components/ItemEditMenu.vue";
 import LoadingIndicator from "/imports/ui/components/LoadingIndicator.vue";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Models from "/imports/api/models/models.js";
@@ -244,6 +241,7 @@ export default {
   components: {
     LoadingIndicator,
     DeleteConfirmationDialog,
+    ItemEditMenu,
     RelatedItemsPlaceholder,
     TextField,
     TextArea
