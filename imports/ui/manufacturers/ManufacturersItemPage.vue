@@ -96,10 +96,10 @@
               </v-flex>
 
               <v-flex xs12 md6>
-                <TextField :schema="getFieldSchema('dataUtworzenia')" :value="$_dateHelpers_format(subscribedData.dataUtworzenia)" />
+                <TextField :schema="getFieldSchema('dataUtworzenia')" :value="subscribedData.dataUtworzenia | formatDateLong" />
               </v-flex>
               <v-flex xs12 md6>
-                <TextField :schema="getFieldSchema('dataModyfikacji')" :value="$_dateHelpers_format(subscribedData.dataModyfikacji)" />
+                <TextField :schema="getFieldSchema('dataModyfikacji')" :value="subscribedData.dataModyfikacji | formatDateLong " />
               </v-flex>
             </v-layout>
 
@@ -123,7 +123,6 @@
 
 
 <script>
-import { dateHelpers } from "/imports/startup/client/mixins.js";
 import DeleteConfirmationDialog from "/imports/ui/components/DeleteConfirmationDialog.vue";
 import ItemEditMenu from "/imports/ui/components/ItemEditMenu.vue";
 import LoadingIndicator from "/imports/ui/components/LoadingIndicator.vue";
@@ -235,8 +234,6 @@ export default {
       return this.collectionSchema.getDefinition(fieldName);
     }
   },
-
-  mixins: [dateHelpers],
 
   components: {
     LoadingIndicator,
