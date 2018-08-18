@@ -1,8 +1,8 @@
 <template>
-  <v-btn v-if="!editMode" color="secondary" depressed @click="updateEditMode(true)">edytuj</v-btn>
+  <v-btn v-if="!editMode" color="secondary" depressed @click="editHandler()">edytuj</v-btn>
   <span v-else>
-    <v-btn color="secondary" depressed @click="updateEditMode(false)">anuluj</v-btn>
-    <v-btn color="secondary" depressed @click="updateEditMode(false)">zapisz</v-btn>
+    <v-btn color="secondary" depressed @click="cancelHandler()">anuluj</v-btn>
+    <v-btn color="secondary" depressed @click="saveHandler()">zapisz</v-btn>
   </span>
 </template>
 
@@ -20,8 +20,14 @@ export default {
   },
 
   methods: {
-    updateEditMode(state) {
-      this.$emit("update:editMode", state);
+    editHandler() {
+      this.$emit("update:editMode", true);
+    },
+    cancelHandler() {
+      this.$emit("cancelChanges");
+    },
+    saveHandler() {
+      this.$emit("saveChanges");
     }
   }
 };
