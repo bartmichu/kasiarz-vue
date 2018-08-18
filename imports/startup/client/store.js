@@ -8,14 +8,22 @@ export default new Vuex.Store({
   mutations: {
     // TODO move to mixin?
     openDetailsDialog(state, payload) {
-      router.push({
-        name: payload.routeName,
-        params: {
-          mongoId: payload.mongoId,
-          editMode: payload.editMode,
-          addingMode: payload.addingMode
-        }
-      });
+      if (payload.addingMode === true) {
+        router.push({
+          name: payload.routeName,
+          params: {
+            addingMode: true
+          }
+        });
+      } else {
+        router.push({
+          name: payload.routeName,
+          params: {
+            mongoId: payload.mongoId,
+            editMode: payload.editMode
+          }
+        });
+      }
     }
   }
 });
