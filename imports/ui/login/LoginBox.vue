@@ -51,7 +51,7 @@ export default {
         typeof this.username === "string" ? this.username.trim() : "";
     },
     signIn: function signIn() {
-      if (!this.failedLogin) {
+      if (this.failedLogin === false) {
         this.trimUsername();
         if (
           this.username !== null &&
