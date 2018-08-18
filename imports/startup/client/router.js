@@ -57,6 +57,15 @@ const router = new VueRouter({
               meta: {
                 methodPrefix: "manufacturers"
               }
+            },
+            {
+              path: "dodaj",
+              name: "manufacturer-new",
+              component: ManufacturersItemPage,
+              props: true,
+              meta: {
+                methodPrefix: "manufacturers"
+              }
             }
           ]
         },
