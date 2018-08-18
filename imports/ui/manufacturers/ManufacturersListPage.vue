@@ -34,9 +34,6 @@
                   <v-list-tile @click="showManufacturer(props.item._id, $event, true)">
                     <v-list-tile-title>edytuj</v-list-tile-title>
                   </v-list-tile>
-                  <v-list-tile @click="addManufacturer()">
-                    <v-list-tile-title>dodaj</v-list-tile-title>
-                  </v-list-tile>
                   <v-list-tile @click.stop="showDeleteConfirmation(props.item._id)">
                     <v-list-tile-title>usuń</v-list-tile-title>
                   </v-list-tile>
