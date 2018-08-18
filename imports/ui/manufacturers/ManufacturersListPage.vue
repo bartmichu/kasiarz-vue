@@ -4,7 +4,7 @@
 
     <v-toolbar card color="grey lighten-2">
       <v-toolbar-title>Lista producentów urządzeń</v-toolbar-title>
-      <v-btn depressed color="secondary">dodaj</v-btn>
+      <v-btn depressed color="secondary" @click="addManufacturer()">dodaj</v-btn>
     </v-toolbar>
 
     <v-card-text v-if="!isSubscriptionReady">
@@ -34,7 +34,7 @@
                   <v-list-tile @click="showManufacturer(props.item._id, $event, true)">
                     <v-list-tile-title>edytuj</v-list-tile-title>
                   </v-list-tile>
-                  <v-list-tile @click="showManufacturer(props.item._id, $event, true, true)">
+                  <v-list-tile @click="addManufacturer()">
                     <v-list-tile-title>dodaj</v-list-tile-title>
                   </v-list-tile>
                   <v-list-tile @click.stop="showDeleteConfirmation(props.item._id)">
@@ -124,7 +124,7 @@ export default {
     isActiveItem(id) {
       return id === this.activeItemId;
     },
-    showManufacturer(mongoId, event, editMode, addingMode) {
+    showManufacturer(mongoId, event, editMode) {
       // do not change route if item menu button was clicked
       if (
         event.target.classList.contains("v-btn__content") ||
@@ -138,8 +138,13 @@ export default {
       this.$store.commit("openDetailsDialog", {
         routeName: "manufacturer",
         mongoId,
-        editMode,
-        addingMode
+        editMode
+      });
+    },
+    addManufacturer() {
+      this.$store.commit("openDetailsDialog", {
+        routeName: "manufacturer-new",
+        addingMode: true
       });
     },
     showDeleteConfirmation(mongoId) {

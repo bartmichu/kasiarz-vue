@@ -126,6 +126,7 @@
 import DeleteConfirmationDialog from "/imports/ui/components/DeleteConfirmationDialog.vue";
 import ItemEditMenu from "/imports/ui/components/ItemEditMenu.vue";
 import LoadingIndicator from "/imports/ui/components/LoadingIndicator.vue";
+import manufacturerDummy from "/imports/api/manufacturers/dummy.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
 import Models from "/imports/api/models/models.js";
 import Employees from "/imports/api/employees/employees.js";
@@ -156,7 +157,9 @@ export default {
 
   meteor: {
     subscribedData() {
-      return Manufacturers.findOne({ _id: this.mongoId });
+      return this.addingMode
+        ? manufacturerDummy
+        : Manufacturers.findOne({ _id: this.mongoId });
     },
     relatedModels() {
       return Models.find();
@@ -175,7 +178,7 @@ export default {
       // TODO: re-enable when Veutify #2201 gets fixed
       // isFullscreen: this.$vuetify.breakpoint.xs,
       isFullscreen: true,
-      isEditMode: this.editMode,
+      isEditMode: this.addingMode || this.editMode,
       isDeleteConfirmationVisible: false,
       collectionSchema: Manufacturers.simpleSchema()
     };
@@ -245,7 +248,7 @@ export default {
   },
 
   created() {
-    if (!this.addingMode) {
+    if (this.addingMode === false) {
       this.$subscribe("manufacturers.one", this.mongoId);
       this.$subscribe("models.manufacturer.basic", this.mongoId);
       this.$subscribe("employees.extended");
