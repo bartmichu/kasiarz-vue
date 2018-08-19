@@ -27,7 +27,7 @@
           <v-layout row wrap>
             <v-flex xs12>
               <span class="title">Podstawowe informacje</span>
-              <ItemEditMenu :edit-mode.sync="isEditMode" />
+              <ItemEditMenu :edit-mode.sync="isEditMode" @cancelChanges="cancelChangesHandler" @saveChanges="saveChangesHandler" />
             </v-flex>
 
             <v-flex xs12>
@@ -117,6 +117,8 @@
 
     <DeleteConfirmationDialog :is-visible.sync="isDeleteConfirmationVisible" :mongo-id="mongoId" title="Usunąć producenta?" @itemDeleted="closeDialog" />
 
+    <EditErrorDialog :is-visible.sync="isErrorDialogVisible" />
+
   </v-dialog>
 
 </template>
@@ -124,10 +126,12 @@
 
 <script>
 import DeleteConfirmationDialog from "/imports/ui/components/DeleteConfirmationDialog.vue";
+import EditErrorDialog from "/imports/ui/components/EditErrorDialog.vue";
 import ItemEditMenu from "/imports/ui/components/ItemEditMenu.vue";
 import LoadingIndicator from "/imports/ui/components/LoadingIndicator.vue";
 import manufacturerDummy from "/imports/api/manufacturers/dummy.js";
 import Manufacturers from "/imports/api/manufacturers/manufacturers.js";
+import { Meteor } from "meteor/meteor";
 import Models from "/imports/api/models/models.js";
 import Employees from "/imports/api/employees/employees.js";
 import RelatedItemsPlaceholder from "/imports/ui/components/RelatedItemsPlaceholder.vue";
@@ -180,6 +184,7 @@ export default {
       isFullscreen: true,
       isEditMode: this.addingMode || this.editMode,
       isDeleteConfirmationVisible: false,
+      isErrorDialogVisible: false,
       collectionSchema: Manufacturers.simpleSchema()
     };
   },
@@ -233,12 +238,48 @@ export default {
     showDeleteConfirmation() {
       this.isDeleteConfirmationVisible = true;
     },
+    showEditErrorDialog() {
+      this.isErrorDialogVisible = true;
+    },
     getFieldSchema(fieldName) {
       return this.collectionSchema.getDefinition(fieldName);
+    },
+    cancelChangesHandler() {
+      if (this.INITIAL_EDIT_MODE) {
+        this.closeDialog();
+      } else {
+        // TODO: reset form data
+        this.toggleEditMode(false);
+      }
+    },
+    saveChangesHandler() {
+      const { methodPrefix } = this.$router.currentRoute.meta.methodPrefix;
+      const validationContext = this.collectionSchema.newContext("form");
+      const foo = this.collectionSchema.clean({});
+
+      validationContext.validate(foo);
+      if (validationContext.isValid()) {
+        Meteor.call(
+          methodPrefix.concat(".update"),
+          { documentId: this.mongoId, foo },
+          error => {
+            if (error) {
+              this.showEditErrorDialog();
+            } else if (this.INITIAL_EDIT_MODE) {
+              this.closeDialog();
+            } else {
+              this.toggleEditMode(false);
+            }
+          }
+        );
+      } else {
+        this.showEditErrorDialog();
+      }
     }
   },
 
   components: {
+    EditErrorDialog,
     LoadingIndicator,
     DeleteConfirmationDialog,
     ItemEditMenu,
@@ -248,6 +289,12 @@ export default {
   },
 
   created() {
+    if (this.editMode) {
+      this.INITIAL_EDIT_MODE = true;
+    } else {
+      this.INITIAL_EDIT_MODE = false;
+    }
+
     if (this.addingMode === false) {
       this.$subscribe("manufacturers.one", this.mongoId);
       this.$subscribe("models.manufacturer.basic", this.mongoId);
