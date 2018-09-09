@@ -5,7 +5,7 @@
     <v-card color="grey lighten-4">
 
       <v-toolbar flat dark :color="getToolbarColor">
-        <v-toolbar-title dark>Dane producenta</v-toolbar-title>
+        <v-toolbar-title dark>{{ getToolbarTitle }}</v-toolbar-title>
         <v-spacer/>
         <!-- TODO: re-enable when Veutify #2201 gets fixed -->
         <!-- <v-btn icon @click="toggleFullscreen()">
@@ -212,6 +212,11 @@ export default {
     },
     getToolbarColor() {
       return this.isEditMode === true ? "red" : "primary";
+    },
+    getToolbarTitle() {
+      return this.addingMode === true
+        ? "Dane nowego producenta"
+        : "Dane producenta";
     }
   },
 
