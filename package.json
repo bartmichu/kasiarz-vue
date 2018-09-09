@@ -13,7 +13,7 @@
     "vue": "^2.5.17",
     "vue-meteor-tracker": "^1.2.3",
     "vue-router": "^3.0.1",
-    "vuetify": "^1.1.13",
+    "vuetify": "^1.2.3",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
