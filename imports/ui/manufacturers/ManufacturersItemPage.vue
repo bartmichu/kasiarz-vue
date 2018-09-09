@@ -245,7 +245,7 @@ export default {
       return this.collectionSchema.getDefinition(fieldName);
     },
     cancelChangesHandler() {
-      if (this.INITIAL_EDIT_MODE) {
+      if (this.INITIAL_EDIT_MODE || this.addingMode) {
         this.closeDialog();
       } else {
         // TODO: reset form data
@@ -265,7 +265,7 @@ export default {
           error => {
             if (error) {
               this.showEditErrorDialog();
-            } else if (this.INITIAL_EDIT_MODE) {
+            } else if (this.INITIAL_EDIT_MODE || this.addingMode) {
               this.closeDialog();
             } else {
               this.toggleEditMode(false);
