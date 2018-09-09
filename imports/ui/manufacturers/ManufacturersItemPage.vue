@@ -4,7 +4,7 @@
 
     <v-card color="grey lighten-4">
 
-      <v-toolbar flat dark color="primary">
+      <v-toolbar flat dark :color="getToolbarColor">
         <v-toolbar-title dark>Dane producenta</v-toolbar-title>
         <v-spacer/>
         <!-- TODO: re-enable when Veutify #2201 gets fixed -->
@@ -209,6 +209,9 @@ export default {
     },
     hasRelatedEmployees() {
       return this.relatedEmployees.length > 0;
+    },
+    getToolbarColor() {
+      return this.isEditMode === true ? "red" : "primary";
     }
   },
 
