@@ -1,6 +1,6 @@
 <template>
 
-  <v-toolbar dark color="secondary">
+  <v-toolbar dark>
 
     <!-- <v-toolbar-title></v-toolbar-title> -->
 
@@ -12,7 +12,7 @@
         <v-icon left dark>memory</v-icon>Urządzenia
       </v-btn>
     </v-toolbar-items>
-    
+
     <v-divider vertical inset />
     <v-spacer/>
     <v-divider vertical inset />
@@ -47,6 +47,10 @@
         <v-icon>face</v-icon>
       </v-btn>
       <v-list>
+        <v-subheader>{{ user }}</v-subheader>
+        <v-list-tile @click="">
+          <v-list-tile-title>Profil</v-list-tile-title>
+        </v-list-tile>
         <v-list-tile @click="signOut">
           <v-list-tile-title>Wyloguj się</v-list-tile-title>
         </v-list-tile>
@@ -63,6 +67,27 @@ import { Meteor } from "meteor/meteor";
 
 export default {
   name: "TheToolbar",
+
+  computed: {
+    user() {
+      let username = "";
+      let firstName = "";
+      let lastName = "";
+
+      if (Meteor.user()) {
+        if (Meteor.user().username) {
+          username = Meteor.user().username.toUpperCase();
+        }
+
+        if (Meteor.user().profile && Meteor.user().profile.daneOsobowe) {
+          firstName = Meteor.user().profile.daneOsobowe.imie || firstName;
+          lastName = Meteor.user().profile.daneOsobowe.nazwisko || lastName;
+        }
+      }
+
+      return `${firstName} ${lastName} (${username})`.trim();
+    }
+  },
 
   methods: {
     signOut: function signOut() {
