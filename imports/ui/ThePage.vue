@@ -1,7 +1,6 @@
 <template>
 
   <div>
-    <TheStatusBar/>
     <TheToolbar/>
     <v-content class="mt-4">
       <v-container fluid>
@@ -15,11 +14,10 @@
 
 <script>
 import TheToolbar from "/imports/ui/TheToolbar.vue";
-import TheStatusBar from "/imports/ui/TheStatusBar.vue";
 
 export default {
   name: "ThePage",
 
-  components: { TheToolbar, TheStatusBar }
+  components: { TheToolbar }
 };
 </script>
