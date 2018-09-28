@@ -14,7 +14,7 @@
     </v-toolbar-items>
 
     <v-divider vertical inset />
-    <v-spacer/>
+    <v-spacer />
     <v-divider vertical inset />
 
     <v-menu dark left>
@@ -28,14 +28,14 @@
         <v-list-tile :to="{name: 'models'}">
           <v-list-tile-title>Modele urządzeń</v-list-tile-title>
         </v-list-tile>
-        <v-divider/>
+        <v-divider />
         <v-list-tile :to="{name: 'shops'}">
           <v-list-tile-title>Serwisy</v-list-tile-title>
         </v-list-tile>
         <v-list-tile :to="{name: 'employees'}">
           <v-list-tile-title>Serwisanci</v-list-tile-title>
         </v-list-tile>
-        <v-divider/>
+        <v-divider />
         <v-list-tile :to="{name: 'offices'}">
           <v-list-tile-title>Urzędy skarbowe</v-list-tile-title>
         </v-list-tile>
