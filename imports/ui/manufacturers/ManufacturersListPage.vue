@@ -8,7 +8,7 @@
     </v-toolbar>
 
     <v-card-text v-if="!isSubscriptionReady">
-      <LoadingIndicator/>
+      <LoadingIndicator />
     </v-card-text>
 
     <v-card-text v-else>
@@ -46,7 +46,7 @@
 
     </v-card-text>
 
-    <router-view/>
+    <router-view />
 
     <DeleteConfirmationDialog :is-visible.sync="isDeleteConfirmationVisible" :mongo-id="selectedItemId" title="Usunąć producenta?" />
 
