@@ -1,6 +1,6 @@
 <template>
 
-  <v-toolbar dark>
+  <v-toolbar dark dense>
 
     <!-- <v-toolbar-title></v-toolbar-title> -->
 
