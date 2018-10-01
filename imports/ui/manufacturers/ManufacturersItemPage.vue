@@ -6,7 +6,7 @@
 
       <v-toolbar flat dark :color="getToolbarColor">
         <v-toolbar-title dark>{{ getToolbarTitle }}</v-toolbar-title>
-        <v-spacer/>
+        <v-spacer />
         <!-- TODO: re-enable when Veutify #2201 gets fixed -->
         <!-- <v-btn icon @click="toggleFullscreen()">
           <v-icon>check_box_outline_blank</v-icon>
@@ -17,12 +17,12 @@
       </v-toolbar>
 
       <v-card-text v-if="!isSubscriptionReady">
-        <LoadingIndicator/>
+        <LoadingIndicator />
       </v-card-text>
       <v-card-text v-else>
         <v-container fluid grid-list-lg>
 
-          <v-divider/>
+          <v-divider />
 
           <v-layout row wrap>
             <v-flex xs12>
