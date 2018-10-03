@@ -1,8 +1,8 @@
 <template>
-  <v-btn v-if="!editMode" color="secondary" depressed @click="editHandler()">edytuj</v-btn>
+  <v-btn v-if="!editMode" outline @click="editHandler()">edytuj</v-btn>
   <span v-else>
-    <v-btn color="secondary" depressed @click="cancelHandler()">anuluj</v-btn>
-    <v-btn color="secondary" depressed @click="saveHandler()">zapisz</v-btn>
+    <v-btn outline @click="saveHandler()">zapisz</v-btn>
+    <v-btn outline @click="cancelHandler()">anuluj</v-btn>
   </span>
 </template>
 

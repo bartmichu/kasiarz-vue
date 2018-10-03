@@ -11,9 +11,9 @@
         <!-- <v-btn icon @click="toggleFullscreen()">
           <v-icon>check_box_outline_blank</v-icon>
         </v-btn> -->
-        <v-btn icon @click="closeDialog" :disabled="isEditMode">
-          <v-icon>close</v-icon>
-        </v-btn>
+        <ItemEditMenu :edit-mode.sync="isEditMode" @cancelChanges="cancelChangesHandler" @saveChanges="saveChangesHandler" />
+        <v-btn outline @click="showDeleteConfirmation" :disabled="isEditMode">usuń</v-btn>
+        <v-btn outline @click="closeDialog" :disabled="isEditMode">zamknij</v-btn>
       </v-toolbar>
 
       <v-card-text v-if="!isSubscriptionReady">
@@ -27,7 +27,6 @@
           <v-layout row wrap>
             <v-flex xs12>
               <span class="title">Podstawowe informacje</span>
-              <ItemEditMenu :edit-mode.sync="isEditMode" @cancelChanges="cancelChangesHandler" @saveChanges="saveChangesHandler" />
             </v-flex>
 
             <v-flex xs12>
@@ -46,7 +45,7 @@
 
             <v-flex xs12>
               <TextArea :schema="getFieldSchema('dodatkoweInformacje')" :value="subscribedData.dodatkoweInformacje" :disabled="isDisabled" />
-            </v-flex>
+              </v-flex>
           </v-layout>
 
           <div v-if="!addingMode">
@@ -101,13 +100,6 @@
               <v-flex xs12 md6>
                 <TextField :schema="getFieldSchema('dataModyfikacji')" :value="subscribedData.dataModyfikacji | formatDateLong " />
               </v-flex>
-            </v-layout>
-
-            <v-divider class="mt-5" />
-
-            <v-layout row wrap>
-              <v-btn color="secondary" depressed @click="closeDialog" :disabled="isEditMode">zamknij</v-btn>
-              <v-btn color="secondary" depressed @click="showDeleteConfirmation" :disabled="isEditMode">usuń</v-btn>
             </v-layout>
           </div>
         </v-container>
