@@ -4,6 +4,7 @@
 
     <v-toolbar card color="grey lighten-2">
       <v-toolbar-title>Lista producentów urządzeń</v-toolbar-title>
+      <v-spacer />
       <v-btn depressed color="secondary" @click="addManufacturer()">dodaj</v-btn>
     </v-toolbar>
 
