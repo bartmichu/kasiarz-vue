@@ -45,7 +45,7 @@
 
             <v-flex xs12>
               <TextArea :schema="getFieldSchema('dodatkoweInformacje')" :value="subscribedData.dodatkoweInformacje" :disabled="isDisabled" />
-              </v-flex>
+            </v-flex>
           </v-layout>
 
           <div v-if="!addingMode">
