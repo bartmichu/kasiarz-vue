@@ -12,8 +12,15 @@
           <v-icon>check_box_outline_blank</v-icon>
         </v-btn> -->
         <ItemEditMenu :edit-mode.sync="isEditMode" @cancelChanges="cancelChangesHandler" @saveChanges="saveChangesHandler" />
-        <v-btn outline @click="showDeleteConfirmation" :disabled="isEditMode">usuń</v-btn>
-        <v-btn outline @click="closeDialog" :disabled="isEditMode">zamknij</v-btn>
+        <v-btn v-if="$vuetify.breakpoint.xs" icon @click="showDeleteConfirmation" :disabled="isEditMode">
+          <v-icon>delete</v-icon>
+        </v-btn>
+        <v-btn v-else outline @click="showDeleteConfirmation" :disabled="isEditMode">usuń</v-btn>
+
+        <v-btn v-if="$vuetify.breakpoint.xs" icon @click="closeDialog" :disabled="isEditMode">
+          <v-icon>close</v-icon>
+        </v-btn>
+        <v-btn v-else outline @click="closeDialog" :disabled="isEditMode">zamknij</v-btn>
       </v-toolbar>
 
       <v-card-text v-if="!isSubscriptionReady">
@@ -206,8 +213,14 @@ export default {
       return this.isEditMode === true ? "red" : "primary";
     },
     getToolbarTitle() {
-      return this.addingMode === true
-        ? "Dane nowego producenta"
+      if (this.addingMode === true) {
+        return this.$vuetify.breakpoint.xs === true
+          ? "Nowy producent"
+          : "Dane nowego producenta";
+      }
+
+      return this.$vuetify.breakpoint.xs === true
+        ? "Producent"
         : "Dane producenta";
     }
   },

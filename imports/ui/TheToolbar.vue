@@ -6,10 +6,16 @@
 
     <v-toolbar-items>
       <v-btn flat :to="{name: 'clients'}">
-        <v-icon left dark>perm_contact_calendar</v-icon>Klienci
+        <v-icon v-if="$vuetify.breakpoint.xs" dark>perm_contact_calendar</v-icon>
+        <span v-else>
+          <v-icon left dark>perm_contact_calendar</v-icon>Klienci
+        </span>
       </v-btn>
       <v-btn flat :to="{name: 'devices'}">
-        <v-icon left dark>memory</v-icon>Urządzenia
+        <v-icon v-if="$vuetify.breakpoint.xs" dark>memory</v-icon>
+        <span v-else>
+          <v-icon left dark>memory</v-icon>Urządzenia
+        </span>
       </v-btn>
     </v-toolbar-items>
 

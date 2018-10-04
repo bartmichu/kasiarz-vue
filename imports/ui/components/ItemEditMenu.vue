@@ -1,8 +1,20 @@
 <template>
-  <v-btn v-if="!editMode" outline @click="editHandler()">edytuj</v-btn>
+  <span v-if="!editMode">
+    <v-btn v-if="$vuetify.breakpoint.xs" icon @click="editHandler">
+      <v-icon>edit</v-icon>
+    </v-btn>
+    <v-btn v-else outline @click="editHandler">edytuj</v-btn>
+  </span>
   <span v-else>
-    <v-btn outline @click="saveHandler()">zapisz</v-btn>
-    <v-btn outline @click="cancelHandler()">anuluj</v-btn>
+    <v-btn v-if="$vuetify.breakpoint.xs" icon @click="saveHandler">
+      <v-icon>save</v-icon>
+    </v-btn>
+    <v-btn v-else outline @click="saveHandler">zapisz</v-btn>
+
+    <v-btn v-if="$vuetify.breakpoint.xs" icon @click="cancelHandler">
+      <v-icon>cancel</v-icon>
+    </v-btn>
+    <v-btn v-else outline @click="cancelHandler">anuluj</v-btn>
   </span>
 </template>
 

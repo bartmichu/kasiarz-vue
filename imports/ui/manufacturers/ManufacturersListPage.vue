@@ -3,9 +3,12 @@
   <v-card>
 
     <v-toolbar card color="grey lighten-2">
-      <v-toolbar-title>Lista producentów urządzeń</v-toolbar-title>
+      <v-toolbar-title>{{ getToolbarTitle }}</v-toolbar-title>
       <v-spacer />
-      <v-btn depressed color="secondary" @click="addManufacturer()">dodaj</v-btn>
+      <v-btn v-if="$vuetify.breakpoint.xs" icon @click="addManufacturer()">
+        <v-icon>playlist_add</v-icon>
+      </v-btn>
+      <v-btn v-else depressed color="secondary" @click="addManufacturer()">dodaj</v-btn>
     </v-toolbar>
 
     <v-card-text v-if="!isSubscriptionReady">
@@ -109,6 +112,11 @@ export default {
     },
     isEmptyCollection() {
       return this.subscribedData.length === 0;
+    },
+    getToolbarTitle() {
+      return this.$vuetify.breakpoint.xs === true
+        ? "Producenci"
+        : "Lista producentów urządzeń";
     }
   },
 
