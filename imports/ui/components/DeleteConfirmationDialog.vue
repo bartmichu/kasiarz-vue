@@ -1,6 +1,6 @@
 <template>
 
-  <v-dialog v-model="isVisible" :fullscreen="$vuetify.breakpoint.xs" persistent max-width="50%">
+  <v-dialog v-model="isVisible" persistent :max-width="getMaxWidth">
 
     <v-card :color="getCardColor">
 
@@ -59,6 +59,9 @@ export default {
   computed: {
     getCardColor() {
       return this.actionFailed ? "error" : "";
+    },
+    getMaxWidth() {
+      return this.$vuetify.breakpoint.xs ? "99%" : "50%";
     }
   },
 
