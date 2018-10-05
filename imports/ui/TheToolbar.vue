@@ -5,17 +5,18 @@
     <!-- <v-toolbar-title></v-toolbar-title> -->
 
     <v-toolbar-items>
-      <v-btn flat :to="{name: 'clients'}">
-        <v-icon v-if="$vuetify.breakpoint.xs" dark>perm_contact_calendar</v-icon>
-        <span v-else>
-          <v-icon left dark>perm_contact_calendar</v-icon>Klienci
-        </span>
+      <v-btn v-if="$vuetify.breakpoint.xs" icon :to="{name: 'clients'}">
+        <v-icon dark>perm_contact_calendar</v-icon>
       </v-btn>
-      <v-btn flat :to="{name: 'devices'}">
-        <v-icon v-if="$vuetify.breakpoint.xs" dark>memory</v-icon>
-        <span v-else>
-          <v-icon left dark>memory</v-icon>Urządzenia
-        </span>
+      <v-btn v-else flat :to="{name: 'clients'}">
+        <v-icon left dark>perm_contact_calendar</v-icon>Klienci
+      </v-btn>
+
+      <v-btn v-if="$vuetify.breakpoint.xs" icon :to="{name: 'devices'}">
+        <v-icon dark>memory</v-icon>
+      </v-btn>
+      <v-btn v-else flat :to="{name: 'devices'}">
+        <v-icon left dark>memory</v-icon>Urządzenia
       </v-btn>
     </v-toolbar-items>
 
