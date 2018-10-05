@@ -8,7 +8,7 @@
         <v-toolbar-title dark>{{ getToolbarTitle }}</v-toolbar-title>
         <v-spacer />
         <!-- TODO: re-enable when Veutify #2201 gets fixed -->
-        <!-- <v-btn icon @click="toggleFullscreen()">
+        <!-- <v-btn icon @click="toggleFullscreen">
           <v-icon>check_box_outline_blank</v-icon>
         </v-btn> -->
         <ItemEditMenu :edit-mode.sync="isEditMode" @cancelChanges="cancelChangesHandler" @saveChanges="saveChangesHandler" />
