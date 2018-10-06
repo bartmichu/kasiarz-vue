@@ -11,12 +11,13 @@
         <!-- <v-btn icon @click="toggleFullscreen">
           <v-icon>check_box_outline_blank</v-icon>
         </v-btn> -->
-        <ItemEditMenu :edit-mode.sync="isEditMode" @cancelChanges="cancelChangesHandler" @saveChanges="saveChangesHandler" />
-        <v-btn v-if="$vuetify.breakpoint.xs" icon @click="showDeleteConfirmation" :disabled="isEditMode">
+        <ItemEditMenu :subscription-ready="isSubscriptionReady" :edit-mode.sync="isEditMode" @cancelChanges="cancelChangesHandler" @saveChanges="saveChangesHandler" />
+        <v-btn v-if="$vuetify.breakpoint.xs" icon @click="showDeleteConfirmation" :disabled="isEditModeOrLoading">
           <v-icon>delete</v-icon>
         </v-btn>
-        <v-btn v-else outline @click="showDeleteConfirmation" :disabled="isEditMode">usuń</v-btn>
+        <v-btn v-else outline @click="showDeleteConfirmation" :disabled="isEditModeOrLoading">usuń</v-btn>
 
+        <!-- TODO: enabled while loading in edit mode -->
         <v-btn v-if="$vuetify.breakpoint.xs" icon @click="closeDialog" :disabled="isEditMode">
           <v-icon>close</v-icon>
         </v-btn>
@@ -200,6 +201,9 @@ export default {
         this.$subReady["employees.extended"]
       );
     },
+    isEditModeOrLoading() {
+      return this.isEditMode || this.isSubscriptionReady === false;
+    },
     isDisabled() {
       return !this.isEditMode;
     },
@@ -210,7 +214,7 @@ export default {
       return this.relatedEmployees.length > 0;
     },
     getToolbarColor() {
-      return this.isEditMode === true ? "red" : "primary";
+      return this.isEditMode === true ? "success" : "primary";
     },
     getToolbarTitle() {
       if (this.addingMode === true) {
