@@ -11,17 +11,17 @@
         <!-- <v-btn icon @click="toggleFullscreen">
           <v-icon>check_box_outline_blank</v-icon>
         </v-btn> -->
-        <ItemEditMenu :subscription-ready="isSubscriptionReady" :edit-mode.sync="isEditMode" @cancelChanges="cancelChangesHandler" @saveChanges="saveChangesHandler" />
-        <v-btn v-if="$vuetify.breakpoint.xs" icon @click="showDeleteConfirmation" :disabled="isEditModeOrLoading">
+        <ItemEditMenu :subscription-ready="isSubscriptionReady" :edit-mode.sync="isEditable" @cancelChanges="cancelChangesHandler" @saveChanges="saveChangesHandler" />
+        <v-btn v-if="$vuetify.breakpoint.xs" icon @click="showDeleteConfirmation" :disabled="isEditableOrLoading">
           <v-icon>delete</v-icon>
         </v-btn>
-        <v-btn v-else outline @click="showDeleteConfirmation" :disabled="isEditModeOrLoading">usuń</v-btn>
+        <v-btn v-else outline @click="showDeleteConfirmation" :disabled="isEditableOrLoading">usuń</v-btn>
 
         <!-- TODO: enabled while loading in edit mode -->
-        <v-btn v-if="$vuetify.breakpoint.xs" icon @click="closeDialog" :disabled="isEditMode">
+        <v-btn v-if="$vuetify.breakpoint.xs" icon @click="closeDialog" :disabled="isEditable">
           <v-icon>close</v-icon>
         </v-btn>
-        <v-btn v-else outline @click="closeDialog" :disabled="isEditMode">zamknij</v-btn>
+        <v-btn v-else outline @click="closeDialog" :disabled="isEditable">zamknij</v-btn>
       </v-toolbar>
 
       <v-card-text v-if="!isSubscriptionReady">
@@ -38,21 +38,21 @@
             </v-flex>
 
             <v-flex xs12>
-              <TextField :schema="getFieldSchema('nazwa')" :value="subscribedData.nazwa" :disabled="!isEditMode" />
+              <TextField :schema="getFieldSchema('nazwa')" :value="subscribedData.nazwa" :disabled="!isEditable" />
             </v-flex>
 
             <v-flex xs12 md5>
-              <TextField :schema="getFieldSchema('ulica')" :value="subscribedData.ulica" :disabled="!isEditMode" />
+              <TextField :schema="getFieldSchema('ulica')" :value="subscribedData.ulica" :disabled="!isEditable" />
             </v-flex>
             <v-flex xs12 md2>
-              <TextField :schema="getFieldSchema('kodPocztowy')" :value="subscribedData.kodPocztowy" :disabled="!isEditMode" />
+              <TextField :schema="getFieldSchema('kodPocztowy')" :value="subscribedData.kodPocztowy" :disabled="!isEditable" />
             </v-flex>
             <v-flex xs12 md5>
-              <TextField :schema="getFieldSchema('miejscowosc')" :value="subscribedData.miejscowosc" :disabled="!isEditMode" />
+              <TextField :schema="getFieldSchema('miejscowosc')" :value="subscribedData.miejscowosc" :disabled="!isEditable" />
             </v-flex>
 
             <v-flex xs12>
-              <TextArea :schema="getFieldSchema('dodatkoweInformacje')" :value="subscribedData.dodatkoweInformacje" :disabled="!isEditMode" />
+              <TextArea :schema="getFieldSchema('dodatkoweInformacje')" :value="subscribedData.dodatkoweInformacje" :disabled="!isEditable" />
             </v-flex>
           </v-layout>
 
@@ -182,7 +182,7 @@ export default {
       // TODO: re-enable when Veutify #2201 gets fixed
       // isFullscreen: this.$vuetify.breakpoint.xs,
       isFullscreen: true,
-      isEditMode: this.addingMode || this.editMode,
+      isEditable: this.addingMode || this.editMode,
       isDeleteConfirmationVisible: false,
       isErrorDialogVisible: false,
       collectionSchema: Manufacturers.simpleSchema()
@@ -201,8 +201,8 @@ export default {
         this.$subReady["employees.extended"]
       );
     },
-    isEditModeOrLoading() {
-      return this.isEditMode || this.isSubscriptionReady === false;
+    isEditableOrLoading() {
+      return this.isEditable || this.isSubscriptionReady === false;
     },
     hasRelatedModels() {
       return this.relatedModels.length > 0;
@@ -211,7 +211,7 @@ export default {
       return this.relatedEmployees.length > 0;
     },
     getToolbarColor() {
-      return this.isEditMode === true ? "error" : "primary";
+      return this.isEditable === true ? "error" : "primary";
     },
     getToolbarTitle() {
       if (this.addingMode === true) {
@@ -247,7 +247,7 @@ export default {
         typeof state === "undefined" ? !this.isFullscreen : state;
     },
     toggleEditMode(state) {
-      this.isEditMode = typeof state === "undefined" ? !this.isEditMode : state;
+      this.isEditable = typeof state === "undefined" ? !this.isEditable : state;
     },
     showDeleteConfirmation() {
       this.isDeleteConfirmationVisible = true;
