@@ -211,7 +211,7 @@ export default {
       return this.relatedEmployees.length > 0;
     },
     getToolbarColor() {
-      return this.isEditMode === true ? "success" : "primary";
+      return this.isEditMode === true ? "error" : "primary";
     },
     getToolbarTitle() {
       if (this.addingMode === true) {
