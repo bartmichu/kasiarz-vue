@@ -38,21 +38,21 @@
             </v-flex>
 
             <v-flex xs12>
-              <TextField :schema="getFieldSchema('nazwa')" :value="subscribedData.nazwa" :disabled="isDisabled" />
+              <TextField :schema="getFieldSchema('nazwa')" :value="subscribedData.nazwa" :disabled="!isEditMode" />
             </v-flex>
 
             <v-flex xs12 md5>
-              <TextField :schema="getFieldSchema('ulica')" :value="subscribedData.ulica" :disabled="isDisabled" />
+              <TextField :schema="getFieldSchema('ulica')" :value="subscribedData.ulica" :disabled="!isEditMode" />
             </v-flex>
             <v-flex xs12 md2>
-              <TextField :schema="getFieldSchema('kodPocztowy')" :value="subscribedData.kodPocztowy" :disabled="isDisabled" />
+              <TextField :schema="getFieldSchema('kodPocztowy')" :value="subscribedData.kodPocztowy" :disabled="!isEditMode" />
             </v-flex>
             <v-flex xs12 md5>
-              <TextField :schema="getFieldSchema('miejscowosc')" :value="subscribedData.miejscowosc" :disabled="isDisabled" />
+              <TextField :schema="getFieldSchema('miejscowosc')" :value="subscribedData.miejscowosc" :disabled="!isEditMode" />
             </v-flex>
 
             <v-flex xs12>
-              <TextArea :schema="getFieldSchema('dodatkoweInformacje')" :value="subscribedData.dodatkoweInformacje" :disabled="isDisabled" />
+              <TextArea :schema="getFieldSchema('dodatkoweInformacje')" :value="subscribedData.dodatkoweInformacje" :disabled="!isEditMode" />
             </v-flex>
           </v-layout>
 
@@ -203,9 +203,6 @@ export default {
     },
     isEditModeOrLoading() {
       return this.isEditMode || this.isSubscriptionReady === false;
-    },
-    isDisabled() {
-      return !this.isEditMode;
     },
     hasRelatedModels() {
       return this.relatedModels.length > 0;
