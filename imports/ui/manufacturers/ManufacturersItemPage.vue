@@ -1,14 +1,14 @@
 <template>
 
-  <v-dialog :value="isVisible" no-click-animation scrollable persistent max-width="99%">
+  <v-dialog :value="isVisible" no-click-animation scrollable persistent max-width="99%" :fullscreen="isFullscreen">
 
     <v-card color="grey lighten-4">
 
       <v-toolbar flat dark :color="getToolbarColor">
         <v-toolbar-title dark>{{ getToolbarTitle }}</v-toolbar-title>
         <v-spacer />
-        <!-- TODO: re-enable when Veutify #2201 gets fixed -->
-        <!-- <v-btn icon @click="toggleFullscreen">
+        <!-- TODO -->
+        <!-- <v-btn icon @click="toggleFullscreen()">
           <v-icon>check_box_outline_blank</v-icon>
         </v-btn> -->
         <ItemEditMenu :subscription-ready="isSubscriptionReady" :edit-mode.sync="isEditable" @cancelChanges="cancelChangesHandler" @saveChanges="saveChangesHandler" />
@@ -179,9 +179,7 @@ export default {
   data() {
     return {
       isVisible: true,
-      // TODO: re-enable when Veutify #2201 gets fixed
-      // isFullscreen: this.$vuetify.breakpoint.xs,
-      isFullscreen: true,
+      isFullscreen: this.$vuetify.breakpoint.xs,
       isEditable: this.addingMode || this.editMode,
       isDeleteConfirmationVisible: false,
       isErrorDialogVisible: false,
