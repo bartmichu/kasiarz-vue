@@ -1,4 +1,5 @@
 node_modules/
+.cache/
 .meteor/local/
 client/lib/
 test/
