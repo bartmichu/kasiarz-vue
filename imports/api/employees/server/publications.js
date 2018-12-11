@@ -6,10 +6,7 @@ import isNonEmptyString from "/imports/helpers/server/isNonEmptyString.js";
 Meteor.publish("employees.list", function publishFunction() {
   const actualUserId = Meteor.userId();
   if (actualUserId) {
-    const data = Employees.find(
-      { uzytkownikId: actualUserId },
-      { fields: { imieNazwisko: 1, serwisId: 1, dataModyfikacji: 1 } }
-    );
+    const data = Employees.find({ uzytkownikId: actualUserId }, { fields: { imieNazwisko: 1, serwisId: 1, dataModyfikacji: 1 } });
 
     if (data) {
       return data;
@@ -22,10 +19,7 @@ Meteor.publish("employees.list", function publishFunction() {
 Meteor.publish("employees.extended", function publishFunction() {
   const actualUserId = Meteor.userId();
   if (actualUserId) {
-    const data = Employees.find(
-      { uzytkownikId: actualUserId },
-      { fields: { imieNazwisko: 1, "uprawnienia.modele": 1 } }
-    );
+    const data = Employees.find({ uzytkownikId: actualUserId }, { fields: { imieNazwisko: 1, "uprawnienia.modele": 1 } });
 
     if (data) {
       return data;
@@ -58,10 +52,7 @@ Meteor.publish("employees.shop.basic", function publishFunction(shopId) {
   if (actualUserId) {
     check(shopId, isNonEmptyString);
 
-    const data = Employees.find(
-      { uzytkownikId: actualUserId, serwisId: shopId },
-      { fields: { imieNazwisko: 1 } }
-    );
+    const data = Employees.find({ uzytkownikId: actualUserId, serwisId: shopId }, { fields: { imieNazwisko: 1 } });
 
     if (data) {
       return data;
@@ -76,10 +67,7 @@ Meteor.publish("employees.model.basic", function publishFunction(modelId) {
   if (actualUserId) {
     check(modelId, isNonEmptyString);
 
-    const data = Employees.find(
-      { uzytkownikId: actualUserId, "uprawnienia.modele": modelId },
-      { fields: { imieNazwisko: 1 } }
-    );
+    const data = Employees.find({ uzytkownikId: actualUserId, "uprawnienia.modele": modelId }, { fields: { imieNazwisko: 1 } });
 
     if (data) {
       return data;

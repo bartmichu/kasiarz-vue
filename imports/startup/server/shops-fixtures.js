@@ -18,10 +18,7 @@ Meteor.startup(() => {
         regon: "",
         pesel: "",
         kraj: "Poland",
-        wojewodztwoId: Voivodeships.find(
-          {},
-          { skip: randomNumber, limit: 1 }
-        ).fetch()[0]._id,
+        wojewodztwoId: Voivodeships.find({}, { skip: randomNumber, limit: 1 }).fetch()[0]._id,
         gminaDzielnica: "",
         ulica: "Iron Street",
         nrDomu: "191",

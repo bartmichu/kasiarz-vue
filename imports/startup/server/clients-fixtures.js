@@ -49,11 +49,7 @@ Meteor.startup(() => {
         skrytkaPocztowa: "dummy data",
         telefon: "(851) 445-3130",
         email: "susanamonroe@exozent.com",
-        miejscaInstalacji: [
-          "Isosphere Pansy Webb ul. Wyckoff Avenue 55, 67-690 Guilford",
-          "Gink Sonia Hancock ul. Banker Street 397, 64-664 Dahlen",
-          "Ovium Booth Lara ul. Dearborn Court 79, 19-206 Moscow"
-        ]
+        miejscaInstalacji: ["Isosphere Pansy Webb ul. Wyckoff Avenue 55, 67-690 Guilford", "Gink Sonia Hancock ul. Banker Street 397, 64-664 Dahlen", "Ovium Booth Lara ul. Dearborn Court 79, 19-206 Moscow"]
       },
       {
         nazwa: "OVATION Potts Christian",
@@ -70,11 +66,7 @@ Meteor.startup(() => {
         skrytkaPocztowa: "dummy data",
         telefon: "(820) 590-3785",
         email: "pottschristian@ovation.com",
-        miejscaInstalacji: [
-          "Isbol Ava Lambert ul. Ridge Boulevard 244, 90-295 Winesburg",
-          "Quarex Clark Ramsey ul. Delevan Street 54, 61-125 Thatcher",
-          "Quadeebo Althea Clements ul. Grace Court 162, 85-759 Jardine"
-        ]
+        miejscaInstalacji: ["Isbol Ava Lambert ul. Ridge Boulevard 244, 90-295 Winesburg", "Quarex Clark Ramsey ul. Delevan Street 54, 61-125 Thatcher", "Quadeebo Althea Clements ul. Grace Court 162, 85-759 Jardine"]
       },
       {
         nazwa: "ENTOGROK Chambers Cross",
@@ -91,11 +83,7 @@ Meteor.startup(() => {
         skrytkaPocztowa: "dummy data",
         telefon: "(833) 589-3900",
         email: "chamberscross@entogrok.com",
-        miejscaInstalacji: [
-          "Honotron Nikki Stewart ul. Oxford Street 271, 22-332 Mooresburg",
-          "Polarax Brooke Copeland ul. Vanderbilt Street 89, 97-390 Cowiche",
-          "Egypto Britney Castaneda ul. Senator Street 468, 38-110 Machias"
-        ]
+        miejscaInstalacji: ["Honotron Nikki Stewart ul. Oxford Street 271, 22-332 Mooresburg", "Polarax Brooke Copeland ul. Vanderbilt Street 89, 97-390 Cowiche", "Egypto Britney Castaneda ul. Senator Street 468, 38-110 Machias"]
       },
       {
         nazwa: "ERSUM Josephine Bailey",
@@ -112,11 +100,7 @@ Meteor.startup(() => {
         skrytkaPocztowa: "dummy data",
         telefon: "(827) 526-3817",
         email: "josephinebailey@ersum.com",
-        miejscaInstalacji: [
-          "Corepan Graham Lawson ul. Havens Place 20, 19-334 Hiseville",
-          "Dancerity Burns Durham ul. Hart Place 355, 84-253 Waiohinu",
-          "Zinca Marshall Zamora ul. Vanderveer Street 232, 33-648 Toftrees"
-        ]
+        miejscaInstalacji: ["Corepan Graham Lawson ul. Havens Place 20, 19-334 Hiseville", "Dancerity Burns Durham ul. Hart Place 355, 84-253 Waiohinu", "Zinca Marshall Zamora ul. Vanderveer Street 232, 33-648 Toftrees"]
       },
       {
         nazwa: "COMTOURS Roberta Barber",
@@ -133,11 +117,7 @@ Meteor.startup(() => {
         skrytkaPocztowa: "dummy data",
         telefon: "(808) 472-2520",
         email: "robertabarber@comtours.com",
-        miejscaInstalacji: [
-          "Intradisk Bianca Duran ul. Tudor Terrace 390, 25-445 Homeland",
-          "Velos Workman Christensen ul. Whitty Lane 120, 71-845 Coinjock",
-          "Kidgrease Noreen Curry ul. Post Court 328, 99-269 Wyano"
-        ]
+        miejscaInstalacji: ["Intradisk Bianca Duran ul. Tudor Terrace 390, 25-445 Homeland", "Velos Workman Christensen ul. Whitty Lane 120, 71-845 Coinjock", "Kidgrease Noreen Curry ul. Post Court 328, 99-269 Wyano"]
       },
       {
         nazwa: "CEPRENE Macias Newman",
@@ -154,11 +134,7 @@ Meteor.startup(() => {
         skrytkaPocztowa: "dummy data",
         telefon: "(928) 525-2161",
         email: "maciasnewman@ceprene.com",
-        miejscaInstalacji: [
-          "Magneato Stafford Bartlett ul. Knapp Street 205, 82-609 Williams",
-          "Terascape Cox Burgess ul. Legion Street 30, 60-840 Calvary",
-          "Snowpoke Marian Barnes ul. Royce Street 340, 40-908 Harmon"
-        ]
+        miejscaInstalacji: ["Magneato Stafford Bartlett ul. Knapp Street 205, 82-609 Williams", "Terascape Cox Burgess ul. Legion Street 30, 60-840 Calvary", "Snowpoke Marian Barnes ul. Royce Street 340, 40-908 Harmon"]
       },
       {
         nazwa: "CABLAM Oneil Barron",
@@ -175,11 +151,7 @@ Meteor.startup(() => {
         skrytkaPocztowa: "dummy data",
         telefon: "(824) 447-2228",
         email: "oneilbarron@cablam.com",
-        miejscaInstalacji: [
-          "Netplax Katharine Cain ul. Thomas Street 202, 83-848 Townsend",
-          "Cujo Geneva Carr ul. Borinquen Pl 451, 93-195 Orason",
-          "Spherix Figueroa Robinson ul. Sedgwick Street 88, 62-147 Tilleda"
-        ]
+        miejscaInstalacji: ["Netplax Katharine Cain ul. Thomas Street 202, 83-848 Townsend", "Cujo Geneva Carr ul. Borinquen Pl 451, 93-195 Orason", "Spherix Figueroa Robinson ul. Sedgwick Street 88, 62-147 Tilleda"]
       },
       {
         nazwa: "OLUCORE Johns Fulton",
@@ -196,11 +168,7 @@ Meteor.startup(() => {
         skrytkaPocztowa: "dummy data",
         telefon: "(875) 592-3805",
         email: "johnsfulton@olucore.com",
-        miejscaInstalacji: [
-          "Gynk Sonya Ball ul. Norman Avenue 279, 42-895 Jennings",
-          "Scentric Phoebe Hayes ul. Ovington Court 104, 38-735 Williamson",
-          "Valreda Spencer Butler ul. Amherst Street 223, 83-912 Soham"
-        ]
+        miejscaInstalacji: ["Gynk Sonya Ball ul. Norman Avenue 279, 42-895 Jennings", "Scentric Phoebe Hayes ul. Ovington Court 104, 38-735 Williamson", "Valreda Spencer Butler ul. Amherst Street 223, 83-912 Soham"]
       },
       {
         nazwa: "TECHTRIX Nola Hebert",
@@ -217,11 +185,7 @@ Meteor.startup(() => {
         skrytkaPocztowa: "dummy data",
         telefon: "(932) 473-3982",
         email: "nolahebert@techtrix.com",
-        miejscaInstalacji: [
-          "Reversus Andrea Wood ul. Hope Street 291, 42-505 Abrams",
-          "Billmed Nita Burch ul. Revere Place 176, 39-792 Roeville",
-          "Netility Pitts Glenn ul. Ashland Place 51, 97-537 Rowe"
-        ]
+        miejscaInstalacji: ["Reversus Andrea Wood ul. Hope Street 291, 42-505 Abrams", "Billmed Nita Burch ul. Revere Place 176, 39-792 Roeville", "Netility Pitts Glenn ul. Ashland Place 51, 97-537 Rowe"]
       },
       {
         nazwa: "TALKALOT Washington Mccarty",
@@ -238,11 +202,7 @@ Meteor.startup(() => {
         skrytkaPocztowa: "dummy data",
         telefon: "(889) 556-3058",
         email: "washingtonmccarty@talkalot.com",
-        miejscaInstalacji: [
-          "Artiq Hilary Cantu ul. Bulwer Place 481, 39-924 Cucumber",
-          "Dognosis Dotson Meyer ul. Bliss Terrace 113, 15-486 Dola",
-          "Orbean Terrell Carson ul. Sunnyside Court 65, 61-224 Belfair"
-        ]
+        miejscaInstalacji: ["Artiq Hilary Cantu ul. Bulwer Place 481, 39-924 Cucumber", "Dognosis Dotson Meyer ul. Bliss Terrace 113, 15-486 Dola", "Orbean Terrell Carson ul. Sunnyside Court 65, 61-224 Belfair"]
       }
     ];
 
@@ -250,10 +210,7 @@ Meteor.startup(() => {
       client.uzytkownikId = userId;
 
       const randomNumber = Math.floor(Math.random() * voivodeshipsCount);
-      client.wojewodztwoId = Voivodeships.find(
-        {},
-        { skip: randomNumber, limit: 1 }
-      ).fetch()[0]._id;
+      client.wojewodztwoId = Voivodeships.find({}, { skip: randomNumber, limit: 1 }).fetch()[0]._id;
 
       client.dataUtworzenia = new Date();
       client.dataModyfikacji = client.dataUtworzenia;

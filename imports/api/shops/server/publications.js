@@ -6,10 +6,7 @@ import Shops from "/imports/api/shops/shops.js";
 Meteor.publish("shops.list", function publishFunction() {
   const actualUserId = Meteor.userId();
   if (actualUserId) {
-    const data = Shops.find(
-      { uzytkownikId: actualUserId },
-      { fields: { nazwa: 1, nip: 1, dataModyfikacji: 1 } }
-    );
+    const data = Shops.find({ uzytkownikId: actualUserId }, { fields: { nazwa: 1, nip: 1, dataModyfikacji: 1 } });
 
     if (data) {
       return data;
@@ -22,10 +19,7 @@ Meteor.publish("shops.list", function publishFunction() {
 Meteor.publish("shops.basic", function publishFunction() {
   const actualUserId = Meteor.userId();
   if (actualUserId) {
-    const data = Shops.find(
-      { uzytkownikId: actualUserId },
-      { fields: { nazwa: 1 } }
-    );
+    const data = Shops.find({ uzytkownikId: actualUserId }, { fields: { nazwa: 1 } });
 
     if (data) {
       return data;

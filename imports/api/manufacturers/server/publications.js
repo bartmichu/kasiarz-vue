@@ -34,10 +34,7 @@ Meteor.publish("manufacturers.basic", function publishFunction() {
 
   const actualUserId = Meteor.userId();
   if (actualUserId) {
-    const data = Manufacturers.find(
-      { uzytkownikId: actualUserId },
-      { fields: { nazwa: 1 } }
-    );
+    const data = Manufacturers.find({ uzytkownikId: actualUserId }, { fields: { nazwa: 1 } });
 
     if (data) {
       return data;

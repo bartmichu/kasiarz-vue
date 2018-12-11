@@ -1,11 +1,6 @@
 <template>
-
-  <v-alert value="true" color="grey" icon="info">
-    {{ message }} Użyj przycisku "dodaj" aby utworzyć nowy element.
-  </v-alert>
-
+  <v-alert value="true" color="grey" icon="info"> {{ message }} Użyj przycisku "dodaj" aby utworzyć nowy element. </v-alert>
 </template>
-
 
 <script>
 export default {

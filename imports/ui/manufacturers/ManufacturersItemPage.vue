@@ -1,9 +1,6 @@
 <template>
-
   <v-dialog :value="isVisible" no-click-animation scrollable persistent max-width="99%" :fullscreen="isFullscreen">
-
     <v-card color="grey lighten-4">
-
       <v-toolbar flat dark :color="getToolbarColor">
         <v-toolbar-title dark>{{ getToolbarTitle }}</v-toolbar-title>
         <v-spacer />
@@ -12,57 +9,36 @@
           <v-icon>check_box_outline_blank</v-icon>
         </v-btn> -->
         <ItemEditMenu :subscription-ready="isSubscriptionReady" :edit-mode.sync="isEditable" @cancelChanges="cancelChangesHandler" @saveChanges="saveChangesHandler" />
-        <v-btn v-if="$vuetify.breakpoint.xs" icon @click="showDeleteConfirmation" :disabled="isEditableOrLoading">
-          <v-icon>delete</v-icon>
-        </v-btn>
+        <v-btn v-if="$vuetify.breakpoint.xs" icon @click="showDeleteConfirmation" :disabled="isEditableOrLoading"> <v-icon>delete</v-icon> </v-btn>
         <v-btn v-else outline @click="showDeleteConfirmation" :disabled="isEditableOrLoading">usuń</v-btn>
 
         <!-- TODO: enabled while loading in edit mode -->
-        <v-btn v-if="$vuetify.breakpoint.xs" icon @click="closeDialog" :disabled="isEditable">
-          <v-icon>close</v-icon>
-        </v-btn>
+        <v-btn v-if="$vuetify.breakpoint.xs" icon @click="closeDialog" :disabled="isEditable"> <v-icon>close</v-icon> </v-btn>
         <v-btn v-else outline @click="closeDialog" :disabled="isEditable">zamknij</v-btn>
       </v-toolbar>
 
-      <v-card-text v-if="!isSubscriptionReady">
-        <LoadingIndicator />
-      </v-card-text>
+      <v-card-text v-if="!isSubscriptionReady"> <LoadingIndicator /> </v-card-text>
       <v-card-text v-else>
         <v-container fluid grid-list-lg>
-
           <v-divider />
 
           <v-layout row wrap>
-            <v-flex xs12>
-              <span class="title">Podstawowe informacje</span>
-            </v-flex>
+            <v-flex xs12> <span class="title">Podstawowe informacje</span> </v-flex>
 
-            <v-flex xs12>
-              <TextField :schema="getFieldSchema('nazwa')" :value="subscribedData.nazwa" :disabled="!isEditable" />
-            </v-flex>
+            <v-flex xs12> <TextField :schema="getFieldSchema('nazwa')" :value="subscribedData.nazwa" :disabled="!isEditable" /> </v-flex>
 
-            <v-flex xs12 md5>
-              <TextField :schema="getFieldSchema('ulica')" :value="subscribedData.ulica" :disabled="!isEditable" />
-            </v-flex>
-            <v-flex xs12 md2>
-              <TextField :schema="getFieldSchema('kodPocztowy')" :value="subscribedData.kodPocztowy" :disabled="!isEditable" />
-            </v-flex>
-            <v-flex xs12 md5>
-              <TextField :schema="getFieldSchema('miejscowosc')" :value="subscribedData.miejscowosc" :disabled="!isEditable" />
-            </v-flex>
+            <v-flex xs12 md5> <TextField :schema="getFieldSchema('ulica')" :value="subscribedData.ulica" :disabled="!isEditable" /> </v-flex>
+            <v-flex xs12 md2> <TextField :schema="getFieldSchema('kodPocztowy')" :value="subscribedData.kodPocztowy" :disabled="!isEditable" /> </v-flex>
+            <v-flex xs12 md5> <TextField :schema="getFieldSchema('miejscowosc')" :value="subscribedData.miejscowosc" :disabled="!isEditable" /> </v-flex>
 
-            <v-flex xs12>
-              <TextArea :schema="getFieldSchema('dodatkoweInformacje')" :value="subscribedData.dodatkoweInformacje" :disabled="!isEditable" />
-            </v-flex>
+            <v-flex xs12> <TextArea :schema="getFieldSchema('dodatkoweInformacje')" :value="subscribedData.dodatkoweInformacje" :disabled="!isEditable" /> </v-flex>
           </v-layout>
 
           <div v-if="!addingMode">
             <v-divider class="mt-5" />
 
             <v-layout row wrap>
-              <v-flex xs12>
-                <span class="title">Powiązane modele urządzeń</span>
-              </v-flex>
+              <v-flex xs12> <span class="title">Powiązane modele urządzeń</span> </v-flex>
 
               <v-flex v-if="hasRelatedModels" xs12>
                 <v-data-table :items="relatedModels" hide-actions hide-headers item-key="_id">
@@ -71,17 +47,13 @@
                   </template>
                 </v-data-table>
               </v-flex>
-              <v-flex v-else>
-                <RelatedItemsPlaceholder />
-              </v-flex>
+              <v-flex v-else> <RelatedItemsPlaceholder /> </v-flex>
             </v-layout>
 
             <v-divider class="mt-5" />
 
             <v-layout row wrap>
-              <v-flex xs12>
-                <span class="title">Powiązani serwisanci</span>
-              </v-flex>
+              <v-flex xs12> <span class="title">Powiązani serwisanci</span> </v-flex>
 
               <v-flex v-if="hasRelatedEmployees" xs12>
                 <v-data-table :items="relatedEmployees" hide-actions hide-headers item-key="_id">
@@ -90,39 +62,27 @@
                   </template>
                 </v-data-table>
               </v-flex>
-              <v-flex v-else>
-                <RelatedItemsPlaceholder />
-              </v-flex>
+              <v-flex v-else> <RelatedItemsPlaceholder /> </v-flex>
             </v-layout>
 
             <v-divider class="mt-5" />
 
             <v-layout row wrap>
-              <v-flex xs12>
-                <span class="title">Metadane</span>
-              </v-flex>
+              <v-flex xs12> <span class="title">Metadane</span> </v-flex>
 
-              <v-flex xs12 md6>
-                <TextField :schema="getFieldSchema('dataUtworzenia')" :value="subscribedData.dataUtworzenia | formatDateLong" />
-              </v-flex>
-              <v-flex xs12 md6>
-                <TextField :schema="getFieldSchema('dataModyfikacji')" :value="subscribedData.dataModyfikacji | formatDateLong " />
-              </v-flex>
+              <v-flex xs12 md6> <TextField :schema="getFieldSchema('dataUtworzenia')" :value="subscribedData.dataUtworzenia | formatDateLong" /> </v-flex>
+              <v-flex xs12 md6> <TextField :schema="getFieldSchema('dataModyfikacji')" :value="subscribedData.dataModyfikacji | formatDateLong" /> </v-flex>
             </v-layout>
           </div>
         </v-container>
       </v-card-text>
-
     </v-card>
 
     <DeleteConfirmationDialog :is-visible.sync="isDeleteConfirmationVisible" :mongo-id="mongoId" title="Usunąć producenta?" @itemDeleted="closeDialog" />
 
     <EditErrorDialog :is-visible.sync="isErrorDialogVisible" />
-
   </v-dialog>
-
 </template>
-
 
 <script>
 import DeleteConfirmationDialog from "/imports/ui/components/DeleteConfirmationDialog.vue";
@@ -161,17 +121,13 @@ export default {
 
   meteor: {
     subscribedData() {
-      return this.addingMode
-        ? manufacturerDummy
-        : Manufacturers.findOne({ _id: this.mongoId });
+      return this.addingMode ? manufacturerDummy : Manufacturers.findOne({ _id: this.mongoId });
     },
     relatedModels() {
       return Models.find();
     },
     relatedEmployees() {
-      const models = Models.find({}, { fields: { _id: 1 } }).map(
-        model => model._id
-      );
+      const models = Models.find({}, { fields: { _id: 1 } }).map(model => model._id);
       return Employees.find({ "uprawnienia.modele": { $in: models } });
     }
   },
@@ -194,9 +150,7 @@ export default {
       }
       return (
         // TODO: refactor
-        this.$subReady["manufacturers.one"] &&
-        this.$subReady["models.manufacturer.basic"] &&
-        this.$subReady["employees.extended"]
+        this.$subReady["manufacturers.one"] && this.$subReady["models.manufacturer.basic"] && this.$subReady["employees.extended"]
       );
     },
     isEditableOrLoading() {
@@ -213,14 +167,10 @@ export default {
     },
     getToolbarTitle() {
       if (this.addingMode === true) {
-        return this.$vuetify.breakpoint.xs === true
-          ? "Nowy producent"
-          : "Dane nowego producenta";
+        return this.$vuetify.breakpoint.xs === true ? "Nowy producent" : "Dane nowego producenta";
       }
 
-      return this.$vuetify.breakpoint.xs === true
-        ? "Producent"
-        : "Dane producenta";
+      return this.$vuetify.breakpoint.xs === true ? "Producent" : "Dane producenta";
     }
   },
 
@@ -241,8 +191,7 @@ export default {
       });
     },
     toggleFullscreen(state) {
-      this.isFullscreen =
-        typeof state === "undefined" ? !this.isFullscreen : state;
+      this.isFullscreen = typeof state === "undefined" ? !this.isFullscreen : state;
     },
     toggleEditMode(state) {
       this.isEditable = typeof state === "undefined" ? !this.isEditable : state;
@@ -271,19 +220,15 @@ export default {
 
       validationContext.validate(foo);
       if (validationContext.isValid()) {
-        Meteor.call(
-          methodPrefix.concat(".update"),
-          { documentId: this.mongoId, foo },
-          error => {
-            if (error) {
-              this.showEditErrorDialog();
-            } else if (this.INITIAL_EDIT_MODE || this.addingMode) {
-              this.closeDialog();
-            } else {
-              this.toggleEditMode(false);
-            }
+        Meteor.call(methodPrefix.concat(".update"), { documentId: this.mongoId, foo }, error => {
+          if (error) {
+            this.showEditErrorDialog();
+          } else if (this.INITIAL_EDIT_MODE || this.addingMode) {
+            this.closeDialog();
+          } else {
+            this.toggleEditMode(false);
           }
-        );
+        });
       } else {
         this.showEditErrorDialog();
       }

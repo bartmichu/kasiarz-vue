@@ -24,10 +24,7 @@ Meteor.publish("clients.list", function publishFunction() {
 Meteor.publish("clients.extended", function publishFunction() {
   const actualUserId = Meteor.userId();
   if (actualUserId) {
-    const data = Clients.find(
-      { uzytkownikId: actualUserId },
-      { fields: { nazwa: 1, nip: 1 } }
-    );
+    const data = Clients.find({ uzytkownikId: actualUserId }, { fields: { nazwa: 1, nip: 1 } });
 
     if (data) {
       return data;

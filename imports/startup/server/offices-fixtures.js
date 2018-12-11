@@ -276,10 +276,7 @@ Meteor.startup(() => {
       office.uzytkownikId = userId;
 
       const randomNumber = Math.floor(Math.random() * voivodeshipsCount);
-      office.wojewodztwoId = Voivodeships.find(
-        {},
-        { skip: randomNumber, limit: 1 }
-      ).fetch()[0]._id;
+      office.wojewodztwoId = Voivodeships.find({}, { skip: randomNumber, limit: 1 }).fetch()[0]._id;
 
       office.dataUtworzenia = new Date();
       office.dataModyfikacji = office.dataUtworzenia;

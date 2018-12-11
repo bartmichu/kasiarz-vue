@@ -118,9 +118,7 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.public)) {
     next();
   } else {
-    isLoggedIn().then(
-      response => (response ? next() : next({ name: "login" }))
-    );
+    isLoggedIn().then(response => (response ? next() : next({ name: "login" })));
   }
 });
 

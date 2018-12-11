@@ -47,10 +47,7 @@ Meteor.startup(() => {
       model.uzytkownikId = userId;
 
       const randomNumber = Math.floor(Math.random() * manufacturersCount);
-      model.producentId = Manufacturers.find(
-        {},
-        { skip: randomNumber, limit: 1 }
-      ).fetch()[0]._id;
+      model.producentId = Manufacturers.find({}, { skip: randomNumber, limit: 1 }).fetch()[0]._id;
 
       model.dataUtworzenia = new Date();
       model.dataModyfikacji = model.dataUtworzenia;

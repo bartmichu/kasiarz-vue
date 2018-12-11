@@ -5,7 +5,6 @@ import Employees from "/imports/api/employees/employees.js";
 import licenseSchema from "/imports/api/employees/schema.js";
 import Shops from "/imports/api/shops/shops.js";
 
-
 export const insertEmployee = new ValidatedMethod({
   name: "employees.insert",
   validate(employee) {
@@ -16,7 +15,7 @@ export const insertEmployee = new ValidatedMethod({
       const shopId = employee.serwisId;
       check(shopId, String);
       const shop = Shops.findOne({ uzytkownikId: actualUserId, _id: shopId });
-      if (!shop || (shop.uzytkownikId !== actualUserId)) {
+      if (!shop || shop.uzytkownikId !== actualUserId) {
         throw new Meteor.Error("Błąd wywołania metody");
       }
 
@@ -34,9 +33,8 @@ export const insertEmployee = new ValidatedMethod({
     employee.dataUtworzenia = new Date();
     employee.dataModyfikacji = employee.dataUtworzenia;
     return Employees.insert(employee);
-  },
+  }
 });
-
 
 export const removeEmployee = new ValidatedMethod({
   name: "employees.remove",
@@ -47,16 +45,15 @@ export const removeEmployee = new ValidatedMethod({
     } else {
       check(documentId, String);
       const employee = Employees.findOne({ uzytkownikId: actualUserId, _id: documentId });
-      if (!employee || (employee.uzytkownikId !== actualUserId)) {
+      if (!employee || employee.uzytkownikId !== actualUserId) {
         throw new Meteor.Error("Błąd wywołania metody");
       }
     }
   },
   run(documentId) {
     return Employees.remove({ _id: documentId });
-  },
+  }
 });
-
 
 export const updateEmployee = new ValidatedMethod({
   name: "employees.update",
@@ -69,7 +66,7 @@ export const updateEmployee = new ValidatedMethod({
       const validationContext = Employees.simpleSchema().newContext();
       if (validationContext.validate(formData) === true) {
         const employee = Employees.findOne({ uzytkownikId: actualUserId, _id: documentId });
-        if (!employee || (employee.uzytkownikId !== actualUserId)) {
+        if (!employee || employee.uzytkownikId !== actualUserId) {
           throw new Meteor.Error("Błąd wywołania metody");
         }
       } else {
@@ -78,17 +75,19 @@ export const updateEmployee = new ValidatedMethod({
     }
   },
   run({ documentId, formData }) {
-    return Employees.update({ _id: documentId }, {
-      $set: {
-        imieNazwisko: formData.imieNazwisko,
-        serwisId: formData.serwisId,
-        dodatkoweInformacje: formData.dodatkoweInformacje,
-        dataModyfikacji: new Date(),
-      },
-    });
-  },
+    return Employees.update(
+      { _id: documentId },
+      {
+        $set: {
+          imieNazwisko: formData.imieNazwisko,
+          serwisId: formData.serwisId,
+          dodatkoweInformacje: formData.dodatkoweInformacje,
+          dataModyfikacji: new Date()
+        }
+      }
+    );
+  }
 });
-
 
 export const addLicense = new ValidatedMethod({
   name: "employees.addLicense",
@@ -101,7 +100,7 @@ export const addLicense = new ValidatedMethod({
       const validationContext = licenseSchema.newContext();
       if (validationContext.validate(formData) === true) {
         const employee = Employees.findOne({ uzytkownikId: actualUserId, _id: documentId });
-        if (!employee || (employee.uzytkownikId !== actualUserId)) {
+        if (!employee || employee.uzytkownikId !== actualUserId) {
           throw new Meteor.Error("Błąd wywołania metody");
         }
       } else {
@@ -110,13 +109,16 @@ export const addLicense = new ValidatedMethod({
     }
   },
   run({ documentId, formData }) {
-    return Employees.update({ _id: documentId }, {
-      $push: {
-        uprawnienia: formData,
-      },
-      $set: {
-        dataModyfikacji: new Date(),
-      },
-    });
-  },
+    return Employees.update(
+      { _id: documentId },
+      {
+        $push: {
+          uprawnienia: formData
+        },
+        $set: {
+          dataModyfikacji: new Date()
+        }
+      }
+    );
+  }
 });

@@ -6,10 +6,7 @@ import Offices from "/imports/api/offices/offices.js";
 Meteor.publish("offices.list", function publishFunction() {
   const actualUserId = Meteor.userId();
   if (actualUserId) {
-    const data = Offices.find(
-      { uzytkownikId: actualUserId },
-      { fields: { nazwa: 1, miejscowosc: 1, dataModyfikacji: 1 } }
-    );
+    const data = Offices.find({ uzytkownikId: actualUserId }, { fields: { nazwa: 1, miejscowosc: 1, dataModyfikacji: 1 } });
 
     if (data) {
       return data;
