@@ -6,7 +6,7 @@
     "meteor:build": "meteor build --server-only --architecture os.linux.x86_64 ../kasiarz-vue-package"
   },
   "dependencies": {
-    "@babel/runtime": "^7.6.0",
+    "@babel/runtime": "^7.6.2",
     "meteor-node-stubs": "^0.4.1",
     "moment": "^2.24.0",
     "simpl-schema": "^1.5.5",
